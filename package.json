@@ -9,13 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.2",
     "@zeit/next-sass": "^1.0.1",
+    "axios": "^0.23.0",
+    "bcrypt": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.11",
     "next": "11.1.2",
     "node-sass": "5.0.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-redux": "^7.2.5",
+    "redux": "^4.1.1",
+    "socket.io": "^4.3.1",
+    "socket.io-client": "^4.3.2"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^16.11.1",
     "@types/react": "^17.0.30",
     "eslint": "8.0.1",
