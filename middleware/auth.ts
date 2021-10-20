@@ -14,7 +14,7 @@ const auth = async (req: any, res: any) => {
             return res.status(400).json({err: "Invalid Authentication."});
         }else{
             const user = await Users.findOne({_id: decoded.id})
-            return {id: user._id, role: user.role, root: user.root};
+            return {id: user._id.toString(), role: user.role, root: user.root};
         }
     }
 }
