@@ -7,19 +7,19 @@ import WaitingRoom from "./state/WaitingRoom";
 function ActiveRoom() {
     const roomInfo = useSelector(selectRooms);
 
-    const [waiting, setWaiting] = useState(null);
+    const [started, setStarted] = useState(null);
 
     useEffect(() => {
-        if(roomInfo.activeRoom && waiting === null){
-            setWaiting(roomInfo.activeRoom.hasStarted);
+        if(roomInfo.activeRoom && started === null){
+            setStarted(roomInfo.activeRoom.hasStarted);
         }
-    }, [roomInfo.activeRoom, waiting]);
+    }, [roomInfo.activeRoom, started]);
 
 
-    if(waiting === true){
-        return <WaitingRoom />
-    }else if(waiting === false){
+    if(started === true){
         return <GameRoom />
+    }else if(started === false){
+        return <WaitingRoom />
     }
 
     return null;
