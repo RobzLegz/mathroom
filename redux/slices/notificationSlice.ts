@@ -6,8 +6,8 @@ interface Notification{
 }
 
 const initialState: Notification = {
-    type: null,
-    message: null,
+    type: "error",
+    message: "sussssss sus sus",
 }
 
 export const notificationSlice = createSlice({
