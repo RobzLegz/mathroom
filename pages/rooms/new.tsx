@@ -5,7 +5,7 @@ function newRoom() {
     return (
         <div>
             <Head>
-                <title>Create Next App</title>
+                <title>MathRoom | New</title>
             </Head>
         </div>
     )

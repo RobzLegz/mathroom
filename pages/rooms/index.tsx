@@ -5,7 +5,7 @@ function index() {
     return (
         <div>
             <Head>
-                <title>Create Next App</title>
+                <title>MathRoom | Rooms</title>
             </Head>
             
         </div>
