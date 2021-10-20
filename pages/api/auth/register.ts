@@ -15,26 +15,26 @@ export default async (req: any, res: any) => {
 
 const register = async (req: any, res: any) => {
     try{
-        const { name, email, password, cf_password } = req.body
+        const { username, email, password, cf_password } = req.body;
 
-        const errMsg = valid(name, email, password, cf_password)
+        const errMsg = valid(username, email, password, cf_password);
         if(errMsg){
-            return res.status(400).json({err: errMsg})
+            return res.status(400).json({err: errMsg});
         }
 
-        const user = await Users.findOne({ email: email })
+        const user = await Users.findOne({ email: email });
         if(user){
-            return res.status(400).json({err: "This email already exists."})
+            return res.status(400).json({err: "This email already exists."});
         }
 
-        const passwordHash = await bcrypt.hash(password, 12)
+        const passwordHash = await bcrypt.hash(password, 12);
 
         const newUser = new Users({ 
-            name, email, password: passwordHash 
-        })
+            username, email, password: passwordHash 
+        });
 
-        await newUser.save()
-        res.json({msg: "Register Success!"})
+        await newUser.save();
+        res.json({msg: "Register Success!"});
     }catch(err: any){
         return res.status(500).json({err: err.message})
     }
