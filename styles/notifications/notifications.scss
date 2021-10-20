@@ -1,0 +1,24 @@
+@import "../variables.scss";
+
+.notification{
+    position: fixed;
+    z-index: 20;
+    width: 350px;
+    height: 75px;
+    top: 0;
+    right: 0;
+}
+
+.error__message{
+    background-color: red;
+    width: 200px;
+    height: 200px;
+}
+
+.success__message{
+    background-color: green;
+}
+
+.loading__message{
+    background-color: yellow;
+}
