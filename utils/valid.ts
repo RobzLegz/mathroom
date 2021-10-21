@@ -1,6 +1,6 @@
 const valid = (name: string, email: string, password: string, cf_password: string) => {
     if(!name || !email || !password)
-    return "Please add all fields."
+    return "Please fill in all fields."
 
     if(!validateEmail(email)){
         return "Invalid email."
