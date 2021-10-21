@@ -1,5 +1,6 @@
 import axios from "axios";
 import { io } from "socket.io-client";
+import { addRoom } from "../redux/slices/roomSlice";
 import { setOnlineUsers, setSocket } from "../redux/slices/socketSlice";
 
 interface User{
@@ -52,8 +53,11 @@ const createRoom = (roomName: string, totalStages: number, maxPlayers: number, i
     
             socket.emit("addRoom", data);
     
-            socket.on("getRooms", (rooms) => {
+            socket.on("getRooms", (rooms: Room[]) => {
                 console.log(rooms)
+                rooms.forEach((room) => {
+                    dispatch(addRoom(room));
+                });
             });
         });
     }
