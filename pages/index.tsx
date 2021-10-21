@@ -1,8 +1,9 @@
 import Head from "next/head"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { connect, getOnlineUsers, getSocket, selectSocket } from "../redux/slices/socketSlice";
+import { selectSocket } from "../redux/slices/socketSlice";
 import { selectUser } from "../redux/slices/userSlice";
+import { connectToSocket } from "../socket/options";
 
 interface User{
   userId: string;
@@ -16,13 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     if(!socketInfo.connected){
-      dispatch(connect("/api/socket.io"));
-    }else if(socketInfo.connected && userInfo.info){
-      const socket = getSocket();
-      socket.emit("addUser", userInfo.info._id);
-      socket.on("getUsers", (users: User[]) => {
-        dispatch(getOnlineUsers(users));
-      });
+      connectToSocket(userInfo.info, dispatch);
     }
   }, [socketInfo.connected]);
 
