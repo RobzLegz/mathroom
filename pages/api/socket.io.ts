@@ -51,7 +51,7 @@ const addRoom = (data: Room) => {
     if(rooms.some((room) => room.admin !== data.admin)){
         rooms.push(data);
     }else if (rooms.length === 0){
-
+        rooms.push(data);
     }else if(rooms.length > 0){
         rooms.filter((room) => room.admin !== data.admin);
     }
