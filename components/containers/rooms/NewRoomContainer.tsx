@@ -11,7 +11,7 @@ function NewRoomContainer() {
     const [roomName, setRoomName] = useState<string>("");
     const [totalStages, setTotalStages] = useState<string>("");
     const [maxPlayers, setMaxPlayers] = useState<string>("");
-    const [publicRoom, setPublicRoom] = useState<boolean>(true);
+    const [privateRoom, setPrivateRoom] = useState<boolean>(false);
 
     useEffect(() => {
         if(!userInfo.loggedIn || !userInfo.token){
@@ -60,10 +60,10 @@ function NewRoomContainer() {
                     </select>
                 </div>
                 <div className="newRoom__container__form__switcher">
-                    <div onClick={() => setPublicRoom(false)} className={`newRoom__container__form__switcher__opt ${publicRoom ? "" : "newRoom__container__form__switcher__opt__active"}`}>Private</div>
-                    <div onClick={() => setPublicRoom(true)} className={`newRoom__container__form__switcher__opt ${publicRoom ? "newRoom__container__form__switcher__opt__active" : ""}`}>Public</div>
+                    <div onClick={() => setPrivateRoom(false)} className={`newRoom__container__form__switcher__opt ${privateRoom ? "newRoom__container__form__switcher__opt__active" : ""}`}>Private</div>
+                    <div onClick={() => setPrivateRoom(true)} className={`newRoom__container__form__switcher__opt ${privateRoom ? "" : "newRoom__container__form__switcher__opt__active"}`}>Public</div>
                 </div>
-                <button onClick={(e) => newRoom(e, roomName, parseInt(totalStages), parseInt(maxPlayers), publicRoom, userInfo, dispatch)}>Create</button>
+                <button onClick={(e) => newRoom(e, roomName, parseInt(totalStages), parseInt(maxPlayers), privateRoom, userInfo, dispatch)}>Create</button>
             </form>
         </div>
     )
