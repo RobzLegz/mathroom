@@ -17,7 +17,7 @@ export default async (req: any, res: any) => {
 
 const getRooms = async (req: any, res: any) => {
     try{
-        const rooms = await Rooms.find();
+        const rooms = await Rooms.find({hasStarted: false, isPrivate: false});
 
         res.json(rooms);
     }catch(err: any){
@@ -32,8 +32,13 @@ const createRoom = async (req: any, res: any) => {
         const admin = await auth(req, res);
         
         const checkRooms = await Rooms.find({admin: admin.id});
-        if(checkRooms && checkRooms.length > 0){
+        if(checkRooms.length > 0){
             return res.status(400).json({msg: "You can't create two rooms at the same time!"});
+        }
+
+        const nameCheckRooms = await Rooms.find({roomName: roomName});
+        if(nameCheckRooms.length > 0){
+            return res.status(400).json({msg: "There can't be multiple rooms with the same name!"});
         }
         
         if(!roomName || !maxPlayers && maxPlayers !== 0){

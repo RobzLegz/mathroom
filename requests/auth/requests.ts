@@ -28,7 +28,8 @@ const registerUser = (e: any, username: string, email: string, password: string,
             dispatch(setNotification({type: "success", message: "Register success. Log in now"}));
             router.push("/auth/login");
         }).catch((err: any) => {
-            dispatch(setNotification({type: "error", message: err.response.data.err}));
+            const message: string = err.response.data.err;
+            dispatch(setNotification({type: "error", message: message}));
         });
 }
 
@@ -59,7 +60,8 @@ const loginUser = (e: any, email: string, password: string, dispatch: any) => {
                 dispatch(clearNotification());
                 checkForLogin(dispatch);
             }).catch((err: any) => {
-                dispatch(setNotification({type: "error", message: err.response.data.err}));
+                const message: string = err.response.data.err;
+                dispatch(setNotification({type: "error", message: message}));
             });
     }else{
         dispatch(setNotification({type: "error", message: "Please enter a valid email!"}));
@@ -83,8 +85,9 @@ const checkForLogin = (dispatch: any) => {
                     dispatch(setToken(res.data.access_token));
                     dispatch(setUserInfo(res.data.user));
                     dispatch(login());
-                }).catch((err: any) => {
-                    dispatch(setNotification({type: "error", message: err.response.data.err}));
+                }).catch((err) => {
+                    const message: string = err.response.data.err;
+                    dispatch(setNotification({type: "error", message: message}));
                     window.localStorage.removeItem("firstLogin");
                     window.localStorage.removeItem("refreshtoken");
                 });
