@@ -15,7 +15,7 @@ function room() {
     const {id} = router.query;
 
     useEffect(() => {
-        if(id && typeof(id) === "string" && !roomInfo.rooms){
+        if(id && typeof(id) === "string" && !roomInfo.activeRoom){
             getRoomInfo(id, dispatch);
         }
     }, [id, dispatch, roomInfo.rooms]);
