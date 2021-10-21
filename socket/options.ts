@@ -36,7 +36,7 @@ const connectToSocket = (userInfo: User | null, dispatch: any) => {
     }
 }
 
-const createRoom = (roomName: string, totalStages: number, maxPlayers: number, isPrivate: boolean, hasStarted: boolean, userInfo: User | null, dispatch: any) => {
+const createRoom = (roomName: string, totalStages: number, maxPlayers: number, isPrivate: boolean, userInfo: User | null, dispatch: any) => {
     if(userInfo){
         axios.get("/api/socket.io").finally(() => {
             const socket = io();
@@ -46,7 +46,7 @@ const createRoom = (roomName: string, totalStages: number, maxPlayers: number, i
                 totalStages: totalStages,
                 maxPlayers: maxPlayers,
                 isPrivate: isPrivate,
-                hasStarted: hasStarted,
+                hasStarted: false,
                 admin: userInfo._id,
             };
     
