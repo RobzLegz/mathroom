@@ -9,6 +9,7 @@ interface RoomUser{
     userId: string;
     socketId: string;
     roomId: string;
+    username: string;
 }
 
 interface Room{
@@ -34,25 +35,29 @@ let rooms: Room[] = [];
 let messages: Message[] = [];
 
 const addUser = (userId: string, socketId: string) => {
-    if(!users.some((user) => user.userId === userId)){
+    if(!users.some((user) => user.userId !== userId)){
+        users.push({ userId, socketId });
+    }else if(users.length === 0){
         users.push({ userId, socketId });
     }
 };
 
-const joinRoom = (userId: string, socketId: string, roomId: string) => {
+const joinRoom = (userId: string, socketId: string, username: string, roomId: string) => {
     if(roomUsers.some((user) => user.userId !== userId)){
-        roomUsers.push({ userId, socketId, roomId });
+        roomUsers.push({ userId, socketId, roomId, username });
     }else if(roomUsers.length === 0){
-        roomUsers.push({ userId, socketId, roomId });
+        roomUsers.push({ userId, socketId, roomId, username });
     }
 };
 
-const leaveRoom = (userId: string) => {
-    roomUsers.filter((user) => user.userId !== userId);
+const leaveRoom = (socketId: string, userId: string) => {
+    roomUsers = roomUsers.filter((user) => user.socketId !== socketId);
+    roomUsers = roomUsers.filter((user) => user.userId !== userId);
 };
 
 const removeUser = (socketId: string) => {
     users = users.filter((user) => user.socketId !== socketId);
+    roomUsers = roomUsers.filter((user) => user.socketId !== socketId);
 };
 
 const addRoom = (data: Room) => {
@@ -69,12 +74,6 @@ const getUser = (userId: string) => {
     return users.find((user) => user.userId === userId);
 };
 
-const getRecievers = (message: Message) => {
-    const messageRoomUsers: RoomUser[] = roomUsers.filter((user) => user.roomId === message.roomID);
-
-    return messageRoomUsers;
-};
-
 const ioHandler = (req: any, res: any) => {
     if(!res.socket.server.io){
         const io = new Server(res.socket.server);
@@ -85,13 +84,13 @@ const ioHandler = (req: any, res: any) => {
                 io.emit("getUsers", users);
             });
 
-            socket.on("joinRoom", (userId, roomId) => {
-                joinRoom(userId, socket.id, roomId);
+            socket.on("joinRoom", (userId, username, roomId) => {
+                joinRoom(userId, socket.id, username, roomId);
                 io.emit("getRoomUsers", roomUsers);
             });
 
             socket.on("leaveRoom", (userId) => {
-                leaveRoom(userId);
+                leaveRoom(socket.id, userId);
                 io.emit("getRoomUsers", roomUsers);
             });
 
@@ -101,16 +100,16 @@ const ioHandler = (req: any, res: any) => {
             });
 
             socket.on("sendMessage", (message) => {
-                messages = messages.filter((msg) => msg.roomID === message.roomID);
-                messages.push(message)
+                messages.push(message);
                 io.emit("recieveMessage", messages);
             })
 
             socket.on("disconnect", () => {
                 console.log("a user disconnected!");
                 removeUser(socket.id);
-                socket.emit("getUsers", users);
-                socket.emit("getRooms", rooms);
+                io.emit("getRoomUsers", roomUsers);
+                io.emit("getUsers", users);
+                io.emit("getRooms", rooms);
             });
         });
 

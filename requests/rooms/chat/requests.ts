@@ -38,7 +38,7 @@ const sendMessage = (e: any, roomId: string | string[] | undefined, message: str
 
     const data: Message = {
         roomID: roomId,
-        username: userInfo._id,
+        username: userInfo.username,
         message: message,
         color: 5,
     }

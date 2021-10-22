@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setNotification } from "../../redux/slices/notificationSlice";
 import { setActiveRoom } from "../../redux/slices/roomSlice";
-import { createRoom } from "../../socket/options";
+import { createRoom, exitSocketRoom } from "../../socket/options";
 
 interface Info{
     username: string;
@@ -41,6 +41,10 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
     e.preventDefault();
 
     if(userInfo.token){
+        if(roomName.length > 10){
+            dispatch(setNotification({type: "error", message: "Room name can't be that long!"}));
+        }
+
         const headers = {
             headers: {
                 Authorization: userInfo.token,
@@ -65,7 +69,8 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
     
 }
 
-const exitRoom = (dispatch: any, router: any) => {
+const exitRoom = (userInfo: Info, dispatch: any, router: any) => {
+    exitSocketRoom(userInfo);
     router.push("/rooms");
     dispatch(setActiveRoom(null));
 }

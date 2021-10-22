@@ -55,6 +55,7 @@
                     flex-direction: column;
                     align-items: center;
                     justify-content: flex-start;
+                    padding: 10px 5px 10px 10px;
 
                     &__player{
                         width: 100%;
@@ -62,6 +63,7 @@
                         align-items: center;
                         justify-content: flex-start;
                         padding: 10px 10px;
+                        background-color: $mathRoomLightGrey;
 
                         &__icon{
                             width: 30px;
@@ -112,6 +114,22 @@
 
                     ::-webkit-scrollbar {
                         display: none;
+                    }
+
+                    &__message{
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        padding: 10px;
+
+                        h4{
+                            color: red;
+                        }
+
+                        p{
+
+                        }
                     }
 
                     &__box{
