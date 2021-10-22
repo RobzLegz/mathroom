@@ -18,7 +18,12 @@ a {
 
 
 h1{
-  font-size: 50px;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+h3{
+  font-size: 25px;
 }
 
 input::-webkit-outer-spin-button,
@@ -29,4 +34,21 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #807e7e;
 }

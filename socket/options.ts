@@ -21,6 +21,13 @@ interface Room{
     admin: string;
 }
 
+interface Message{
+    roomID: string;
+    username: string;
+    message: string;
+    color: number;
+}
+
 const connectToSocket = (userInfo: User | null, dispatch: any) => {
     dispatch(setSocket("/api/socket.io"));
 
@@ -63,4 +70,24 @@ const createRoom = (roomName: string, totalStages: number, maxPlayers: number, i
     }
 }
 
-export {connectToSocket, createRoom};
+const joinRoom = (roomId: string | string[] | undefined, userInfo: User) => {
+    if(typeof(roomId) !== "string"){
+        return
+    }
+
+    axios.get("/api/socket.io").finally(() => {
+        const socket = io();
+
+        socket.emit("joinRoom", userInfo._id, roomId);
+    });
+}
+
+const sendSocketMessage = (message: Message) => {
+    axios.get("/api/socket.io").finally(() => {
+        const socket = io();
+
+        socket.emit("sendMessage", message);
+    });
+}
+
+export {connectToSocket, createRoom, sendSocketMessage, joinRoom};

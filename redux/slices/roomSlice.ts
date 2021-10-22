@@ -9,14 +9,25 @@ interface Room{
     admin: string;
 }
 
+interface User{
+    username: string;
+    email: string;
+    role: string;
+    avatar: string;
+    level: number;
+    _id: string;
+}
+
 interface State{
     rooms: Room[] | null;
     activeRoom: Room | null;
+    roomUsers: User[] | null;
 }
 
 const initialState: State = {
     rooms: null,
     activeRoom: null,
+    roomUsers: null,
 }
 
 export const roomSlice = createSlice({
@@ -28,6 +39,9 @@ export const roomSlice = createSlice({
         },
         setActiveRoom: (state, action) => {
             state.activeRoom = action.payload;
+        },
+        setRoomUsers: (state, action) => {
+            state.roomUsers = action.payload;
         },
         addRoom: (state, action) => {
             if(state.rooms){
@@ -44,6 +58,7 @@ export const roomSlice = createSlice({
 export const { 
     setRooms,
     setActiveRoom,
+    setRoomUsers,
     addRoom
 } = roomSlice.actions;
 
