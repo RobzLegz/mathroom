@@ -18,11 +18,20 @@ interface Room{
     isPrivate: boolean;
     hasStarted: boolean;
     admin: string;
+    _id: string;
+}
+
+interface Message{
+    roomID: string;
+    username: string;
+    message: string;
+    color: number;
 }
 
 let users: User[] = [];
 let roomUsers: RoomUser[] = [];
 let rooms: Room[] = [];
+let messages: Message[] = [];
 
 const addUser = (userId: string, socketId: string) => {
     if(!users.some((user) => user.userId === userId)){
@@ -31,10 +40,9 @@ const addUser = (userId: string, socketId: string) => {
 };
 
 const joinRoom = (userId: string, socketId: string, roomId: string) => {
-    if(!roomUsers.some((user) => user.userId === userId)){
+    if(roomUsers.some((user) => user.userId !== userId)){
         roomUsers.push({ userId, socketId, roomId });
-    }else{
-        roomUsers.filter((user) => user.userId !== userId);
+    }else if(roomUsers.length === 0){
         roomUsers.push({ userId, socketId, roomId });
     }
 };
@@ -61,6 +69,12 @@ const getUser = (userId: string) => {
     return users.find((user) => user.userId === userId);
 };
 
+const getRecievers = (message: Message) => {
+    const messageRoomUsers: RoomUser[] = roomUsers.filter((user) => user.roomId === message.roomID);
+
+    return messageRoomUsers;
+};
+
 const ioHandler = (req: any, res: any) => {
     if(!res.socket.server.io){
         const io = new Server(res.socket.server);
@@ -71,8 +85,8 @@ const ioHandler = (req: any, res: any) => {
                 io.emit("getUsers", users);
             });
 
-            socket.on("joinRoom", (userId, socketId, roomId) => {
-                joinRoom(userId, socketId, roomId);
+            socket.on("joinRoom", (userId, roomId) => {
+                joinRoom(userId, socket.id, roomId);
                 io.emit("getRoomUsers", roomUsers);
             });
 
@@ -85,6 +99,12 @@ const ioHandler = (req: any, res: any) => {
                 addRoom(data);
                 io.emit("getRooms", rooms);
             });
+
+            socket.on("sendMessage", (message) => {
+                messages = messages.filter((msg) => msg.roomID === message.roomID);
+                messages.push(message)
+                io.emit("recieveMessage", messages);
+            })
 
             socket.on("disconnect", () => {
                 console.log("a user disconnected!");
