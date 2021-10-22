@@ -1,7 +1,6 @@
 import axios from "axios";
 import { io } from "socket.io-client";
 import { addRoom } from "../redux/slices/roomSlice";
-import { setOnlineUsers, setSocket } from "../redux/slices/socketSlice";
 
 interface User{
     username: string;
@@ -29,17 +28,11 @@ interface Message{
 }
 
 const connectToSocket = (userInfo: User | null, dispatch: any) => {
-    dispatch(setSocket("/api/socket.io"));
-
     if(userInfo){
         axios.get("/api/socket.io").finally(() => {
             const socket = io();
     
             socket.emit("addUser", userInfo._id);
-    
-            socket.on("getUsers", (users) => {
-                dispatch(setOnlineUsers(users));
-            });
         });
     }
 }
