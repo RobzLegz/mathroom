@@ -18,11 +18,20 @@ interface Room{
     isPrivate: boolean;
     hasStarted: boolean;
     admin: string;
+    _id: string;
+}
+
+interface Message{
+    roomID: string;
+    username: string;
+    message: string;
+    color: number;
 }
 
 let users: User[] = [];
 let roomUsers: RoomUser[] = [];
 let rooms: Room[] = [];
+let messages: Message[] = [];
 
 const addUser = (userId: string, socketId: string) => {
     if(!users.some((user) => user.userId === userId)){
@@ -61,6 +70,12 @@ const getUser = (userId: string) => {
     return users.find((user) => user.userId === userId);
 };
 
+const sendMessage = (message: Message) => {
+    const messageRoomUsers = roomUsers.find((user) => user.roomId === message.roomID);
+
+    console.log(messageRoomUsers);
+};
+
 const ioHandler = (req: any, res: any) => {
     if(!res.socket.server.io){
         const io = new Server(res.socket.server);
@@ -71,8 +86,8 @@ const ioHandler = (req: any, res: any) => {
                 io.emit("getUsers", users);
             });
 
-            socket.on("joinRoom", (userId, socketId, roomId) => {
-                joinRoom(userId, socketId, roomId);
+            socket.on("joinRoom", (userId, roomId) => {
+                joinRoom(userId, socket.id, roomId);
                 io.emit("getRoomUsers", roomUsers);
             });
 
@@ -85,6 +100,11 @@ const ioHandler = (req: any, res: any) => {
                 addRoom(data);
                 io.emit("getRooms", rooms);
             });
+
+            socket.on("sendMessage", (message) => {
+                console.log(message)
+                sendMessage(message);
+            })
 
             socket.on("disconnect", () => {
                 console.log("a user disconnected!");

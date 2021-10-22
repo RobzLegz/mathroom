@@ -1,4 +1,5 @@
 import { setNotification } from "../../../redux/slices/notificationSlice";
+import { sendSocketMessage } from "../../../socket/options";
 
 interface User{
     username: string;
@@ -9,8 +10,19 @@ interface User{
     _id: string;
 }
 
-const sendMessage = (e: any, mesasge: string, messageTimeout: number, setMessageTimeout: any, userInfo: User, dispatch: any) => {
+interface Message{
+    roomID: string;
+    username: string;
+    message: string;
+    color: number;
+}
+
+const sendMessage = (e: any, roomId: string | string[] | undefined, message: string, messageTimeout: number, setMessageTimeout: any, userInfo: User, dispatch: any) => {
     e.preventDefault();
+
+    if(typeof(roomId) !== "string"){
+        return
+    }
 
     if(!userInfo.username){
         return dispatch(setNotification({type: "error", message: "You must be logged in to send message!"}));
@@ -20,11 +32,19 @@ const sendMessage = (e: any, mesasge: string, messageTimeout: number, setMessage
         return dispatch(setNotification({type: "error", message: "You can send message after timeout!"}));
     }
 
-    if(!mesasge || mesasge.length === 0){
+    if(!message || message.length === 0){
         return 
     }
 
+    const data: Message = {
+        roomID: roomId,
+        username: userInfo._id,
+        message: message,
+        color: 5,
+    }
+
     setMessageTimeout(5);
+    sendSocketMessage(data);
 }
 
 export {sendMessage};

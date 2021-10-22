@@ -88,7 +88,7 @@ function WaitingRoom() {
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                 />
-                                <button onClick={(e) => sendMessage(e, message, messageTimeout, setMessageTimeout, userInfo.info, dispatch)}>Send</button>
+                                <button onClick={(e) => sendMessage(e, router.query.id, message, messageTimeout, setMessageTimeout, userInfo.info, dispatch)}>Send</button>
                             </form>
                         </div>
                     </div>
