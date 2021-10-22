@@ -40,10 +40,9 @@ const addUser = (userId: string, socketId: string) => {
 };
 
 const joinRoom = (userId: string, socketId: string, roomId: string) => {
-    if(!roomUsers.some((user) => user.userId === userId)){
+    if(roomUsers.some((user) => user.userId !== userId)){
         roomUsers.push({ userId, socketId, roomId });
-    }else{
-        roomUsers.filter((user) => user.userId !== userId);
+    }else if(roomUsers.length === 0){
         roomUsers.push({ userId, socketId, roomId });
     }
 };
@@ -70,10 +69,10 @@ const getUser = (userId: string) => {
     return users.find((user) => user.userId === userId);
 };
 
-const sendMessage = (message: Message) => {
-    const messageRoomUsers = roomUsers.find((user) => user.roomId === message.roomID);
+const getRecievers = (message: Message) => {
+    const messageRoomUsers: RoomUser[] = roomUsers.filter((user) => user.roomId === message.roomID);
 
-    console.log(messageRoomUsers);
+    return messageRoomUsers;
 };
 
 const ioHandler = (req: any, res: any) => {
@@ -102,8 +101,14 @@ const ioHandler = (req: any, res: any) => {
             });
 
             socket.on("sendMessage", (message) => {
-                console.log(message)
-                sendMessage(message);
+                const recievers = getRecievers(message);
+                console.log(recievers)
+                messages = messages.filter((msg) => msg.roomID === message.roomID);
+                messages.push(message)
+                recievers.forEach((reciever) => {
+                    console.log(messages);
+                    io.to(reciever.socketId).emit("recieveMessage", messages);
+                }); 
             })
 
             socket.on("disconnect", () => {
