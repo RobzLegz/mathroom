@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Head from "next/head"
 import { useDispatch, useSelector } from "react-redux";
 import { getRoomInfo } from "../../requests/rooms/requests";
@@ -8,12 +8,20 @@ import ActiveRoom from "../../components/containers/rooms/ActiveRoom";
 import { selectUser } from "../../redux/slices/userSlice";
 import { checkForLogin } from "../../requests/auth/requests";
 import { joinRoom } from "../../socket/options";
-import { io } from "socket.io-client";
+import io from "socket.io-client";
 import axios from "axios";
+
+interface Message{
+    roomID: string;
+    username: string;
+    message: string;
+    color: number;
+}
 
 function room() {
     const userInfo = useSelector(selectUser);
     const roomInfo = useSelector(selectRooms);
+    const [testSocket] = useState(io("/api/socket.io"));
 
     const router = useRouter();
     const dispatch = useDispatch();
@@ -43,17 +51,18 @@ function room() {
     }, [id, userInfo.info]);
 
     useEffect(() => {
-        axios.get("/api/socket.io").finally(() => {
-            const socket = io();
-    
-            socket.on("getRoomUsers", (users) => {
-                dispatch(setRoomUsers(users));
-            });
+        axios.get("/api/socket.io")
+            .finally(() => {
+                const socket = io();
+        
+                socket.on("getRoomUsers", (users) => {
+                    dispatch(setRoomUsers(users));
+                });
 
-            socket.on("recieveMessage", (messages) => {
-                console.log(messages);
+                socket.on("recieveMessage", (messages) => {
+                    console.log(messages);
+                });
             });
-        });
     }, [io]);
 
     return (

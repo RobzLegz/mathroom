@@ -101,14 +101,9 @@ const ioHandler = (req: any, res: any) => {
             });
 
             socket.on("sendMessage", (message) => {
-                const recievers = getRecievers(message);
-                console.log(recievers)
                 messages = messages.filter((msg) => msg.roomID === message.roomID);
                 messages.push(message)
-                recievers.forEach((reciever) => {
-                    console.log(messages);
-                    io.to(reciever.socketId).emit("recieveMessage", messages);
-                }); 
+                io.emit("recieveMessage", messages);
             })
 
             socket.on("disconnect", () => {

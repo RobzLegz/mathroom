@@ -44,11 +44,11 @@ function WaitingRoom() {
     const dispatch = useDispatch();
 
     const [message, setMessage] = useState<string>("");
-    const [messages, setMessages] = useState<Message[]>([]);
     const [messageTimeout, setMessageTimeout] = useState<number>(0);
 
     useEffect(() => {
         if(messageTimeout > 0){
+            setMessage("");
             setTimeout(() => {
                 setMessageTimeout(messageTimeout - 1);
             }, 1000);
@@ -61,7 +61,7 @@ function WaitingRoom() {
                 <div className="gameRoom__waiting__inner">
                     <div className="gameRoom__waiting__inner__header">
                         <h1>{roomInfo.activeRoom.roomName}</h1>
-                        <h1>7/{roomInfo.activeRoom.maxPlayers}</h1>
+                        <h1>{roomInfo.roomUsers ? roomInfo.roomUsers.length : "0"}/{roomInfo.activeRoom.maxPlayers}</h1>
                     </div>
         
                     <div className="gameRoom__waiting__inner__body">
