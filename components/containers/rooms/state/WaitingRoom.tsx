@@ -6,17 +6,6 @@ import { selectUser } from "../../../../redux/slices/userSlice";
 import { sendMessage } from "../../../../requests/rooms/chat/requests";
 import { exitRoom } from "../../../../requests/rooms/requests";
 
-const players = [
-    {
-        username: "bobik",
-        _id: "616fcdb134266d3a2c1b5ac3"
-    },
-    {
-        username: "biggerBob",
-        _id: "616fcdb134266d3a2c1b5a3"
-    }
-]
-
 interface Message{
     roomID: string;
     username: string;
@@ -33,12 +22,22 @@ interface User{
     _id: string;
 }
 
+interface RoomUser{
+    userId: string;
+    socketId: string;
+    roomId: string;
+    username: string;
+}
+
 function WaitingRoom() {
     const userInfo = useSelector(selectUser);
     const roomInfo = useSelector(selectRooms);
 
+
     const router = useRouter();
     const dispatch = useDispatch();
+
+    const {id} = router.query;
 
     const [message, setMessage] = useState<string>("");
     const [messageTimeout, setMessageTimeout] = useState<number>(0);
@@ -65,7 +64,7 @@ function WaitingRoom() {
         
                     <div className="gameRoom__waiting__inner__body">
                         <div className="gameRoom__waiting__inner__body__players">
-                            {roomInfo.roomUsers && roomInfo.roomUsers.map((player: User, i: number) => {
+                            {roomInfo.roomUsers && typeof(id) === "string" && roomInfo.roomUsers.filter((u: RoomUser) => u.roomId === id).map((player: User, i: number) => {
                                 return(
                                     <div className="gameRoom__waiting__inner__body__players__player" key={i}>
                                         <div className="gameRoom__waiting__inner__body__players__player__icon">
@@ -78,7 +77,7 @@ function WaitingRoom() {
                             })}
                         </div>
                         <div className="gameRoom__waiting__inner__body__chat">
-                            {roomInfo.messages.map((message: Message, i: number) => {
+                            {typeof(id) === "string" && roomInfo.messages.filter((message: Message) => message.roomID === id).map((message: Message, i: number) => {
                                 return(
                                     <div className="gameRoom__waiting__inner__body__chat__message" key={i}>
                                         <h4>{message.username}</h4>

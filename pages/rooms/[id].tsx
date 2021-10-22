@@ -60,10 +60,7 @@ function room() {
                 });
 
                 socket.on("recieveMessage", (messages: Message[]) => {
-                    console.log(messages);
-                    console.log(router.query.id);
                     const roomMessages = messages.filter((message) => message.roomID === id);
-                    console.log(roomMessages);
                     dispatch(setRoomMessages(messages));
                 });
             });
