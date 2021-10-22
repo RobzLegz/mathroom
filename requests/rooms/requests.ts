@@ -65,4 +65,9 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
     
 }
 
-export {getRooms, getRoomInfo, newRoom};
+const exitRoom = (dispatch: any, router: any) => {
+    router.push("/rooms");
+    dispatch(setActiveRoom(null));
+}
+
+export {getRooms, getRoomInfo, newRoom, exitRoom};
