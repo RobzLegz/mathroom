@@ -4,6 +4,7 @@ import RoomContainer from "../../components/containers/rooms/RoomContainer";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setRooms } from "../../redux/slices/roomSlice";
+import { GetStaticProps } from "next"
 
 interface Room{
     roomName: string;
@@ -38,8 +39,18 @@ const index: React.FC<Props> = ({rooms}) => {
     )
 }
 
-export const getStaticProps = async () => {
-    const res = await axios.get("http://localhost:3000/api/rooms");
+export const getStaticProps: GetStaticProps = async (context: any) => {
+    const clientURL = process.env.CLIENT_URL;
+
+    if(!clientURL){
+        return {
+            props: {
+                rooms: []
+            }
+        }
+    }
+
+    const res = await axios.get(`${clientURL}/api/rooms`);
 
     return {
         props: {
