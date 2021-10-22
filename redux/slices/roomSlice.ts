@@ -29,12 +29,22 @@ export const roomSlice = createSlice({
         setActiveRoom: (state, action) => {
             state.activeRoom = action.payload;
         },
+        addRoom: (state, action) => {
+            if(state.rooms){
+                if(state.rooms.some((r) => r.admin !== action.payload.admin)){
+                    state.rooms.push(action.payload);
+                }
+            }else{
+                state.rooms = [action.payload];
+            }
+        },
     },
 });
 
 export const { 
     setRooms,
-    setActiveRoom
+    setActiveRoom,
+    addRoom
 } = roomSlice.actions;
 
 export const selectRooms = (state: any) => state.room;

@@ -1,3 +1,6 @@
 @import "./globals.scss";
 
-@import "./rooms/gameRoom.scss";
+@import "./notifications/notifications.scss";
+
+@import "./rooms/index.scss";
+@import "./auth/auth.scss";
