@@ -59,7 +59,7 @@ function WaitingRoom() {
                 <div className="gameRoom__waiting__inner">
                     <div className="gameRoom__waiting__inner__header">
                         <h1>{roomInfo.activeRoom.roomName}</h1>
-                        <h1>{roomInfo.roomUsers ? roomInfo.roomUsers.length : "0"}/{roomInfo.activeRoom.maxPlayers}</h1>
+                        <h1>{typeof(id) === "string" && roomInfo.roomUsers ? roomInfo.roomUsers.filter((user: RoomUser) => user.roomId === id).length : "0"}/{roomInfo.activeRoom.maxPlayers}</h1>
                     </div>
         
                     <div className="gameRoom__waiting__inner__body">
@@ -99,7 +99,7 @@ function WaitingRoom() {
                         </div>
                     </div>
 
-                    <button onClick={() => exitRoom(dispatch, router)}>Leave room</button>
+                    <button onClick={() => exitRoom(userInfo.info, dispatch, router)}>Leave room</button>
                 </div>
             </div>
         )

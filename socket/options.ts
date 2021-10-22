@@ -90,4 +90,12 @@ const sendSocketMessage = (message: Message) => {
     });
 }
 
-export {connectToSocket, createRoom, sendSocketMessage, joinRoom};
+const exitSocketRoom = (userInfo: User) => {
+    axios.get("/api/socket.io").finally(() => {
+        const socket = io();
+
+        socket.emit("leaveRoom", userInfo._id);
+    });
+}
+
+export {connectToSocket, createRoom, sendSocketMessage, joinRoom, exitSocketRoom};

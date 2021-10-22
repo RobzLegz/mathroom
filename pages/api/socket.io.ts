@@ -50,12 +50,14 @@ const joinRoom = (userId: string, socketId: string, username: string, roomId: st
     }
 };
 
-const leaveRoom = (userId: string) => {
-    roomUsers.filter((user) => user.userId !== userId);
+const leaveRoom = (socketId: string, userId: string) => {
+    roomUsers = roomUsers.filter((user) => user.socketId !== socketId);
+    roomUsers = roomUsers.filter((user) => user.userId !== userId);
 };
 
 const removeUser = (socketId: string) => {
     users = users.filter((user) => user.socketId !== socketId);
+    roomUsers = roomUsers.filter((user) => user.socketId !== socketId);
 };
 
 const addRoom = (data: Room) => {
@@ -88,7 +90,7 @@ const ioHandler = (req: any, res: any) => {
             });
 
             socket.on("leaveRoom", (userId) => {
-                leaveRoom(userId);
+                leaveRoom(socket.id, userId);
                 io.emit("getRoomUsers", roomUsers);
             });
 
@@ -105,8 +107,9 @@ const ioHandler = (req: any, res: any) => {
             socket.on("disconnect", () => {
                 console.log("a user disconnected!");
                 removeUser(socket.id);
-                socket.emit("getUsers", users);
-                socket.emit("getRooms", rooms);
+                io.emit("getRoomUsers", roomUsers);
+                io.emit("getUsers", users);
+                io.emit("getRooms", rooms);
             });
         });
 
