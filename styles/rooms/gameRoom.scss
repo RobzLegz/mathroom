@@ -114,6 +114,22 @@
                         display: none;
                     }
 
+                    &__message{
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        padding: 10px;
+
+                        h4{
+                            color: red;
+                        }
+
+                        p{
+
+                        }
+                    }
+
                     &__box{
                         width: 100%;
                         height: 50px;

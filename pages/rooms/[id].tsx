@@ -3,7 +3,7 @@ import Head from "next/head"
 import { useDispatch, useSelector } from "react-redux";
 import { getRoomInfo } from "../../requests/rooms/requests";
 import { useRouter } from "next/dist/client/router";
-import { selectRooms, setRoomUsers } from "../../redux/slices/roomSlice";
+import { selectRooms, setRoomMessages, setRoomUsers } from "../../redux/slices/roomSlice";
 import ActiveRoom from "../../components/containers/rooms/ActiveRoom";
 import { selectUser } from "../../redux/slices/userSlice";
 import { checkForLogin } from "../../requests/auth/requests";
@@ -59,8 +59,12 @@ function room() {
                     dispatch(setRoomUsers(users));
                 });
 
-                socket.on("recieveMessage", (messages) => {
+                socket.on("recieveMessage", (messages: Message[]) => {
                     console.log(messages);
+                    console.log(router.query.id);
+                    const roomMessages = messages.filter((message) => message.roomID === id);
+                    console.log(roomMessages);
+                    dispatch(setRoomMessages(messages));
                 });
             });
     }, [io]);

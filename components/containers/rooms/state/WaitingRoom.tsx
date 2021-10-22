@@ -14,18 +14,6 @@ const players = [
     {
         username: "biggerBob",
         _id: "616fcdb134266d3a2c1b5a3"
-    },
-    {
-        username: "biggerBob",
-        _id: "616fcdb134266d3a2c1b5a3"
-    },
-    {
-        username: "biggerBob",
-        _id: "616fcdb134266d3a2c1b5a3"
-    },
-    {
-        username: "biggerBob",
-        _id: "616fcdb134266d3a2c1b5a3"
     }
 ]
 
@@ -34,6 +22,15 @@ interface Message{
     username: string;
     message: string;
     color: number;
+}
+
+interface User{
+    username: string;
+    email: string;
+    role: string;
+    avatar: string;
+    level: number;
+    _id: string;
 }
 
 function WaitingRoom() {
@@ -48,12 +45,14 @@ function WaitingRoom() {
 
     useEffect(() => {
         if(messageTimeout > 0){
-            setMessage("");
             setTimeout(() => {
                 setMessageTimeout(messageTimeout - 1);
             }, 1000);
         }
-    }, [messageTimeout]);
+        if(message.length > 0 && messageTimeout > 0){
+            setMessage("");
+        }
+    }, [messageTimeout, message]);
 
     if(roomInfo.activeRoom){
         return (
@@ -66,7 +65,7 @@ function WaitingRoom() {
         
                     <div className="gameRoom__waiting__inner__body">
                         <div className="gameRoom__waiting__inner__body__players">
-                            {players.map((player, i) => {
+                            {roomInfo.roomUsers && roomInfo.roomUsers.map((player: User, i: number) => {
                                 return(
                                     <div className="gameRoom__waiting__inner__body__players__player" key={i}>
                                         <div className="gameRoom__waiting__inner__body__players__player__icon">
@@ -79,6 +78,14 @@ function WaitingRoom() {
                             })}
                         </div>
                         <div className="gameRoom__waiting__inner__body__chat">
+                            {roomInfo.messages.map((message: Message, i: number) => {
+                                return(
+                                    <div className="gameRoom__waiting__inner__body__chat__message" key={i}>
+                                        <h4>{message.username}</h4>
+                                        <p>{message.message}</p>
+                                    </div>
+                                )
+                            })}
                             <form className="gameRoom__waiting__inner__body__chat__box">
                                 <input 
                                     type="text" 

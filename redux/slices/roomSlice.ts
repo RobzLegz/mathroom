@@ -18,16 +18,25 @@ interface User{
     _id: string;
 }
 
+interface Message{
+    roomID: string;
+    username: string;
+    message: string;
+    color: number;
+}
+
 interface State{
     rooms: Room[] | null;
     activeRoom: Room | null;
     roomUsers: User[] | null;
+    messages: Message[];
 }
 
 const initialState: State = {
     rooms: null,
     activeRoom: null,
     roomUsers: null,
+    messages: [],
 }
 
 export const roomSlice = createSlice({
@@ -42,6 +51,9 @@ export const roomSlice = createSlice({
         },
         setRoomUsers: (state, action) => {
             state.roomUsers = action.payload;
+        },
+        setRoomMessages: (state, action) => {
+            state.messages = action.payload;
         },
         addRoom: (state, action) => {
             if(state.rooms){
@@ -59,6 +71,7 @@ export const {
     setRooms,
     setActiveRoom,
     setRoomUsers,
+    setRoomMessages,
     addRoom
 } = roomSlice.actions;
 

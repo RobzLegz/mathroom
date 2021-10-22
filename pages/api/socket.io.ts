@@ -9,6 +9,7 @@ interface RoomUser{
     userId: string;
     socketId: string;
     roomId: string;
+    username: string;
 }
 
 interface Room{
@@ -34,16 +35,18 @@ let rooms: Room[] = [];
 let messages: Message[] = [];
 
 const addUser = (userId: string, socketId: string) => {
-    if(!users.some((user) => user.userId === userId)){
+    if(!users.some((user) => user.userId !== userId)){
+        users.push({ userId, socketId });
+    }else if(users.length === 0){
         users.push({ userId, socketId });
     }
 };
 
-const joinRoom = (userId: string, socketId: string, roomId: string) => {
+const joinRoom = (userId: string, socketId: string, username: string, roomId: string) => {
     if(roomUsers.some((user) => user.userId !== userId)){
-        roomUsers.push({ userId, socketId, roomId });
+        roomUsers.push({ userId, socketId, roomId, username });
     }else if(roomUsers.length === 0){
-        roomUsers.push({ userId, socketId, roomId });
+        roomUsers.push({ userId, socketId, roomId, username });
     }
 };
 
@@ -69,12 +72,6 @@ const getUser = (userId: string) => {
     return users.find((user) => user.userId === userId);
 };
 
-const getRecievers = (message: Message) => {
-    const messageRoomUsers: RoomUser[] = roomUsers.filter((user) => user.roomId === message.roomID);
-
-    return messageRoomUsers;
-};
-
 const ioHandler = (req: any, res: any) => {
     if(!res.socket.server.io){
         const io = new Server(res.socket.server);
@@ -85,8 +82,8 @@ const ioHandler = (req: any, res: any) => {
                 io.emit("getUsers", users);
             });
 
-            socket.on("joinRoom", (userId, roomId) => {
-                joinRoom(userId, socket.id, roomId);
+            socket.on("joinRoom", (userId, username, roomId) => {
+                joinRoom(userId, socket.id, username, roomId);
                 io.emit("getRoomUsers", roomUsers);
             });
 
@@ -101,8 +98,7 @@ const ioHandler = (req: any, res: any) => {
             });
 
             socket.on("sendMessage", (message) => {
-                messages = messages.filter((msg) => msg.roomID === message.roomID);
-                messages.push(message)
+                messages.push(message);
                 io.emit("recieveMessage", messages);
             })
 

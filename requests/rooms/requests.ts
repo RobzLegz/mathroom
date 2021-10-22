@@ -41,6 +41,10 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
     e.preventDefault();
 
     if(userInfo.token){
+        if(roomName.length > 10){
+            dispatch(setNotification({type: "error", message: "Room name can't be that long!"}));
+        }
+
         const headers = {
             headers: {
                 Authorization: userInfo.token,

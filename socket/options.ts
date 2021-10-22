@@ -78,7 +78,7 @@ const joinRoom = (roomId: string | string[] | undefined, userInfo: User) => {
     axios.get("/api/socket.io").finally(() => {
         const socket = io();
 
-        socket.emit("joinRoom", userInfo._id, roomId);
+        socket.emit("joinRoom", userInfo._id, userInfo.username, roomId);
     });
 }
 
