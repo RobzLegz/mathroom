@@ -38,7 +38,7 @@ function room() {
 
     useEffect(() => {
         if(id && typeof(id) === "string" && !roomInfo.activeRoom){
-            getRoomInfo(id, dispatch);
+            getRoomInfo(id, dispatch, router);
         }
     }, [id, dispatch, roomInfo.rooms]);
 
@@ -66,7 +66,6 @@ function room() {
                 });
 
                 socket.on("recieveMessage", (messages: Message[]) => {
-                    const roomMessages = messages.filter((message) => message.roomID === id);
                     dispatch(setRoomMessages(messages));
                 });
             }
