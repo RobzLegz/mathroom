@@ -33,7 +33,7 @@ const registerUser = (e: any, username: string, email: string, password: string,
         });
 }
 
-const loginUser = (e: any, email: string, password: string, dispatch: any) => {
+const loginUser = (e: any, email: string, password: string, dispatch: any, router: any) => {
     e.preventDefault();
     dispatch(setNotification({type: "loading", message: "loading"}));
 
@@ -58,7 +58,7 @@ const loginUser = (e: any, email: string, password: string, dispatch: any) => {
                 localStorage.setItem("firstLogin", "true");
                 window.localStorage.setItem("refreshtoken", res.data.refresh_token)
                 dispatch(clearNotification());
-                checkForLogin(dispatch);
+                checkForLogin(dispatch, router);
             }).catch((err: any) => {
                 const message: string = err.response.data.err;
                 dispatch(setNotification({type: "error", message: message}));
@@ -68,7 +68,7 @@ const loginUser = (e: any, email: string, password: string, dispatch: any) => {
     }    
 }
 
-const checkForLogin = (dispatch: any) => {
+const checkForLogin = (dispatch: any, router: any) => {
     const first_login = window.localStorage.getItem("firstLogin");
     const rf_token = window.localStorage.getItem("refreshtoken");
 
@@ -90,8 +90,13 @@ const checkForLogin = (dispatch: any) => {
                     dispatch(setNotification({type: "error", message: message}));
                     window.localStorage.removeItem("firstLogin");
                     window.localStorage.removeItem("refreshtoken");
+                    router.push("/auth/login");
                 });
+        }else{
+            router.push("/auth/login");
         }
+    }else{
+        router.push("/auth/login");
     }
 }
 
