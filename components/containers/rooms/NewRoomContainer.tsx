@@ -25,7 +25,7 @@ function NewRoomContainer() {
                 checkForLogin(dispatch);
             }
         }
-    }, [userInfo.loggedIn, dispatch]);
+    }, [userInfo.loggedIn, dispatch, userInfo.token]);
 
     useEffect(() => {
         const socket = getSocket();
@@ -81,7 +81,7 @@ function NewRoomContainer() {
             </form>
             <div className="newRoom__container__options">
                 <button className="newRoom__container__options__back" onClick={() => router.push("/rooms")}>Back</button>
-                <button className="newRoom__container__options__create" onClick={(e) => newRoom(e, roomName, parseInt(totalStages), parseInt(maxPlayers), privateRoom, userInfo, dispatch)}>Create room</button>
+                <button className="newRoom__container__options__create" onClick={(e) => newRoom(e, roomName, parseInt(totalStages), parseInt(maxPlayers), privateRoom, userInfo, dispatch, router)}>Create room</button>
             </div>
         </div>
     )
