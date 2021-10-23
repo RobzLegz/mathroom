@@ -1,8 +1,10 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
+import { setNotification } from "../../../redux/slices/notificationSlice";
 import { addRoom, selectRooms, setRooms, setRoomUsers } from "../../../redux/slices/roomSlice";
 import { getSocket, selectSocket, setSocket } from "../../../redux/slices/socketSlice";
+import { selectUser } from "../../../redux/slices/userSlice";
 import { getRooms } from "../../../requests/rooms/requests";
 
 interface Room{
@@ -23,6 +25,7 @@ interface User{
 }
 
 const RoomContainer: React.FC = () => {
+    const userInfo = useSelector(selectUser);
     const roomInfo = useSelector(selectRooms);
     const socketInfo = useSelector(selectSocket);
 
@@ -81,13 +84,24 @@ const RoomContainer: React.FC = () => {
                             <h3>{room.roomName}</h3>
                             <h3>{room.totalStages}</h3>
                             <h3>{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
-                            <button className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`} onClick={() => {if(roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length < room.maxPlayers){router.push(`/rooms/${room._id}`)}}}>Join</button>
+                            <button 
+                                className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`} 
+                                onClick={() => {
+                                    if(!userInfo.loggedIn || !userInfo.token){
+                                        return dispatch(setNotification({type: "error", message: "You must be logged in to join room"}))
+                                    }else if(roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length < room.maxPlayers){
+                                        router.push(`/rooms/${room._id}`)
+                                    }}
+                                }
+                            >
+                                    Join
+                            </button>
                         </div>
                     )
                 }) : (
                     <div className="roomPage__container__rooms__no">
                         <h3>Searching for rooms...</h3>
-                        <p>PS. You can create Your own room</p>
+                        <p>You can create Your own room</p>
                     </div>
                 )}
             </div>
