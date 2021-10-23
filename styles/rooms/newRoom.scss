@@ -3,44 +3,65 @@
 .newRoom{
     width: 100%;
     height: 100vh;
-    
+    background-color: $mathRoomBG;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 100px 0 0 0;
+
     &__container{
-        width: 100%;
-        height: 100%;
+        width: 600px;
         display: flex;
         align-items: center;
-        justify-content: center;
+        flex-direction: column;
+        font-family: $roomFont;
+
+        &__header{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 50px;
+            border-radius: 10px;
+            background-color: $mathRoomGrey;
+            color: $mathRoomContainerBG;
+        }
 
         &__form{
-            width: 500px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 10px;
+            padding: 20px 10px;
             border-radius: 5px;
-            background-color: aquamarine;
+            background-color: $mathRoomContainerBG;
+            margin: 30px 0 0 0;
 
             &__opt{
                 width: 100%;
                 display: flex;
-                align-items: flex-start;
-                justify-content: center;
-                flex-direction: column;
+                align-items: center;
+                justify-content: flex-end;
                 margin-bottom: 10px;
-
-                label{
-                    margin-bottom: 5px;
-                }
+                padding: 0 20px;
 
                 input{
-                    width: 100%;
+                    width: 400px;
                     height: 40px;
                     padding: 0 10px;
+                    margin: 0 0 0 10px;
+                    background-color: $mathRoomLightGrey;
+                    border: 1px solid $mathRoomGrey;
+                    outline: none;
+                    font-size: 18px;
                 }
 
                 select{
-                    width: 100%;
+                    width: 400px;
+                    margin: 0 0 0 10px;
                     height: 40px;
+                    outline: none;
+                    font-size: 18px;
+                    border: 1px solid $mathRoomGrey;
+                    background-color: $mathRoomLightGrey;
                 }
             }
 
@@ -49,30 +70,60 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                margin-bottom: 10px;
+                padding: 0 20px;
+                margin: 20px 0 0 0;
 
                 &__opt{
-                    width: 150px;
+                    width: 200px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     height: 50px;
                     border-radius: 10px;
                     cursor: pointer;
-                    color: #fff;
-                    background-color: cadetblue;
+                    color: $mathRoomGrey;
+                    background-color: $mathRoomLightGrey;
+                    transition: all 0.3s ease;
 
                     &__active{
-                        background-color: blueviolet;
+                        background-color: $mathRoomGrey;
+                        color: $mathRoomContainerBG;
                     }
                 }
             }
+        }
+
+        &__options{
+            width: 100%;
+            padding: 0 15px;
+            margin: 30px 0 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
             button{
-                width: 100%;
-                height: 40px;
+                width: 200px;
+                height: 50px;
+                font-size: 20px;
+                font-family: $roomFont;
+                border: none;
+                outline: none;
+                border-radius: 10px;
                 cursor: pointer;
-                margin-top: 30px;
+                color: $mathRoomContainerBG;
+                transition: all 0.3s ease;
+            }
+
+            &__back{
+                background-color: $mathRoomGrey;
+            }
+
+            &__create{
+                background-color: $mathRoomButton;
+
+                &:hover{
+                    background-color: $mathRoomButtonHover;
+                }
             }
         }
     }
