@@ -75,18 +75,21 @@ const RoomContainer: React.FC = () => {
             </header>
 
             <div className="roomPage__container__rooms">
-                {
-                    roomInfo.rooms && roomInfo.roomUsers && roomInfo.rooms.map((room: Room, i: number) => {
-                        return(
-                            <div className="roomPage__container__rooms__room" key={i}>
-                                <h3>{room.roomName}</h3>
-                                <h3>{room.totalStages}</h3>
-                                <h3>{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
-                                <button className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`} onClick={() => {if(roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length < room.maxPlayers){router.push(`/rooms/${room._id}`)}}}>Join</button>
-                            </div>
-                        )
-                    })
-                }
+                {roomInfo.rooms && roomInfo.rooms.length > 0 && roomInfo.roomUsers ? roomInfo.rooms.map((room: Room, i: number) => {
+                    return(
+                        <div className="roomPage__container__rooms__room" key={i}>
+                            <h3>{room.roomName}</h3>
+                            <h3>{room.totalStages}</h3>
+                            <h3>{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
+                            <button className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`} onClick={() => {if(roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length < room.maxPlayers){router.push(`/rooms/${room._id}`)}}}>Join</button>
+                        </div>
+                    )
+                }) : (
+                    <div className="roomPage__container__rooms__no">
+                        <h3>Searching for rooms...</h3>
+                        <p>PS. You can create Your own room</p>
+                    </div>
+                )}
             </div>
         </div>
     )
