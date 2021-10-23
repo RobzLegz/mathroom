@@ -56,7 +56,7 @@ function room() {
         const socket = getSocket();
 
         if(!socketInfo.connected || !socket){
-            dispatch(setSocket("http://localhost:5000"));
+            dispatch(setSocket(true));
         }else{
             if(userInfo.info){
                 joinRoom(id, userInfo.info);

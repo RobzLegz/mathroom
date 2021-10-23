@@ -23,9 +23,10 @@ const RoomContainer: React.FC = () => {
 
     useEffect(() => {
         const socket = getSocket();
+        console.log(process.env.SOCKET_URL)
 
         if(!socketInfo.connected || !socket){
-            dispatch(setSocket("http://localhost:5000"));
+            dispatch(setSocket(true));
         }else{
             socket.on("getRooms", (rooms: Room[]) => {
                 console.log(rooms);

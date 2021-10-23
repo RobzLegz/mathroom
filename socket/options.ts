@@ -29,7 +29,7 @@ interface Message{
 const connectToSocket = (userInfo: User | null, dispatch: any) => {
     const socket = getSocket();
 
-    if(!userInfo){
+    if(!userInfo || !socket){
         return
     }
 
@@ -44,7 +44,7 @@ const createRoom = (roomName: string, totalStages: number, maxPlayers: number, i
         const socket = getSocket();
 
         if(!socket){
-            dispatch(setSocket("http://localhost:5000"));
+            dispatch(setSocket(true));
         }
 
         const data: Room = {
@@ -74,17 +74,29 @@ const joinRoom = (roomId: string | string[] | undefined, userInfo: User) => {
 
     const socket = getSocket();
 
+    if(!socket){
+        return
+    }
+
     socket.emit("joinRoom", userInfo._id, userInfo.username, roomId);
 }
 
 const sendSocketMessage = (message: Message) => {
     const socket = getSocket();
 
+    if(!socket){
+        return
+    }
+
     socket.emit("sendMessage", message);
 }
 
 const exitSocketRoom = (userInfo: User) => {
     const socket = getSocket();
+
+    if(!socket){
+        return
+    }
 
     socket.emit("leaveRoom", userInfo._id);
 }
