@@ -47,7 +47,6 @@ const RoomContainer: React.FC = () => {
                 dispatch(setSocket(true));
             }else{
                 socket.on("getRooms", (rooms: Room[]) => {
-                    console.log(rooms);
                     rooms.forEach((room) => {
                         dispatch(addRoom(room));
                     });
@@ -67,18 +66,28 @@ const RoomContainer: React.FC = () => {
 
     return (
         <div className="roomPage__container">
-            {
-                roomInfo.rooms && roomInfo.roomUsers && roomInfo.rooms.map((room: Room, i: number) => {
-                    return(
-                        <div className="roomPage__container__room" key={i}>
-                            <h3>{room.roomName}</h3>
-                            <h3>total stages: {room.totalStages}</h3>
-                            <h3>{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
-                            <button onClick={() => router.push(`/rooms/${room._id}`)}>Join</button>
-                        </div>
-                    ) 
-                })
-            }
+            <header className="roomPage__container__header">
+                <button className="roomPage__container__header__back">Back</button>
+                <div className="roomPage__container__header__title">
+                    <h2>Join room</h2>
+                </div>
+                <button className="roomPage__container__header__new">Create new</button>
+            </header>
+
+            <div className="roomPage__container__rooms">
+                {
+                    roomInfo.rooms && roomInfo.roomUsers && roomInfo.rooms.map((room: Room, i: number) => {
+                        return(
+                            <div className="roomPage__container__rooms__room" key={i}>
+                                <h3>{room.roomName}</h3>
+                                <h3>{room.totalStages}</h3>
+                                <h3>{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
+                                <button className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`} onClick={() => {if(roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length < room.maxPlayers){router.push(`/rooms/${room._id}`)}}}>Join</button>
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
