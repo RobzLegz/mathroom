@@ -67,11 +67,11 @@ const RoomContainer: React.FC = () => {
     return (
         <div className="roomPage__container">
             <header className="roomPage__container__header">
-                <button className="roomPage__container__header__back">Back</button>
+                <button className="roomPage__container__header__back" onClick={() => router.push("/")}>Back</button>
                 <div className="roomPage__container__header__title">
                     <h2>Join room</h2>
                 </div>
-                <button className="roomPage__container__header__new">Create new</button>
+                <button className="roomPage__container__header__new" onClick={() => router.push("/rooms/new")}>Create new</button>
             </header>
 
             <div className="roomPage__container__rooms">
