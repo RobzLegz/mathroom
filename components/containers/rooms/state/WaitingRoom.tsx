@@ -33,7 +33,6 @@ function WaitingRoom() {
     const userInfo = useSelector(selectUser);
     const roomInfo = useSelector(selectRooms);
 
-
     const router = useRouter();
     const dispatch = useDispatch();
 
