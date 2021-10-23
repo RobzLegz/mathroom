@@ -1,7 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { addRoom, selectRooms, setRooms } from "../../../redux/slices/roomSlice";
+import { addRoom, selectRooms, setRooms, setRoomUsers } from "../../../redux/slices/roomSlice";
 import { getSocket, selectSocket, setSocket } from "../../../redux/slices/socketSlice";
 import { getRooms } from "../../../requests/rooms/requests";
 
@@ -15,6 +15,13 @@ interface Room{
     _id: string;
 }
 
+interface User{
+    userId: string;
+    socketId: string;
+    roomId: string;
+    username: string;
+}
+
 const RoomContainer: React.FC = () => {
     const roomInfo = useSelector(selectRooms);
     const socketInfo = useSelector(selectSocket);
@@ -23,6 +30,14 @@ const RoomContainer: React.FC = () => {
     const router = useRouter();
 
     const [resetRooms, setResetRooms] = useState(false);
+
+    useEffect(() => {
+        const socket = getSocket();
+
+        if(socket){
+            socket.emit("requestUsers");
+        }
+    }, [getSocket()]);
 
     useEffect(() => {
         if(roomInfo.rooms && resetRooms){
@@ -37,6 +52,10 @@ const RoomContainer: React.FC = () => {
                         dispatch(addRoom(room));
                     });
                 });
+
+                socket.on("getRoomUsers", (users: User[]) => {
+                    dispatch(setRoomUsers(users));
+                });
             }
         }else if(!resetRooms){
             dispatch(setRooms(null));
@@ -44,17 +63,17 @@ const RoomContainer: React.FC = () => {
         }else if(!roomInfo.rooms){
             getRooms(dispatch);
         }
-    }, [socketInfo.connected, dispatch, roomInfo.rooms, resetRooms]);
+    }, [socketInfo.connected, dispatch, roomInfo.rooms, resetRooms, getSocket()]);
 
     return (
         <div className="roomPage__container">
             {
-                roomInfo.rooms && roomInfo.rooms.map((room: Room, i: number) => {
+                roomInfo.rooms && roomInfo.roomUsers && roomInfo.rooms.map((room: Room, i: number) => {
                     return(
                         <div className="roomPage__container__room" key={i}>
                             <h3>{room.roomName}</h3>
                             <h3>total stages: {room.totalStages}</h3>
-                            <h3>max players: {room.maxPlayers}</h3>
+                            <h3>{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
                             <button onClick={() => router.push(`/rooms/${room._id}`)}>Join</button>
                         </div>
                     ) 

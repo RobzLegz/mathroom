@@ -7,6 +7,7 @@ interface Room{
     isPrivate: boolean;
     hasStarted: boolean;
     admin: string;
+    _id: string;
 }
 
 interface User{
@@ -57,7 +58,7 @@ export const roomSlice = createSlice({
         },
         addRoom: (state, action) => {
             if(state.rooms){
-                if(state.rooms.some((r) => r.admin !== action.payload.admin)){
+                if(state.rooms.some((r) => r.admin !== action.payload.admin) && state.rooms.some((r) => r._id !== action.payload._id)){
                     state.rooms.push(action.payload);
                 }else if(state.rooms.length === 0){
                     state.rooms.push(action.payload);
