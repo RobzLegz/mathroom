@@ -17,6 +17,7 @@ interface Room{
     isPrivate: boolean;
     hasStarted: boolean;
     admin: string;
+    _id: string;
 }
 
 interface Message{
@@ -39,7 +40,7 @@ const connectToSocket = (userInfo: User | null, dispatch: any) => {
     });
 }
 
-const createRoom = (roomName: string, totalStages: number, maxPlayers: number, isPrivate: boolean, userInfo: User | null, dispatch: any) => {
+const createRoom = (roomName: string, totalStages: number, maxPlayers: number, isPrivate: boolean, userInfo: User | null, id: string, dispatch: any, router: any) => {
     if(userInfo){
         const socket = getSocket();
 
@@ -54,6 +55,7 @@ const createRoom = (roomName: string, totalStages: number, maxPlayers: number, i
             isPrivate: isPrivate,
             hasStarted: false,
             admin: userInfo._id,
+            _id: id,
         };
 
         socket.emit("addRoom", data);
@@ -64,6 +66,8 @@ const createRoom = (roomName: string, totalStages: number, maxPlayers: number, i
                 dispatch(addRoom(room));
             });
         });
+
+        router.push(`/rooms/${id}`);
     }
 }
 

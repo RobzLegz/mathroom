@@ -23,7 +23,6 @@ const RoomContainer: React.FC = () => {
 
     useEffect(() => {
         const socket = getSocket();
-        console.log(process.env.SOCKET_URL)
 
         if(!socketInfo.connected || !socket){
             dispatch(setSocket(true));
