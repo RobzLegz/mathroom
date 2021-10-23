@@ -53,7 +53,7 @@ function WaitingRoom() {
         }
     }, [messageTimeout, message]);
 
-    if(roomInfo.activeRoom){
+    if(roomInfo.activeRoom && userInfo.info){
         return (
             <div className="gameRoom__waiting">
                 <div className="gameRoom__waiting__inner">
@@ -99,7 +99,16 @@ function WaitingRoom() {
                         </div>
                     </div>
 
-                    <button onClick={() => exitRoom(userInfo.info, dispatch, router)}>Leave room</button>
+                    <div className="gameRoom__waiting__inner__buttons">
+                        {roomInfo.activeRoom.admin === userInfo.info._id ? (
+                            <>
+                                <button className="gameRoom__waiting__inner__buttons__red" onClick={() => exitRoom(userInfo.info, dispatch, router)}>Disband room</button>
+                                <button className="gameRoom__waiting__inner__buttons__purple" onClick={() => console.log("Started game")}>Start game</button>
+                            </>
+                        ) : (
+                            <button className="gameRoom__waiting__inner__buttons__red" onClick={() => exitRoom(userInfo.info, dispatch, router)}>Leave room</button>
+                        )}
+                    </div>
                 </div>
             </div>
         )
