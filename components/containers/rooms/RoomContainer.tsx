@@ -1,7 +1,8 @@
 import { useRouter } from "next/dist/client/router";
-import React from "react"
-import { useSelector } from "react-redux";
-import { selectRooms } from "../../../redux/slices/roomSlice";
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux";
+import { addRoom, selectRooms } from "../../../redux/slices/roomSlice";
+import { getSocket, selectSocket, setSocket } from "../../../redux/slices/socketSlice";
 
 interface Room{
     roomName: string;
@@ -15,8 +16,26 @@ interface Room{
 
 const RoomContainer: React.FC = () => {
     const roomInfo = useSelector(selectRooms);
+    const socketInfo = useSelector(selectSocket);
 
+    const dispatch = useDispatch();
     const router = useRouter();
+
+    useEffect(() => {
+        const socket = getSocket();
+        console.log(process.env.SOCKET_URL)
+
+        if(!socketInfo.connected || !socket){
+            dispatch(setSocket(true));
+        }else{
+            socket.on("getRooms", (rooms: Room[]) => {
+                console.log(rooms);
+                rooms.forEach((room) => {
+                    dispatch(addRoom(room));
+                });
+            });
+        }
+    }, [socketInfo.connected, dispatch]);
 
     return (
         <div className="roomPage__container">
