@@ -1,7 +1,5 @@
-import axios from "axios";
-import { io } from "socket.io-client";
 import { addRoom } from "../redux/slices/roomSlice";
-import { setOnlineUsers, setSocket } from "../redux/slices/socketSlice";
+import { getSocket, setOnlineUsers, setSocket } from "../redux/slices/socketSlice";
 
 interface User{
     username: string;
@@ -29,42 +27,41 @@ interface Message{
 }
 
 const connectToSocket = (userInfo: User | null, dispatch: any) => {
-    dispatch(setSocket("/api/socket.io"));
+    const socket = getSocket();
 
-    if(userInfo){
-        axios.get("/api/socket.io").finally(() => {
-            const socket = io();
-    
-            socket.emit("addUser", userInfo._id);
-    
-            socket.on("getUsers", (users) => {
-                dispatch(setOnlineUsers(users));
-            });
-        });
+    if(!userInfo || !socket){
+        return
     }
+
+    socket.emit("addUser", userInfo._id);
+    socket.on("getUsers", (users: User[]) => {
+        dispatch(setOnlineUsers(users));
+    });
 }
 
 const createRoom = (roomName: string, totalStages: number, maxPlayers: number, isPrivate: boolean, userInfo: User | null, dispatch: any) => {
     if(userInfo){
-        axios.get("/api/socket.io").finally(() => {
-            const socket = io();
+        const socket = getSocket();
 
-            const data: Room = {
-                roomName: roomName,
-                totalStages: totalStages,
-                maxPlayers: maxPlayers,
-                isPrivate: isPrivate,
-                hasStarted: false,
-                admin: userInfo._id,
-            };
-    
-            socket.emit("addRoom", data);
-    
-            socket.on("getRooms", (rooms: Room[]) => {
-                console.log(rooms)
-                rooms.forEach((room) => {
-                    dispatch(addRoom(room));
-                });
+        if(!socket){
+            dispatch(setSocket(true));
+        }
+
+        const data: Room = {
+            roomName: roomName,
+            totalStages: totalStages,
+            maxPlayers: maxPlayers,
+            isPrivate: isPrivate,
+            hasStarted: false,
+            admin: userInfo._id,
+        };
+
+        socket.emit("addRoom", data);
+
+        socket.on("getRooms", (rooms: Room[]) => {
+            console.log(rooms)
+            rooms.forEach((room) => {
+                dispatch(addRoom(room));
             });
         });
     }
@@ -75,27 +72,33 @@ const joinRoom = (roomId: string | string[] | undefined, userInfo: User) => {
         return
     }
 
-    axios.get("/api/socket.io").finally(() => {
-        const socket = io();
+    const socket = getSocket();
 
-        socket.emit("joinRoom", userInfo._id, userInfo.username, roomId);
-    });
+    if(!socket){
+        return
+    }
+
+    socket.emit("joinRoom", userInfo._id, userInfo.username, roomId);
 }
 
 const sendSocketMessage = (message: Message) => {
-    axios.get("/api/socket.io").finally(() => {
-        const socket = io();
+    const socket = getSocket();
 
-        socket.emit("sendMessage", message);
-    });
+    if(!socket){
+        return
+    }
+
+    socket.emit("sendMessage", message);
 }
 
 const exitSocketRoom = (userInfo: User) => {
-    axios.get("/api/socket.io").finally(() => {
-        const socket = io();
+    const socket = getSocket();
 
-        socket.emit("leaveRoom", userInfo._id);
-    });
+    if(!socket){
+        return
+    }
+
+    socket.emit("leaveRoom", userInfo._id);
 }
 
 export {connectToSocket, createRoom, sendSocketMessage, joinRoom, exitSocketRoom};

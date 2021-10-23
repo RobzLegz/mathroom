@@ -62,8 +62,10 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
             .then((res) => {
                 createRoom(roomName, totalStages, maxPlayers, isPrivate, userInfo.info, dispatch);
             }).catch((err) => {
-                const message: string = err.response.data.err;
-                dispatch(setNotification({type: "error", message: message}));
+                if(err && err.response && err.response.data){
+                    const message: string = err.response.data.err;
+                    dispatch(setNotification({type: "error", message: message}));
+                }
             });
     }   
     

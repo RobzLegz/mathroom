@@ -27,8 +27,15 @@ export const socketSlice = createSlice({
     initialState,
     reducers: {
         setSocket: (state, action) => {
-            socket = io(action.payload);
-            state.connected = true;
+            const socketURL: string | undefined = process.env.SOCKET_URL;
+
+            if(action.payload && socketURL){
+                socket = io(socketURL);
+                state.connected = true;
+            }else if(action.payload){
+                socket = io("https://mathroom-socket.herokuapp.com");
+                state.connected = true;
+            }
         },
         setOnlineUsers: (state, action) => {
             state.onlineUsers = action.payload;

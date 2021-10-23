@@ -59,6 +59,8 @@ export const roomSlice = createSlice({
             if(state.rooms){
                 if(state.rooms.some((r) => r.admin !== action.payload.admin)){
                     state.rooms.push(action.payload);
+                }else if(state.rooms.length === 0){
+                    state.rooms.push(action.payload);
                 }
             }else{
                 state.rooms = [action.payload];
