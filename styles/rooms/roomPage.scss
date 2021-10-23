@@ -105,6 +105,18 @@
                     }
                 }
             }
+
+            &__no{
+                height: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+
+                p{
+                    margin: 10px 0 0 0;
+                }
+            }
         }
     }
 }
