@@ -1,6 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
+import { setNotification } from "../../../../redux/slices/notificationSlice";
 import { selectRooms } from "../../../../redux/slices/roomSlice";
 import { selectUser } from "../../../../redux/slices/userSlice";
 import { sendMessage } from "../../../../requests/rooms/chat/requests";
@@ -32,7 +33,6 @@ interface RoomUser{
 function WaitingRoom() {
     const userInfo = useSelector(selectUser);
     const roomInfo = useSelector(selectRooms);
-
 
     const router = useRouter();
     const dispatch = useDispatch();
@@ -94,7 +94,7 @@ function WaitingRoom() {
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                 />
-                                <button onClick={(e) => sendMessage(e, router.query.id, message, messageTimeout, setMessageTimeout, userInfo.info, dispatch)}>Send</button>
+                                <button onClick={(e) => {if(message.length < 100){sendMessage(e, router.query.id, message, messageTimeout, setMessageTimeout, userInfo.info, dispatch)}else{dispatch(setNotification({type: "error", message: "You can't send long messages in waiting room chat!"}))}}}>Send</button>
                             </form>
                         </div>
                     </div>

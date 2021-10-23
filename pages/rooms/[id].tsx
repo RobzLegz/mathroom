@@ -38,17 +38,13 @@ function room() {
 
     useEffect(() => {
         if(id && typeof(id) === "string" && !roomInfo.activeRoom){
-            getRoomInfo(id, dispatch);
+            getRoomInfo(id, dispatch, router);
         }
     }, [id, dispatch, roomInfo.rooms]);
 
     useEffect(() => {
         if(!userInfo.loggedIn || !userInfo.token){
-            const token = window.localStorage.getItem("refreshtoken");
-
-            if(token){
-                checkForLogin(dispatch);
-            }
+            checkForLogin(dispatch, router);
         }
     }, [userInfo.loggedIn, dispatch]);
 
@@ -66,7 +62,6 @@ function room() {
                 });
 
                 socket.on("recieveMessage", (messages: Message[]) => {
-                    const roomMessages = messages.filter((message) => message.roomID === id);
                     dispatch(setRoomMessages(messages));
                 });
             }

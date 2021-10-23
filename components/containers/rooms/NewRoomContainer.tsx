@@ -1,3 +1,4 @@
+import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSocket, selectSocket, setSocket } from "../../../redux/slices/socketSlice";
@@ -6,6 +7,7 @@ import { checkForLogin } from "../../../requests/auth/requests";
 import { newRoom } from "../../../requests/rooms/requests";
 
 function NewRoomContainer() {
+    const router = useRouter();
     const dispatch = useDispatch();
     const userInfo = useSelector(selectUser);
     const socketInfo = useSelector(selectSocket);
@@ -20,10 +22,10 @@ function NewRoomContainer() {
             const token = window.localStorage.getItem("refreshtoken");
 
             if(token){
-                checkForLogin(dispatch);
+                checkForLogin(dispatch, router);
             }
         }
-    }, [userInfo.loggedIn, dispatch]);
+    }, [userInfo.loggedIn, dispatch, userInfo.token]);
 
     useEffect(() => {
         const socket = getSocket();
@@ -35,6 +37,9 @@ function NewRoomContainer() {
 
     return (
         <div className="newRoom__container">
+            <header className="newRoom__container__header">
+                <h1>Create a room</h1>
+            </header>
             <form className="newRoom__container__form">
                 <div className="newRoom__container__form__opt">
                     <label htmlFor="new_room_name">Room name</label>
@@ -73,8 +78,11 @@ function NewRoomContainer() {
                     <div onClick={() => setPrivateRoom(true)} className={`newRoom__container__form__switcher__opt ${privateRoom ? "newRoom__container__form__switcher__opt__active" : ""}`}>Private</div>
                     <div onClick={() => setPrivateRoom(false)} className={`newRoom__container__form__switcher__opt ${privateRoom ? "" : "newRoom__container__form__switcher__opt__active"}`}>Public</div>
                 </div>
-                <button onClick={(e) => newRoom(e, roomName, parseInt(totalStages), parseInt(maxPlayers), privateRoom, userInfo, dispatch)}>Create</button>
             </form>
+            <div className="newRoom__container__options">
+                <button className="newRoom__container__options__back" onClick={() => router.push("/rooms")}>Back</button>
+                <button className="newRoom__container__options__create" onClick={(e) => newRoom(e, roomName, parseInt(totalStages), parseInt(maxPlayers), privateRoom, userInfo, dispatch, router)}>Create room</button>
+            </div>
         </div>
     )
 }

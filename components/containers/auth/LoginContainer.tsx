@@ -21,7 +21,7 @@ function LoginContainer() {
             const token = window.localStorage.getItem("refreshtoken");
 
             if(token){
-                checkForLogin(dispatch);
+                checkForLogin(dispatch, router);
             }
         }
     }, [userInfo.loggedIn, dispatch]);
@@ -56,7 +56,7 @@ function LoginContainer() {
                 <div className="auth__container__form__link">
                     <p>Don't have an account? <Link href="/auth/register">Register</Link></p>
                 </div>
-                <button onClick={(e) => loginUser(e, email, password, dispatch)}>Login</button>
+                <button onClick={(e) => loginUser(e, email, password, dispatch, router)}>Login</button>
             </div>
         </form>
     )

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setNotification } from "../../redux/slices/notificationSlice";
-import { setActiveRoom } from "../../redux/slices/roomSlice";
+import { setActiveRoom, setRooms } from "../../redux/slices/roomSlice";
 import { createRoom, exitSocketRoom } from "../../socket/options";
 
 interface Info{
@@ -20,24 +20,25 @@ interface User{
 const getRooms = (dispatch: any) => {
     axios.get("/api/rooms")
         .then((res) => {
-            console.log(res.data);
+            dispatch(setRooms(res.data));
         }).catch((err) => {
             const message: string = err.response.data.err;
             dispatch(setNotification({type: "error", message: message}));
         });
 }
 
-const getRoomInfo = (id: string, dispatch: any) => {
+const getRoomInfo = (id: string, dispatch: any, router: any) => {
     axios.get(`/api/rooms/${id}`)
         .then((res) => {
             dispatch(setActiveRoom(res.data));
         }).catch((err) => {
             const message: string = err.response.data.err;
             dispatch(setNotification({type: "error", message: message}));
+            router.push("/rooms");
         });
 }
 
-const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any, isPrivate: boolean, userInfo: User, dispatch: any) => {
+const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any, isPrivate: boolean, userInfo: User, dispatch: any, router: any) => {
     e.preventDefault();
 
     if(userInfo.token){
@@ -59,12 +60,20 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
         }
     
         axios.post("/api/rooms", data, headers)
-            .then((res) => {
-                createRoom(roomName, totalStages, maxPlayers, isPrivate, userInfo.info, dispatch);
+            .then((res: any) => {
+                const roomId: string = res.data.roomId;
+
+                if(roomId){
+                    createRoom(roomName, totalStages, maxPlayers, isPrivate, userInfo.info, roomId, dispatch, router);
+                }
             }).catch((err) => {
                 if(err && err.response && err.response.data){
                     const message: string = err.response.data.err;
-                    dispatch(setNotification({type: "error", message: message}));
+                    if(message){
+                        return dispatch(setNotification({type: "error", message: message}));
+                    }
+
+                    dispatch(setNotification({type: "error", message: "Something went wrong!"}));
                 }
             });
     }   
