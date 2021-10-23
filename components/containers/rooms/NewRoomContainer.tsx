@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getSocket, selectSocket, setSocket } from "../../../redux/slices/socketSlice";
 import { selectUser } from "../../../redux/slices/userSlice";
 import { checkForLogin } from "../../../requests/auth/requests";
 import { newRoom } from "../../../requests/rooms/requests";
@@ -7,6 +8,7 @@ import { newRoom } from "../../../requests/rooms/requests";
 function NewRoomContainer() {
     const dispatch = useDispatch();
     const userInfo = useSelector(selectUser);
+    const socketInfo = useSelector(selectSocket);
 
     const [roomName, setRoomName] = useState<string>("");
     const [totalStages, setTotalStages] = useState<string>("");
@@ -22,6 +24,14 @@ function NewRoomContainer() {
             }
         }
     }, [userInfo.loggedIn, dispatch]);
+
+    useEffect(() => {
+        const socket = getSocket();
+
+        if(!socketInfo.connected || !socket){
+            dispatch(setSocket("http://localhost:5000"));
+        }
+    }, []);
 
     return (
         <div className="newRoom__container">

@@ -8,8 +8,7 @@ import ActiveRoom from "../../components/containers/rooms/ActiveRoom";
 import { selectUser } from "../../redux/slices/userSlice";
 import { checkForLogin } from "../../requests/auth/requests";
 import { joinRoom } from "../../socket/options";
-import io from "socket.io-client";
-import axios from "axios";
+import { getSocket, selectSocket, setSocket } from "../../redux/slices/socketSlice";
 
 interface Message{
     roomID: string;
@@ -18,10 +17,19 @@ interface Message{
     color: number;
 }
 
+interface User{
+    username: string;
+    email: string;
+    role: string;
+    avatar: string;
+    level: number;
+    _id: string;
+}
+
 function room() {
     const userInfo = useSelector(selectUser);
     const roomInfo = useSelector(selectRooms);
-    const [testSocket] = useState(io("/api/socket.io"));
+    const socketInfo = useSelector(selectSocket);
 
     const router = useRouter();
     const dispatch = useDispatch();
@@ -45,17 +53,15 @@ function room() {
     }, [userInfo.loggedIn, dispatch]);
 
     useEffect(() => {
-        if(userInfo.info){
-            joinRoom(id, userInfo.info);
-        }
-    }, [id, userInfo.info]);
+        const socket = getSocket();
 
-    useEffect(() => {
-        axios.get("/api/socket.io")
-            .finally(() => {
-                const socket = io();
-        
-                socket.on("getRoomUsers", (users) => {
+        if(!socketInfo.connected || !socket){
+            dispatch(setSocket("http://localhost:5000"));
+        }else{
+            if(userInfo.info){
+                joinRoom(id, userInfo.info);
+
+                socket.on("getRoomUsers", (users: User[]) => {
                     dispatch(setRoomUsers(users));
                 });
 
@@ -63,8 +69,9 @@ function room() {
                     const roomMessages = messages.filter((message) => message.roomID === id);
                     dispatch(setRoomMessages(messages));
                 });
-            });
-    }, [io]);
+            }
+        }
+    }, [id, userInfo.info, socketInfo.connected]);
 
     return (
         <div className="gameRoom">
