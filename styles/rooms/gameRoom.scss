@@ -161,22 +161,37 @@
                 }
             }
 
-            button{
+            &__buttons{
                 margin-top: 20px;
-                border-radius: 10px;
-                outline: none;
-                border: none;
-                background-color: $mathRoomButton;
-                color: $mathRoomContainerBG;
-                font-size: 20px;
-                font-family: $roomFont;
-                padding: 10px 20px;
-                letter-spacing: 2px;
-                cursor: pointer;
-                transition: all 0.3s ease;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
 
-                &:hover{
-                    background-color: $mathRoomButtonHover;
+                button{
+                    border-radius: 10px;
+                    outline: none;
+                    border: none;
+                    font-size: 20px;
+                    font-family: $roomFont;
+                    padding: 10px 20px;
+                    letter-spacing: 2px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                &__red{
+                    background-color: $mathRoomRed;
+                    color: $mathRoomContainerBG;   
+                }
+
+                &__purple{
+                    background-color: $mathRoomButton;
+                    color: $mathRoomContainerBG;   
+
+                    &:hover{
+                        background-color: $mathRoomButtonHover;
+                    }
                 }
             }
         }
