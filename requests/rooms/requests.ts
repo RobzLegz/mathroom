@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setNotification } from "../../redux/slices/notificationSlice";
-import { setActiveRoom } from "../../redux/slices/roomSlice";
+import { setActiveRoom, setRooms } from "../../redux/slices/roomSlice";
 import { createRoom, exitSocketRoom } from "../../socket/options";
 
 interface Info{
@@ -20,7 +20,7 @@ interface User{
 const getRooms = (dispatch: any) => {
     axios.get("/api/rooms")
         .then((res) => {
-            console.log(res.data);
+            dispatch(setRooms(res.data));
         }).catch((err) => {
             const message: string = err.response.data.err;
             dispatch(setNotification({type: "error", message: message}));
