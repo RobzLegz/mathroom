@@ -24,7 +24,7 @@ function RegisterContainer() {
             const token = window.localStorage.getItem("refreshtoken");
 
             if(token){
-                checkForLogin(dispatch);
+                checkForLogin(dispatch, router);
             }
         }
     }, [userInfo.loggedIn, dispatch]);
