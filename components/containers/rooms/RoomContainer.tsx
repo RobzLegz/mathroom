@@ -39,6 +39,7 @@ const RoomContainer: React.FC = () => {
 
         if(socket){
             socket.emit("requestUsers");
+            socket.emit("leaveRoom");
         }
     }, [getSocket()]);
 
