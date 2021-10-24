@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/slices/userSlice";
 import { checkForLogin } from "../../requests/auth/requests";
 import { useRouter } from "next/dist/client/router";
+import Notification from "../../components/notifications/Notification";
 
 const index: React.FC = () => {
     const userInfo = useSelector(selectUser);
@@ -28,6 +29,8 @@ const index: React.FC = () => {
                 <title>MathRoom | Rooms</title>
             </Head>
             
+            <Notification />
+
             <RoomContainer />
         </div>
     )
