@@ -67,6 +67,12 @@ export const roomSlice = createSlice({
                 state.rooms = [action.payload];
             }
         },
+        removeRoom: (state, action) => {
+            if(state.rooms){
+                state.rooms = state.rooms.filter((room) => room._id !== action.payload);
+                state.rooms.filter((room) => room._id !== action.payload);
+            }
+        },
     },
 });
 
@@ -75,6 +81,7 @@ export const {
     setActiveRoom,
     setRoomUsers,
     setRoomMessages,
+    removeRoom,
     addRoom
 } = roomSlice.actions;
 

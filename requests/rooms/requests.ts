@@ -1,6 +1,7 @@
 import axios from "axios";
 import { setNotification } from "../../redux/slices/notificationSlice";
 import { setActiveRoom, setRooms } from "../../redux/slices/roomSlice";
+import { getSocket } from "../../redux/slices/socketSlice";
 import { createRoom, exitSocketRoom } from "../../socket/options";
 
 interface Info{
@@ -86,4 +87,29 @@ const exitRoom = (userInfo: Info, dispatch: any, router: any) => {
     dispatch(setActiveRoom(null));
 }
 
-export {getRooms, getRoomInfo, newRoom, exitRoom};
+const disbandRoom = (roomId: string, token: string, dispatch: any, router: any) => {
+    const headers = {
+        headers: {
+            Authorization: token
+        },
+    }
+
+    axios.delete(`/api/rooms/${roomId}`, headers)
+        .then((res) => {
+            const socket = getSocket();
+
+            if(socket){
+                socket.emit("disbandRoom");
+                router.push("/rooms");
+            }
+        }).catch((err) => {
+            const message: string = err.response.data.err;
+            if(message){
+                return dispatch(setNotification({type: "error", message: message}));
+            }
+
+            dispatch(setNotification({type: "error", message: "Something went wrong!"}));
+        });
+}
+
+export {getRooms, getRoomInfo, newRoom, exitRoom, disbandRoom};

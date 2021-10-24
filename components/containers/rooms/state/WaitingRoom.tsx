@@ -5,7 +5,7 @@ import { setNotification } from "../../../../redux/slices/notificationSlice";
 import { selectRooms } from "../../../../redux/slices/roomSlice";
 import { selectUser } from "../../../../redux/slices/userSlice";
 import { sendMessage } from "../../../../requests/rooms/chat/requests";
-import { exitRoom } from "../../../../requests/rooms/requests";
+import { disbandRoom, exitRoom } from "../../../../requests/rooms/requests";
 
 interface Message{
     roomID: string;
@@ -102,8 +102,18 @@ function WaitingRoom() {
                     <div className="gameRoom__waiting__inner__buttons">
                         {roomInfo.activeRoom.admin === userInfo.info._id ? (
                             <>
-                                <button className="gameRoom__waiting__inner__buttons__red" onClick={() => exitRoom(userInfo.info, dispatch, router)}>Disband room</button>
-                                <button className="gameRoom__waiting__inner__buttons__purple" onClick={() => console.log("Started game")}>Start game</button>
+                                <button 
+                                    className="gameRoom__waiting__inner__buttons__red" 
+                                    onClick={() => disbandRoom(roomInfo.activeRoom._id, userInfo.token, dispatch, router)}
+                                >
+                                    Disband room
+                                </button>
+                                <button 
+                                    className="gameRoom__waiting__inner__buttons__purple" 
+                                    onClick={() => console.log("Started game")}
+                                >
+                                    Start game
+                                </button>
                             </>
                         ) : (
                             <button className="gameRoom__waiting__inner__buttons__red" onClick={() => exitRoom(userInfo.info, dispatch, router)}>Leave room</button>

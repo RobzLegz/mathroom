@@ -2,7 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { setNotification } from "../../../redux/slices/notificationSlice";
-import { addRoom, selectRooms, setActiveRoom, setRooms, setRoomUsers } from "../../../redux/slices/roomSlice";
+import { addRoom, removeRoom, selectRooms, setActiveRoom, setRooms, setRoomUsers } from "../../../redux/slices/roomSlice";
 import { getSocket, selectSocket, setSocket } from "../../../redux/slices/socketSlice";
 import { selectUser } from "../../../redux/slices/userSlice";
 import { getRooms } from "../../../requests/rooms/requests";
@@ -60,6 +60,10 @@ const RoomContainer: React.FC = () => {
                     rooms.forEach((room) => {
                         dispatch(addRoom(room));
                     });
+                });
+
+                socket.on("removeRoom", (roomId: string) => {
+                    dispatch(removeRoom(roomId));
                 });
 
                 socket.on("getRoomUsers", (users: User[]) => {
