@@ -2,7 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { setNotification } from "../../../redux/slices/notificationSlice";
-import { addRoom, selectRooms, setRooms, setRoomUsers } from "../../../redux/slices/roomSlice";
+import { addRoom, selectRooms, setActiveRoom, setRooms, setRoomUsers } from "../../../redux/slices/roomSlice";
 import { getSocket, selectSocket, setSocket } from "../../../redux/slices/socketSlice";
 import { selectUser } from "../../../redux/slices/userSlice";
 import { getRooms } from "../../../requests/rooms/requests";
@@ -42,6 +42,12 @@ const RoomContainer: React.FC = () => {
             socket.emit("leaveRoom");
         }
     }, [getSocket()]);
+
+    useEffect(() => {
+        if(roomInfo.activeRoom){
+            dispatch(setActiveRoom(null));
+        }
+    }, [roomInfo.activeRoom, dispatch]);
 
     useEffect(() => {
         if(roomInfo.rooms && resetRooms){
