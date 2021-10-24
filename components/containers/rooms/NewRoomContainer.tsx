@@ -54,14 +54,14 @@ function NewRoomContainer() {
                 </div>
                 <div className="newRoom__container__form__opt">
                     <label htmlFor="new_room_stages">Total stages</label>
-                    <input 
-                        type="number" 
-                        name="new_room_stages" 
-                        id="new_room_stages" 
-                        autoComplete="off"
-                        value={totalStages}
-                        onChange={(e) => setTotalStages(e.target.value)}
-                    />
+                    <select name="new_room_stages" id="new_room_stages" onChange={(e) => setTotalStages(e.target.value)}>
+                        <option></option>
+                        <option>5</option>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>30</option>
+                        <option>40</option>
+                    </select>
                 </div>
                 <div className="newRoom__container__form__opt">
                     <label htmlFor="new_room_max_players">Max players</label>
