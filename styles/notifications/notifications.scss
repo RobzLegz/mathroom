@@ -3,22 +3,62 @@
 .notification{
     position: fixed;
     z-index: 20;
-    width: 350px;
-    height: 75px;
+    width: 400px;
+    height: 90px;
     top: 0;
     right: 0;
-}
+    border-radius: 0 0 0 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-right: 20px;
 
-.error__message{
-    background-color: red;
-    width: 200px;
-    height: 200px;
-}
+    &__left{
+        height: 100%;
+        display: flex;
+        align-items: center;
 
-.success__message{
-    background-color: green;
-}
+        &__identifier{
+            width: 90px;
+            height: 90px;
+            margin: 0 10px 0 0;
+        }
+    
+        &__success{
+            background-color: $mathRoomGreen;
+        }
+    
+        &__error{
+            background-color: $mathRoomRed;
+        }
+    
+        &__loading{
+            background-color: $mathRoomYellow;
+        }
+    }
 
-.loading__message{
-    background-color: yellow;
+    &__right{
+        height: 100%;
+        padding: 20px 10px 0 0;
+
+        &__close{
+            position: relative;
+            cursor: pointer;
+    
+            div{
+                width: 2px;
+                height: 20px;
+                position: absolute;
+                background-color: $mathRoomBlackText;
+            }
+    
+            .line1{
+                transform: rotate(45deg);
+            }
+    
+            .line2{
+                transform: rotate(-45deg);
+            }
+        }
+    }
 }
