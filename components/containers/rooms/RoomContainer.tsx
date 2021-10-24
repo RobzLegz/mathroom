@@ -2,7 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { setNotification } from "../../../redux/slices/notificationSlice";
-import { addRoom, selectRooms, setActiveRoom, setRooms, setRoomUsers } from "../../../redux/slices/roomSlice";
+import { addRoom, removeRoom, selectRooms, setActiveRoom, setRooms, setRoomUsers } from "../../../redux/slices/roomSlice";
 import { getSocket, selectSocket, setSocket } from "../../../redux/slices/socketSlice";
 import { selectUser } from "../../../redux/slices/userSlice";
 import { getRooms } from "../../../requests/rooms/requests";
@@ -33,6 +33,7 @@ const RoomContainer: React.FC = () => {
     const router = useRouter();
 
     const [resetRooms, setResetRooms] = useState(false);
+    const [removedRoomIds] = useState<string[]>([]);
 
     useEffect(() => {
         const socket = getSocket();
@@ -62,6 +63,13 @@ const RoomContainer: React.FC = () => {
                     });
                 });
 
+                socket.on("removeRoom", (roomId: string) => {
+                    dispatch(removeRoom(roomId));
+                    if(!removedRoomIds.includes(roomId)){
+                        removedRoomIds.push(roomId);
+                    }
+                });
+
                 socket.on("getRoomUsers", (users: User[]) => {
                     dispatch(setRoomUsers(users));
                 });
@@ -72,7 +80,7 @@ const RoomContainer: React.FC = () => {
         }else if(!roomInfo.rooms){
             getRooms(dispatch);
         }
-    }, [socketInfo.connected, dispatch, roomInfo.rooms, resetRooms, getSocket()]);
+    }, [socketInfo.connected, dispatch, roomInfo.rooms, resetRooms, getSocket(), removedRoomIds]);
 
     return (
         <div className="roomPage__container">
@@ -86,25 +94,29 @@ const RoomContainer: React.FC = () => {
 
             <div className="roomPage__container__rooms">
                 {roomInfo.rooms && roomInfo.rooms.length > 0 && roomInfo.roomUsers ? roomInfo.rooms.map((room: Room, i: number) => {
-                    return(
-                        <div className="roomPage__container__rooms__room" key={i}>
-                            <h3>{room.roomName}</h3>
-                            <h3>{room.totalStages}</h3>
-                            <h3>{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
-                            <button 
-                                className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`} 
-                                onClick={() => {
-                                    if(!userInfo.loggedIn || !userInfo.token){
-                                        return dispatch(setNotification({type: "error", message: "You must be logged in to join room"}))
-                                    }else if(roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length < room.maxPlayers){
-                                        router.push(`/rooms/${room._id}`)
-                                    }}
-                                }
-                            >
+                    if(removedRoomIds.length === 0 || removedRoomIds.some((ri: string) => ri !== room._id)){
+                        return(
+                            <div className="roomPage__container__rooms__room" key={i}>
+                                <h3>{room.roomName}</h3>
+                                <h3>{room.totalStages}</h3>
+                                <h3>{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
+                                <button 
+                                    className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`} 
+                                    onClick={() => {
+                                        if(!userInfo.loggedIn || !userInfo.token){
+                                            return dispatch(setNotification({type: "error", message: "You must be logged in to join room"}))
+                                        }else if(roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length < room.maxPlayers){
+                                            router.push(`/rooms/${room._id}`);
+                                        }}
+                                    }
+                                >
                                     Join
-                            </button>
-                        </div>
-                    )
+                                </button>
+                            </div>
+                        )
+                    }
+
+                    return null;
                 }) : (
                     <div className="roomPage__container__rooms__no">
                         <h3>Searching for rooms...</h3>
