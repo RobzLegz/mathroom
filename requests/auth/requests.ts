@@ -3,8 +3,15 @@ import { login, setToken, setUserInfo } from "../../redux/slices/userSlice";
 import { clearNotification, setNotification } from "../../redux/slices/notificationSlice";
 import axios from "axios";
 
-const registerUser = (e: any, username: string, email: string, password: string, cfPassword: string, agreedToPrivacyPolicy: boolean, dispatch: any, router: any) => {
+const registerUser = (e: any, username: string, email: string, password: string, cfPassword: string, agreedToPrivacyPolicy: boolean, dispatch: any, router: any, clicked: boolean, setClicked: any) => {
     e.preventDefault(); 
+
+    if(clicked){
+        return
+    }
+
+    setClicked(true);
+
     dispatch(setNotification({type: "loading", message: "loading"}));
     
     const errMsg = valid(username, email, password, cfPassword);
@@ -33,8 +40,15 @@ const registerUser = (e: any, username: string, email: string, password: string,
         });
 }
 
-const loginUser = (e: any, email: string, password: string, dispatch: any, router: any) => {
+const loginUser = (e: any, email: string, password: string, dispatch: any, router: any, clicked: boolean, setClicked: any) => {
     e.preventDefault();
+
+    if(clicked){
+        return;
+    }
+
+    setClicked(true);
+
     dispatch(setNotification({type: "loading", message: "loading"}));
 
     if(!email || !password){
