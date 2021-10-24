@@ -42,43 +42,52 @@ const getRoomInfo = (id: string, dispatch: any, router: any) => {
 const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any, isPrivate: boolean, userInfo: User, dispatch: any, router: any) => {
     e.preventDefault();
 
-    if(userInfo.token){
-        if(roomName.length > 10){
-            dispatch(setNotification({type: "error", message: "Room name can't be that long!"}));
-        }
+    if(!userInfo.token){
+        return dispatch(setNotification({type: "error", message: "You must be logged in to create a room!"}));
+    }
 
-        const headers = {
-            headers: {
-                Authorization: userInfo.token,
+    if(!totalStages || totalStages === 0){
+        return dispatch(setNotification({type: "error", message: "Please select the number of stages Your game will have!"}));
+    }
+
+    if(!maxPlayers || maxPlayers === 0){
+        return dispatch(setNotification({type: "error", message: "Please select the maximum number of players who will be able to join!"}));
+    }
+
+    if(roomName.length > 10){
+        return dispatch(setNotification({type: "error", message: "Room name can't be that long!"}));
+    }
+
+    const headers = {
+        headers: {
+            Authorization: userInfo.token,
+        }
+    }
+
+    const data = {
+        roomName: roomName,
+        totalStages: totalStages,
+        maxPlayers: maxPlayers,
+        isPrivate: isPrivate,
+    }
+
+    axios.post("/api/rooms", data, headers)
+        .then((res: any) => {
+            const roomId: string = res.data.roomId;
+
+            if(roomId){
+                createRoom(roomName, totalStages, maxPlayers, isPrivate, userInfo.info, roomId, dispatch, router);
             }
-        }
-    
-        const data = {
-            roomName: roomName,
-            totalStages: totalStages,
-            maxPlayers: maxPlayers,
-            isPrivate: isPrivate,
-        }
-    
-        axios.post("/api/rooms", data, headers)
-            .then((res: any) => {
-                const roomId: string = res.data.roomId;
-
-                if(roomId){
-                    createRoom(roomName, totalStages, maxPlayers, isPrivate, userInfo.info, roomId, dispatch, router);
+        }).catch((err) => {
+            if(err && err.response && err.response.data){
+                const message: string = err.response.data.err;
+                if(message){
+                    return dispatch(setNotification({type: "error", message: message}));
                 }
-            }).catch((err) => {
-                if(err && err.response && err.response.data){
-                    const message: string = err.response.data.err;
-                    if(message){
-                        return dispatch(setNotification({type: "error", message: message}));
-                    }
 
-                    dispatch(setNotification({type: "error", message: "Something went wrong!"}));
-                }
-            });
-    }   
-    
+                dispatch(setNotification({type: "error", message: "Something went wrong!"}));
+            }
+        });
 }
 
 const exitRoom = (userInfo: Info, dispatch: any, router: any) => {
