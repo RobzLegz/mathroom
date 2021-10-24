@@ -99,7 +99,7 @@ const disbandRoom = (roomId: string, token: string, dispatch: any, router: any) 
             const socket = getSocket();
 
             if(socket){
-                socket.emit("disbandRoom");
+                socket.emit("disbandRoom", roomId);
                 router.push("/rooms");
             }
         }).catch((err) => {
