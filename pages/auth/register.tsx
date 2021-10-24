@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from "next/head"
 import RegisterContainer from '../../components/containers/auth/RegisterContainer';
+import Notification from '../../components/notifications/Notification';
 
 function register() {
     return (
@@ -8,6 +9,8 @@ function register() {
             <Head>
                 <title>MathRoom | Register</title>
             </Head>
+
+            <Notification />
 
             <RegisterContainer />
         </div>
