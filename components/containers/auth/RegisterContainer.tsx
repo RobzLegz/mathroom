@@ -16,6 +16,7 @@ function RegisterContainer() {
     const [password, setPassword] = useState<string>("");
     const [cfPassword, setCFPassword] = useState<string>("");
     const [agreedToPrivacyPolicy, setAgreedToPrivacyPolicy] = useState<boolean>(false);
+    const [clicked, setClicked] = useState<boolean>(false);
 
     useEffect(() => {
         if(userInfo.loggedIn){
@@ -40,7 +41,7 @@ function RegisterContainer() {
                         id="register_username" 
                         placeholder="username"
                         value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        onChange={(e) => {setUsername(e.target.value);setClicked(false)}}
                         autoComplete="off"
                     />
                 </div>
@@ -52,7 +53,7 @@ function RegisterContainer() {
                         id="register_email" 
                         placeholder="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => {setEmail(e.target.value);setClicked(false)}}
                         autoComplete="off"
                     />
                 </div>
@@ -64,7 +65,7 @@ function RegisterContainer() {
                         id="register_password" 
                         placeholder="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e) => {setPassword(e.target.value);setClicked(false)}}
                         autoComplete="off"
                     />
                 </div>
@@ -76,7 +77,7 @@ function RegisterContainer() {
                         id="register_cf_password" 
                         placeholder="confirm password"
                         value={cfPassword}
-                        onChange={(e) => setCFPassword(e.target.value)}
+                        onChange={(e) => {setCFPassword(e.target.value);setClicked(false)}}
                         autoComplete="off"
                     />
                 </div>
@@ -87,7 +88,7 @@ function RegisterContainer() {
                     <div className={`auth__container__form__privacyPolicy__checkbox ${agreedToPrivacyPolicy ? "auth__container__form__privacyPolicy__checkbox__agreed" : ""}`} onClick={() => setAgreedToPrivacyPolicy(!agreedToPrivacyPolicy)}>{agreedToPrivacyPolicy && (<img src="/png/white-check-mark.png" alt="white check mark" />)}</div>
                     <p>I aggree to your <Link href="/privacy-policy">privacy policy</Link></p>
                 </div>
-                <button onClick={(e) => registerUser(e, username, email, password, cfPassword, agreedToPrivacyPolicy, dispatch, router)}>Register</button>
+                <button disabled={clicked} onClick={(e) => registerUser(e, username, email, password, cfPassword, agreedToPrivacyPolicy, dispatch, router, clicked, setClicked)}>Register</button>
             </div>
         </form>
     )
