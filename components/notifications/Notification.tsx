@@ -1,9 +1,11 @@
 import React from "react"
-import { useSelector } from "react-redux";
-import { selectNotifications } from "../../redux/slices/notificationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { clearNotification, selectNotifications } from "../../redux/slices/notificationSlice";
 
 function Notification() {
     const notificationInfo = useSelector(selectNotifications);
+
+    const dispatch = useDispatch();
 
     if(notificationInfo.type === "error"){
         return (
@@ -12,8 +14,9 @@ function Notification() {
                     <div className="notification__left__error notification__left__identifier"></div>
                     <p>{notificationInfo.message}</p>
                 </div>
-                    <div className="notification__right">
-                        <div className="notification__right__close">
+                
+                <div className="notification__right">
+                    <div className="notification__right__close" onClick={() => dispatch(clearNotification())}>
                         <div className="line1"></div>
                         <div className="line2"></div>
                     </div>
@@ -27,8 +30,9 @@ function Notification() {
                     <div className="notification__left__success notification__left__identifier"></div>
                     <p>{notificationInfo.message}</p>
                 </div>
-                    <div className="notification__right">
-                        <div className="notification__right__close">
+                
+                <div className="notification__right">
+                    <div className="notification__right__close" onClick={() => dispatch(clearNotification())}>
                         <div className="line1"></div>
                         <div className="line2"></div>
                     </div>
@@ -42,8 +46,9 @@ function Notification() {
                     <div className="notification__left__loading notification__left__identifier"></div>
                     <p>{notificationInfo.message}</p>
                 </div>
-                    <div className="notification__right">
-                        <div className="notification__right__close">
+                
+                <div className="notification__right">
+                    <div className="notification__right__close" onClick={() => dispatch(clearNotification())}>
                         <div className="line1"></div>
                         <div className="line2"></div>
                     </div>
