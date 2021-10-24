@@ -9,6 +9,7 @@ import { selectUser } from "../../redux/slices/userSlice";
 import { checkForLogin } from "../../requests/auth/requests";
 import { joinRoom } from "../../socket/options";
 import { getSocket, selectSocket, setSocket } from "../../redux/slices/socketSlice";
+import Notification from "../../components/notifications/Notification";
 
 interface Message{
     roomID: string;
@@ -73,6 +74,8 @@ function room() {
             <Head>
                 <title>MathRoom | Play</title>
             </Head>
+
+            <Notification />
 
             <ActiveRoom />
         </div>
