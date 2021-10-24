@@ -2,6 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import Head from "next/head"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Notification from "../components/notifications/Notification";
 import { getSocket, selectSocket, setSocket } from "../redux/slices/socketSlice";
 import { selectUser } from "../redux/slices/userSlice";
 import { checkForLogin } from "../requests/auth/requests";
@@ -35,6 +36,7 @@ export default function Home() {
       <Head>
         <title>MathRoom</title>
       </Head>
+      <Notification />
     </div>
   )
 }
