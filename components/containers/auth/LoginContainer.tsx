@@ -13,6 +13,7 @@ function LoginContainer() {
 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [clicked, setClicked] = useState<boolean>(false);
 
     useEffect(() => {
         if(userInfo.loggedIn){
@@ -37,7 +38,7 @@ function LoginContainer() {
                         id="login_email" 
                         placeholder="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => {setEmail(e.target.value);setClicked(false)}}
                         autoComplete="off"
                     />
                 </div>
@@ -49,14 +50,14 @@ function LoginContainer() {
                         id="login_password" 
                         placeholder="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e) => {setPassword(e.target.value);setClicked(false)}}
                         autoComplete="off"
                     />
                 </div>
                 <div className="auth__container__form__link">
                     <p>Don't have an account? <Link href="/auth/register">Register</Link></p>
                 </div>
-                <button onClick={(e) => loginUser(e, email, password, dispatch, router)}>Login</button>
+                <button disabled={clicked} onClick={(e) => loginUser(e, email, password, dispatch, router, clicked, setClicked)}>Login</button>
             </div>
         </form>
     )
