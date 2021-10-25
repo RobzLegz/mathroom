@@ -11,7 +11,7 @@ function Notification() {
         return (
             <div className="notification">
                 <div className="notification__left">
-                    <div className="notification__left__error notification__left__identifier"></div>
+                    <div className="notification__left__identifier__error"></div>
                     <p>{notificationInfo.message}</p>
                 </div>
                 
@@ -27,7 +27,7 @@ function Notification() {
         return (
             <div className="notification">
                 <div className="notification__left">
-                    <div className="notification__left__success notification__left__identifier"></div>
+                    <div className="notification__left__identifier__success"></div>
                     <p>{notificationInfo.message}</p>
                 </div>
                 
@@ -43,7 +43,7 @@ function Notification() {
         return (
             <div className="notification">
                 <div className="notification__left">
-                    <div className="notification__left__loading notification__left__identifier"></div>
+                    <div className="notification__left__identifier__loading"></div>
                     <p>{notificationInfo.message}</p>
                 </div>
                 
