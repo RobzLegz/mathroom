@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setNotification } from "../../../../redux/slices/notificationSlice";
 import { selectRooms } from "../../../../redux/slices/roomSlice";
 import { selectUser } from "../../../../redux/slices/userSlice";
+import { startGame } from "../../../../requests/game/requests";
 import { sendMessage } from "../../../../requests/rooms/chat/requests";
 import { disbandRoom, exitRoom } from "../../../../requests/rooms/requests";
 
@@ -110,7 +111,7 @@ function WaitingRoom() {
                                 </button>
                                 <button 
                                     className="gameRoom__waiting__inner__buttons__purple" 
-                                    onClick={() => console.log("Started game")}
+                                    onClick={() => {if(roomInfo.roomUsers.filter((user: RoomUser) => user.roomId === id).length > 0){startGame(id, userInfo.token, dispatch)}}}
                                 >
                                     Start game
                                 </button>

@@ -107,4 +107,21 @@ const exitSocketRoom = (userInfo: User) => {
     socket.emit("leaveRoom", userInfo._id);
 }
 
-export {connectToSocket, createRoom, sendSocketMessage, joinRoom, exitSocketRoom};
+const startSocketGame = (roomId: string) => {
+    const socket = getSocket();
+
+    if(!socket){
+        return
+    }
+
+    socket.emit("startGame", roomId);
+}
+
+export {
+    connectToSocket, 
+    createRoom, 
+    sendSocketMessage, 
+    joinRoom, 
+    exitSocketRoom,
+    startSocketGame
+};
