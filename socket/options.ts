@@ -1,3 +1,4 @@
+import { clearNotification } from "../redux/slices/notificationSlice";
 import { addRoom } from "../redux/slices/roomSlice";
 import { getSocket, setOnlineUsers, setSocket } from "../redux/slices/socketSlice";
 
@@ -67,6 +68,7 @@ const createRoom = (roomName: string, totalStages: number, maxPlayers: number, i
             });
         });
 
+        dispatch(clearNotification());
         router.push(`/rooms/${id}`);
     }
 }
