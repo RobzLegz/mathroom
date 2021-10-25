@@ -70,6 +70,13 @@ const RoomContainer: React.FC = () => {
                     }
                 });
 
+                socket.on("startedGame", (roomId: string) => {
+                    dispatch(removeRoom(roomId));
+                    if(!removedRoomIds.includes(roomId)){
+                        removedRoomIds.push(roomId);
+                    }
+                });
+
                 socket.on("getRoomUsers", (users: User[]) => {
                     dispatch(setRoomUsers(users));
                 });
