@@ -46,16 +46,20 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
         return dispatch(setNotification({type: "error", message: "You must be logged in to create a room!"}));
     }
 
+    if(!roomName || roomName.length === 0){
+        return dispatch(setNotification({type: "error", message: "Please enter room name!"}));
+    }
+
+    if(roomName.length > 10){
+        return dispatch(setNotification({type: "error", message: "Room name can't be that long!"}));
+    }
+
     if(!totalStages || totalStages === 0){
         return dispatch(setNotification({type: "error", message: "Please select the number of stages Your game will have!"}));
     }
 
     if(!maxPlayers || maxPlayers === 0){
         return dispatch(setNotification({type: "error", message: "Please select the maximum number of players who will be able to join!"}));
-    }
-
-    if(roomName.length > 10){
-        return dispatch(setNotification({type: "error", message: "Room name can't be that long!"}));
     }
 
     const headers = {
