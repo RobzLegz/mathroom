@@ -41,7 +41,7 @@ const getRoomInfo = (id: string, dispatch: any, router: any) => {
 
 const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any, isPrivate: boolean, userInfo: User, dispatch: any, router: any) => {
     e.preventDefault();
-    dispatch(setNotification({type: "loading", message: "Loading!"}));
+    dispatch(setNotification({type: "loading", message: "Creating new room!"}));
 
     if(!userInfo.token){
         return dispatch(setNotification({type: "error", message: "You must be logged in to create a room!"}));
