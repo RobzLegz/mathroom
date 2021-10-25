@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setNotification } from "../../redux/slices/notificationSlice";
+import { clearNotification, setNotification } from "../../redux/slices/notificationSlice";
 import { setActiveRoom, setRooms } from "../../redux/slices/roomSlice";
 import { getSocket } from "../../redux/slices/socketSlice";
 import { createRoom, exitSocketRoom } from "../../socket/options";
@@ -41,6 +41,7 @@ const getRoomInfo = (id: string, dispatch: any, router: any) => {
 
 const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any, isPrivate: boolean, userInfo: User, dispatch: any, router: any) => {
     e.preventDefault();
+    dispatch(setNotification({type: "loading", message: "Loading!"}));
 
     if(!userInfo.token){
         return dispatch(setNotification({type: "error", message: "You must be logged in to create a room!"}));
