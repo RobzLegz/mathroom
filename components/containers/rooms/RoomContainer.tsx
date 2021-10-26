@@ -2,7 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { setNotification } from "../../../redux/slices/notificationSlice";
-import { addRoom, removeRoom, selectRooms, setActiveRoom, setRooms, setRoomUsers } from "../../../redux/slices/roomSlice";
+import { addRoom, removeRoom, selectRooms, setActiveRoom, setRooms, setRoomUsers, startGame } from "../../../redux/slices/roomSlice";
 import { getSocket, selectSocket, setSocket } from "../../../redux/slices/socketSlice";
 import { selectUser } from "../../../redux/slices/userSlice";
 import { getRooms } from "../../../requests/rooms/requests";
@@ -71,7 +71,7 @@ const RoomContainer: React.FC = () => {
                 });
 
                 socket.on("startedGame", (roomId: string) => {
-                    dispatch(removeRoom(roomId));
+                    dispatch(startGame(roomId));
                     if(!removedRoomIds.includes(roomId)){
                         removedRoomIds.push(roomId);
                     }
@@ -101,6 +101,10 @@ const RoomContainer: React.FC = () => {
 
             <div className="roomPage__container__rooms">
                 {roomInfo.rooms && roomInfo.rooms.length > 0 && roomInfo.roomUsers ? roomInfo.rooms.map((room: Room, i: number) => {
+                    if(room.hasStarted){
+                        return null;
+                    }
+                    
                     if(removedRoomIds.length === 0 || removedRoomIds.some((ri: string) => ri !== room._id)){
                         return(
                             <div className="roomPage__container__rooms__room" key={i}>
