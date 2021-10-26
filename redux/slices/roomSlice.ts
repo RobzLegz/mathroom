@@ -73,6 +73,20 @@ export const roomSlice = createSlice({
                 state.rooms.filter((room) => room._id !== action.payload);
             }
         },
+        startGame: (state, action) => {
+            if(state.rooms){
+                let startRoom = state.rooms.find((room) => room._id === action.payload);
+
+                if(startRoom){
+                    startRoom.hasStarted = true;
+                }
+            }
+            if(state.activeRoom){
+                if(state.activeRoom._id === action.payload){
+                    state.activeRoom.hasStarted = true;
+                }
+            }
+        },
     },
 });
 
@@ -82,7 +96,8 @@ export const {
     setRoomUsers,
     setRoomMessages,
     removeRoom,
-    addRoom
+    addRoom,
+    startGame
 } = roomSlice.actions;
 
 export const selectRooms = (state: any) => state.room;
