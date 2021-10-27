@@ -12,7 +12,7 @@ interface Message{
     roomID: string;
     username: string;
     message: string;
-    color: number;
+    color: string;
 }
 
 interface User{
@@ -21,6 +21,7 @@ interface User{
     role: string;
     avatar: string;
     level: number;
+    color: number;
     _id: string;
 }
 
@@ -29,6 +30,7 @@ interface RoomUser{
     socketId: string;
     roomId: string;
     username: string;
+    color: string;
 }
 
 function WaitingRoom() {
@@ -65,12 +67,12 @@ function WaitingRoom() {
         
                     <div className="gameRoom__waiting__inner__body">
                         <div className="gameRoom__waiting__inner__body__players">
-                            {roomInfo.roomUsers && typeof(id) === "string" && roomInfo.roomUsers.filter((u: RoomUser) => u.roomId === id).map((player: User, i: number) => {
+                            {roomInfo.roomUsers && typeof(id) === "string" && roomInfo.roomUsers.filter((u: RoomUser) => u.roomId === id).map((player: RoomUser, i: number) => {
                                 return(
                                     <div className="gameRoom__waiting__inner__body__players__player" key={i}>
                                         <div className="gameRoom__waiting__inner__body__players__player__icon">
-                                            <div className="gameRoom__waiting__inner__body__players__player__icon__top"></div>
-                                            <div className="gameRoom__waiting__inner__body__players__player__icon__bottom"></div>
+                                            <div className="gameRoom__waiting__inner__body__players__player__icon__top" style={{backgroundColor: player.color}}></div>
+                                            <div className="gameRoom__waiting__inner__body__players__player__icon__bottom" style={{backgroundColor: player.color}}></div>
                                         </div>
                                         <h3>{player.username}</h3>
                                     </div>
@@ -81,7 +83,7 @@ function WaitingRoom() {
                             {typeof(id) === "string" && roomInfo.messages.filter((message: Message) => message.roomID === id).map((message: Message, i: number) => {
                                 return(
                                     <div className="gameRoom__waiting__inner__body__chat__message" key={i}>
-                                        <h4>{message.username}</h4>
+                                        <h4 style={{color: message.color}}>{message.username}</h4>
                                         <p>{message.message}</p>
                                     </div>
                                 )
