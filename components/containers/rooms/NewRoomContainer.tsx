@@ -75,8 +75,8 @@ function NewRoomContainer() {
                     </select>
                 </div>
                 <div className="newRoom__container__form__switcher">
-                    <div onClick={() => setPrivateRoom(true)} className={`newRoom__container__form__switcher__opt ${privateRoom ? "newRoom__container__form__switcher__opt__active" : ""}`}>Private</div>
-                    <div onClick={() => setPrivateRoom(false)} className={`newRoom__container__form__switcher__opt ${privateRoom ? "" : "newRoom__container__form__switcher__opt__active"}`}>Public</div>
+                    <div onClick={(e) => {e.preventDefault();setPrivateRoom(true)}} className={`newRoom__container__form__switcher__opt ${privateRoom ? "newRoom__container__form__switcher__opt__active" : ""}`}>Private</div>
+                    <div onClick={(e) => {e.preventDefault();setPrivateRoom(false)}} className={`newRoom__container__form__switcher__opt ${privateRoom ? "" : "newRoom__container__form__switcher__opt__active"}`}>Public</div>
                 </div>
             </form>
             <div className="newRoom__container__options">
