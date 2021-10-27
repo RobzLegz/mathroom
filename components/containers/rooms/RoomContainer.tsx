@@ -104,30 +104,30 @@ const RoomContainer: React.FC = () => {
                     if(room.hasStarted){
                         return null;
                     }
-                    
-                    if(removedRoomIds.length === 0 || removedRoomIds.some((ri: string) => ri !== room._id)){
-                        return(
-                            <div className="roomPage__container__rooms__room" key={i}>
-                                <h3>{room.roomName}</h3>
-                                <h3>{room.totalStages}</h3>
-                                <h3>{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
-                                <button 
-                                    className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`} 
-                                    onClick={() => {
-                                        if(!userInfo.loggedIn || !userInfo.token){
-                                            return dispatch(setNotification({type: "error", message: "You must be logged in to join room"}))
-                                        }else if(roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length < room.maxPlayers){
-                                            router.push(`/rooms/${room._id}`);
-                                        }}
-                                    }
-                                >
-                                    Join
-                                </button>
-                            </div>
-                        )
-                    }
 
-                    return null;
+                    if(removedRoomIds.length > 0 && removedRoomIds.some((ri: string) => ri === room._id)){
+                        return null;
+                    }
+                    
+                    return(
+                        <div className="roomPage__container__rooms__room" key={i}>
+                            <h3>{room.roomName}</h3>
+                            <h3>{room.totalStages}</h3>
+                            <h3>{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
+                            <button
+                                className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`} 
+                                onClick={() => {
+                                    if(!userInfo.loggedIn || !userInfo.token){
+                                        return dispatch(setNotification({type: "error", message: "You must be logged in to join room"}))
+                                    }else if(roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length < room.maxPlayers){
+                                        router.push(`/rooms/${room._id}`);
+                                    }}
+                                }
+                            >
+                                Join
+                            </button>
+                        </div>
+                    )
                 }) : (
                     <div className="roomPage__container__rooms__no">
                         <h3>Searching for rooms...</h3>
