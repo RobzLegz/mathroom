@@ -80,6 +80,9 @@ export const roomSlice = createSlice({
                 if(startRoom){
                     startRoom.hasStarted = true;
                 }
+
+                state.rooms = state.rooms.filter((room) => room._id !== action.payload);
+                state.rooms.filter((room) => room._id !== action.payload);
             }
             if(state.activeRoom){
                 if(state.activeRoom._id === action.payload){
