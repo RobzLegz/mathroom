@@ -25,7 +25,7 @@ interface Message{
     roomID: string;
     username: string;
     message: string;
-    color: number;
+    userId: string;
 }
 
 const connectToSocket = (userInfo: User | null, dispatch: any) => {
