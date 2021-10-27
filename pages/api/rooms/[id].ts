@@ -45,7 +45,7 @@ const startGame = async (req: any, res: any) => {
         }
 
         if(testRoom.admin !== admin.id){
-            return res.status(400).json({err: "You can't delete this room!"});
+            return res.status(400).json({err: "You can't start the game because You aren't the host!"});
         }
 
         await testRoom.update({hasStarted: true});
