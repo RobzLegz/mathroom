@@ -1,6 +1,10 @@
 const valid = (name: string, email: string, password: string, cf_password: string) => {
     if(!name || !email || !password)
-    return "Please fill in all fields."
+        return "Please fill in all fields."
+
+    if(name.length > 10){
+        return "Your username can't be that long."
+    }
 
     if(!validateEmail(email)){
         return "Invalid email."
@@ -11,7 +15,7 @@ const valid = (name: string, email: string, password: string, cf_password: strin
     }
 
     if(password !== cf_password){
-        return "Confirm password did not match."
+        return "Passwords did not match."
     }
 }
 
