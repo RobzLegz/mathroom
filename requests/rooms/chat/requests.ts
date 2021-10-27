@@ -14,7 +14,7 @@ interface Message{
     roomID: string;
     username: string;
     message: string;
-    color: number;
+    userId: string;
 }
 
 const sendMessage = (e: any, roomId: string | string[] | undefined, message: string, messageTimeout: number, setMessageTimeout: any, userInfo: User, dispatch: any) => {
@@ -40,7 +40,7 @@ const sendMessage = (e: any, roomId: string | string[] | undefined, message: str
         roomID: roomId,
         username: userInfo.username,
         message: message,
-        color: 5,
+        userId: userInfo._id
     }
 
     setMessageTimeout(5);
