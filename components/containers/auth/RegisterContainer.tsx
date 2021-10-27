@@ -86,7 +86,7 @@ function RegisterContainer() {
                 </div>
                 <div className="auth__container__form__privacyPolicy">
                     <div className={`auth__container__form__privacyPolicy__checkbox ${agreedToPrivacyPolicy ? "auth__container__form__privacyPolicy__checkbox__agreed" : ""}`} onClick={() => setAgreedToPrivacyPolicy(!agreedToPrivacyPolicy)}>{agreedToPrivacyPolicy && (<img src="/png/white-check-mark.png" alt="white check mark" />)}</div>
-                    <p>I aggree to your <Link href="/privacy-policy">privacy policy</Link></p>
+                    <p>I agree to your <Link href="/privacy-policy">privacy policy</Link></p>
                 </div>
                 <button disabled={clicked} onClick={(e) => registerUser(e, username, email, password, cfPassword, agreedToPrivacyPolicy, dispatch, router, clicked, setClicked)}>Register</button>
             </div>
