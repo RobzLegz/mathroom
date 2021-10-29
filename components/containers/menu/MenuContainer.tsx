@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../../../redux/slices/notificationSlice';
 import { selectUser } from '../../../redux/slices/userSlice';
+import GameBackground from '../../background/GameBackground';
 
 function MenuContainer() {
     const userInfo = useSelector(selectUser);
@@ -24,16 +25,8 @@ function MenuContainer() {
                 <img className="image image1" src="/svg/sandClock.svg" alt="sand clock ticking in blue color slightly rotated to right side" />
                 <img className="image image2" src="/svg/clock.svg" alt="clock with two arrows in red color slightly rotated to left side" />
                 <img className="image image3" src="/svg/timer.svg" alt="purple timer ticking" />
-                <div className="line line1"></div>
-                <div className="line line2"></div>
-                <div className="line line3"></div>
-                <div className="line line4"></div>
-                <div className="line line5"></div>
-                <div className="line line6"></div>
-                <div className="line line7"></div>
-                <div className="line line8"></div>
-                <div className="line line9"></div>
-                <div className="line line10"></div>
+                
+                <GameBackground color={"purple"} />
             </div>
         </div>
     )
