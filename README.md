@@ -38,6 +38,10 @@
     <th>Stylesheet</th>
     <th>Sass/Scss</th>
   </tr>
+  <tr>
+    <th>PacMan</th>
+    <th>yarn</th>
+  </tr>
 </table>
 <h2>Run locally:</h2>
 <ul>
