@@ -92,7 +92,7 @@ const RoomContainer: React.FC = () => {
     return (
         <div className="roomPage__container">
             <header className="roomPage__container__header">
-                <button className="roomPage__container__header__back" onClick={() => router.push("/")}>Back</button>
+                <button className="roomPage__container__header__back" onClick={() => router.push("/menu")}>Back</button>
                 <div className="roomPage__container__header__title">
                     <h2>Join room</h2>
                 </div>
