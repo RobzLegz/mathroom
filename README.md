@@ -16,3 +16,12 @@
   <li><a href="https://github.com/Neetrah">@Neetrah</a> - Designer</li>
   <li><a href="https://github.com/Sanvirus">@Sanvirus</a> - Tasks, game logic</li>
 </ul>
+<h2>Run locally:</h2>
+<ul>
+  <li>Download git <a href="https://git-scm.com/downloads">here</a></li>
+  <li>Download nodeJS <a href="https://nodejs.org/en/">here</a></li>
+  <li>Install yarn by running <code>npm i -g yarn</code> in command line</li>
+  <li>Clone project by running <code>git clone https://github.com/RobzLegz/mathroom</code> in command line</li>
+  <li>Install dependencies with yarn <code>cd mathroom</code> + <code>yarn install</code></li>
+  <li>Run server <code>yarn dev</code></li>
+</ul>
