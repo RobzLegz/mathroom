@@ -171,4 +171,107 @@
             }
         }
     }
+
+    @media screen and (max-width: 1375px){
+        &__container{
+
+            &__decorations{
+                .image{
+                    &2{
+                        right: 50px;
+                    }
+
+                    &3{
+                        right: 300px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1245px){
+        &__container{
+            &__decorations{
+                .image{
+                    &1{
+                        left: 50px;
+                        bottom: 50px;
+                    }
+
+                    &2{
+                        right: 20px;
+                        bottom: 50px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1125px){
+        &__container{
+            &__decorations{
+                .image{
+                    &2{
+                        right: 50px;
+                        width: 300px;
+                        bottom: 80px;
+                    }
+
+                    &3{
+                        right: 200px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 955px){
+        &__container{
+            &__decorations{
+                .image{
+                    &1{
+                        width: 200px;
+                    }
+
+                    &2{
+                        right: 50px;
+                        width: 250px;
+                        bottom: 80px;
+                    }
+
+                    &3{
+                        right: 200px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 695px){
+        &__container{
+            h1{
+                font-size: 60px;
+            }
+
+            &__decorations{
+                .image{
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 400px){
+        &__container{
+            h1{
+                font-size: 45px;
+            }
+
+            &__options{
+                .button{
+                    width: 270px;
+                }
+            }
+        }
+    }
 }
