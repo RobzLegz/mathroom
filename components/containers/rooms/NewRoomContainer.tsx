@@ -43,10 +43,10 @@ function NewRoomContainer() {
             <form className="newRoom__container__form">
                 <div className="newRoom__container__form__opt">
                     <label htmlFor="new_room_name">Room name</label>
-                    <input 
-                        type="text" 
-                        name="new_room_name" 
-                        id="new_room_name" 
+                    <input
+                        type="text"
+                        name="new_room_name"
+                        id="new_room_name"
                         autoComplete="off"
                         value={roomName}
                         onChange={(e) => setRoomName(e.target.value)}
