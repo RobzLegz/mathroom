@@ -32,6 +32,8 @@ function MenuContainer() {
                 <div className="line line6"></div>
                 <div className="line line7"></div>
                 <div className="line line8"></div>
+                <div className="line line9"></div>
+                <div className="line line10"></div>
             </div>
         </div>
     )
