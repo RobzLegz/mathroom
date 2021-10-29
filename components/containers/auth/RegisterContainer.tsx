@@ -35,10 +35,10 @@ function RegisterContainer() {
             <div className="auth__container__form">
                 <div className="auth__container__form__field">
                     <label htmlFor="register_username">username</label>
-                    <input 
-                        type="username" 
-                        name="register_username" 
-                        id="register_username" 
+                    <input
+                        type="username"
+                        name="register_username"
+                        id="register_username"
                         placeholder="username"
                         value={username}
                         onChange={(e) => {setUsername(e.target.value);setClicked(false)}}
@@ -47,10 +47,10 @@ function RegisterContainer() {
                 </div>
                 <div className="auth__container__form__field">
                     <label htmlFor="register_email">email</label>
-                    <input 
-                        type="email" 
-                        name="register_email" 
-                        id="register_email" 
+                    <input
+                        type="email"
+                        name="register_email"
+                        id="register_email"
                         placeholder="email"
                         value={email}
                         onChange={(e) => {setEmail(e.target.value);setClicked(false)}}
@@ -59,10 +59,10 @@ function RegisterContainer() {
                 </div>
                 <div className="auth__container__form__field">
                     <label htmlFor="register_password">password</label>
-                    <input 
-                        type="password" 
-                        name="register_password" 
-                        id="register_password" 
+                    <input
+                        type="password"
+                        name="register_password"
+                        id="register_password"
                         placeholder="password"
                         value={password}
                         onChange={(e) => {setPassword(e.target.value);setClicked(false)}}
@@ -71,10 +71,10 @@ function RegisterContainer() {
                 </div>
                 <div className="auth__container__form__field">
                     <label htmlFor="register_cf_password">password again</label>
-                    <input 
-                        type="password" 
-                        name="register_cf_password" 
-                        id="register_cf_password" 
+                    <input
+                        type="password"
+                        name="register_cf_password"
+                        id="register_cf_password"
                         placeholder="confirm password"
                         value={cfPassword}
                         onChange={(e) => {setCFPassword(e.target.value);setClicked(false)}}

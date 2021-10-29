@@ -93,7 +93,7 @@ export const roomSlice = createSlice({
     },
 });
 
-export const { 
+export const {
     setRooms,
     setActiveRoom,
     setRoomUsers,
