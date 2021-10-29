@@ -24,4 +24,7 @@
   <li>Clone project by running <code>git clone https://github.com/RobzLegz/mathroom</code> in command line</li>
   <li>Install dependencies with yarn <code>cd mathroom</code> + <code>yarn install</code></li>
   <li>Run server <code>yarn dev</code></li>
+  <li>Clone socket <code>git clone https://github.com/RobzLegz/mathroom-socket socket</code></li>
+  <li>Install dependencies with yarn <code>cd socket</code> + <code>yarn install</code></li>
+  <li>Run socket server <code>yarn dev</code></li>
 </ul>
