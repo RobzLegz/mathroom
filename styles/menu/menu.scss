@@ -6,16 +6,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     font-family: $roomFont;
     background-color: $mathRoomDarkerPurple;
 
     &__container{
         width: 700px;
         display: flex;
+        overflow: hidden;
         align-items: center;
         flex-direction: column;
 
         h1{
+            z-index: 2;
             font-size: $headingSize;
             color: $mathRoomContainerBG;
             font-family: $menuFont;
@@ -26,6 +29,7 @@
             display: flex;
             align-items: center;
             flex-direction: column;
+            z-index: 2;
 
             .button{
                 width: 300px;
@@ -50,6 +54,114 @@
                     &:hover{
                         background-color: $mathRoomRed;
                     }
+                }
+            }
+        }
+
+        &__decorations{
+            overflow: hidden;
+
+            .image{
+                z-index: 2;
+                position: absolute;
+
+                &1{
+                    left: 100px;
+                    bottom: 200px;
+                }
+
+                &2{
+                    right: 100px;
+                    bottom: 100px;
+                }
+
+                &3{
+                    top: 50px;
+                    right: 500px;
+                }
+            }
+
+            .line{
+                position: absolute;
+                background-color: $mathRoomDarkPurple;
+
+                &1{
+                    width: 153.38px;
+                    height: 839.03px;
+                    left: -37.91px;
+                    top: 351.93px;
+                    background: #35293A;
+                    transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+                }
+
+                &2{
+                    width: 189.55px;
+                    height: 896.91px;
+                    left: 194.46px;
+                    top: 254px;
+                    
+                    background: #35293A;
+                    transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+                }
+
+                &3{
+                    width: 153.38px;
+                    height: 839.03px;
+                    left: 337.09px;
+                    top: 561px;
+                    
+                    background: #35293A;
+                    transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+                }
+
+                &4{
+                    width: 153.38px;
+                    height: 839.03px;
+                    left: 577.8px;
+                    top: 447.69px;
+                    
+                    background: #35293A;
+                    transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+                }
+
+                &5{
+                    width: 271.03px;
+                    height: 839.03px;
+                    left: 801.09px;
+                    top: 372px;
+                    
+                    background: #35293A;
+                    transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+                }
+
+                &6{
+                    width: 153.38px;
+                    height: 793.87px;
+                    left: 1050.57px;
+                    top: 612px;
+                    
+                    background: #35293A;
+                    transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+                }
+
+                &7{
+                    width: 153.38px;
+                    height: 839.03px;
+                    left: 1351.09px;
+                    top: 308px;
+                    
+                    background: #35293A;
+                    transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+                }
+
+                &8{
+                    width: 153.38px;
+                    height: 793.87px;
+                    left: 1461.57px;
+                    top: 624px;
+                    
+                    background: #35293A;
+                    transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
                 }
             }
         }
