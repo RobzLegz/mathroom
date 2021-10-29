@@ -16,6 +16,29 @@
   <li><a href="https://github.com/Neetrah">@Neetrah</a> - Designer</li>
   <li><a href="https://github.com/Sanvirus">@Sanvirus</a> - Tasks, game logic</li>
 </ul>
+<h2>Tech stack:</h2>
+<table>
+  <tr>
+    <th>Language</th>
+    <th>Typescript</th>
+  </tr>
+  <tr>
+    <th>Frontend</th>
+    <th>NextJS</th>
+  </tr>
+  <tr>
+    <th>Database</th>
+    <th>MongoDB</th>
+  </tr>
+  <tr>
+    <th>Socket</th>
+    <th>Socket.IO</th>
+  </tr>
+  <tr>
+    <th>Stylesheet</th>
+    <th>Sass/Scss</th>
+  </tr>
+</table>
 <h2>Run locally:</h2>
 <ul>
   <li>Download git <a href="https://git-scm.com/downloads">here</a></li>
