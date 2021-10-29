@@ -23,7 +23,7 @@
                 align-items: flex-start;
                 justify-content: flex-start;
                 flex-direction: column;
-                margin: 0 0 10px 0;
+                margin: 0 0 10px;
 
                 label{
                     margin-bottom: 4px;
@@ -71,7 +71,7 @@
             }
 
             &__link{
-                margin: 0 0 10px 0;
+                margin: 0 0 10px;
 
                 p{
                     a{
@@ -88,7 +88,7 @@
                 width: 100%;
                 height: 40px;
                 cursor: pointer;
-                margin: 20px 0 0 0;
+                margin: 20px 0 0;
             }
         }
     }

@@ -46,9 +46,9 @@ const createRoom = async (req: any, res: any) => {
         }
 
         const newRoom = new Rooms({
-            roomName, 
-            totalStages, 
-            maxPlayers, 
+            roomName,
+            totalStages,
+            maxPlayers,
             isPrivate,
             admin: admin.id,
         });
