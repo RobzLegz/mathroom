@@ -13,23 +13,27 @@ export default function Home() {
   const dispatch = useDispatch();
   const router = useRouter();
 
+//   useEffect(() => {
+//     const socket = getSocket();
+
+//     if(!socketInfo.connected || !socket){
+//       dispatch(setSocket(true));
+//     }
+//   }, [socketInfo.connected]);
+
+//   useEffect(() => {
+//     if(!userInfo.loggedIn || !userInfo.token){
+//       const token = window.localStorage.getItem("refreshtoken");
+
+//       if(token){
+//         checkForLogin(dispatch, router);
+//       }
+//     }
+// }, [userInfo.loggedIn, dispatch, userInfo.token, router]);
+
   useEffect(() => {
-    const socket = getSocket();
-
-    if(!socketInfo.connected || !socket){
-      dispatch(setSocket(true));
-    }
-  }, [socketInfo.connected]);
-
-  useEffect(() => {
-    if(!userInfo.loggedIn || !userInfo.token){
-      const token = window.localStorage.getItem("refreshtoken");
-
-      if(token){
-        checkForLogin(dispatch, router);
-      }
-    }
-}, [userInfo.loggedIn, dispatch, userInfo.token, router]);
+    router.push("/menu");
+  }, [])
 
   return (
     <div>

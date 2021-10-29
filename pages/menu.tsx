@@ -33,11 +33,13 @@ export default function Menu() {
     }, [userInfo.loggedIn, dispatch, userInfo.token, router]);
 
     return (
-        <div>
+        <div className="menu">
             <Head>
                 <title>MathRoom | Menu</title>
             </Head>
+
             <Notification />
+
             <MenuContainer />
         </div>
     )

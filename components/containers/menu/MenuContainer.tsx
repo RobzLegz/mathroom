@@ -2,7 +2,7 @@ import React from 'react'
 
 function MenuContainer() {
     return (
-        <div>
+        <div className="menu__container">
             
         </div>
     )
