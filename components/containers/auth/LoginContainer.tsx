@@ -32,10 +32,10 @@ function LoginContainer() {
             <div className="auth__container__form">
                 <div className="auth__container__form__field">
                     <label htmlFor="login_email">email</label>
-                    <input 
-                        type="email" 
-                        name="login_email" 
-                        id="login_email" 
+                    <input
+                        type="email"
+                        name="login_email"
+                        id="login_email"
                         placeholder="email"
                         value={email}
                         onChange={(e) => {setEmail(e.target.value);setClicked(false)}}
@@ -44,10 +44,10 @@ function LoginContainer() {
                 </div>
                 <div className="auth__container__form__field">
                     <label htmlFor="login_password">password</label>
-                    <input 
-                        type="password" 
-                        name="login_password" 
-                        id="login_password" 
+                    <input
+                        type="password"
+                        name="login_password"
+                        id="login_password"
                         placeholder="password"
                         value={password}
                         onChange={(e) => {setPassword(e.target.value);setClicked(false)}}

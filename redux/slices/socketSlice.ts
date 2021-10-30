@@ -43,7 +43,7 @@ export const socketSlice = createSlice({
     },
 });
 
-export const { 
+export const {
     setSocket,
     setOnlineUsers
 } = socketSlice.actions;

@@ -36,7 +36,7 @@ export const userSlice = createSlice({
     },
 });
 
-export const { 
+export const {
     login,
     setUserInfo,
     setToken,

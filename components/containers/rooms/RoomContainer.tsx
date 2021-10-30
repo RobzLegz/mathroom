@@ -115,7 +115,7 @@ const RoomContainer: React.FC = () => {
                             <h3>{room.totalStages}</h3>
                             <h3>{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
                             <button
-                                className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`} 
+                                className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`}
                                 onClick={() => {
                                     if(!userInfo.loggedIn || !userInfo.token){
                                         return dispatch(setNotification({type: "error", message: "You must be logged in to join room"}))

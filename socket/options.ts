@@ -118,10 +118,10 @@ const startSocketGame = (roomId: string) => {
 }
 
 export {
-    connectToSocket, 
-    createRoom, 
-    sendSocketMessage, 
-    joinRoom, 
+    connectToSocket,
+    createRoom,
+    sendSocketMessage,
+    joinRoom,
     exitSocketRoom,
     startSocketGame
 };

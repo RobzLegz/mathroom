@@ -46,8 +46,8 @@ const validateURL = (websiteURL: string) => {
 export default valid;
 
 export {
-    validateEmail, 
-    validatePhoneNumber, 
-    validateAddress, 
+    validateEmail,
+    validatePhoneNumber,
+    validateAddress,
     validateURL
 };

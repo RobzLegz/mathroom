@@ -89,10 +89,10 @@ function WaitingRoom() {
                                 )
                             })}
                             <form className="gameRoom__waiting__inner__body__chat__box">
-                                <input 
-                                    type="text" 
-                                    name="" 
-                                    id="" 
+                                <input
+                                    type="text"
+                                    name=""
+                                    id=""
                                     placeholder={`Message ${roomInfo.activeRoom.roomName}`}
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
@@ -105,14 +105,14 @@ function WaitingRoom() {
                     <div className="gameRoom__waiting__inner__buttons">
                         {roomInfo.activeRoom.admin === userInfo.info._id ? (
                             <>
-                                <button 
-                                    className="gameRoom__waiting__inner__buttons__red" 
+                                <button
+                                    className="gameRoom__waiting__inner__buttons__red"
                                     onClick={() => disbandRoom(roomInfo.activeRoom._id, userInfo.token, dispatch, router)}
                                 >
                                     Disband room
                                 </button>
-                                <button 
-                                    className="gameRoom__waiting__inner__buttons__purple" 
+                                <button
+                                    className="gameRoom__waiting__inner__buttons__purple"
                                     onClick={() => {if(roomInfo.roomUsers.filter((user: RoomUser) => user.roomId === id).length > 0){startGame(id, userInfo.token, dispatch)}}}
                                 >
                                     Start game

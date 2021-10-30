@@ -33,7 +33,7 @@ const sendMessage = (e: any, roomId: string | string[] | undefined, message: str
     }
 
     if(!message || message.length === 0){
-        return 
+        return
     }
 
     const data: Message = {

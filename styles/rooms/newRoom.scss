@@ -7,7 +7,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 100px 0 0 0;
+    padding: 100px 0 0;
 
     &__container{
         width: 600px;
@@ -33,7 +33,7 @@
             padding: 20px 10px;
             border-radius: 5px;
             background-color: $mathRoomContainerBG;
-            margin: 30px 0 0 0;
+            margin: 30px 0 0;
 
             &__opt{
                 width: 100%;
@@ -71,7 +71,7 @@
                 align-items: center;
                 justify-content: space-between;
                 padding: 0 20px;
-                margin: 20px 0 0 0;
+                margin: 20px 0 0;
 
                 &__opt{
                     width: 200px;
@@ -96,7 +96,7 @@
         &__options{
             width: 100%;
             padding: 0 15px;
-            margin: 30px 0 0 0;
+            margin: 30px 0 0;
             display: flex;
             align-items: center;
             justify-content: space-between;

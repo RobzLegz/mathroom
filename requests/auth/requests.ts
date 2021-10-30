@@ -4,7 +4,7 @@ import { clearNotification, setNotification } from "../../redux/slices/notificat
 import axios from "axios";
 
 const registerUser = (e: any, username: string, email: string, password: string, cfPassword: string, agreedToPrivacyPolicy: boolean, dispatch: any, router: any, clicked: boolean, setClicked: any) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     if(clicked){
         return
@@ -21,7 +21,7 @@ const registerUser = (e: any, username: string, email: string, password: string,
     
     if(!agreedToPrivacyPolicy){
         return dispatch(setNotification({type: "error", message: "To register You must accept our privacy policy!"}));
-    }  
+    }
     
     const userData = {
         username: username,
@@ -79,7 +79,7 @@ const loginUser = (e: any, email: string, password: string, dispatch: any, route
             });
     }else{
         dispatch(setNotification({type: "error", message: "Please enter a valid email!"}));
-    }    
+    }
 }
 
 const checkForLogin = (dispatch: any, router: any) => {
