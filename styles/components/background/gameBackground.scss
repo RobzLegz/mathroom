@@ -1,4 +1,15 @@
+.backgroundLines{
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
 .line{
+    z-index: 0;
     position: absolute;
     background-color: $mathRoomDarkPurple;
     
@@ -77,16 +88,8 @@
     &9{
         width: 271.03px;
         height: 839.03px;
-        right: 31.09px;
+        right: -130.09px;
         top: 372px;
-        transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
-    }
-
-    &10{
-        width: 153.38px;
-        height: 793.87px;
-        right: -100.57px;
-        top: 624px;
         transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
     }
 }

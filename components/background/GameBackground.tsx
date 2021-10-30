@@ -6,7 +6,7 @@ interface Props{
 
 const GameBackground: React.FC<Props> = ({color}) => {
     return (
-        <>
+        <div className="backgroundLines">
             <div className={`line line__${color} line1`}></div>
             <div className={`line line__${color} line2`}></div>
             <div className={`line line__${color} line3`}></div>
@@ -16,8 +16,7 @@ const GameBackground: React.FC<Props> = ({color}) => {
             <div className={`line line__${color} line7`}></div>
             <div className={`line line__${color} line8`}></div>
             <div className={`line line__${color} line9`}></div>
-            <div className={`line line__${color} line10`}></div>
-        </>
+        </div>
     )
 }
 
