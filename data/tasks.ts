@@ -247,7 +247,7 @@ const tasks = [
         type: "kilometers apart",
         text: "Two skaters go from the skate park in opposite directions at the same time at speeds of 9 km / h and 6 km / h respectively. How far apart will they be in 4 hours?",
         result: "60km",
-        image: "https://user-images.githubusercontent.com/91952766/139092810-049ef90c-6435-4208-b57b-cdd1aaff04ec.png", 
+        image: "https://user-images.githubusercontent.com/91952766/139092810-049ef90c-6435-4208-b57b-cdd1aaff04ec.png",
         units: "kilometers",
         info: "You nead to calculate",
     },
@@ -350,7 +350,7 @@ const tasks = [
         units: "km",
         info: "calculate",
     },
-    {    
+    {
         level: "14",
         type: "m/min",
         text: "Express the given unit -7m / min per m / h.",
@@ -359,7 +359,7 @@ const tasks = [
         units: "meters in hour",
         info: "convert",
     },
-    {    
+    {
         level: "14",
         type: "m/min",
         text: "Express the given unit -9m / min per m / h.",
@@ -368,7 +368,7 @@ const tasks = [
         units: "meters in hour",
         info: "convert",
     },
-    {    
+    {
         level: "14",
         type: "m/min",
         text: "Express the given unit -5m / min per m / h.",
