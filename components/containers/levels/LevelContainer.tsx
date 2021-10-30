@@ -7,7 +7,9 @@ function LevelContainer() {
 
     return (
         <div className="levels__container">
-            {tasks.map((task, i) => {
+            {tasks
+                .sort((a, b) => {return Number(a.level) - Number(b.level)})
+                .map((task, i) => {
                 if(!pushedLevels.includes(task.level)){
                     pushedLevels.push(task.level);
 
