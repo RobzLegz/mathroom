@@ -20,7 +20,7 @@ function MenuContainer() {
             <div className="menu__container__options">
                 {showGamemodes ? (
                     <>
-                        <button className="button button__gamemode" onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}router.push("/rooms")}}>Singleplayer</button>
+                        <button className="button button__gamemode" onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}router.push("/levels")}}>Singleplayer</button>
                         <button className="button button__gamemode" onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}router.push("/rooms")}}>Multiplayer</button>
                     </>
                 ) : (
