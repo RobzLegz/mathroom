@@ -27,7 +27,7 @@ function MenuContainer() {
                     <button className="button button__play" onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}setShowGamemodes(true)}}>Play</button>
                 )}
                 <button className="button" onClick={() => router.push("/instructions")}>Instructions</button>
-                {!userInfo.loggedIn || !userInfo.token && (<button className="button" onClick={() => router.push("/auth/login")}>Authorize</button>)}
+                {userInfo.loggedIn && userInfo.token && userInfo.info ? (null) : <button className="button" onClick={() => router.push("/auth/login")}>Authorize</button>}
             </div>
 
             <div className="menu__container__decorations">
