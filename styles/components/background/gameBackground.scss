@@ -1,0 +1,94 @@
+.backgroundLines{
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.line{
+    position: absolute;
+    background-color: $mathRoomDarkPurple;
+    
+    &__purple{
+        background: $mathRoomDarkPurple;
+    }
+
+    &__blue{
+        background: $mathRoomBlueStripe;
+    }
+
+    &1{
+        width: 153.38px;
+        height: 839.03px;
+        left: -37.91px;
+        top: 351.93px;
+        transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+    }
+
+    &2{
+        width: 189.55px;
+        height: 896.91px;
+        left: 194.46px;
+        top: 254px;
+        transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+    }
+
+    &3{
+        width: 153.38px;
+        height: 839.03px;
+        left: 337.09px;
+        top: 561px;
+        transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+    }
+
+    &4{
+        width: 153.38px;
+        height: 839.03px;
+        left: 577.8px;
+        top: 447.69px;
+        transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+    }
+
+    &5{
+        width: 271.03px;
+        height: 839.03px;
+        left: 801.09px;
+        top: 372px;
+        transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+    }
+
+    &6{
+        width: 153.38px;
+        height: 793.87px;
+        left: 1050.57px;
+        top: 612px;
+        transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+    }
+
+    &7{
+        width: 153.38px;
+        height: 839.03px;
+        left: 1351.09px;
+        top: 308px;
+        transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+    }
+
+    &8{
+        width: 153.38px;
+        height: 793.87px;
+        left: 1461.57px;
+        top: 624px;
+        transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+    }
+
+    &9{
+        width: 271.03px;
+        height: 839.03px;
+        right: -130.09px;
+        top: 372px;
+        transform: matrix(0.95, 0.28, -0.3, 0.96, 0, 0);
+    }
+}

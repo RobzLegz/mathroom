@@ -10,6 +10,7 @@ import { checkForLogin } from "../../requests/auth/requests";
 import { joinRoom } from "../../socket/options";
 import { getSocket, selectSocket, setSocket } from "../../redux/slices/socketSlice";
 import Notification from "../../components/notifications/Notification";
+import GameBackground from "../../components/background/GameBackground";
 
 interface Message{
     roomID: string;
@@ -83,6 +84,8 @@ function room() {
             <Notification />
 
             <ActiveRoom />
+
+            <GameBackground color={"blue"} />
         </div>
     )
 }
