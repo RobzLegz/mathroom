@@ -5,7 +5,7 @@ import LevelContainer from "../../components/containers/levels/LevelContainer";
 
 function index() {
     return (
-        <div>
+        <div className="levels">
             <Head>
                 <title>MathRoom | Levels</title>
             </Head>
