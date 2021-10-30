@@ -24,7 +24,7 @@ function MenuContainer() {
             <div className="menu__container__decorations">
                 <img className="image image1" src="/svg/sandClock.svg" alt="sand clock ticking in blue color slightly rotated to right side" />
                 <img className="image image2" src="/svg/clock.svg" alt="clock with two arrows in red color slightly rotated to left side" />
-                <img className="image image3" src="/svg/timer.svg" alt="purple timer ticking" />                
+                <img className="image image3" src="/svg/timer.svg" alt="purple timer ticking" />
             </div>
             
             <GameBackground color={"purple"} />
