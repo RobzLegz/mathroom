@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import NewRoomContainer from "../../components/containers/rooms/NewRoomContainer";
 import Notification from "../../components/notifications/Notification";
+import GameBackground from "../../components/background/GameBackground";
 
 function newRoom() {
     return (
@@ -13,6 +14,8 @@ function newRoom() {
             <Notification />
 
             <NewRoomContainer />
+
+            <GameBackground color={"blue"} />
         </div>
     )
 }

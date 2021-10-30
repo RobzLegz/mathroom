@@ -6,7 +6,6 @@ import { addRoom, removeRoom, selectRooms, setActiveRoom, setRooms, setRoomUsers
 import { getSocket, selectSocket, setSocket } from "../../../redux/slices/socketSlice";
 import { selectUser } from "../../../redux/slices/userSlice";
 import { getRooms } from "../../../requests/rooms/requests";
-import GameBackground from "../../background/GameBackground";
 
 interface Room{
     roomName: string;
@@ -136,8 +135,6 @@ const RoomContainer: React.FC = () => {
                     </div>
                 )}
             </div>
-
-            <GameBackground color={"blue"} />
         </div>
     )
 }

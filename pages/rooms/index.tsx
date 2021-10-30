@@ -6,6 +6,7 @@ import { selectUser } from "../../redux/slices/userSlice";
 import { checkForLogin } from "../../requests/auth/requests";
 import { useRouter } from "next/dist/client/router";
 import Notification from "../../components/notifications/Notification";
+import GameBackground from "../../components/background/GameBackground";
 
 const index: React.FC = () => {
     const userInfo = useSelector(selectUser);
@@ -32,6 +33,8 @@ const index: React.FC = () => {
             <Notification />
 
             <RoomContainer />
+
+            <GameBackground color={"blue"} />
         </div>
     )
 }
