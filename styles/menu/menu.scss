@@ -55,6 +55,14 @@
                         background-color: $mathRoomRed;
                     }
                 }
+
+                &__gamemode{
+                    background-color: $mathRoomBG;
+
+                    &:hover{
+                        background-color: $mathRoomBlueStripe;
+                    }
+                }
             }
         }
 
