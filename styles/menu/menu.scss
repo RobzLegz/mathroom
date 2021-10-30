@@ -18,7 +18,7 @@
         flex-direction: column;
 
         h1{
-            z-index: 2;
+            z-index: 3;
             font-size: $headingSize;
             color: $mathRoomContainerBG;
             font-family: $menuFont;
@@ -29,7 +29,7 @@
             display: flex;
             align-items: center;
             flex-direction: column;
-            z-index: 2;
+            z-index: 3;
 
             .button{
                 width: 300px;
@@ -40,7 +40,6 @@
                 outline: none;
                 cursor: pointer;
                 transition: all 0.3s ease;
-                z-index: 3;
                 font-size: $buttonText;
                 color: $mathRoomContainerBG;
                 background-color: $mathRoomButton;
