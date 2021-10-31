@@ -9,6 +9,7 @@ import RoadCalculation from '../levels/RoadCalculation';
 import RoadCalculationSecond from '../levels/RoadCalculationSecond';
 import RomanNumerals from '../levels/RomanNumerals';
 import SecondAmount from '../levels/SecondAmount';
+import SpeedCalculation from '../levels/SpeedCalculation';
 import TimeCalculation from '../levels/TimeCalculation';
 import TimeDifference from '../levels/TimeDifference';
 import TimeDifferenceMinutes from '../levels/TimeDifferenceMinutes';
@@ -115,6 +116,10 @@ const DisplayLevel: React.FC = () => {
 
     if(activeTask.type === "m/min to m/h"){
         return <MminToMh />
+    }
+
+    if(activeTask.type === "speed calculation"){
+        return <SpeedCalculation />
     }
 
     return null;
