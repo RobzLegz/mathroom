@@ -2,6 +2,8 @@ import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
 import tasks from '../data/tasks';
 import TimeDifference from '../levels/TimeDifference';
+import TimeDifferenceMinutes from '../levels/TimeDifferenceMinutes';
+import TimeDifferenceMinutesSecond from '../levels/TimeDifferenceMinutesSecond';
 import TimeSum from '../levels/TimeSum';
 import TypeAge from '../levels/TypeAge';
 
@@ -60,6 +62,14 @@ const DisplayLevel: React.FC = () => {
 
     if(activeTask.type === "time difference"){
         return <TimeDifference />
+    }
+
+    if(activeTask.type === "time difference minutes"){
+        return <TimeDifferenceMinutes />
+    }
+
+    if(activeTask.type === "time difference minutes2"){
+        return <TimeDifferenceMinutesSecond />
     }
 
     return null;

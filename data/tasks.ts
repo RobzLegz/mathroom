@@ -9,24 +9,6 @@ const tasks = [
         info: "enter your age",
     },
     {
-        level: "1",
-        type: "age",
-        text: "If you were born in 2005, how old are you?",
-        result: "16",
-        image: "",
-        units: "years",
-        info: "enter your age",
-    },
-    {
-        level: "1",
-        type: "age",
-        text: "If you were born in 1990, how old are you?",
-        result: "31",
-        image: "",
-        units: "years",
-        info: "enter your age",
-    },
-    {
         level: "2",
         type:"time sum",
         text: "What time will the train arrive at the terminal if it leaves at 2:00 and spend 4 h 22 min on the way?",
@@ -82,7 +64,7 @@ const tasks = [
     },
     {
         level: "4",
-        type: "year types",
+        type: "time difference minutes",
         text: "Determine which are the long years: 2044.g., 2088.g., 2045.g., 2061.g., 2046?",
         result: "-2044.g. un 2088.g.",
         image: "https://st4.depositphotos.com/4248271/41453/i/600/depositphotos_414532206-stock-photo-2043-2044-new-year-2043.jpg",
@@ -91,7 +73,7 @@ const tasks = [
     },
     {
         level: "4",
-        type: "year types",
+        type: "time difference minutes",
         text: "Determine which are the long years: 1920.g., 1988.g., 1945.g., 1961.g., 1846?",
         result: "-1988.g. un 1920.g.",
         image: "https://st4.depositphotos.com/4248271/41453/i/600/depositphotos_414532206-stock-photo-2043-2044-new-year-2043.jpg",
@@ -100,7 +82,7 @@ const tasks = [
     },
     {
         level: "4",
-        type: "year types",
+        type: "time difference minutes",
         text: "Determine which are the long years: 2044.g., 2088.g., 2045.g., 2061.g., 2046?",
         result: "-2044.g. un 2088.g.",
         image: "https://st4.depositphotos.com/4248271/41453/i/600/depositphotos_414532206-stock-photo-2043-2044-new-year-2043.jpg",
@@ -109,7 +91,7 @@ const tasks = [
     },
     {
         level: "5",
-        type: "time difference",
+        type: "time difference minutes2",
         text:"The two girls spent 96 minutes together in the store. Calculations of how much time the other girls spent in the store. Jumchan was in the store for 46 min, but the other girl:",
         result: "52",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjjba-Rwqxy4l59VuN4Gaownj_0yOqqW_JeiGu4U60LXyB32vhmePJs6AziQJV-l4uNlc&usqp=CAU",
@@ -118,7 +100,7 @@ const tasks = [
     },
     {
         level: "5",
-        type: "time difference",
+        type: "time difference minutes2",
         text:"The two girls spent 100 minutes together in the store. Calculations of how much time the other girls spent in the store. Jumchan was in the store for 46 min, but the other girl:",
         result: "54",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjjba-Rwqxy4l59VuN4Gaownj_0yOqqW_JeiGu4U60LXyB32vhmePJs6AziQJV-l4uNlc&usqp=CAU",
@@ -127,7 +109,7 @@ const tasks = [
     },
     {
         level: "5",
-        type: "time difference",
+        type: "time difference minutes2",
         text:"The two girls spent 150 minutes together in the store. Calculations of how much time the other girls spent in the store. Jumchan was in the store for 66 min, but the other girl:",
         result: "84",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjjba-Rwqxy4l59VuN4Gaownj_0yOqqW_JeiGu4U60LXyB32vhmePJs6AziQJV-l4uNlc&usqp=CAU",
