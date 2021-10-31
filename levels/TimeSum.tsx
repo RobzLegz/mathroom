@@ -25,6 +25,11 @@ const options = [
         leaves: "23:00",
         spends: "2 hours and 20 minutes",
         correct: "01:20"
+    },
+    {
+        leaves: "18:00",
+        spends: "1 hour and 50 minutes",
+        correct: "19:50"
     }
 ]
 
