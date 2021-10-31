@@ -16,12 +16,22 @@ interface Task{
 const DisplayLevel: React.FC = () => {
     const [foundTask, setFoundTask] = useState<boolean>(false);
     const [activeTask, setActiveTask] = useState<null | Task>(null);
+    const [prevLevel, setPrevLevel] = useState<null | string>(null);
 
     const router = useRouter();
 
     const {level} = router.query;
 
     useEffect(() => {
+        if(!prevLevel){
+            setPrevLevel(String(level));
+        }
+
+        if(level !== prevLevel){
+            setPrevLevel(String(level));
+            setFoundTask(false);
+        }
+
         if(!foundTask){
             const taskOptions = tasks.filter((task) => task.level === String(level));
 
