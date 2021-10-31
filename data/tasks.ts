@@ -69,11 +69,11 @@ const tasks = [
     },
     {
         level: "18",
-        type: "time from acceleration + distance",
+        type: "acceleration calculation",
     },
     {
         level: "19",
-        type: "coordinate calculation from time and equation",
+        type: "time from acceleration + distance",
     },
     {
         level: "20",

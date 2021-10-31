@@ -27,6 +27,7 @@ const DayAmount: React.FC = () => {
 
         if(userInfo.info){
             if(userInfo.info.level > Number(level)){
+                dispatch(setNotification({type: "success", message: "Congrats, You answered correctly!"}));
                 return router.push(`/levels/${Number(level) + 1}`)
             }
 

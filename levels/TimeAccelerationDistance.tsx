@@ -31,7 +31,8 @@ const TimeAccelerationDistance: React.FC = () => {
 
         if(userInfo.info){
             if(userInfo.info.level > Number(level)){
-                return router.push(`/levels/${Number(level) + 1}`)
+                dispatch(setNotification({type: "success", message: "Congrats, You answered correctly!"}));
+                return router.push(`/levels/${Number(level) + 1}`);
             }
 
             if(userInfo.level < Number(level)){
