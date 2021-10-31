@@ -23,7 +23,7 @@ const DisplayLevel: React.FC = () => {
 
     useEffect(() => {
         if(!foundTask){
-            const taskOptions = tasks.filter((task) => task.level === level);
+            const taskOptions = tasks.filter((task) => task.level === String(level));
 
             if(taskOptions){
                 setActiveTask(taskOptions[Math.floor(Math.random() * (taskOptions.length - 1))])

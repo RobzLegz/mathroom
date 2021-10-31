@@ -45,7 +45,7 @@ function Level() {
     
                 <Notification />
 
-                <DisplayLevel level={level} />
+                <DisplayLevel />
 
                 <GameBackground color={"blue"} />
             </div>
