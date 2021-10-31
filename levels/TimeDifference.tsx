@@ -10,6 +10,31 @@ const options = [
         rises: "08.00",
         sets: "17.00",
         correct: "Day is 9 hours long."
+    },
+    {
+        rises: "06.30",
+        sets: "22.00",
+        correct: "Day is 15 hours and 30 minutes long."
+    },
+    {
+        rises: "08.00",
+        sets: "17.00",
+        correct: "Day is 9 hours long."
+    },
+    {
+        rises: "08.00",
+        sets: "17.00",
+        correct: "Day is 9 hours long."
+    },
+    {
+        rises: "08.00",
+        sets: "17.00",
+        correct: "Day is 9 hours long."
+    },
+    {
+        rises: "08.00",
+        sets: "17.00",
+        correct: "Day is 9 hours long."
     }
 ]
 
@@ -25,9 +50,6 @@ const TimeDifference: React.FC = () => {
     const router = useRouter();
 
     const {level} = router.query;
-
-    console.log(`Day is ${selectedHours} hours${selectedMinutes > 0 ? ` and ${selectedMinutes} minutes` : ""} long.`);
-    console.log(selectedOption.correct);
 
     const completeLevel = (e: any) => {
         e.preventDefault();
