@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
+import { nextLevel } from '../requests/levels/requests';
 
 interface Props{
     description: string;
@@ -24,6 +25,10 @@ const TypeAge: React.FC<Props> = ({description}) => {
     const completeLevel = (e: any) => {
         e.preventDefault();
 
+        if(selectedAge !== correctAnswer){
+            return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
+        }
+
         if(userInfo.info){
             if(userInfo.info.level >= Number(level)){
                 return router.push(`/levels/${Number(level) + 1}`)
@@ -33,6 +38,8 @@ const TypeAge: React.FC<Props> = ({description}) => {
                 dispatch(setNotification({type: "error", message: "You can't be on this level"}));
                 return router.push("/levels")
             }
+
+            nextLevel(Number(level), userInfo.token, router, dispatch);
         }
     }
 
