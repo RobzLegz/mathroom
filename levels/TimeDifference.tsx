@@ -17,24 +17,34 @@ const options = [
         correct: "Day is 15 hours and 30 minutes long."
     },
     {
-        rises: "08.00",
+        rises: "05.30",
+        sets: "19.00",
+        correct: "Day is 13 hours and 30 minutes long."
+    },
+    {
+        rises: "05.45",
         sets: "17.00",
-        correct: "Day is 9 hours long."
+        correct: "Day is 11 hours and 15 minutes long."
     },
     {
         rises: "08.00",
-        sets: "17.00",
-        correct: "Day is 9 hours long."
+        sets: "16.00",
+        correct: "Day is 8 hours and 30 minutes long."
     },
     {
-        rises: "08.00",
-        sets: "17.00",
-        correct: "Day is 9 hours long."
+        rises: "07.40",
+        sets: "18.00",
+        correct: "Day is 10 hours and 20 minutes long."
     },
     {
-        rises: "08.00",
-        sets: "17.00",
-        correct: "Day is 9 hours long."
+        rises: "04.50",
+        sets: "19.20",
+        correct: "Day is 13 hours and 30 minutes long."
+    },
+    {
+        rises: "06.45",
+        sets: "17.35",
+        correct: "Day is 10 hours and 50 minutes long."
     }
 ]
 
