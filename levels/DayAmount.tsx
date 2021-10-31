@@ -9,9 +9,8 @@ const DayAmount: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(1);
-    const [years] = useState<number>(Math.floor((Math.random() * 5) + 1));
-    const [months] = useState<number>(Math.floor((Math.random() * 11) + 1));
-    const [age] = useState<number>(Math.floor((Math.random() * 19) + 14));
+    const [weeks] = useState<number>(Math.floor((Math.random() * 5) + 1));
+    const [days] = useState<number>(Math.floor((Math.random() * 6) + 1));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -22,7 +21,7 @@ const DayAmount: React.FC = () => {
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedAge !== ((years * 12) + months)){
+        if(selectedAge !== ((weeks * 7) + days)){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
@@ -49,7 +48,7 @@ const DayAmount: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Peter's {age}th birthday is in {years} years and {months} months. After how many months Peter is going to be {age} years old?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>Sally's pay day is in {weeks} weeks and {days} days. After how many days Sally will recieve her salary?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
@@ -59,7 +58,7 @@ const DayAmount: React.FC = () => {
                             value={selectedAge}
                             onChange={(e) => setSelectedAge(Number(e.target.value))}
                             min="1"
-                            max="80"
+                            max="50"
                         />
                         <strong>{selectedAge}</strong>
                     </div>
