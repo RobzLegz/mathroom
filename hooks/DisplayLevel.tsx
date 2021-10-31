@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import tasks from '../data/tasks';
 import DayAmount from '../levels/DayAmount';
 import KilometersApart from '../levels/KilometersApart';
+import MminToMh from '../levels/MminToMh';
 import MonthAmount from '../levels/MonthAmount';
 import RoadCalculation from '../levels/RoadCalculation';
 import RoadCalculationSecond from '../levels/RoadCalculationSecond';
@@ -110,6 +111,10 @@ const DisplayLevel: React.FC = () => {
 
     if(activeTask.type === "time calculation"){
         return <TimeCalculation />
+    }
+
+    if(activeTask.type === "m/min to m/h"){
+        return <MminToMh />
     }
 
     return null;
