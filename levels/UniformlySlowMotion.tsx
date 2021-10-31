@@ -51,7 +51,7 @@ const UniformlySlowMotion: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>A car is driving at a speed of {startingSpeed} km/h and it accelerates for {time} seconds with acceleration of {acceleration} km/sec. What is the final speed of the car?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>A car is driving at a speed of {startingSpeed} km/h and it accelerates for {time} seconds with the acceleration of {acceleration} km/sec. What is the final speed of the car?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
