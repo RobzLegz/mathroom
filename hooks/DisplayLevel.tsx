@@ -1,6 +1,7 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
 import tasks from '../data/tasks';
+import TimeSum from '../levels/TimeSum';
 import TypeAge from '../levels/TypeAge';
 
 interface Task{
@@ -42,12 +43,18 @@ const DisplayLevel: React.FC = () => {
         }
     }, [activeTask, tasks, foundTask, level]);
 
+    console.log(activeTask)
+
     if(!activeTask || !activeTask.type){
         return null;
     }
 
     if(activeTask.type === "age"){
         return <TypeAge description={activeTask.info} />
+    }
+
+    if(activeTask.type === "time sum"){
+        return <TimeSum description={activeTask.info} />
     }
 
     return null;
