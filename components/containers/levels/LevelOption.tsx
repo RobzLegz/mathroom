@@ -7,11 +7,6 @@ import { selectUser } from "../../../redux/slices/userSlice";
 interface Task{
     level: string;
     type: string;
-    text: string;
-    result: string;
-    image: string;
-    units: string;
-    info: string;
 }
 
 interface Props{

@@ -17,15 +17,11 @@ import TimeDifferenceMinutes from '../levels/TimeDifferenceMinutes';
 import TimeDifferenceMinutesSecond from '../levels/TimeDifferenceMinutesSecond';
 import TimeSum from '../levels/TimeSum';
 import TypeAge from '../levels/TypeAge';
+import UniformlySlowMotion from '../levels/UniformlySlowMotion';
 
 interface Task{
     level: string;
     type: string;
-    text: string;
-    result: string;
-    image: string;
-    units: string;
-    info: string;
 }
 
 const DisplayLevel: React.FC = () => {
@@ -125,6 +121,10 @@ const DisplayLevel: React.FC = () => {
 
     if(activeTask.type === "acceleration calculation"){
         return <AccelerationCalculation />
+    }
+
+    if(activeTask.type === "uniformly slow motion"){
+        return <UniformlySlowMotion />
     }
 
     return null;

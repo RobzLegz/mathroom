@@ -7,17 +7,17 @@ function LevelContainer() {
 
     return (
         <div className="levels__container">
-            {tasks
-                .sort((a, b) => {return Number(a.level) - Number(b.level)})
-                .map((task, i) => {
-                if(!pushedLevels.includes(task.level)){
-                    pushedLevels.push(task.level);
+            {
+                tasks
+                    .sort((a, b) => {return Number(a.level) - Number(b.level)})
+                    .map((task, i) => {
+                    if(!pushedLevels.includes(task.level)){
+                        pushedLevels.push(task.level);
 
-                    return(
-                        <LevelOption key={i} task={task} />
-                    )
-                }
-
+                        return(
+                            <LevelOption key={i} task={task} />
+                        )
+                    }
                 return null;
             })}
         </div>
