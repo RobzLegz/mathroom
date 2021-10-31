@@ -83,8 +83,8 @@ const TimeSum: React.FC = () => {
                 <div className="level__container__options__tools">
                     <strong>{selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours} : {selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}</strong>
                     <div className="inputContainer">
-                        <input 
-                            type="range" 
+                        <input
+                            type="range"
                             min="0"
                             max="23"
                             value={selectedHours}
@@ -93,8 +93,8 @@ const TimeSum: React.FC = () => {
                         <strong>{selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}</strong>
                     </div>
                     <div className="inputContainer">
-                        <input 
-                            type="range" 
+                        <input
+                            type="range"
                             min="0"
                             max="59"
                             value={selectedMinutes}

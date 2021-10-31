@@ -58,14 +58,14 @@ const AccelerationCalculation: React.FC = () => {
                 <div className="level__container__options__tools">
                     <div className="inputContainer">
                         {writing ? (
-                            <input 
-                                type="number" 
+                            <input
+                                type="number"
                                 value={selectedAge.toString()}
                                 onChange={(e) => {if(e.target.value.length > 3){return}setSelectedAge(Number(e.target.value))}}
                             />
                         ) : (
-                            <input 
-                                type="range" 
+                            <input
+                                type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
                                 min="0"

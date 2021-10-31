@@ -54,8 +54,8 @@ const TypeAge: React.FC = () => {
             <div className="level__container__options">
                 <div className="level__container__options__tools">
                     <div className="inputContainer">
-                        <input 
-                            type="range" 
+                        <input
+                            type="range"
                             value={selectedAge}
                             onChange={(e) => setSelectedAge(Number(e.target.value))}
                             min="5"

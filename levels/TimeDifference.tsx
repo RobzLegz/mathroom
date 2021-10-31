@@ -98,8 +98,8 @@ const TimeDifference: React.FC = () => {
                 <div className="level__container__options__tools">
                     <strong>Day is {selectedHours} hours {selectedMinutes > 0 && `and ${selectedMinutes} minutes`} long.</strong>
                     <div className="inputContainer">
-                        <input 
-                            type="range" 
+                        <input
+                            type="range"
                             min="8"
                             max="13"
                             value={selectedHours}
@@ -108,8 +108,8 @@ const TimeDifference: React.FC = () => {
                         <strong>{selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}</strong>
                     </div>
                     <div className="inputContainer">
-                        <input 
-                            type="range" 
+                        <input
+                            type="range"
                             min="0"
                             max="59"
                             value={selectedMinutes}
