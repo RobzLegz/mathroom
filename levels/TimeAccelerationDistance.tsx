@@ -9,10 +9,10 @@ const TimeAccelerationDistance: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(5);
-    const [startingSpeed] = useState<number>(Math.floor((Math.random() * 22) + 7));
-    const [acceleration] = useState<number>(Math.floor((Math.random() * 5) + 2));
+    const [startingSpeed] = useState<number>(Math.floor((Math.random() * 12) + 6));
+    const [acceleration] = useState<number>(Math.floor((Math.random() * 4) + 2));
     const [time] = useState<number>(Math.floor((Math.random() * 7) + 2));
-    const [finalSpeed] = useState<number>(startingSpeed + acceleration * time);
+    const [distance] = useState<number>((startingSpeed * time) + ((acceleration * time**2) / 2) - time);
     const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
@@ -21,10 +21,11 @@ const TimeAccelerationDistance: React.FC = () => {
 
     const {level} = router.query;
 
+    console.log(time)
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedAge !== acceleration){
+        if(selectedAge !== time){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
@@ -51,7 +52,7 @@ const TimeAccelerationDistance: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>In smoothly accelerated motion, the final speed of the body is {finalSpeed} m/s, but the starting speed is {startingSpeed} m/s. The acceleration happened in {time} seconds. Calculate the acceleration.<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>Calculate the time during which a car, moving at an acceleration of {acceleration} km/sec, travels a distance of {distance} km, if at the beginning the movement speed was {startingSpeed} km/h!<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
