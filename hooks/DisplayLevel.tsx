@@ -4,6 +4,7 @@ import tasks from '../data/tasks';
 import DayAmount from '../levels/DayAmount';
 import KilometersApart from '../levels/KilometersApart';
 import MonthAmount from '../levels/MonthAmount';
+import RoadCalculation from '../levels/RoadCalculation';
 import RomanNumerals from '../levels/RomanNumerals';
 import SecondAmount from '../levels/SecondAmount';
 import TimeDifference from '../levels/TimeDifference';
@@ -95,6 +96,10 @@ const DisplayLevel: React.FC = () => {
 
     if(activeTask.type === "kilometers apart"){
         return <KilometersApart />
+    }
+
+    if(activeTask.type === "road calculation"){
+        return <RoadCalculation />
     }
 
     return null;
