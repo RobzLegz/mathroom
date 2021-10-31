@@ -8,8 +8,11 @@ import { nextLevel } from '../requests/levels/requests';
 const MonthAmount: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(5);
+    const [selectedAge, setSelectedAge] = useState<number>(1);
     const [correctAnswer] = useState<number>(Math.floor((Math.random() * 64) + 7));
+    const [years] = useState<number>(Math.floor((Math.random() * 5) + 1));
+    const [months] = useState<number>(Math.floor((Math.random() * 11) + 1));
+    const [age] = useState<number>(Math.floor((Math.random() * 19) + 14));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -20,7 +23,7 @@ const MonthAmount: React.FC = () => {
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedAge !== correctAnswer){
+        if(selectedAge !== ((years * 12) + months)){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
@@ -42,13 +45,12 @@ const MonthAmount: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>To get Your current age, subtract given year from current year ({new Date().getFullYear()})</p>
+                    <p></p>
                 </div>
             )}
             
             <div className="level__container__task">
-                <strong>How old are You now if You were born in {new Date().getFullYear() - correctAnswer}?</strong>
-                <img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} />
+                <strong>Peter's {age}th birthday is in {years} years and {months} months. After how many months Peter is going to be {age} years old?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
@@ -57,8 +59,8 @@ const MonthAmount: React.FC = () => {
                             type="range" 
                             value={selectedAge}
                             onChange={(e) => setSelectedAge(Number(e.target.value))}
-                            min="5"
-                            max="100"
+                            min="1"
+                            max="80"
                         />
                         <strong>{selectedAge}</strong>
                     </div>
