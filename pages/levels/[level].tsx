@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/slices/userSlice";
 import { checkForLogin } from "../../requests/auth/requests";
 import { setNotification } from "../../redux/slices/notificationSlice";
+import DisplayLevel from "../../hooks/DisplayLevel";
+import GameBackground from "../../components/background/GameBackground";
 
 function Level() {
     const router = useRouter();
@@ -34,16 +36,18 @@ function Level() {
         }
     }, [userInfo.info]);
 
-    if(userInfo.info && userInfo.info.level >= Number(level)){
+    if(userInfo.info && userInfo.info.level >= Number(level) && typeof(level) === "string"){
         return (
-            <div>
+            <div className="level">
                 <Head>
                     <title>MathRoom | Level {level}</title>
                 </Head>
     
                 <Notification />
 
-                <h1>hello</h1>
+                <DisplayLevel level={level} />
+
+                <GameBackground color={"blue"} />
             </div>
         )
     }
