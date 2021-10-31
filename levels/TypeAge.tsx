@@ -34,7 +34,7 @@ const TypeAge: React.FC<Props> = ({description}) => {
                 return router.push(`/levels/${Number(level) + 1}`)
             }
 
-            if(userInfo.level + 1 !== Number(level)){
+            if(userInfo.level < Number(level)){
                 dispatch(setNotification({type: "error", message: "You can't be on this level"}));
                 return router.push("/levels")
             }

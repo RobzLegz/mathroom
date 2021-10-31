@@ -22,11 +22,13 @@ const completeLevel = async (req: any, res: any) => {
             return res.status(400).json({err: "You have already passed this level!"});
         }
 
-        if(user.level + 1 !== Number(level)){
+        if(user.level < Number(level)){
             return res.status(400).json({err: "You can't be on this level!"});
         }
 
-        await Users.findByIdAndUpdate({_id: user.id}, {level: Number(level)});
+        const nextLevel = Number(level) + 1;
+
+        await Users.findByIdAndUpdate({_id: user.id}, {level: nextLevel});
 
         res.json({msg: "Level passed"});
     }catch(err: any){

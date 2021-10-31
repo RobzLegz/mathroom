@@ -1,10 +1,7 @@
+import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
 import tasks from '../data/tasks';
 import TypeAge from '../levels/TypeAge';
-
-interface Porps{
-    level: string;
-}
 
 interface Task{
     level: string;
@@ -16,9 +13,13 @@ interface Task{
     info: string;
 }
 
-const DisplayLevel: React.FC<Porps> = ({level}) => {
+const DisplayLevel: React.FC = () => {
     const [foundTask, setFoundTask] = useState<boolean>(false);
     const [activeTask, setActiveTask] = useState<null | Task>(null);
+
+    const router = useRouter();
+
+    const {level} = router.query;
 
     useEffect(() => {
         if(!foundTask){
@@ -29,8 +30,7 @@ const DisplayLevel: React.FC<Porps> = ({level}) => {
                 setFoundTask(true);
             }
         }
-    }, [activeTask, tasks, foundTask]);
-    console.log(activeTask)
+    }, [activeTask, tasks, foundTask, level]);
 
     if(!activeTask || !activeTask.type){
         return null;
