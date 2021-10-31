@@ -28,7 +28,7 @@ const tasks = [
     },
     {
         level: "2",
-        type:"time",
+        type:"time sum",
         text: "What time will the train arrive at the terminal if it leaves at 2:00 and spend 4 h 22 min on the way?",
         result: "6:22",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7lMd0YjmiIv-2kMTkAf0kyCdyV-keH09APw&usqp=CAU",
@@ -37,7 +37,7 @@ const tasks = [
     },
     {
         level: "2",
-        type: "time",
+        type: "time sum",
         text: "What time will the train arrive at the terminal if it leaves at 1:00 and spend 5 h 30 min on the way?",
         result: "6:30",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7lMd0YjmiIv-2kMTkAf0kyCdyV-keH09APw&usqp=CAU",
@@ -46,7 +46,7 @@ const tasks = [
     },
     {
         level: "2",
-        type: "time",
+        type: "time sum",
         text: "What time will the train arrive at the terminal if it leaves at 3:00 and spend 2 h 44 min on the way?",
         result: "5:44",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7lMd0YjmiIv-2kMTkAf0kyCdyV-keH09APw&usqp=CAU",
@@ -55,7 +55,7 @@ const tasks = [
     },
     {
         level: "3",
-        type: "o'clock",
+        type: "time difference",
         text: "The sun rises at 7:37 and the sun sets at 22:27. What is the length of the day?",
         result: "15h un 10 min.",
         image: "https://user-images.githubusercontent.com/91952766/139082923-c3a2e5af-38f2-4c73-b192-d646483eaec2.png",
@@ -64,7 +64,7 @@ const tasks = [
     },
     {
         level: "3",
-        type: "o'clock",
+        type: "time difference",
         text: "The sun rises at 3:25 and the sun sets at 23:40. What is the length of the day?",
         result: "19h un 45 min.",
         image: "https://user-images.githubusercontent.com/91952766/139082923-c3a2e5af-38f2-4c73-b192-d646483eaec2.png",
@@ -73,7 +73,7 @@ const tasks = [
     },
     {
         level: "3",
-        type: "o'clock",
+        type: "time difference",
         text: "The sun rises at 6:05 and the sun sets at 18:27. What is the length of the day?",
         result: "11h un 38 min.",
         image: "https://user-images.githubusercontent.com/91952766/139082923-c3a2e5af-38f2-4c73-b192-d646483eaec2.png",
@@ -82,7 +82,7 @@ const tasks = [
     },
     {
         level: "4",
-        type: "years",
+        type: "year types",
         text: "Determine which are the long years: 2044.g., 2088.g., 2045.g., 2061.g., 2046?",
         result: "-2044.g. un 2088.g.",
         image: "https://st4.depositphotos.com/4248271/41453/i/600/depositphotos_414532206-stock-photo-2043-2044-new-year-2043.jpg",
@@ -91,7 +91,7 @@ const tasks = [
     },
     {
         level: "4",
-        type: "years",
+        type: "year types",
         text: "Determine which are the long years: 1920.g., 1988.g., 1945.g., 1961.g., 1846?",
         result: "-1988.g. un 1920.g.",
         image: "https://st4.depositphotos.com/4248271/41453/i/600/depositphotos_414532206-stock-photo-2043-2044-new-year-2043.jpg",
@@ -100,7 +100,7 @@ const tasks = [
     },
     {
         level: "4",
-        type: "years",
+        type: "year types",
         text: "Determine which are the long years: 2044.g., 2088.g., 2045.g., 2061.g., 2046?",
         result: "-2044.g. un 2088.g.",
         image: "https://st4.depositphotos.com/4248271/41453/i/600/depositphotos_414532206-stock-photo-2043-2044-new-year-2043.jpg",
@@ -109,7 +109,7 @@ const tasks = [
     },
     {
         level: "5",
-        type: "seconds",
+        type: "time difference",
         text:"The two girls spent 96 minutes together in the store. Calculations of how much time the other girls spent in the store. Jumchan was in the store for 46 min, but the other girl:",
         result: "52",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjjba-Rwqxy4l59VuN4Gaownj_0yOqqW_JeiGu4U60LXyB32vhmePJs6AziQJV-l4uNlc&usqp=CAU",
@@ -118,7 +118,7 @@ const tasks = [
     },
     {
         level: "5",
-        type: "seconds",
+        type: "time difference",
         text:"The two girls spent 100 minutes together in the store. Calculations of how much time the other girls spent in the store. Jumchan was in the store for 46 min, but the other girl:",
         result: "54",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjjba-Rwqxy4l59VuN4Gaownj_0yOqqW_JeiGu4U60LXyB32vhmePJs6AziQJV-l4uNlc&usqp=CAU",
@@ -127,7 +127,7 @@ const tasks = [
     },
     {
         level: "5",
-        type: "seconds",
+        type: "time difference",
         text:"The two girls spent 150 minutes together in the store. Calculations of how much time the other girls spent in the store. Jumchan was in the store for 66 min, but the other girl:",
         result: "84",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjjba-Rwqxy4l59VuN4Gaownj_0yOqqW_JeiGu4U60LXyB32vhmePJs6AziQJV-l4uNlc&usqp=CAU",
@@ -136,7 +136,7 @@ const tasks = [
     },
     {
         level: "6",
-        type: "months",
+        type: "month amount",
         text: "How Many Months are in 10 Years in 11 Months?",
         result: "131 month",
         image: "https://user-images.githubusercontent.com/91952766/139088301-fda81c7e-4103-43c1-8b8a-e61a27cf91aa.png",
@@ -145,7 +145,7 @@ const tasks = [
     },
     {
         level: "6",
-        type: "months",
+        type: "month amount",
         text: "How Many Months are in 5 Years in 10 Months?",
         result: "70 month",
         image: "https://user-images.githubusercontent.com/91952766/139088301-fda81c7e-4103-43c1-8b8a-e61a27cf91aa.png",
@@ -154,7 +154,7 @@ const tasks = [
     },
     {
         level: "6",
-        type: "months",
+        type: "month amount",
         text: "How Many Months are in 17 Years in 7 Months?",
         result: "211 month",
         image: "https://user-images.githubusercontent.com/91952766/139088301-fda81c7e-4103-43c1-8b8a-e61a27cf91aa.png",
@@ -166,7 +166,7 @@ const tasks = [
         text: "How many days have 9 weeks and 21 days.",
         result: "84 days",
         image: "https://user-images.githubusercontent.com/91952766/139089485-4bbc60c7-04de-4ea3-9b7c-22c2d3bd2986.png",
-        type: "convert",
+        type: "day amount",
         units: "days",
         info: "Converts to the correct time units.",
     },
@@ -175,7 +175,7 @@ const tasks = [
         text: "How many days have 5 weeks and 20 days.",
         result: "55 days",
         image: "https://user-images.githubusercontent.com/91952766/139089485-4bbc60c7-04de-4ea3-9b7c-22c2d3bd2986.png",
-        type: "convert",
+        type: "day amount",
         units: "days",
         info: "Converts to the correct time units.",
     },
@@ -184,13 +184,13 @@ const tasks = [
         text: "How many days have 11 weeks and 13 days.",
         result: "90 days",
         image: "https://user-images.githubusercontent.com/91952766/139089485-4bbc60c7-04de-4ea3-9b7c-22c2d3bd2986.png",
-        type: "convert",
+        type: "day amount",
         units: "days",
         info: "Converts to the correct time units.",
     },
     {
         level: "8",
-        type: "seconds",
+        type: "second amount",
         text: "How many s are 5min. 75s?",
         result: "375 min",
         image: "https://user-images.githubusercontent.com/91952766/139090611-61dabd3a-d5da-4762-9119-a33fc375b24b.png",
@@ -199,7 +199,7 @@ const tasks = [
     },
     {
         level: "8",
-        type: "seconds",
+        type: "second amount",
         text: "How many s are 10min. 40s.?",
         result: "640 min",
         image: "https://user-images.githubusercontent.com/91952766/139090611-61dabd3a-d5da-4762-9119-a33fc375b24b.png",
@@ -208,7 +208,7 @@ const tasks = [
     },
     {
         level: "8",
-        type: "seconds",
+        type: "second amount",
         text: "How many s are 13min. 80s.?",
         result: "860 min",
         image: "https://user-images.githubusercontent.com/91952766/139090611-61dabd3a-d5da-4762-9119-a33fc375b24b.png",
@@ -217,7 +217,7 @@ const tasks = [
     },
     {
         level: "9",
-        type: "age",
+        type: "Romen numerals",
         text: "The clock shows exactly 3 pm.",
         result: "XV or III",
         image: "https://user-images.githubusercontent.com/91952766/139093547-cccbade1-35d1-4a95-bb6a-670ef4f587bc.png",
@@ -226,7 +226,7 @@ const tasks = [
     },
     {
         level: "9",
-        type: "age",
+        type: "Romen numerals",
         text: "The clock shows exactly 4 pm.",
         result: "XVI",
         image: "https://user-images.githubusercontent.com/91952766/139093547-cccbade1-35d1-4a95-bb6a-670ef4f587bc.png",
@@ -235,7 +235,7 @@ const tasks = [
     },
     {
         level: "9",
-        type: "age",
+        type: "Romen numerals",
         text: "The clock shows exactly 6 pm.",
         result: "XVIII",
         image: "https://user-images.githubusercontent.com/91952766/139093547-cccbade1-35d1-4a95-bb6a-670ef4f587bc.png",
@@ -271,7 +271,7 @@ const tasks = [
     },
     {
         level: "11",
-        type: "how long",
+        type: "road calculation",
         text: "Currently, the cyclist rides at a speed of 22 km / h. How long would a cyclist get at this speed in 7 hours?",
         result: "154",
         image: "https://user-images.githubusercontent.com/91952766/139095488-91ae4363-e01c-4950-9cb0-dcb9a935ceb9.png",
@@ -280,7 +280,7 @@ const tasks = [
     },
     {
         level: "11",
-        type: "how long",
+        type: "road calculation",
         text: "Currently, the cyclist rides at a speed of 15 km / h. How long would a cyclist get at this speed in 5 hours?",
         result: "75",
         image: "https://user-images.githubusercontent.com/91952766/139095488-91ae4363-e01c-4950-9cb0-dcb9a935ceb9.png",
@@ -289,7 +289,7 @@ const tasks = [
     },
     {
         level: "11",
-        type: "how long",
+        type: "road calculation",
         text: "Currently, the cyclist rides at a speed of 30 km / h. How long would a cyclist get at this speed in 3 hours?",
         result: "90",
         image: "https://user-images.githubusercontent.com/91952766/139095488-91ae4363-e01c-4950-9cb0-dcb9a935ceb9.png",
@@ -298,7 +298,7 @@ const tasks = [
     },
     {
         level: "12",
-        type: "car",
+        type: "time calculation",
         text: "The car drives at a speed of 20 km / h near the school. How long would the car cover 140 km?",
         result: "7",
         image: "https://user-images.githubusercontent.com/91952766/139099688-83b2ef9d-1ce2-47c5-b96e-7100ba604bd2.png",
@@ -307,7 +307,7 @@ const tasks = [
     },
     {
         level: "12",
-        type: "car",
+        type: "time calculation",
         text: "The car drives at a speed of 40 km / h near the school. How long would the car cover 80 km?",
         result: "2",
         image: "https://user-images.githubusercontent.com/91952766/139099688-83b2ef9d-1ce2-47c5-b96e-7100ba604bd2.png",
@@ -316,7 +316,7 @@ const tasks = [
     },
     {
         level: "12",
-        type: "car",
+        type: "time calculation",
         text: "The car drives at a speed of 30 km / h near the school. How long would the car cover 180 km?",
         result: "6",
         image: "https://user-images.githubusercontent.com/91952766/139099688-83b2ef9d-1ce2-47c5-b96e-7100ba604bd2.png",
@@ -325,7 +325,7 @@ const tasks = [
     },
     {
         level: "13",
-        type: "kilometers",
+        type: "road calculation",
         text: "How many kilometers can a car travel in 12 minutes at 90 km / h?",
         result: "18",
         image: "https://user-images.githubusercontent.com/91952766/139099711-77147463-703f-4bb0-9a96-0fb10002e7d8.png",
@@ -334,7 +334,7 @@ const tasks = [
     },
     {
         level: "13",
-        type: "kilometers",
+        type: "road calculation",
         text: "How many kilometers can a car travel in 20 minutes at 50 km / h?",
         result: "16.5",
         image: "https://user-images.githubusercontent.com/91952766/139099711-77147463-703f-4bb0-9a96-0fb10002e7d8.png",
@@ -343,7 +343,7 @@ const tasks = [
     },
     {
         level: "13",
-        type: "kilometers",
+        type: "road calculation",
         text: "How many kilometers can a car travel in 33 minutes at 70 km / h?",
         result: "38.5",
         image: "https://user-images.githubusercontent.com/91952766/139099711-77147463-703f-4bb0-9a96-0fb10002e7d8.png",
@@ -352,7 +352,7 @@ const tasks = [
     },
     {
         level: "14",
-        type: "m/min",
+        type: "m/min to m/h",
         text: "Express the given unit -7m / min per m / h.",
         result: "420",
         image: "https://user-images.githubusercontent.com/91952766/139099746-9b9e24b8-a9ed-45c2-b790-fbfa7c15ce46.png",
@@ -361,7 +361,7 @@ const tasks = [
     },
     {
         level: "14",
-        type: "m/min",
+        type: "m/min to m/h",
         text: "Express the given unit -9m / min per m / h.",
         result: "540",
         image: "https://user-images.githubusercontent.com/91952766/139099746-9b9e24b8-a9ed-45c2-b790-fbfa7c15ce46.png",
@@ -370,7 +370,7 @@ const tasks = [
     },
     {
         level: "14",
-        type: "m/min",
+        type: "m/min to m/h",
         text: "Express the given unit -5m / min per m / h.",
         result: "300",
         image: "https://user-images.githubusercontent.com/91952766/139099746-9b9e24b8-a9ed-45c2-b790-fbfa7c15ce46.png",
@@ -379,7 +379,7 @@ const tasks = [
     },
     {
         level: "15",
-        type: "m/h",
+        type: "speed calculation",
         text: "At what speed do you have to drive to drive 90m in 9 minutes?",
         result: "60",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -388,7 +388,7 @@ const tasks = [
     },
     {
         level: "15",
-        type: "m/h",
+        type: "speed calculation",
         text: "At what speed do you have to drive to drive 50m in 12 minutes?",
         result: "250.2",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -397,17 +397,16 @@ const tasks = [
     },
     {
         level: "15",
-        type: "m/h",
+        type: "speed calculation",
         text: "At what speed do you have to drive to drive 70m in 16 minutes?",
         result: "262.2",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
         units: "meters in hour",
         info: "4.38 m/min",
     },
-    /*tālāk ir viduskolas līmenis*/
     {
         level: "16",
-        type: "accelerated",
+        type: "accacceleration calculationelerated",
         text: "In steadily accelerated motion, the final speed of the body is 11 m / s, but the average speed is 8 m / s.What was the speed of body movement in the beginning? ",
         result: "5",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -416,7 +415,7 @@ const tasks = [
     },
     {
         level: "16",
-        type: "accelerated",
+        type: "acceleration calculation",
         text: "In steadily accelerated motion, the final speed of the body is 13 m / s, but the average speed is 10 m / s.What was the speed of body movement in the beginning? ",
         result: "7",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -425,7 +424,7 @@ const tasks = [
     },
     {
         level: "16",
-        type: "accelerated",
+        type: "acceleration calculation",
         text: "In steadily accelerated motion, the final speed of the body is 7 m / s, but the average speed is 6 m / s.What was the speed of body movement in the beginning? ",
         result: "5",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -461,7 +460,7 @@ const tasks = [
     },
     {
         level: "18",
-        type: "t in s",
+        type: "time from acceleration + distance",
         text: "Calculate the time during which the body, moving at an acceleration of 1 m / s2, travels a distance of 26 m, if at the beginning of the movement its speed was 12 m / s!",
         result: "2",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -470,7 +469,7 @@ const tasks = [
     },
     {
         level: "18",
-        type: "t in s",
+        type: "time from acceleration + distance",
         text: "Calculate the time during which the body, moving at an acceleration of 0,2 m/s2, travels a distance of 280,if at the beginning of the movement its speed was 12 m/s!",
         result: "20",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -479,7 +478,7 @@ const tasks = [
     },
     {
         level: "18",
-        type: "t in s",
+        type: "time from acceleration + distance",
         text: "Calculate the time during which the body, moving at an acceleration of 0,5 m/s2, travels a distance of 204 m, if at the beginning of the movement its speed was 14 m/s!",
         result: "12",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -488,7 +487,7 @@ const tasks = [
     },
     {
         level: "19",
-        type: "x",
+        type: "coordinate calculation from time and equation",
         text: "Using the body motion coordinate equation x = −14−13t, calculate the body coordinates after 18 seconds.",
         result: "-248",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -497,7 +496,7 @@ const tasks = [
     },
     {
         level: "19",
-        type: "x",
+        type: "coordinate calculation from time and equation",
         text: "Using the body movement coordinate equation x = −15−19t, calculate the body coordinates after 5 seconds.",
         result: "-110",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -506,7 +505,7 @@ const tasks = [
     },
     {
         level: "19",
-        type: "x",
+        type: "coordinate calculation from time and equation",
         text: "Izmantojot ķermeņa kustības koordinātes vienādojumu x=−7−14t, aprēķini ķermeņa koordināti pēc 7 sekundēm.",
         result: "-105",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -569,7 +568,7 @@ const tasks = [
     },
     {
         level: "22",
-        type: "average car speed",
+        type: "average speed",
         text: "The car covered 6 km at an average speed of 65 km / h and the remaining 10 km at 100 km / h. Calculate the average speed of the car over the entire road section!",
         result: "83",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -578,7 +577,7 @@ const tasks = [
     },
     {
         level: "22",
-        type: "average car speed",
+        type: "average speed",
         text: "TThe car covered 4 km at an average speed of 75 km / h and the remaining 9 km at 110 km / h. Calculate the average speed of the car over the entire road section!",
         result: "96",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -587,7 +586,7 @@ const tasks = [
     },
     {
         level: "22",
-        type: "average car speed",
+        type: "average speed",
         text: "The car covered a distance of 7 km at an average speed of 70 km / h and the remaining 10 km at 90 km / h. Calculate the average speed of the car over the entire road section!",
         result: "81",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -596,7 +595,7 @@ const tasks = [
     },
     {
         level: "23",
-        type: "average train speed",
+        type: "average speed",
         text: "The train traveled the first third of the road at 4 times the speed of the rest. Calculations of the speed in the first third when the average speed was 33 km / h.",
         result: "99",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -605,7 +604,7 @@ const tasks = [
     },
     {
         level: "23",
-        type: "average train speed",
+        type: "average speed",
         text: "The train traveled the first third of the road at 2 times the speed of the rest. Calculations of the speed at the first third when the average speed was 35 km / h.",
         result: "58",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -614,7 +613,7 @@ const tasks = [
     },
     {
         level: "23",
-        type: "average train speed",
+        type: "average speed",
         text: "The train traveled the first third of the road at 3 times the speed of the rest. Calculations of the speed at the first third when the average speed was 29 km / h.",
         result: "68",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -650,7 +649,7 @@ const tasks = [
     },
     {
         level: "25",
-        type: "time neaded",
+        type: "time from acceleration + distance",
         text: "The bird flies at an acceleration of 0.5 m / s. It decided to jump from a tree branch to the roof of a house 45 m away. Calculate the time it took for a bird to get from a tree branch to the roof of a house, assuming that it made a straight motion!",
         result: "13,4",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -659,7 +658,7 @@ const tasks = [
     },
     {
         level: "25",
-        type: "time neaded",
+        type: "time from acceleration + distance",
         text: "The bird flies at an acceleration of 0.8 m / s. It decided to jump from a tree branch to the roof of a house 50 m away.  Calculate the time, assume it made a straight line motion!",
         result: "11,2",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
@@ -668,7 +667,7 @@ const tasks = [
     },
     {
         level: "25",
-        type: "time neaded",
+        type: "time from acceleration + distance",
         text: "The bird flies at an acceleration of 0.7 m / s. It decided to jump from a tree branch to the roof of a house 70 m away.   Calculate the time it took for a bird to get from a tree branch to the roof of a house, assuming that it made a straight motion!",
         result: "14,1",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",
