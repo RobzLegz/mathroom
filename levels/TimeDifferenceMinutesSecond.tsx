@@ -20,7 +20,7 @@ const TimeDifferenceMinutesSecond: React.FC = () => {
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedAge !== Math.floor(totalTimeSpent) / 60 * 16){
+        if(selectedAge !== (Math.floor(totalTimeSpent / 60) * 16)){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
