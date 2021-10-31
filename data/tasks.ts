@@ -307,7 +307,7 @@ const tasks = [
     },
     {
         level: "13",
-        type: "road calculation",
+        type: "road calculation2",
         text: "How many kilometers can a car travel in 12 minutes at 90 km / h?",
         result: "18",
         image: "https://user-images.githubusercontent.com/91952766/139099711-77147463-703f-4bb0-9a96-0fb10002e7d8.png",
@@ -316,7 +316,7 @@ const tasks = [
     },
     {
         level: "13",
-        type: "road calculation",
+        type: "road calculation2",
         text: "How many kilometers can a car travel in 20 minutes at 50 km / h?",
         result: "16.5",
         image: "https://user-images.githubusercontent.com/91952766/139099711-77147463-703f-4bb0-9a96-0fb10002e7d8.png",
@@ -325,7 +325,7 @@ const tasks = [
     },
     {
         level: "13",
-        type: "road calculation",
+        type: "road calculation2",
         text: "How many kilometers can a car travel in 33 minutes at 70 km / h?",
         result: "38.5",
         image: "https://user-images.githubusercontent.com/91952766/139099711-77147463-703f-4bb0-9a96-0fb10002e7d8.png",
