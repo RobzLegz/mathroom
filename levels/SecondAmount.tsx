@@ -22,8 +22,8 @@ const DayAmount: React.FC = () => {
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedAge !== selectedAge){
-            return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
+        if(selectedAge !== (minutes * 60) + seconds){
+            return dispatch(setNotification({type: "error", message: "You missed the train!"}));
         }
 
         if(userInfo.info){
@@ -57,7 +57,7 @@ const DayAmount: React.FC = () => {
                         {writing ? (
                             <input 
                                 type="number" 
-                                value={selectedAge}
+                                value={selectedAge.toString()}
                                 onChange={(e) => {if(e.target.value.length > 3){return}setSelectedAge(Number(e.target.value))}}
                             />
                         ) : (
