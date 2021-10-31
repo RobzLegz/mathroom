@@ -33,6 +33,11 @@ export const userSlice = createSlice({
         setToken: (state, action) => {
             state.token = action.payload;
         },
+        completeLevel: (state) => {
+            if(state.info){
+                state.info.level += 1;
+            }
+        },
     },
 });
 
@@ -40,6 +45,7 @@ export const {
     login,
     setUserInfo,
     setToken,
+    completeLevel
 } = userSlice.actions;
 
 export const selectUser = (state: any) => state.user;
