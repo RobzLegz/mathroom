@@ -8,6 +8,7 @@ import RoadCalculation from '../levels/RoadCalculation';
 import RoadCalculationSecond from '../levels/RoadCalculationSecond';
 import RomanNumerals from '../levels/RomanNumerals';
 import SecondAmount from '../levels/SecondAmount';
+import TimeCalculation from '../levels/TimeCalculation';
 import TimeDifference from '../levels/TimeDifference';
 import TimeDifferenceMinutes from '../levels/TimeDifferenceMinutes';
 import TimeDifferenceMinutesSecond from '../levels/TimeDifferenceMinutesSecond';
@@ -105,6 +106,10 @@ const DisplayLevel: React.FC = () => {
 
     if(activeTask.type === "road calculation2"){
         return <RoadCalculationSecond />
+    }
+
+    if(activeTask.type === "time calculation"){
+        return <TimeCalculation />
     }
 
     return null;
