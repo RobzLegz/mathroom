@@ -18,24 +18,6 @@ const tasks = [
         info: "put use a colon in the answer",
     },
     {
-        level: "2",
-        type: "time sum",
-        text: "What time will the train arrive at the terminal if it leaves at 1:00 and spend 5 h 30 min on the way?",
-        result: "6:30",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7lMd0YjmiIv-2kMTkAf0kyCdyV-keH09APw&usqp=CAU",
-        units: "hours: minutes",
-        info: "put use a colon in the answer",
-    },
-    {
-        level: "2",
-        type: "time sum",
-        text: "What time will the train arrive at the terminal if it leaves at 3:00 and spend 2 h 44 min on the way?",
-        result: "5:44",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7lMd0YjmiIv-2kMTkAf0kyCdyV-keH09APw&usqp=CAU",
-        units: "hours: minutes",
-        info: "put use a colon in the answer",
-    },
-    {
         level: "3",
         type: "time difference",
         text: "The sun rises at 7:37 and the sun sets at 22:27. What is the length of the day?",
@@ -388,7 +370,7 @@ const tasks = [
     },
     {
         level: "16",
-        type: "accacceleration calculationelerated",
+        type: "acceleration calculation",
         text: "In steadily accelerated motion, the final speed of the body is 11 m / s, but the average speed is 8 m / s.What was the speed of body movement in the beginning? ",
         result: "5",
         image: "https://user-images.githubusercontent.com/91952766/139099785-86629b89-cfa2-4f47-aeb6-87c154695e16.png",

@@ -1,6 +1,7 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
 import tasks from '../data/tasks';
+import AccelerationCalculation from '../levels/AccelerationCalculation';
 import DayAmount from '../levels/DayAmount';
 import KilometersApart from '../levels/KilometersApart';
 import MminToMh from '../levels/MminToMh';
@@ -120,6 +121,10 @@ const DisplayLevel: React.FC = () => {
 
     if(activeTask.type === "speed calculation"){
         return <SpeedCalculation />
+    }
+
+    if(activeTask.type === "acceleration calculation"){
+        return <AccelerationCalculation />
     }
 
     return null;
