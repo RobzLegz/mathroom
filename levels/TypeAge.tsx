@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,11 +5,7 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-interface Props{
-    description: string;
-}
-
-const TypeAge: React.FC<Props> = ({description}) => {
+const TypeAge: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(5);

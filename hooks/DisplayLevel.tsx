@@ -50,11 +50,11 @@ const DisplayLevel: React.FC = () => {
     }
 
     if(activeTask.type === "age"){
-        return <TypeAge description={activeTask.info} />
+        return <TypeAge />
     }
 
     if(activeTask.type === "time sum"){
-        return <TimeSum description={activeTask.info} />
+        return <TimeSum />
     }
 
     return null;
