@@ -7,29 +7,9 @@ import { nextLevel } from '../requests/levels/requests';
 
 const options = [
     {
-        leaves: "2:00",
-        spends: "4 hours and 22 minutes",
-        correct: "06:22"
-    },
-    {
-        leaves: "15:30",
-        spends: "3 hours and 15 minutes",
-        correct: "18:45"
-    },
-    {
-        leaves: "10:40",
-        spends: "6 hours and 50 minutes",
-        correct: "17:30"
-    },
-    {
-        leaves: "23:00",
-        spends: "2 hours and 20 minutes",
-        correct: "01:20"
-    },
-    {
-        leaves: "18:00",
-        spends: "1 hour and 50 minutes",
-        correct: "19:50"
+        rises: "08.00",
+        sets: "17.00",
+        correct: "Day is 9 hours long."
     }
 ]
 
@@ -46,10 +26,13 @@ const TimeDifference: React.FC = () => {
 
     const {level} = router.query;
 
+    console.log(`Day is ${selectedHours} hours${selectedMinutes > 0 ? ` and ${selectedMinutes} minutes` : ""} long.`);
+    console.log(selectedOption.correct);
+
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedOption.correct !== `${selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}:${selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}`){
+        if(selectedOption.correct !== `Day is ${selectedHours} hours${selectedMinutes > 0 ? ` and ${selectedMinutes} minutes` : ""} long.`){
             return dispatch(setNotification({type: "error", message: "Incorrect answer"}));
         }
 
@@ -76,16 +59,16 @@ const TimeDifference: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>What time will the train arrive at the terminal if it leaves at {selectedOption.leaves} and spends {selectedOption.spends} on the way?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>The sun rises at {selectedOption.rises} and sets at {selectedOption.sets}. What is the length of the day?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
-                    <strong>{selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours} : {selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}</strong>
+                    <strong>Day is {selectedHours} hours {selectedMinutes > 0 && `and ${selectedMinutes} minutes`} long.</strong>
                     <div className="inputContainer">
                         <input 
                             type="range" 
-                            min="0"
-                            max="23"
+                            min="8"
+                            max="13"
                             value={selectedHours}
                             onChange={(e) => setSelectedHours(Number(e.target.value))}
                         />
