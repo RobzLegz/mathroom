@@ -1,6 +1,7 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
 import tasks from '../data/tasks';
+import DayAmount from '../levels/DayAmount';
 import MonthAmount from '../levels/MonthAmount';
 import TimeDifference from '../levels/TimeDifference';
 import TimeDifferenceMinutes from '../levels/TimeDifferenceMinutes';
@@ -75,6 +76,10 @@ const DisplayLevel: React.FC = () => {
 
     if(activeTask.type === "month amount"){
         return <MonthAmount />
+    }
+
+    if(activeTask.type === "day amount"){
+        return <DayAmount />
     }
 
     return null;

@@ -5,7 +5,7 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const MonthAmount: React.FC = () => {
+const DayAmount: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(1);
@@ -76,4 +76,4 @@ const MonthAmount: React.FC = () => {
     )
 }
 
-export default MonthAmount
+export default DayAmount
