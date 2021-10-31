@@ -1,2 +1,14 @@
 @import "../../variables.scss";
 
+.inputContainer{
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 2px solid $mathRoomLightGrey;
+
+    strong{
+        margin: 0 10px;
+    }
+}
