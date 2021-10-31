@@ -12,6 +12,47 @@
         width: 800px;
         height: 600px;
         border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
         background-color: $mathRoomContainerBG;
+
+        &__tip{
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+            padding: 20px;
+            text-align: center;
+            background-color: $mathRoomLightGrey;
+        }
+
+        &__task{
+            flex: 1;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &__tools{
+                height: 100%;
+                background-color: red;
+                width: calc(50% - 20px);
+            }
+
+            &__ilustration{
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: red;
+                width: 50%;
+                padding: 20px;
+
+                img{
+                    width: 100%;
+                }
+            }
+        }
     }
 }
