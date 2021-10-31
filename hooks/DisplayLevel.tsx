@@ -2,6 +2,7 @@ import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
 import tasks from '../data/tasks';
 import DayAmount from '../levels/DayAmount';
+import KilometersApart from '../levels/KilometersApart';
 import MonthAmount from '../levels/MonthAmount';
 import RomanNumerals from '../levels/RomanNumerals';
 import SecondAmount from '../levels/SecondAmount';
@@ -90,6 +91,10 @@ const DisplayLevel: React.FC = () => {
 
     if(activeTask.type === "roman numerals"){
         return <RomanNumerals />
+    }
+
+    if(activeTask.type === "kilometers apart"){
+        return <KilometersApart />
     }
 
     return null;
