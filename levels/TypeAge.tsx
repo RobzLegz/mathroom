@@ -30,7 +30,7 @@ const TypeAge: React.FC<Props> = ({description}) => {
         }
 
         if(userInfo.info){
-            if(userInfo.info.level >= Number(level)){
+            if(userInfo.info.level > Number(level)){
                 return router.push(`/levels/${Number(level) + 1}`)
             }
 
