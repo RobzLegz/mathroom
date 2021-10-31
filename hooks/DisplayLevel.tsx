@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import tasks from '../data/tasks';
 import DayAmount from '../levels/DayAmount';
 import MonthAmount from '../levels/MonthAmount';
+import SecondAmount from '../levels/SecondAmount';
 import TimeDifference from '../levels/TimeDifference';
 import TimeDifferenceMinutes from '../levels/TimeDifferenceMinutes';
 import TimeDifferenceMinutesSecond from '../levels/TimeDifferenceMinutesSecond';
@@ -80,6 +81,10 @@ const DisplayLevel: React.FC = () => {
 
     if(activeTask.type === "day amount"){
         return <DayAmount />
+    }
+
+    if(activeTask.type === "second amount"){
+        return <SecondAmount />
     }
 
     return null;
