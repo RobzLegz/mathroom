@@ -9,9 +9,7 @@ const TimeDifferenceMinutesSecond: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(5);
-    const [totalTimeSpent] = useState<number>(Math.floor((Math.random() * 200) + 50));
-    const [difference] = useState<number>(Math.floor((Math.random() * 59) + 20));
-    const [correctAnswer] = useState<number>(totalTimeSpent - difference);
+    const [totalTimeSpent] = useState<number>(Math.floor((Math.random() * 600) + 30));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -22,7 +20,7 @@ const TimeDifferenceMinutesSecond: React.FC = () => {
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedAge !== correctAnswer){
+        if(selectedAge !== Math.floor(totalTimeSpent) / 60 * 16){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
@@ -49,7 +47,7 @@ const TimeDifferenceMinutesSecond: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Two programmers worked on a website for {totalTimeSpent} minutes together. How much time did the other programmer spend if the first spent {difference} minutes?</strong>
+                <strong>The hourly rate is 16$/hour. If You spend {totalTimeSpent} minutes working, how much You earn?</strong>
                 <img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} />
             </div>
             <div className="level__container__options">
@@ -59,8 +57,8 @@ const TimeDifferenceMinutesSecond: React.FC = () => {
                             type="range" 
                             value={selectedAge}
                             onChange={(e) => setSelectedAge(Number(e.target.value))}
-                            min="50"
-                            max="190"
+                            min="0"
+                            max="180"
                         />
                         <strong>{selectedAge}</strong>
                     </div>
