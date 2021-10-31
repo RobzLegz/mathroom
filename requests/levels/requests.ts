@@ -9,7 +9,7 @@ const nextLevel = (level: number, token: string, router: any, dispatch: any) => 
         }
     }
 
-    axios.post(`/api/user/level/${String(level)}`, headers)
+    axios.post(`/api/user/level/${String(level)}`, {}, headers)
         .then((res) => {
             dispatch(completeLevel());
             router.push(`/levels/${level + 1}`);

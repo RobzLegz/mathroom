@@ -18,7 +18,7 @@ const completeLevel = async (req: any, res: any) => {
 
         const user = await auth(req, res);
 
-        if(user.level >= Number(level)){
+        if(user.level > Number(level)){
             return res.status(400).json({err: "You have already passed this level!"});
         }
 
