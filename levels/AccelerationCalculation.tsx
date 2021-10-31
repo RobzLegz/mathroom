@@ -9,8 +9,10 @@ const AccelerationCalculation: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(5);
-    const [speed] = useState<number>(Math.floor((Math.random() * 22) + 7));
+    const [startingSpeed] = useState<number>(Math.floor((Math.random() * 22) + 7));
+    const [acceleration] = useState<number>(Math.floor((Math.random() * 5) + 2));
     const [time] = useState<number>(Math.floor((Math.random() * 7) + 2));
+    const [finalSpeed] = useState<number>(startingSpeed + acceleration * time);
     const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
@@ -22,7 +24,7 @@ const AccelerationCalculation: React.FC = () => {
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedAge !== (speed * time)){
+        if(selectedAge !== acceleration){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
@@ -49,7 +51,7 @@ const AccelerationCalculation: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Currently, the cyclist rides at a speed of {speed} km/h. How far would a cyclist get at this speed in {time} hours?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>In smoothly accelerated motion, the final speed of the body is {finalSpeed} m/s, but the starting speed is {startingSpeed} m/s. The acceleration happened in {time} seconds. Calculate the acceleration.<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
@@ -65,8 +67,8 @@ const AccelerationCalculation: React.FC = () => {
                                 type="range" 
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="10"
-                                max="150"
+                                min="0"
+                                max="10"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
