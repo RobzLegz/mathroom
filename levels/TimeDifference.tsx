@@ -28,7 +28,7 @@ const options = [
     }
 ]
 
-const TimeSum: React.FC = () => {
+const TimeDifference: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
     const [selectedHours, setSelectedHours] = useState<number>(0);
@@ -109,4 +109,4 @@ const TimeSum: React.FC = () => {
     )
 }
 
-export default TimeSum
+export default TimeDifference

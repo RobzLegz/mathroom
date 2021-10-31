@@ -1,6 +1,7 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
 import tasks from '../data/tasks';
+import TimeDifference from '../levels/TimeDifference';
 import TimeSum from '../levels/TimeSum';
 import TypeAge from '../levels/TypeAge';
 
@@ -55,6 +56,10 @@ const DisplayLevel: React.FC = () => {
 
     if(activeTask.type === "time sum"){
         return <TimeSum />
+    }
+
+    if(activeTask.type === "time difference"){
+        return <TimeDifference />
     }
 
     return null;
