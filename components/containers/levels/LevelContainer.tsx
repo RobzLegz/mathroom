@@ -3,19 +3,25 @@ import tasks from "../../../data/tasks";
 import LevelOption from "./LevelOption";
 
 function LevelContainer() {
-    const [pushedLevels] = useState<string[]>([]);
+    const [pushedLevels] = useState<number[]>([]);
 
     return (
         <div className="levels__container">
             {
                 tasks
-                    .sort((a, b) => {return Number(a.level) - Number(b.level)})
                     .map((task, i) => {
-                    if(!pushedLevels.includes(task.level)){
-                        pushedLevels.push(task.level);
+                    if(!pushedLevels.includes(i)){
+                        pushedLevels.push(i);
+
+                        let level = i + 1;
+
+                        let pushTask = {
+                            type: task.type,
+                            level: String(level)
+                        }
 
                         return(
-                            <LevelOption key={i} task={task} />
+                            <LevelOption key={i} task={pushTask} />
                         )
                     }
                 return null;

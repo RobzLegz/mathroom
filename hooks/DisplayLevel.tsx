@@ -21,7 +21,6 @@ import TypeAge from '../levels/TypeAge';
 import UniformlySlowMotion from '../levels/UniformlySlowMotion';
 
 interface Task{
-    level: string;
     type: string;
 }
 
@@ -45,12 +44,7 @@ const DisplayLevel: React.FC = () => {
         }
 
         if(!foundTask){
-            const taskOptions = tasks.filter((task) => task.level === String(level));
-
-            if(taskOptions){
-                setActiveTask(taskOptions[Math.floor(Math.random() * (taskOptions.length - 1))])
-                setFoundTask(true);
-            }
+            setActiveTask(tasks[(Number(level) - 1)])
         }
     }, [activeTask, tasks, foundTask, level]);
 
