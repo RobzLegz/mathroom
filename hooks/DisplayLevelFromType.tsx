@@ -24,6 +24,82 @@ interface Task{
     type: string;
 }
 
+const returnActiveTask = (type: string) => {
+    if(type === "age"){
+        return <TypeAge />
+    }
+
+    if(type === "time sum"){
+        return <TimeSum />
+    }
+
+    if(type === "time difference"){
+        return <TimeDifference />
+    }
+
+    if(type === "time difference minutes"){
+        return <TimeDifferenceMinutes />
+    }
+
+    if(type === "time difference minutes2"){
+        return <TimeDifferenceMinutesSecond />
+    }
+
+    if(type === "month amount"){
+        return <MonthAmount />
+    }
+
+    if(type === "day amount"){
+        return <DayAmount />
+    }
+
+    if(type === "second amount"){
+        return <SecondAmount />
+    }
+
+    if(type === "roman numerals"){
+        return <RomanNumerals />
+    }
+
+    if(type === "kilometers apart"){
+        return <KilometersApart />
+    }
+
+    if(type === "road calculation"){
+        return <RoadCalculation />
+    }
+
+    if(type === "road calculation2"){
+        return <RoadCalculationSecond />
+    }
+
+    if(type === "time calculation"){
+        return <TimeCalculation />
+    }
+
+    if(type === "m/min to m/h"){
+        return <MminToMh />
+    }
+
+    if(type === "speed calculation"){
+        return <SpeedCalculation />
+    }
+
+    if(type === "acceleration calculation"){
+        return <AccelerationCalculation />
+    }
+
+    if(type === "uniformly slow motion"){
+        return <UniformlySlowMotion />
+    }
+
+    if(type === "time from acceleration + distance"){
+        return <TimeAccelerationDistance />
+    }
+
+    return null;
+}
+
 const DisplayLevelFromType = () => {
     const [foundTask, setFoundTask] = useState<boolean>(false);
     const [activeTask, setActiveTask] = useState<null | Task>(null);
@@ -48,85 +124,11 @@ const DisplayLevelFromType = () => {
         }
     }, [activeTask, tasks, foundTask, level]);
 
-    console.log(activeTask)
-
     if(!activeTask || !activeTask.type){
         return null;
     }
 
-    if(activeTask.type === "age"){
-        return <TypeAge />
-    }
-
-    if(activeTask.type === "time sum"){
-        return <TimeSum />
-    }
-
-    if(activeTask.type === "time difference"){
-        return <TimeDifference />
-    }
-
-    if(activeTask.type === "time difference minutes"){
-        return <TimeDifferenceMinutes />
-    }
-
-    if(activeTask.type === "time difference minutes2"){
-        return <TimeDifferenceMinutesSecond />
-    }
-
-    if(activeTask.type === "month amount"){
-        return <MonthAmount />
-    }
-
-    if(activeTask.type === "day amount"){
-        return <DayAmount />
-    }
-
-    if(activeTask.type === "second amount"){
-        return <SecondAmount />
-    }
-
-    if(activeTask.type === "roman numerals"){
-        return <RomanNumerals />
-    }
-
-    if(activeTask.type === "kilometers apart"){
-        return <KilometersApart />
-    }
-
-    if(activeTask.type === "road calculation"){
-        return <RoadCalculation />
-    }
-
-    if(activeTask.type === "road calculation2"){
-        return <RoadCalculationSecond />
-    }
-
-    if(activeTask.type === "time calculation"){
-        return <TimeCalculation />
-    }
-
-    if(activeTask.type === "m/min to m/h"){
-        return <MminToMh />
-    }
-
-    if(activeTask.type === "speed calculation"){
-        return <SpeedCalculation />
-    }
-
-    if(activeTask.type === "acceleration calculation"){
-        return <AccelerationCalculation />
-    }
-
-    if(activeTask.type === "uniformly slow motion"){
-        return <UniformlySlowMotion />
-    }
-
-    if(activeTask.type === "time from acceleration + distance"){
-        return <TimeAccelerationDistance />
-    }
-
-    return null;
+    return returnActiveTask(activeTask.type);
 }
 
 export default DisplayLevelFromType
