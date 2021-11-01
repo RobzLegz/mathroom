@@ -5,12 +5,13 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const RoadCalculation: React.FC = () => {
+const DistanceBetween2: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(5);
-    const [speed] = useState<number>(Math.floor((Math.random() * 22) + 7));
-    const [time] = useState<number>(Math.floor((Math.random() * 7) + 2));
+    const [selectedAge, setSelectedAge] = useState<number>(0);
+    const [speed1] = useState<number>(Math.floor((Math.random() * 20) + 7));
+    const [speed2] = useState<number>(Math.floor((Math.random() * 40) + 60));
+    const [time] = useState<number>(Math.floor((Math.random() * 4) + 2));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
@@ -22,7 +23,7 @@ const RoadCalculation: React.FC = () => {
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedAge !== (speed * time)){
+        if(selectedAge !== selectedAge){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
@@ -50,7 +51,7 @@ const RoadCalculation: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Currently, the cyclist rides at a speed of {speed} km/h. How far would a cyclist get at this speed in {time} hours?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>A cyclist and a motorcyclist are driving towards each other and the distance between them is {((speed1 + speed2) * time)} km. Cyclist is driving at a speed of {speed1} km/h, but motorcyclist at a speed of {speed2} km/h. How many hours later will they meet?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
@@ -66,8 +67,8 @@ const RoadCalculation: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="10"
-                                max="150"
+                                min="0"
+                                max="10"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
@@ -88,4 +89,4 @@ const RoadCalculation: React.FC = () => {
     )
 }
 
-export default RoadCalculation
+export default DistanceBetween2
