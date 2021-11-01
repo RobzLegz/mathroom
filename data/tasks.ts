@@ -19,7 +19,7 @@ const tasks = [
     {type: "acceleration calculation"},
     {type: "uniformly slow motion"},
     {type: "time from acceleration + distance"},
-    {type: "average train speed"},
+    {type: "average speed"},
     // {type: "average speed"},
     // {type: "average speed"},
     // {type: "distance between"},

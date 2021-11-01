@@ -1,18 +1,17 @@
 import { useRouter } from 'next/dist/client/router';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const AverageTrainSpeed: React.FC = () => {
+const AverageSpeed: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(5);
-    const [startingSpeed] = useState<number>(Math.floor((Math.random() * 12) + 6));
-    const [acceleration] = useState<number>(Math.floor((Math.random() * 4) + 2));
-    const [time] = useState<number>(Math.floor((Math.random() * 7) + 2));
-    const [distance] = useState<number>((startingSpeed * time) + ((acceleration * time**2) / 2) - time);
+    const [selectedAge, setSelectedAge] = useState<number>(60);
+    const [startingSpeed, setStartingSpeed] = useState<number>(0);
+    const [acceleratedSpeed, setAcceleratedSpeed] = useState<number>(startingSpeed + Math.floor((Math.random() * 40) + 20));
+    const [activeTransport, setActiveTransport] = useState<string>("");
     const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
@@ -21,11 +20,29 @@ const AverageTrainSpeed: React.FC = () => {
 
     const {level} = router.query;
 
-    console.log(time)
+    useEffect(() => {
+        let startingS = Math.floor((Math.random() * 100) + 60);
+        setStartingSpeed(startingS);
+
+        let acceleratedS = startingS + Math.floor((Math.random() * 30) + 20);
+
+        while ((acceleratedS + startingS) % 2 !== 0){
+            acceleratedS = startingS + Math.floor((Math.random() * 30) + 20);
+        }
+
+        setAcceleratedSpeed(acceleratedS);
+
+        if(acceleratedS > 120){
+            setActiveTransport("train")
+        }else{
+            setActiveTransport("car")
+        }
+    }, []);
+
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedAge !== time){
+        if(selectedAge !== ((startingSpeed + acceleratedSpeed) / 2)){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
@@ -53,7 +70,7 @@ const AverageTrainSpeed: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>A train traveled at a speed of 90 km/h.<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>A {activeTransport} traveled at a speed of {startingSpeed} km/h, after some time, it accelerated to {acceleratedSpeed} km/h. What was the average speed of the {activeTransport}?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
@@ -69,8 +86,8 @@ const AverageTrainSpeed: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="0"
-                                max="10"
+                                min="60"
+                                max="175"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
@@ -88,4 +105,4 @@ const AverageTrainSpeed: React.FC = () => {
     )
 }
 
-export default AverageTrainSpeed
+export default AverageSpeed
