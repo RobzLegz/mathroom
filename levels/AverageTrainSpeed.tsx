@@ -53,7 +53,7 @@ const AverageTrainSpeed: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Calculate the time during which a car, moving at an acceleration of {acceleration} km/sec, travels a distance of {distance} km, if at the beginning the movement speed was {startingSpeed} km/h!<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>The train traveled the first third of the road at 4 times the speed of the rest. Calculations of the speed in the first third when the average speed was 33 km/h.<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
