@@ -28,8 +28,8 @@ const options = [
     },
     {
         image: "/jpg/levels/clock5.jpg",
-        correct: "23:50",
-        correct2: "11:50",
+        correct: "23:45",
+        correct2: "11:45",
     },
 ]
 
