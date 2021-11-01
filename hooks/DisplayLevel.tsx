@@ -24,7 +24,7 @@ interface Task{
     type: string;
 }
 
-const DisplayLevel: React.FC = () => {
+const DisplayLevel = () => {
     const [foundTask, setFoundTask] = useState<boolean>(false);
     const [activeTask, setActiveTask] = useState<null | Task>(null);
     const [prevLevel, setPrevLevel] = useState<null | string>(null);
