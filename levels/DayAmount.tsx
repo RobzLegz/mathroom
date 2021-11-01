@@ -44,7 +44,7 @@ const DayAmount: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>there are 7 days in one week. It remains so to multiply correctly and then add up the days.</p>
+                    <p></p>
                 </div>
             )}
             
