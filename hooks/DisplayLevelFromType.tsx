@@ -27,73 +27,39 @@ interface Task{
 const returnActiveTask = (type: string) => {
     if(type === "age"){
         return <TypeAge />
-    }
-
-    if(type === "time sum"){
+    }else if(type === "time sum"){
         return <TimeSum />
-    }
-
-    if(type === "time difference"){
+    }else if(type === "time difference"){
         return <TimeDifference />
-    }
-
-    if(type === "time difference minutes"){
+    }else if(type === "time difference minutes"){
         return <TimeDifferenceMinutes />
-    }
-
-    if(type === "time difference minutes2"){
+    }else if(type === "time difference minutes2"){
         return <TimeDifferenceMinutesSecond />
-    }
-
-    if(type === "month amount"){
+    }else if(type === "month amount"){
         return <MonthAmount />
-    }
-
-    if(type === "day amount"){
+    }else if(type === "day amount"){
         return <DayAmount />
-    }
-
-    if(type === "second amount"){
+    }else if(type === "second amount"){
         return <SecondAmount />
-    }
-
-    if(type === "roman numerals"){
+    }else if(type === "roman numerals"){
         return <RomanNumerals />
-    }
-
-    if(type === "kilometers apart"){
+    }else if(type === "kilometers apart"){
         return <KilometersApart />
-    }
-
-    if(type === "road calculation"){
+    }else if(type === "road calculation"){
         return <RoadCalculation />
-    }
-
-    if(type === "road calculation2"){
+    }else if(type === "road calculation2"){
         return <RoadCalculationSecond />
-    }
-
-    if(type === "time calculation"){
+    }else if(type === "time calculation"){
         return <TimeCalculation />
-    }
-
-    if(type === "m/min to m/h"){
+    }else if(type === "m/min to m/h"){
         return <MminToMh />
-    }
-
-    if(type === "speed calculation"){
+    }else if(type === "speed calculation"){
         return <SpeedCalculation />
-    }
-
-    if(type === "acceleration calculation"){
+    }else if(type === "acceleration calculation"){
         return <AccelerationCalculation />
-    }
-
-    if(type === "uniformly slow motion"){
+    }else if(type === "uniformly slow motion"){
         return <UniformlySlowMotion />
-    }
-
-    if(type === "time from acceleration + distance"){
+    }else if(type === "time from acceleration + distance"){
         return <TimeAccelerationDistance />
     }
 
