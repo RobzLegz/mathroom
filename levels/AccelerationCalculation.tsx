@@ -31,7 +31,7 @@ const AccelerationCalculation: React.FC = () => {
         if(userInfo.info){
             if(userInfo.info.level > Number(level)){
                 dispatch(setNotification({type: "success", message: "Congrats, You answered correctly!"}));
-                return router.push(`/levels/${Number(level) + 1}`)
+                return router.push(`/levels/${Number(level) + 1}`);
             }
 
             if(userInfo.level < Number(level)){
@@ -78,6 +78,9 @@ const AccelerationCalculation: React.FC = () => {
                         <small>Slide from left to right to change value or click the number next to it to write result</small>
                     </div>
                     <button className="level__container__options__tools__submit" onClick={(e) => completeLevel(e)}>Submit</button>
+                    {userInfo.info.level > Number(level) && (
+                        <button className="level__container__options__tools__next" onClick={(e) => {e.preventDefault();router.push(`/levels/${Number(level) + 1}`)}}>Next</button>
+                    )}
                 </div>
                 <div className="level__container__options__ilustration">
                     <img src="https://tse3.mm.bing.net/th?id=OIP.wSFbjLZV5FropOTZA0gnWgHaE7&pid=Api" alt="sus" />

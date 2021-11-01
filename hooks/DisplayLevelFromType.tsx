@@ -1,8 +1,11 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
 import tasks from '../data/tasks';
 import AccelerationCalculation from '../levels/AccelerationCalculation';
+import AverageSpeed from '../levels/AverageSpeed';
 import DayAmount from '../levels/DayAmount';
+import DistanceBetween2 from '../levels/DistanceBetween2';
 import KilometersApart from '../levels/KilometersApart';
 import MminToMh from '../levels/MminToMh';
 import MonthAmount from '../levels/MonthAmount';
@@ -19,6 +22,7 @@ import TimeDifferenceMinutesSecond from '../levels/TimeDifferenceMinutesSecond';
 import TimeSum from '../levels/TimeSum';
 import TypeAge from '../levels/TypeAge';
 import UniformlySlowMotion from '../levels/UniformlySlowMotion';
+import { setNotification } from '../redux/slices/notificationSlice';
 
 interface Task{
     type: string;
@@ -43,6 +47,8 @@ const renderActiveTaskFromType = (type: string) => {
     else if(type === "acceleration calculation") return <AccelerationCalculation />;
     else if(type === "uniformly slow motion") return <UniformlySlowMotion />;
     else if(type === "time from acceleration + distance") return <TimeAccelerationDistance />;
+    else if(type === "average speed") return <AverageSpeed />;
+    else if(type === "distance between2") return <DistanceBetween2 />
 
     return null;
 }
@@ -52,6 +58,7 @@ const DisplayLevelFromType = () => {
     const [activeTask, setActiveTask] = useState<null | Task>(null);
     const [prevLevel, setPrevLevel] = useState<null | string>(null);
 
+    const dispatch = useDispatch();
     const router = useRouter();
 
     const {level} = router.query;
@@ -66,8 +73,13 @@ const DisplayLevelFromType = () => {
             setFoundTask(false);
         }
 
-        if(!foundTask){
-            setActiveTask(tasks[(Number(level) - 1)])
+        if(tasks.length <= Number(level)){
+            dispatch(setNotification({type: "success", message: "Congrats, You have completed all levels!"}));
+            router.push("/levels");
+        }else{
+            if(!foundTask){
+                setActiveTask(tasks[(Number(level) - 1)])
+            }
         }
     }, [activeTask, tasks, foundTask, level]);
 
@@ -78,4 +90,4 @@ const DisplayLevelFromType = () => {
     return renderActiveTaskFromType(activeTask.type);
 }
 
-export default DisplayLevelFromType
+export default DisplayLevelFromType;

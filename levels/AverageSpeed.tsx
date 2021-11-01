@@ -1,28 +1,55 @@
 import { useRouter } from 'next/dist/client/router';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const RoadCalculation: React.FC = () => {
+const AverageSpeed: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(5);
-    const [speed] = useState<number>(Math.floor((Math.random() * 22) + 7));
-    const [time] = useState<number>(Math.floor((Math.random() * 7) + 2));
+    const [selectedAge, setSelectedAge] = useState<number>(60);
+    const [startingSpeed, setStartingSpeed] = useState<number>(0);
+    const [acceleratedSpeed, setAcceleratedSpeed] = useState<number>(startingSpeed + Math.floor((Math.random() * 40) + 20));
+    const [activeTransport, setActiveTransport] = useState<string>("");
     const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
+    const [changeTask, setChangeTask] = useState<boolean>(true);
 
     const dispatch = useDispatch();
     const router = useRouter();
 
     const {level} = router.query;
 
+    useEffect(() => {
+        if(changeTask){
+            setChangeTask(false);
+        }
+
+        let startingS = Math.floor((Math.random() * 100) + 60);
+        setStartingSpeed(startingS);
+
+        let acceleratedS = startingS + Math.floor((Math.random() * 30) + 20);
+
+        while ((acceleratedS + startingS) % 2 !== 0){
+            acceleratedS = startingS + Math.floor((Math.random() * 30) + 20);
+        }
+
+        setAcceleratedSpeed(acceleratedS);
+
+        if(acceleratedS > 120){
+            setActiveTransport("train")
+        }else{
+            setActiveTransport("car")
+        }
+    }, [changeTask]);
+
     const completeLevel = (e: any) => {
         e.preventDefault();
+        setChangeTask(true);
 
-        if(selectedAge !== (speed * time)){
+        if(selectedAge !== ((startingSpeed + acceleratedSpeed) / 2)){
+            setChangeTask(true);
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
@@ -50,7 +77,7 @@ const RoadCalculation: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Currently, the cyclist rides at a speed of {speed} km/h. How far would a cyclist get at this speed in {time} hours?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>A {activeTransport} traveled at a speed of {startingSpeed} km/h, after some time, it accelerated to {acceleratedSpeed} km/h. What was the average speed of the {activeTransport}?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
@@ -66,8 +93,8 @@ const RoadCalculation: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="10"
-                                max="150"
+                                min="60"
+                                max="200"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
@@ -88,4 +115,4 @@ const RoadCalculation: React.FC = () => {
     )
 }
 
-export default RoadCalculation
+export default AverageSpeed

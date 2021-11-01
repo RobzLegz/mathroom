@@ -121,6 +121,9 @@ const TimeDifference: React.FC = () => {
                         <small>Slide from left to right to change value</small>
                     </div>
                     <button className="level__container__options__tools__submit" onClick={(e) => completeLevel(e)}>Submit</button>
+                    {userInfo.info.level > Number(level) && (
+                        <button className="level__container__options__tools__next" onClick={(e) => {e.preventDefault();router.push(`/levels/${Number(level) + 1}`)}}>Next</button>
+                    )}
                 </div>
                 <div className="level__container__options__ilustration">
                     <img src="https://tse3.mm.bing.net/th?id=OIP.wSFbjLZV5FropOTZA0gnWgHaE7&pid=Api" alt="sus" />
