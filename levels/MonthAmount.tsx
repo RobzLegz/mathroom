@@ -45,7 +45,7 @@ const MonthAmount: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p></p>
+                    <p>subtract the months and years of the wanted age from the current age.</p>
                 </div>
             )}
             
