@@ -24,7 +24,7 @@ interface Task{
     type: string;
 }
 
-const returnActiveTask = (type: string) => {
+const renderActiveTaskFromType = (type: string) => {
     if(type === "age"){
         return <TypeAge />
     }else if(type === "time sum"){
@@ -94,7 +94,7 @@ const DisplayLevelFromType = () => {
         return null;
     }
 
-    return returnActiveTask(activeTask.type);
+    return renderActiveTaskFromType(activeTask.type);
 }
 
 export default DisplayLevelFromType
