@@ -8,9 +8,9 @@ import { nextLevel } from '../requests/levels/requests';
 const DistanceBetween2: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(5);
-    const [speed1] = useState<number>(Math.floor((Math.random() * 10) + 2));
-    const [speed2] = useState<number>(Math.floor((Math.random() * 10) + 2));
+    const [selectedAge, setSelectedAge] = useState<number>(0);
+    const [speed1] = useState<number>(Math.floor((Math.random() * 20) + 7));
+    const [speed2] = useState<number>(Math.floor((Math.random() * 40) + 60));
     const [time] = useState<number>(Math.floor((Math.random() * 4) + 2));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
@@ -23,7 +23,7 @@ const DistanceBetween2: React.FC = () => {
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedAge !== ((speed1 + speed2) * time)){
+        if(selectedAge !== selectedAge){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
@@ -51,7 +51,7 @@ const DistanceBetween2: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Two skaters go from the skate park in opposite directions at the same time at speeds of {speed1} km/h and {speed2} km/h respectively. How far apart from each other will they be in {time} hours?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>A cyclist and a motorcyclist are driving towards each other and the distance between them is {((speed1 + speed2) * time)} km. Cyclist is driving at a speed of {speed1} km/h, but motorcyclist at a speed of {speed2} km/h. How many hours later will they meet?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
@@ -67,8 +67,8 @@ const DistanceBetween2: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="1"
-                                max="130"
+                                min="0"
+                                max="10"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
