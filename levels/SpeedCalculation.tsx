@@ -45,7 +45,7 @@ const SpeedCalculation: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p></p>
+                    <p>Speed is distance divided with time</p>
                 </div>
             )}
             

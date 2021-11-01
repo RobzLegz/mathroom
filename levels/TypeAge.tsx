@@ -43,7 +43,7 @@ const TypeAge: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>To get Your current age, subtract given year from current year ({new Date().getFullYear()})</p>
+                    <p>subtract from the current time the time of birth. ({new Date().getFullYear()})</p>
                 </div>
             )}
             

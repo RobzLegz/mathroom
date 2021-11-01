@@ -44,7 +44,7 @@ const TimeCalculation: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p></p>
+                    <p>just multiply by sixty</p>
                 </div>
             )}
             

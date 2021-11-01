@@ -47,7 +47,7 @@ const AccelerationCalculation: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p></p>
+                    <p>Formula x = (Vmin + Vmax): 2 = Formula x = (Vmin + Vmax): 2 = Vaverage, so to get result(x) you have to calculate (x + Vfinal):2 = Vaverage</p>
                 </div>
             )}
             

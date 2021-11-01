@@ -72,7 +72,7 @@ const TimeSum: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p></p>
+                    <p>Add travel time to your departure time.</p>
                 </div>
             )}
             
