@@ -10,7 +10,7 @@ function LevelContainer() {
             {
                 tasks
                     .map((task, i) => {
-                    if(!pushedLevels.includes(i)){
+                    if(!pushedLevels.includes(i) && tasks.length !== (i + 1)){
                         pushedLevels.push(i);
 
                         let level = i + 1;

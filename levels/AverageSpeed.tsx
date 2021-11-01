@@ -14,6 +14,7 @@ const AverageSpeed: React.FC = () => {
     const [activeTransport, setActiveTransport] = useState<string>("");
     const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
+    const [changeTask, setChangeTask] = useState<boolean>(true);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -21,6 +22,10 @@ const AverageSpeed: React.FC = () => {
     const {level} = router.query;
 
     useEffect(() => {
+        if(changeTask){
+            setChangeTask(false);
+        }
+
         let startingS = Math.floor((Math.random() * 100) + 60);
         setStartingSpeed(startingS);
 
@@ -37,12 +42,14 @@ const AverageSpeed: React.FC = () => {
         }else{
             setActiveTransport("car")
         }
-    }, []);
+    }, [changeTask]);
 
     const completeLevel = (e: any) => {
         e.preventDefault();
+        setChangeTask(true);
 
         if(selectedAge !== ((startingSpeed + acceleratedSpeed) / 2)){
+            setChangeTask(true);
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
@@ -87,7 +94,7 @@ const AverageSpeed: React.FC = () => {
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
                                 min="60"
-                                max="175"
+                                max="200"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>

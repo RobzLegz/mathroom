@@ -1,5 +1,6 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
 import tasks from '../data/tasks';
 import AccelerationCalculation from '../levels/AccelerationCalculation';
 import AverageSpeed from '../levels/AverageSpeed';
@@ -20,6 +21,7 @@ import TimeDifferenceMinutesSecond from '../levels/TimeDifferenceMinutesSecond';
 import TimeSum from '../levels/TimeSum';
 import TypeAge from '../levels/TypeAge';
 import UniformlySlowMotion from '../levels/UniformlySlowMotion';
+import { setNotification } from '../redux/slices/notificationSlice';
 
 interface Task{
     type: string;
@@ -54,6 +56,7 @@ const DisplayLevelFromType = () => {
     const [activeTask, setActiveTask] = useState<null | Task>(null);
     const [prevLevel, setPrevLevel] = useState<null | string>(null);
 
+    const dispatch = useDispatch();
     const router = useRouter();
 
     const {level} = router.query;
@@ -68,8 +71,13 @@ const DisplayLevelFromType = () => {
             setFoundTask(false);
         }
 
-        if(!foundTask){
-            setActiveTask(tasks[(Number(level) - 1)])
+        if(tasks.length <= Number(level)){
+            dispatch(setNotification({type: "success", message: "Congrats, You have completed all levels!"}));
+            router.push("/levels");
+        }else{
+            if(!foundTask){
+                setActiveTask(tasks[(Number(level) - 1)])
+            }
         }
     }, [activeTask, tasks, foundTask, level]);
 
