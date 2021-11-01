@@ -24,7 +24,7 @@ interface Task{
     type: string;
 }
 
-const DisplayLevel = () => {
+const DisplayLevelFromType = () => {
     const [foundTask, setFoundTask] = useState<boolean>(false);
     const [activeTask, setActiveTask] = useState<null | Task>(null);
     const [prevLevel, setPrevLevel] = useState<null | string>(null);
@@ -129,4 +129,4 @@ const DisplayLevel = () => {
     return null;
 }
 
-export default DisplayLevel
+export default DisplayLevelFromType

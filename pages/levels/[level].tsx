@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/slices/userSlice";
 import { checkForLogin } from "../../requests/auth/requests";
 import { setNotification } from "../../redux/slices/notificationSlice";
-import DisplayLevel from "../../hooks/DisplayLevel";
 import GameBackground from "../../components/background/GameBackground";
+import DisplayLevelFromType from "../../hooks/DisplayLevelFromType";
 
 function Level() {
     const router = useRouter();
@@ -45,7 +45,7 @@ function Level() {
     
                 <Notification />
 
-                <DisplayLevel />
+                <DisplayLevelFromType />
 
                 <GameBackground color={"blue"} />
             </div>
