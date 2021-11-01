@@ -25,43 +25,24 @@ interface Task{
 }
 
 const renderActiveTaskFromType = (type: string) => {
-    if(type === "age"){
-        return <TypeAge />
-    }else if(type === "time sum"){
-        return <TimeSum />
-    }else if(type === "time difference"){
-        return <TimeDifference />
-    }else if(type === "time difference minutes"){
-        return <TimeDifferenceMinutes />
-    }else if(type === "time difference minutes2"){
-        return <TimeDifferenceMinutesSecond />
-    }else if(type === "month amount"){
-        return <MonthAmount />
-    }else if(type === "day amount"){
-        return <DayAmount />
-    }else if(type === "second amount"){
-        return <SecondAmount />
-    }else if(type === "roman numerals"){
-        return <RomanNumerals />
-    }else if(type === "kilometers apart"){
-        return <KilometersApart />
-    }else if(type === "road calculation"){
-        return <RoadCalculation />
-    }else if(type === "road calculation2"){
-        return <RoadCalculationSecond />
-    }else if(type === "time calculation"){
-        return <TimeCalculation />
-    }else if(type === "m/min to m/h"){
-        return <MminToMh />
-    }else if(type === "speed calculation"){
-        return <SpeedCalculation />
-    }else if(type === "acceleration calculation"){
-        return <AccelerationCalculation />
-    }else if(type === "uniformly slow motion"){
-        return <UniformlySlowMotion />
-    }else if(type === "time from acceleration + distance"){
-        return <TimeAccelerationDistance />
-    }
+    if(type === "age") return <TypeAge />;
+    else if(type === "time sum") return <TimeSum />;
+    else if(type === "time difference") return <TimeDifference />;
+    else if(type === "time difference minutes") return <TimeDifferenceMinutes />;
+    else if(type === "time difference minutes2") return <TimeDifferenceMinutesSecond />;
+    else if(type === "month amount") return <MonthAmount />;
+    else if(type === "day amount") return <DayAmount />;
+    else if(type === "second amount") return <SecondAmount />;
+    else if(type === "roman numerals") return <RomanNumerals />;
+    else if(type === "kilometers apart") return <KilometersApart />;
+    else if(type === "road calculation") return <RoadCalculation />;
+    else if(type === "road calculation2") return <RoadCalculationSecond />;
+    else if(type === "time calculation") return <TimeCalculation />;
+    else if(type === "m/min to m/h") return <MminToMh />;
+    else if(type === "speed calculation") return <SpeedCalculation />;
+    else if(type === "acceleration calculation") return <AccelerationCalculation />;
+    else if(type === "uniformly slow motion") return <UniformlySlowMotion />;
+    else if(type === "time from acceleration + distance") return <TimeAccelerationDistance />;
 
     return null;
 }
