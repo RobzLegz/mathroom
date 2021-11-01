@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import tasks from '../data/tasks';
 import AccelerationCalculation from '../levels/AccelerationCalculation';
 import AverageSpeed from '../levels/AverageSpeed';
-import AverageTrainSpeed from '../levels/AverageTrainSpeed';
 import DayAmount from '../levels/DayAmount';
 import KilometersApart from '../levels/KilometersApart';
 import MminToMh from '../levels/MminToMh';
