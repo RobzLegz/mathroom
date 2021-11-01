@@ -2,6 +2,7 @@ import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
 import tasks from '../data/tasks';
 import AccelerationCalculation from '../levels/AccelerationCalculation';
+import AverageTrainSpeed from '../levels/AverageTrainSpeed';
 import DayAmount from '../levels/DayAmount';
 import KilometersApart from '../levels/KilometersApart';
 import MminToMh from '../levels/MminToMh';
@@ -43,6 +44,7 @@ const renderActiveTaskFromType = (type: string) => {
     else if(type === "acceleration calculation") return <AccelerationCalculation />;
     else if(type === "uniformly slow motion") return <UniformlySlowMotion />;
     else if(type === "time from acceleration + distance") return <TimeAccelerationDistance />;
+    else if(type === "average train speed") return <AverageTrainSpeed />;
 
     return null;
 }
@@ -78,4 +80,4 @@ const DisplayLevelFromType = () => {
     return renderActiveTaskFromType(activeTask.type);
 }
 
-export default DisplayLevelFromType
+export default DisplayLevelFromType;
