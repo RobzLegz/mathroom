@@ -46,7 +46,7 @@ const KilometersApart: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p></p>
+                    <p>Multiply the time by the speed and then count the distance of both, as both move in opposite directions.</p>
                 </div>
             )}
             
