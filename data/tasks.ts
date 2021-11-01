@@ -20,9 +20,8 @@ const tasks = [
     {type: "average speed"},
     {type: "uniformly slow motion"},
     {type: "average speed"},
+    {type: "distance between2"},
     {type: "time from acceleration + distance"},
-    // {type: "distance between"},
-    // {type: "time from acceleration + distance"},
 ];
 
 export default tasks;
