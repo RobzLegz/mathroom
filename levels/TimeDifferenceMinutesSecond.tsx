@@ -43,7 +43,7 @@ const TimeDifferenceMinutesSecond: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>To get Your current age, subtract given year from current year ({new Date().getFullYear()})</p>
+                    <p> Start by dividing by 60 to get the hours, then multiply by the hourly rate. The answer is rounded.({new Date().getFullYear()})</p>
                 </div>
             )}
             
