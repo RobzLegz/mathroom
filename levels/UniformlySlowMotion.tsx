@@ -47,7 +47,7 @@ const UniformlySlowMotion: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p></p>
+                    <p>Divide the road difference by the summed speed.</p>
                 </div>
             )}
             
