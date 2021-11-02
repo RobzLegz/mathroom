@@ -29,7 +29,7 @@ function LoginContainer() {
 
     return (
         <form className="auth__container">
-            <h1>Log in</h1>
+            <h1 onClick={() => router.push("/menu")}>Log in</h1>
             <div className="auth__container__form">
                 <div className="auth__container__form__field">
                     <label htmlFor="login_email">email</label>
@@ -59,6 +59,7 @@ function LoginContainer() {
                     <p>Don't have an account? <Link href="/auth/register">Register</Link></p>
                 </div>
                 <button disabled={clicked} onClick={(e) => loginUser(e, email, password, dispatch, router, clicked, setClicked)}>Log in</button>
+                <small>Go to menu by clicking login title</small>
             </div>
         </form>
     )
