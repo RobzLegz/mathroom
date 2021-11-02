@@ -120,4 +120,79 @@
             }
         }
     }
+
+    @media screen and (max-width: 1430px){
+        &__container{
+            &__form{
+                width: 400px;
+                padding: 20px;
+
+                &__field{
+                    input{
+                        height: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1325px){
+        &__container{
+            h1{
+                font-size: 60px;
+                margin: 0 0 20px 0;
+            }
+
+            &__form{
+                width: 400px;
+                padding: 20px;
+
+                &__field{
+                    input{
+                        height: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 460px){
+        &__container{
+            padding: 0 20px;
+
+            h1{
+                font-size: 50px;
+                margin: 0 0 20px 0;
+            }
+
+            &__form{
+                width: 100%;
+                padding: 20px;
+
+                &__field{
+                    label{
+                        font-size: 16px;
+                    }
+
+                    input{
+                        height: 30px;
+                    }
+                }
+
+                &__link{
+                    p{
+                        font-size: 16px;
+                    }
+                }
+
+                button{
+                    width: 150px;
+                    height: 40px;
+                    margin: 10px 0 0;
+                }
+            }
+
+            
+        }
+    }
 }
