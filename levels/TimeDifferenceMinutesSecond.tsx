@@ -66,7 +66,7 @@ const TimeDifferenceMinutesSecond: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="10"
+                                min="0"
                                 max="150"
                             />
                         )}

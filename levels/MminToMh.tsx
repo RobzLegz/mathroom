@@ -8,7 +8,7 @@ import { nextLevel } from '../requests/levels/requests';
 const TimeCalculation: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(5);
+    const [selectedAge, setSelectedAge] = useState<number>(150);
     const [speed] = useState<number>(Math.floor((Math.random() * 9) + 3));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);

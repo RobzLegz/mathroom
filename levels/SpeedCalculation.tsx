@@ -8,7 +8,7 @@ import { nextLevel } from '../requests/levels/requests';
 const SpeedCalculation: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(5);
+    const [selectedAge, setSelectedAge] = useState<number>(20);
     const [speed] = useState<number>(Math.floor((Math.random() * 55) + 30));
     const [time] = useState<number>(Math.floor((Math.random() * 6) + 3));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
@@ -66,8 +66,8 @@ const SpeedCalculation: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="100"
-                                max="480"
+                                min="20"
+                                max="100"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>

@@ -8,7 +8,7 @@ import { nextLevel } from '../requests/levels/requests';
 const DayAmount: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(1);
+    const [selectedAge, setSelectedAge] = useState<number>(0);
     const [weeks] = useState<number>(Math.floor((Math.random() * 5) + 1));
     const [days] = useState<number>(Math.floor((Math.random() * 5) + 1));
     const [needHelp, setNeedHelp] = useState<boolean>(false);

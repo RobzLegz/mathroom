@@ -8,7 +8,7 @@ import { nextLevel } from '../requests/levels/requests';
 const KilometersApart: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(5);
+    const [selectedAge, setSelectedAge] = useState<number>(1);
     const [speed1] = useState<number>(Math.floor((Math.random() * 10) + 2));
     const [speed2] = useState<number>(Math.floor((Math.random() * 10) + 2));
     const [time] = useState<number>(Math.floor((Math.random() * 4) + 2));

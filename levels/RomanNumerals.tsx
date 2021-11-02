@@ -72,7 +72,9 @@ const RomanNumerals: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>I = 1; V = 5; X = 10</p>
+                    <p>I = 1</p>
+                    <p>V = 5</p>
+                    <p>X = 10</p>
                 </div>
             )}
             

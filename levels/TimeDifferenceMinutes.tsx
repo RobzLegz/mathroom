@@ -9,7 +9,7 @@ const TimeDifferenceMinutes: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(10);
-    const [totalTimeSpent] = useState<number>(Math.floor((Math.random() * 200) + 50));
+    const [totalTimeSpent] = useState<number>(Math.floor((Math.random() * 200) + 100));
     const [difference] = useState<number>(Math.floor((Math.random() * 59) + 20));
     const [correctAnswer] = useState<number>(totalTimeSpent - difference);
     const [needHelp, setNeedHelp] = useState<boolean>(false);
@@ -46,7 +46,7 @@ const TimeDifferenceMinutes: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>To get Your current age, subtract given year from current year ({new Date().getFullYear()})</p>
+                    <p>To get other programmers time, subtract the first programmers time spent from total time spent.</p>
                 </div>
             )}
             
@@ -69,7 +69,7 @@ const TimeDifferenceMinutes: React.FC = () => {
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
                                 min="10"
-                                max="150"
+                                max="250"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>

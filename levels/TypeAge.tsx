@@ -66,8 +66,8 @@ const TypeAge: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="100"
-                                max="480"
+                                min="5"
+                                max="100"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
