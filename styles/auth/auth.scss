@@ -15,9 +15,10 @@
         flex-direction: column;
 
         h1{
+            margin: 0 0 40px;
+            cursor: pointer;
             color: $mathRoomContainerBG;
             font-size: $headingSize;
-            margin: 0 0 40px;
         }
     
         &__form{
@@ -117,6 +118,11 @@
                 &:hover{
                     background-color: $mathRoomButtonHover;
                 }
+            }
+
+            small{
+                margin: 10px 0 0 0;
+                text-align: center;
             }
         }
     }

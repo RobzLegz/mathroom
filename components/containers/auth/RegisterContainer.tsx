@@ -32,7 +32,7 @@ function RegisterContainer() {
 
     return (
         <form className="auth__container">
-            <h1>Register</h1>
+            <h1 onClick={() => router.push("/menu")}>Register</h1>
             <div className="auth__container__form">
                 <div className="auth__container__form__field">
                     <label htmlFor="register_username">username</label>
@@ -90,6 +90,7 @@ function RegisterContainer() {
                     <p>I agree to your <Link href="/privacy-policy">privacy policy</Link></p>
                 </div>
                 <button disabled={clicked} onClick={(e) => registerUser(e, username, email, password, cfPassword, agreedToPrivacyPolicy, dispatch, router, clicked, setClicked)}>Register</button>
+                <small>To menu by clicking register title</small>
             </div>
         </form>
     )
