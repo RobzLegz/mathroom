@@ -5,12 +5,16 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const TypeAge: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+    setNeedHelp: any;
+}
+
+const TypeAge: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(5);
     const [correctAnswer] = useState<number>(Math.floor((Math.random() * 64) + 7));
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -44,13 +48,23 @@ const TypeAge: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>subtract from the current time the time of birth. ({new Date().getFullYear()})</p>
+                    <div className="level__container__tip__inner">
+                        <div className="level__container__tip__inner__close" onClick={() => setNeedHelp(false)}>
+                            <div className="line1"></div>
+                            <div className="line2"></div>
+                        </div>
+                        <div className="level__container__tip__inner__text">
+                            <p>From the current year ({new Date().getFullYear()}) subtract the time of birth.</p>
+                        </div>
+                        <div className="buttonContainer">
+                            <button onClick={() => setNeedHelp(false)}>Okay</button>
+                        </div>
+                    </div>
                 </div>
             )}
             
             <div className="level__container__task">
                 <strong>How old are You now if You were born in {new Date().getFullYear() - correctAnswer}?</strong>
-                <img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} />
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

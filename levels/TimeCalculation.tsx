@@ -5,13 +5,17 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const TimeCalculation: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+    setNeedHelp: any;
+}
+
+const TimeCalculation: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(0);
     const [speed] = useState<number>(Math.floor((Math.random() * 60) + 40));
     const [time] = useState<number>(Math.floor((Math.random() * 6) + 3));
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -45,12 +49,23 @@ const TimeCalculation: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>Time is equal to road length divided by speed</p>
+                    <div className="level__container__tip__inner">
+                        <div className="level__container__tip__inner__close" onClick={() => setNeedHelp(false)}>
+                            <div className="line1"></div>
+                            <div className="line2"></div>
+                        </div>
+                        <div className="level__container__tip__inner__text">
+                            <p>Time is equal to road length divided by speed</p>
+                        </div>
+                        <div className="buttonContainer">
+                            <button onClick={() => setNeedHelp(false)}>Okay</button>
+                        </div>
+                    </div>
                 </div>
             )}
             
             <div className="level__container__task">
-                <strong>A car was driving at a constant speed of {speed} km/h. How long it would take the car to drive {speed * time} kilometers. (in hours)<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>A car was driving at a constant speed of {speed} km/h. How long it would take the car to drive {speed * time} kilometers. (in hours)</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

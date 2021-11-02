@@ -5,14 +5,18 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const KilometersApart: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+    setNeedHelp: any;
+}
+
+const KilometersApart: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(1);
     const [speed1] = useState<number>(Math.floor((Math.random() * 10) + 2));
     const [speed2] = useState<number>(Math.floor((Math.random() * 10) + 2));
     const [time] = useState<number>(Math.floor((Math.random() * 4) + 2));
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -46,12 +50,23 @@ const KilometersApart: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>Multiply the time by the speed and then count the distance of both, as both move in opposite directions.</p>
+                    <div className="level__container__tip__inner">
+                        <div className="level__container__tip__inner__close" onClick={() => setNeedHelp(false)}>
+                            <div className="line1"></div>
+                            <div className="line2"></div>
+                        </div>
+                        <div className="level__container__tip__inner__text">
+                            <p>Multiply the time by the speed and then count the distance of both, as both move in opposite directions.</p>
+                        </div>
+                        <div className="buttonContainer">
+                            <button onClick={() => setNeedHelp(false)}>Okay</button>
+                        </div>
+                    </div>
                 </div>
             )}
             
             <div className="level__container__task">
-                <strong>Two skaters go from the skate park in opposite directions at the same time at speeds of {speed1} km/h and {speed2} km/h respectively. How far apart from each other will they be in {time} hours?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>Two skaters go from the skate park in opposite directions at the same time at speeds of {speed1} km/h and {speed2} km/h respectively. How far apart from each other will they be in {time} hours?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

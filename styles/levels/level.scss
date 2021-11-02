@@ -6,46 +6,151 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $mathRoomBG;
+    overflow: hidden;
+    font-family: $roomFont;
+    background-color: $mathRoomDarkerPurple;
+
+    .activeLevel{
+        border-radius: 10px;
+        width: 800px;
+        height: 550px;
+        position: relative;
+        background-color: $mathRoomContainerBG;
+
+        &__header{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            justify-content: space-between;
+
+            .button{
+                width: 140px;
+                height: 40px;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-size: $buttonText;
+                font-family: $roomFont;
+                color: $mathRoomContainerBG;
+                background-color: $mathRoomButton;
+
+                &:hover{
+                    background-color: $mathRoomButtonHover;
+                }
+            }
+
+            h2{
+                padding: 10px 30px;
+                border-radius: 10px;
+                color: $mathRoomContainerBG;
+                background-color: $mathRoomGrey;
+            }
+        }
+    }
 
     &__container{
-        width: 800px;
-        height: 500px;
-        border-radius: 10px;
+        width: 100%;
+        height: 100%;
         display: flex;
         align-items: center;
         justify-content: flex-start;
         flex-direction: column;
-        background-color: $mathRoomContainerBG;
 
         &__tip{
+            top: 0;
+            left: 0;
+            z-index: 3;
             width: 100%;
+            height: 100%;
+            position: absolute;
             border-radius: 10px 10px 0 0;
             padding: 20px;
             text-align: center;
-            background-color: $mathRoomLightGrey;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.2);
+
+            &__inner{
+                width: 500px;
+                height: 300px;
+                padding: 20px 50px;
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                flex-direction: column;
+                position: relative;
+                background: $mathRoomContainerBG;
+
+                &__close{
+                    position: relative;
+                    cursor: pointer;
+
+                    .line1,
+                    .line2{
+                        width: 3px;
+                        height: 20px;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        background-color: $mathRoomBlackText;
+                    }
+
+                    .line1{
+                        transform: rotate(45deg);
+                    }
+
+                    .line2{
+                        transform: rotate(-45deg);
+                    }
+                }
+
+                &__text{
+                    width: 100%;
+                }
+
+                .buttonContainer{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    button{
+                        width: 150px;
+                        height: 40px;
+                        outline: none;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        color: $mathRoomContainerBG;
+                        background-color: $mathRoomButton;
+
+                        &:hover{
+                            background-color: $mathRoomButtonHover;
+                        }
+                    }
+                }
+            }
         }
 
         &__task{
             width: 100%;
             padding: 20px;
             text-align: center;
-            margin: 20px 0 0;
             display: flex;
             align-items: center;
             justify-content: center;
-
-            img{
-                width: 20px;
-                margin: 0 0 0 10px;
-                cursor: pointer;
-            }
+            font-size: 20px;
         }
 
         &__options{
             flex: 1;
             width: 100%;
-            padding: 20px;
+            padding: 0 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -55,13 +160,14 @@
                 width: calc(50% - 20px);
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
                 flex-direction: column;
                 padding: 20px;
 
                 &__instruction{
                     margin-top: 5px;
                     text-align: center;
+                    color: $mathRoomGrey;
                 }
 
                 &__submit{
@@ -104,7 +210,7 @@
             &__ilustration{
                 height: 100%;
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: center;
                 width: 50%;
                 padding: 20px;
@@ -112,6 +218,113 @@
                 img{
                     width: 100%;
                 }
+            }
+        }
+    }
+
+    @media screen and (max-width: 875px){
+        .activeLevel{
+            width: 650px;
+        }
+    }
+
+    @media screen and (max-width: 700px){
+        .activeLevel{
+            width: 600px;
+        }
+    }
+
+    @media screen and (max-width: 650px){
+        .activeLevel{
+            width: 500px;
+            height: auto;
+
+            &__header{
+                padding: 10px;
+
+                h2{
+                    display: none;
+                }
+            }
+        }
+
+        &__container{
+            &__task{
+                font-size: 18px;
+                padding: 5px 10px;
+            }
+
+            &__options{
+                flex-direction: column-reverse;
+
+                &__tools{
+                    width: 100%;
+
+                    &__instruction{
+                        width: 100%;
+                    }
+                }
+
+                &__ilustration{
+                    width: 300px;
+                    max-height: 200px;
+
+                    img{
+                        max-height: 200px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 550px){
+        .activeLevel{
+            width: 400px;
+
+            &__header{
+                .button{
+                    width: 110px;
+                }
+            }
+        }
+
+        &__container{
+            &__task{
+                font-size: 16px;
+            }
+
+            &__options{
+                width: 100%;
+                padding: 10px;
+
+                &__ilustration{
+                    width: 100%;
+                    padding: 0;
+
+                    img{
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 450px){
+        .activeLevel{
+            overflow-y: scroll;
+            width: 100%;
+            height: 100%;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            border-radius: 0;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            &__header{
+                padding: 10px;
             }
         }
     }
@@ -124,7 +337,7 @@
     justify-content: space-between;
     padding: 10px;
     margin: 10px 0 0;
-    border: 2px solid $mathRoomLightGrey;
+    // border: 2px solid $mathRoomLightGrey;
 
     strong{
         margin: 0 10px;

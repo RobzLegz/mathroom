@@ -5,14 +5,18 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const AverageSpeed: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+    setNeedHelp: any;
+}
+
+const AverageSpeed: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(10);
     const [startingSpeed, setStartingSpeed] = useState<number>(0);
     const [acceleratedSpeed, setAcceleratedSpeed] = useState<number>(startingSpeed + Math.floor((Math.random() * 40) + 20));
     const [activeTransport, setActiveTransport] = useState<string>("");
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
     const [changeTask, setChangeTask] = useState<boolean>(true);
 
@@ -72,12 +76,23 @@ const AverageSpeed: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p></p>
+                    <div className="level__container__tip__inner">
+                        <div className="level__container__tip__inner__close" onClick={() => setNeedHelp(false)}>
+                            <div className="line1"></div>
+                            <div className="line2"></div>
+                        </div>
+                        <div className="level__container__tip__inner__text">
+                            <p></p>
+                        </div>
+                        <div className="buttonContainer">
+                            <button onClick={() => setNeedHelp(false)}>Okay</button>
+                        </div>
+                    </div>
                 </div>
             )}
             
             <div className="level__container__task">
-                <strong>A {activeTransport} traveled at a speed of {startingSpeed} km/h, after some time, it accelerated to {acceleratedSpeed} km/h. What was the average speed of the {activeTransport}?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>A {activeTransport} traveled at a speed of {startingSpeed} km/h, after some time, it accelerated to {acceleratedSpeed} km/h. What was the average speed of the {activeTransport}?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

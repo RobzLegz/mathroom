@@ -5,12 +5,16 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const TimeCalculation: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+    setNeedHelp: any;
+}
+
+const TimeCalculation: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(150);
     const [speed] = useState<number>(Math.floor((Math.random() * 9) + 3));
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -44,12 +48,23 @@ const TimeCalculation: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>just multiply by sixty</p>
+                    <div className="level__container__tip__inner">
+                        <div className="level__container__tip__inner__close" onClick={() => setNeedHelp(false)}>
+                            <div className="line1"></div>
+                            <div className="line2"></div>
+                        </div>
+                        <div className="level__container__tip__inner__text">
+                            <p>just multiply by sixty</p>
+                        </div>
+                        <div className="buttonContainer">
+                            <button onClick={() => setNeedHelp(false)}>Okay</button>
+                        </div>
+                    </div>
                 </div>
             )}
             
             <div className="level__container__task">
-                <strong>Express the given unit {speed} m/min per m/h.<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>Express the given unit {speed} m/min per m/h.</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

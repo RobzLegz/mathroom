@@ -8,6 +8,7 @@ import { checkForLogin } from "../../requests/auth/requests";
 import { setNotification } from "../../redux/slices/notificationSlice";
 import GameBackground from "../../components/background/GameBackground";
 import DisplayLevelFromType from "../../hooks/DisplayLevelFromType";
+import ActiveLevel from "../../components/containers/levels/ActiveLevel";
 
 function Level() {
     const router = useRouter();
@@ -45,9 +46,9 @@ function Level() {
     
                 <Notification />
 
-                <DisplayLevelFromType />
+                <ActiveLevel />
 
-                <GameBackground color={"blue"} />
+                <GameBackground color={"purple"} />
             </div>
         )
     }

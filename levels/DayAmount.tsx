@@ -5,13 +5,17 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const DayAmount: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+    setNeedHelp: any;
+}
+
+const DayAmount: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(0);
     const [weeks] = useState<number>(Math.floor((Math.random() * 5) + 1));
     const [days] = useState<number>(Math.floor((Math.random() * 5) + 1));
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -45,12 +49,23 @@ const DayAmount: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>there are 7 days in one week. It remains so to multiply correctly and then add up the days.</p>
+                    <div className="level__container__tip__inner">
+                        <div className="level__container__tip__inner__close" onClick={() => setNeedHelp(false)}>
+                            <div className="line1"></div>
+                            <div className="line2"></div>
+                        </div>
+                        <div className="level__container__tip__inner__text">
+                            <p>there are 7 days in one week. It remains so to multiply correctly and then add up the days.</p>
+                        </div>
+                        <div className="buttonContainer">
+                            <button onClick={() => setNeedHelp(false)}>Okay</button>
+                        </div>
+                    </div>
                 </div>
             )}
             
             <div className="level__container__task">
-                <strong>Sally's pay day is in {weeks} weeks and {days} days. After how many days Sally will recieve her salary?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>Sally's pay day is in {weeks} weeks and {days} days. After how many days Sally will recieve her salary?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

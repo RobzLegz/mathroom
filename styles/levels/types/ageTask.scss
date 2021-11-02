@@ -33,4 +33,36 @@
     .kid{
         height: 260px;
     }
+
+    @media screen and (max-width: 650px){
+        height: 200px;
+
+        .old{
+            height: 180px;
+        }
+    
+        .man{
+            height: 200px;
+        }
+    
+        .teenager{
+            height: 190px;
+        }
+    
+        .kid{
+            height: 160px;
+        }
+    }
+
+    @media screen and (max-width: 450px){
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        img{
+            width: auto;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
 }

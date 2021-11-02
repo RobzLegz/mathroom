@@ -5,7 +5,12 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const TimeAccelerationDistance: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+    setNeedHelp: any;
+}
+
+const TimeAccelerationDistance: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(0);
@@ -13,7 +18,6 @@ const TimeAccelerationDistance: React.FC = () => {
     const [acceleration] = useState<number>(Math.floor((Math.random() * 4) + 2));
     const [time] = useState<number>(Math.floor((Math.random() * 7) + 2));
     const [distance] = useState<number>((startingSpeed * time) + ((acceleration * time**2) / 2) - time);
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -47,12 +51,23 @@ const TimeAccelerationDistance: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p></p>
+                    <div className="level__container__tip__inner">
+                        <div className="level__container__tip__inner__close" onClick={() => setNeedHelp(false)}>
+                            <div className="line1"></div>
+                            <div className="line2"></div>
+                        </div>
+                        <div className="level__container__tip__inner__text">
+                            <p></p>
+                        </div>
+                        <div className="buttonContainer">
+                            <button onClick={() => setNeedHelp(false)}>Okay</button>
+                        </div>
+                    </div>
                 </div>
             )}
             
             <div className="level__container__task">
-                <strong>Calculate the time during which a car, moving at an acceleration of {acceleration} km/sec, travels a distance of {distance} km, if at the beginning the movement speed was {startingSpeed} km/h!<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>Calculate the time during which a car, moving at an acceleration of {acceleration} km/sec, travels a distance of {distance} km, if at the beginning the movement speed was {startingSpeed} km/h!</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

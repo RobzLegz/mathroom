@@ -5,14 +5,18 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const TimeDifferenceMinutes: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+    setNeedHelp: any;
+}
+
+const TimeDifferenceMinutes: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(10);
     const [totalTimeSpent] = useState<number>(Math.floor((Math.random() * 200) + 100));
     const [difference] = useState<number>(Math.floor((Math.random() * 59) + 20));
     const [correctAnswer] = useState<number>(totalTimeSpent - difference);
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -46,13 +50,23 @@ const TimeDifferenceMinutes: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>To get other programmers time, subtract the first programmers time spent from total time spent.</p>
+                    <div className="level__container__tip__inner">
+                        <div className="level__container__tip__inner__close" onClick={() => setNeedHelp(false)}>
+                            <div className="line1"></div>
+                            <div className="line2"></div>
+                        </div>
+                        <div className="level__container__tip__inner__text">
+                            <p>To get other programmers time, subtract the first programmers time spent from total time spent.</p>
+                        </div>
+                        <div className="buttonContainer">
+                            <button onClick={() => setNeedHelp(false)}>Okay</button>
+                        </div>
+                    </div>
                 </div>
             )}
             
             <div className="level__container__task">
                 <strong>Two programmers worked on a website for {totalTimeSpent} minutes together. How much time did the other programmer spend if the first spent {difference} minutes?</strong>
-                <img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} />
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
