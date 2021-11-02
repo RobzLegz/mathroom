@@ -10,7 +10,7 @@ function ActiveLevel() {
     return (
         <div className="activeLevel">
             <header className="activeLevel__header">
-                <button className="button">Main menu</button>
+                <button className="button" onClick={() => router.push("/menu")}>Main menu</button>
                 <h2>Level {level}</h2>
                 <button className="button">help?</button>
             </header>
