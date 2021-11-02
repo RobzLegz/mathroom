@@ -21,7 +21,7 @@ const LeaderboardSmall: React.FC = () => {
                     .sort((a: RoomUser, b: RoomUser) => {return a.points - b.points})
                     .map((object: RoomUser, i: number) => (
                         <div className="leaderboardSmall__object" key={i}>
-                            <h4>{i + 1}</h4>
+                            <h4>#{i + 1}</h4>
                             <strong>{object.username}</strong>
                         </div>
                     ))

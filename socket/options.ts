@@ -70,7 +70,6 @@ const createRoom = (roomName: string, totalStages: number, maxPlayers: number, i
         socket.emit("addRoom", data);
 
         socket.on("getRooms", (rooms: Room[]) => {
-            console.log(rooms)
             rooms.forEach((room) => {
                 dispatch(addRoom(room));
             });
