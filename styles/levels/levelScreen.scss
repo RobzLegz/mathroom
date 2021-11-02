@@ -55,46 +55,57 @@
             width: 100%;
             height: 500px;
             overflow-y: scroll;
+            overflow-x: hidden;
             margin-top: 40px;
             border-radius: 10px;
             background-color: $mathRoomContainerBG;
 
-            &__level{
-                width: 50px;
-                height: 50px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                border-radius: 5px;
-    
-                &__purple{
-                    background-color: $mathRoomButton;
-                    color: $mathRoomContainerBG;
-                }
-    
-                &__yellow{
-                    background-color: $mathRoomYellow;
-    
-                    img{
-                        filter: invert(100%);
-                        -webkit-filter: invert(100%);
+            &__container{
+                display: grid;
+                overflow-x: hidden;
+                justify-content: space-between;
+                column-gap: 25px;
+                row-gap: 25px;
+                padding: 10px 15px 10px 10px;
+                grid-template-columns: repeat(auto-fill, 40px);
+
+                &__level{
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    border-radius: 5px;
+        
+                    &__purple{
+                        background-color: $mathRoomButton;
+                        color: $mathRoomContainerBG;
                     }
-                }
-    
-                &__green{
-                    background-color: $mathRoomGreen;
-                    color: $mathRoomContainerBG;
-                }
-    
-                &__red{
-                    background-color: $mathRoomRed;
-                    color: $mathRoomContainerBG;
-                }
-    
-                img{
-                    width: 30px;
-                    height: 30px;
+        
+                    &__yellow{
+                        background-color: $mathRoomYellow;
+        
+                        img{
+                            filter: invert(100%);
+                            -webkit-filter: invert(100%);
+                        }
+                    }
+        
+                    &__green{
+                        background-color: $mathRoomGreen;
+                        color: $mathRoomContainerBG;
+                    }
+        
+                    &__red{
+                        background-color: $mathRoomRed;
+                        color: $mathRoomContainerBG;
+                    }
+        
+                    img{
+                        width: 30px;
+                        height: 30px;
+                    }
                 }
             }
         }

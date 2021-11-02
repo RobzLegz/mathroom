@@ -18,25 +18,27 @@ function LevelContainer() {
                 <button className="roomPage__container__header__new" onClick={() => router.push("/rooms/new")}>Create new</button>
             </header>
             <div className="levels__container__tasks">
-                {
-                    tasks
-                        .map((task, i) => {
-                        if(!pushedLevels.includes(i) && tasks.length !== (i + 1)){
-                            pushedLevels.push(i);
+                <div className="levels__container__tasks__container">
+                    {
+                        tasks
+                            .map((task, i) => {
+                            if(!pushedLevels.includes(i) && tasks.length !== (i + 1)){
+                                pushedLevels.push(i);
 
-                            let level = i + 1;
+                                let level = i + 1;
 
-                            let pushTask = {
-                                type: task.type,
-                                level: String(level)
+                                let pushTask = {
+                                    type: task.type,
+                                    level: String(level)
+                                }
+
+                                return(
+                                    <LevelOption key={i} task={pushTask} />
+                                )
                             }
-
-                            return(
-                                <LevelOption key={i} task={pushTask} />
-                            )
-                        }
-                    return null;
-                })}
+                        return null;
+                    })}
+                </div>
             </div>
         </div>
     )
