@@ -74,7 +74,7 @@ const MonthAmount: React.FC = () => {
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
                     </div>
                     <div className="level__container__options__tools__instruction">
-                        <small>Slide from left to right to change value</small>
+                        <small>Slide from left to right to change value or click the number next to it to write result</small>
                     </div>
                     <button className="level__container__options__tools__submit" onClick={(e) => completeLevel(e)}>Submit</button>
                     {userInfo.info.level > Number(level) && (
