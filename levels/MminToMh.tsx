@@ -7,9 +7,10 @@ import { nextLevel } from '../requests/levels/requests';
 
 interface Props{
     needHelp: boolean;
+    setNeedHelp: any;
 }
 
-const TimeCalculation: React.FC<Props> = ({needHelp}) => {
+const TimeCalculation: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(150);

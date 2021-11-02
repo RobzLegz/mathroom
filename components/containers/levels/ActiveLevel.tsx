@@ -23,12 +23,12 @@ function ActiveLevel() {
     return (
         <div className="activeLevel">
             <header className="activeLevel__header">
-                <button className="button" onClick={() => router.push("/menu")}>Main menu</button>
+                <button className="button" onClick={() => router.push("/levels")}>Exit</button>
                 <h2>Level {level}</h2>
                 <button className="button" onClick={() => setNeedHelp(!needHelp)}>help?</button>
             </header>
 
-            <DisplayLevelFromType needHelp={needHelp} />
+            <DisplayLevelFromType needHelp={needHelp} setNeedHelp={setNeedHelp} />
         </div>
     )
 }

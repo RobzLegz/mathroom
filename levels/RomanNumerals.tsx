@@ -7,6 +7,7 @@ import { nextLevel } from '../requests/levels/requests';
 
 interface Props{
     needHelp: boolean;
+    setNeedHelp: any;
 }
 
 const options = [
@@ -37,7 +38,7 @@ const options = [
     },
 ]
 
-const RomanNumerals: React.FC<Props> = ({needHelp}) => {
+const RomanNumerals: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedHours, setSelectedHours] = useState<number>(0);

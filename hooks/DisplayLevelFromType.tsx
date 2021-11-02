@@ -30,34 +30,35 @@ interface Task{
 
 interface Props{
     needHelp: boolean;
+    setNeedHelp: any;
 }
 
-const renderActiveTaskFromType = (type: string, needHelp: boolean) => {
-    if(type === "age") return <TypeAge needHelp={needHelp} />;
-    else if(type === "time sum") return <TimeSum needHelp={needHelp} />;
-    else if(type === "time difference") return <TimeDifference needHelp={needHelp} />;
-    else if(type === "time difference minutes") return <TimeDifferenceMinutes needHelp={needHelp} />;
-    else if(type === "time difference minutes2") return <TimeDifferenceMinutesSecond needHelp={needHelp} />;
-    else if(type === "month amount") return <MonthAmount needHelp={needHelp} />;
-    else if(type === "day amount") return <DayAmount needHelp={needHelp} />;
-    else if(type === "second amount") return <SecondAmount needHelp={needHelp} />;
-    else if(type === "roman numerals") return <RomanNumerals needHelp={needHelp} />;
-    else if(type === "kilometers apart") return <KilometersApart needHelp={needHelp} />;
-    else if(type === "road calculation") return <RoadCalculation needHelp={needHelp} />;
-    else if(type === "road calculation2") return <RoadCalculationSecond needHelp={needHelp} />;
-    else if(type === "time calculation") return <TimeCalculation needHelp={needHelp} />;
-    else if(type === "m/min to m/h") return <MminToMh needHelp={needHelp} />;
-    else if(type === "speed calculation") return <SpeedCalculation needHelp={needHelp} />;
-    else if(type === "acceleration calculation") return <AccelerationCalculation needHelp={needHelp} />;
-    else if(type === "uniformly slow motion") return <UniformlySlowMotion needHelp={needHelp} />;
-    else if(type === "time from acceleration + distance") return <TimeAccelerationDistance needHelp={needHelp} />;
-    else if(type === "average speed") return <AverageSpeed needHelp={needHelp} />;
-    else if(type === "distance between2") return <DistanceBetween2 needHelp={needHelp} />;
+const renderActiveTaskFromType = (type: string, needHelp: boolean, setNeedHelp: any) => {
+    if(type === "age") return <TypeAge needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "time sum") return <TimeSum needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "time difference") return <TimeDifference needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "time difference minutes") return <TimeDifferenceMinutes needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "time difference minutes2") return <TimeDifferenceMinutesSecond needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "month amount") return <MonthAmount needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "day amount") return <DayAmount needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "second amount") return <SecondAmount needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "roman numerals") return <RomanNumerals needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "kilometers apart") return <KilometersApart needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "road calculation") return <RoadCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "road calculation2") return <RoadCalculationSecond needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "time calculation") return <TimeCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "m/min to m/h") return <MminToMh needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "speed calculation") return <SpeedCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "acceleration calculation") return <AccelerationCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "uniformly slow motion") return <UniformlySlowMotion needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "time from acceleration + distance") return <TimeAccelerationDistance needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "average speed") return <AverageSpeed needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "distance between2") return <DistanceBetween2 needHelp={needHelp} setNeedHelp={setNeedHelp} />;
 
     return null;
 }
 
-const DisplayLevelFromType: React.FC<Props> = ({needHelp}) => {
+const DisplayLevelFromType: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const [foundTask, setFoundTask] = useState<boolean>(false);
     const [activeTask, setActiveTask] = useState<null | Task>(null);
     const [prevLevel, setPrevLevel] = useState<null | string>(null);
@@ -91,7 +92,7 @@ const DisplayLevelFromType: React.FC<Props> = ({needHelp}) => {
         return null;
     }
 
-    return renderActiveTaskFromType(activeTask.type, needHelp);
+    return renderActiveTaskFromType(activeTask.type, needHelp, setNeedHelp);
 }
 
 export default DisplayLevelFromType;

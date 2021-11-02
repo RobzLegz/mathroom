@@ -7,9 +7,10 @@ import { nextLevel } from '../requests/levels/requests';
 
 interface Props{
     needHelp: boolean;
+    setNeedHelp: any;
 }
 
-const TypeAge: React.FC<Props> = ({needHelp}) => {
+const TypeAge: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(5);
@@ -47,7 +48,18 @@ const TypeAge: React.FC<Props> = ({needHelp}) => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>subtract from the current time the time of birth. ({new Date().getFullYear()})</p>
+                    <div className="level__container__tip__inner">
+                        <div className="level__container__tip__inner__close" onClick={() => setNeedHelp(false)}>
+                            <div className="line1"></div>
+                            <div className="line2"></div>
+                        </div>
+                        <div className="level__container__tip__inner__text">
+                            <p>From the current year ({new Date().getFullYear()}) subtract the time of birth.</p>
+                        </div>
+                        <div className="buttonContainer">
+                            <button onClick={() => setNeedHelp(false)}>Okay</button>
+                        </div>
+                    </div>
                 </div>
             )}
             

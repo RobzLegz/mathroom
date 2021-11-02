@@ -7,9 +7,10 @@ import { nextLevel } from '../requests/levels/requests';
 
 interface Props{
     needHelp: boolean;
+    setNeedHelp: any;
 }
 
-const AverageSpeed: React.FC<Props> = ({needHelp}) => {
+const AverageSpeed: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(10);
