@@ -1,0 +1,36 @@
+.level__container__options__ilustration__typeAgeContainer{
+    width: 200px;
+    height: 300px;
+    position: relative;
+
+    &__image{
+        bottom: 0;
+        left: 0;
+        position: absolute;  
+        transition: all 1s ease;
+
+        &__active{
+            opacity: 1;
+        }
+        
+        &__inactive{
+            opacity: 0;
+        }
+    }
+
+    .old{
+        height: 280px;
+    }
+
+    .man{
+        height: 300px;
+    }
+
+    .teenager{
+        height: 290px;
+    }
+
+    .kid{
+        height: 260px;
+    }
+}
