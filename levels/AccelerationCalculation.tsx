@@ -32,9 +32,9 @@ const AccelerationCalculation: React.FC<Props> = ({needHelp, setNeedHelp, multip
 
         if(multiplayer){
             if(selectedAge !== acceleration){
-                return completeSocketLevel(false);
+                return completeSocketLevel(false, dispatch);
             }
-            return completeSocketLevel(true);
+            return completeSocketLevel(true, dispatch);
         }
 
         if(selectedAge !== acceleration){

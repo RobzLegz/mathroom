@@ -57,9 +57,9 @@ const TimeSum: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
 
         if(multiplayer){
             if(selectedOption.correct !== `${selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}:${selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}`){
-                return completeSocketLevel(false);
+                return completeSocketLevel(false, dispatch);
             }
-            return completeSocketLevel(true);
+            return completeSocketLevel(true, dispatch);
         }
 
         if(selectedOption.correct !== `${selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}:${selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}`){

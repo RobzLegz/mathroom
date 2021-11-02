@@ -31,9 +31,9 @@ const KilometersApart: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) 
 
         if(multiplayer){
             if(selectedAge !== ((speed1 + speed2) * time)){
-                return completeSocketLevel(false);
+                return completeSocketLevel(false, dispatch);
             }
-            return completeSocketLevel(true);
+            return completeSocketLevel(true, dispatch);
         }
 
         if(selectedAge !== ((speed1 + speed2) * time)){

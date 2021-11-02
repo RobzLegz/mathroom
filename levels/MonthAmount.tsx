@@ -31,9 +31,9 @@ const MonthAmount: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
 
         if(multiplayer){
             if(selectedAge !== ((years * 12) + months)){
-                return completeSocketLevel(false);
+                return completeSocketLevel(false, dispatch);
             }
-            return completeSocketLevel(true);
+            return completeSocketLevel(true, dispatch);
         }
 
         if(selectedAge !== ((years * 12) + months)){

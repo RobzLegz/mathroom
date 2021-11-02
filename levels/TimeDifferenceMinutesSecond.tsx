@@ -29,9 +29,9 @@ const TimeDifferenceMinutesSecond: React.FC<Props> = ({needHelp, setNeedHelp, mu
 
         if(multiplayer){
             if(selectedAge !== (Math.floor(totalTimeSpent / 60) * 16)){
-                return completeSocketLevel(false);
+                return completeSocketLevel(false, dispatch);
             }
-            return completeSocketLevel(true);
+            return completeSocketLevel(true, dispatch);
         }
 
         if(selectedAge !== (Math.floor(totalTimeSpent / 60) * 16)){

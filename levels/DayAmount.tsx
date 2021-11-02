@@ -30,9 +30,9 @@ const DayAmount: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
 
         if(multiplayer){
             if(selectedAge !== ((weeks * 7) + days)){
-                return completeSocketLevel(false);
+                return completeSocketLevel(false, dispatch);
             }
-            return completeSocketLevel(true);
+            return completeSocketLevel(true, dispatch);
         }
 
         if(selectedAge !== ((weeks * 7) + days)){

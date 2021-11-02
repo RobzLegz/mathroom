@@ -1,4 +1,4 @@
-import { clearNotification } from "../redux/slices/notificationSlice";
+import { clearNotification, setNotification } from "../redux/slices/notificationSlice";
 import { addRoom } from "../redux/slices/roomSlice";
 import { getSocket, setOnlineUsers, setSocket } from "../redux/slices/socketSlice";
 
@@ -125,7 +125,7 @@ const startSocketGame = (roomId: string) => {
     socket.emit("startGame", roomId);
 }
 
-const completeSocketLevel = (passed: boolean) => {
+const completeSocketLevel = (passed: boolean, dispatch: any) => {
     const socket = getSocket();
 
     if(!socket){
@@ -134,8 +134,10 @@ const completeSocketLevel = (passed: boolean) => {
 
     if(passed){
         socket.emit("completeLevel");
+        dispatch(setNotification({type: "success", message: "Congrats, You passed this level!"}));
     }else{
         socket.emit("failLevel");
+        dispatch(setNotification({type: "error", message: "Wrong answer!"}));
     }
 }
 

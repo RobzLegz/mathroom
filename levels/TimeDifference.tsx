@@ -72,9 +72,9 @@ const TimeDifference: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) =
 
         if(multiplayer){
             if(selectedOption.correct !== `Day is ${selectedHours} hours${selectedMinutes > 0 ? ` and ${selectedMinutes} minutes` : ""} long.`){
-                return completeSocketLevel(false);
+                return completeSocketLevel(false, dispatch);
             }
-            return completeSocketLevel(true);
+            return completeSocketLevel(true, dispatch);
         }
 
         if(selectedOption.correct !== `Day is ${selectedHours} hours${selectedMinutes > 0 ? ` and ${selectedMinutes} minutes` : ""} long.`){

@@ -32,9 +32,9 @@ const UniformlySlowMotion: React.FC<Props> = ({needHelp, setNeedHelp, multiplaye
 
         if(multiplayer){
             if(selectedAge !== finalSpeed){
-                return completeSocketLevel(false);
+                return completeSocketLevel(false, dispatch);
             }
-            return completeSocketLevel(true);
+            return completeSocketLevel(true, dispatch);
         }
 
         if(selectedAge !== finalSpeed){

@@ -30,9 +30,9 @@ const RoadCalculationSecond: React.FC<Props> = ({needHelp, setNeedHelp, multipla
 
         if(multiplayer){
             if(selectedAge !== (speed * time)){
-                return completeSocketLevel(false);
+                return completeSocketLevel(false, dispatch);
             }
-            return completeSocketLevel(true);
+            return completeSocketLevel(true, dispatch);
         }
 
         if(selectedAge !== (speed * time)){

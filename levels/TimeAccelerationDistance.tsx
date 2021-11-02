@@ -32,9 +32,9 @@ const TimeAccelerationDistance: React.FC<Props> = ({needHelp, setNeedHelp, multi
 
         if(multiplayer){
             if(selectedAge !== time){
-                return completeSocketLevel(false);
+                return completeSocketLevel(false, dispatch);
             }
-            return completeSocketLevel(true);
+            return completeSocketLevel(true, dispatch);
         }
 
         if(selectedAge !== time){
