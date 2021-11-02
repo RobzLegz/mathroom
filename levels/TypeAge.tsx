@@ -82,15 +82,10 @@ const TypeAge: React.FC = () => {
                 </div>
                 <div className="level__container__options__ilustration">
                     <div className="level__container__options__ilustration__typeAgeContainer">
-                        {selectedAge > 65 ? (
-                            <img src="/levels/old.svg" />
-                        ) : selectedAge > 30 ? (
-                            <img src="/levels/man.svg" />
-                        ) :  selectedAge > 14 ? (
-                            <img src="/levels/teenager.svg" />
-                        ) : (
-                            <img src="/levels/kid.svg" />
-                        )}
+                        <img className={`old level__container__options__ilustration__typeAgeContainer__image level__container__options__ilustration__typeAgeContainer__image__${selectedAge >= 65 ? "active" : "inactive"}`} src="/levels/old.svg" />
+                        <img className={`man level__container__options__ilustration__typeAgeContainer__image level__container__options__ilustration__typeAgeContainer__image__${selectedAge >= 30 && selectedAge < 65 ? "active" : "inactive"}`} src="/levels/man.svg" />
+                        <img className={`teenager level__container__options__ilustration__typeAgeContainer__image level__container__options__ilustration__typeAgeContainer__image__${selectedAge >= 14 && selectedAge < 30 ? "active" : "inactive"}`} src="/levels/teenager.svg" />
+                        <img className={`kid level__container__options__ilustration__typeAgeContainer__image level__container__options__ilustration__typeAgeContainer__image__${selectedAge < 14 ? "active" : "inactive"}`} src="/levels/kid.svg" />
                     </div>
                 </div>
             </div>
