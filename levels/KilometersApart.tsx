@@ -68,7 +68,7 @@ const KilometersApart: React.FC = () => {
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
                                 min="1"
-                                max="130"
+                                max="150"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
