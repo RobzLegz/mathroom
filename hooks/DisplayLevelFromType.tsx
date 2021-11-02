@@ -48,7 +48,7 @@ const renderActiveTaskFromType = (type: string) => {
     else if(type === "uniformly slow motion") return <UniformlySlowMotion />;
     else if(type === "time from acceleration + distance") return <TimeAccelerationDistance />;
     else if(type === "average speed") return <AverageSpeed />;
-    else if(type === "distance between2") return <DistanceBetween2 />
+    else if(type === "distance between2") return <DistanceBetween2 />;
 
     return null;
 }

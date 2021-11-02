@@ -32,9 +32,7 @@ function LevelContainer() {
                                     level: String(level)
                                 }
 
-                                return(
-                                    <LevelOption key={i} task={pushTask} />
-                                )
+                                return <LevelOption key={i} task={pushTask} />;
                             }
                         return null;
                     })}
