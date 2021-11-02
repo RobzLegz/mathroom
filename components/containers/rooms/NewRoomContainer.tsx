@@ -56,11 +56,10 @@ function NewRoomContainer() {
                     <label htmlFor="new_room_stages">Total stages</label>
                     <select name="new_room_stages" id="new_room_stages" onChange={(e) => setTotalStages(e.target.value)}>
                         <option></option>
-                        <option>5</option>
                         <option>10</option>
+                        <option>15</option>
                         <option>20</option>
-                        <option>30</option>
-                        <option>40</option>
+                        {/* <option>30</option> */}
                     </select>
                 </div>
                 <div className="newRoom__container__form__opt">

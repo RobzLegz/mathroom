@@ -27,7 +27,11 @@ const getRooms = async (req: any, res: any) => {
 
 const createRoom = async (req: any, res: any) => {
     try{
-        const {roomName, totalStages, maxPlayers, isPrivate} = req.body;
+        const {roomName, totalStages, maxPlayers, isPrivate, tasks} = req.body;
+
+        if(!roomName || !maxPlayers && maxPlayers !== 0 || tasks.length < totalStages){
+            return res.status(400).json({msg: "Please fill all fields!"});
+        }
 
         const admin = await auth(req, res);
         
@@ -41,15 +45,12 @@ const createRoom = async (req: any, res: any) => {
             return res.status(400).json({msg: "There can't be multiple rooms with the same name!"});
         }
         
-        if(!roomName || !maxPlayers && maxPlayers !== 0){
-            return res.status(400).json({msg: "Please fill all fields!"});
-        }
-
         const newRoom = new Rooms({
-            roomName,
-            totalStages,
-            maxPlayers,
-            isPrivate,
+            roomName: roomName,
+            totalStages: totalStages,
+            maxPlayers: maxPlayers,
+            isPrivate: isPrivate,
+            tasks: tasks,
             admin: admin.id,
         });
 

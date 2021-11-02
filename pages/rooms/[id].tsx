@@ -73,7 +73,7 @@ function room() {
                 });
             }
         }
-    }, [id, userInfo.info, socketInfo.connected]);
+    }, [id, userInfo.info, socketInfo.connected, getSocket()]);
 
     return (
         <div className="gameRoom">
@@ -86,7 +86,7 @@ function room() {
             <ActiveRoom />
 
             {roomInfo.activeRoom && userInfo.info && (
-                <GameBackground color={"blue"} />
+                <GameBackground color={"purple"} />
             )}
         </div>
     )
