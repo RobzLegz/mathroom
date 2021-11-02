@@ -1,6 +1,6 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react'
-import DisplayMultiplayerTask from '../../../hooks/DisplayMultiplayertask';
+import DisplayMultiplayerTask from '../../../hooks/DisplayMultiplayerTask';
 
 function MultiplayerActiveLevel() {
     const router = useRouter();
