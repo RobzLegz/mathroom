@@ -55,14 +55,16 @@ const RomanNumerals: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) =>
     const completeLevel = (e: any) => {
         e.preventDefault();
 
+        let correct = `${selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}:${selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}` && selectedOption.correct2 !== `${selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}:${selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}`;
+
         if(multiplayer){
-            if(selectedOption.correct !== `${selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}:${selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}` && selectedOption.correct2 !== `${selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}:${selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}`){
+            if(selectedOption.correct !== correct){
                 return completeSocketLevel(false, dispatch);
             }
             return completeSocketLevel(true, dispatch);
         }
 
-        if(selectedOption.correct !== `${selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}:${selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}` && selectedOption.correct2 !== `${selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}:${selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}`){
+        if(selectedOption.correct !== correct){
             return dispatch(setNotification({type: "error", message: "Incorrect answer"}));
         }
 
