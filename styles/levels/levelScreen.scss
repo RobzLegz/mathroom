@@ -6,48 +6,179 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: $roomFont;
+    background-color: $mathRoomDarkerPurple;
 
     &__container{
         width: 700px;
-        height: 500px;
-        overflow-y: scroll;
+        z-index: 2;
 
-        &__level{
-            width: 50px;
-            height: 50px;
+        &__header{
+            width: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 5px;
+            justify-content: space-between;
 
-            &__purple{
-                background-color: $mathRoomButton;
+            button{
+                width: 150px;
+                height: 50px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                outline: none;
+                border: none;
+                border-radius: 10px;
+                font-size: 18px;
                 color: $mathRoomContainerBG;
             }
 
-            &__yellow{
-                background-color: $mathRoomYellow;
+            &__back{
+                background-color: $mathRoomGrey;
+            }
 
-                img{
-                    filter: invert(100%);
-                    -webkit-filter: invert(100%);
+            &__title{
+                padding: 10px 50px;
+                border-radius: 10px;
+                background-color: $mathRoomGrey;
+                color: $mathRoomContainerBG;
+            }
+
+            &__new{
+                background-color: $mathRoomButton;
+
+                &:hover{
+                    background-color: $mathRoomButtonHover;
                 }
             }
+        }
 
-            &__green{
-                background-color: $mathRoomGreen;
-                color: $mathRoomContainerBG;
+        &__tasks{
+            width: 100%;
+            height: 450px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            margin-top: 40px;
+            border-radius: 10px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            background-color: $mathRoomContainerBG;
+
+            &::-webkit-scrollbar {
+                display: none;
             }
 
-            &__red{
-                background-color: $mathRoomRed;
-                color: $mathRoomContainerBG;
-            }
+            &__container{
+                width: 100%;
+                display: grid;
+                overflow-x: hidden;
+                justify-content: space-between;
+                column-gap: 30px;
+                row-gap: 20px;
+                padding: 10px 30px 10px 10px;
+                grid-template-columns: repeat(auto-fill, 40px);
 
-            img{
-                width: 30px;
-                height: 30px;
+                &__level{
+                    width: 60px;
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    border-radius: 5px;
+        
+                    &__purple{
+                        background-color: $levelRed;
+                        color: $mathRoomContainerBG;
+                    }
+        
+                    &__yellow{
+                        background-color: $levelYellow;
+        
+                        img{
+                            filter: invert(100%);
+                            -webkit-filter: invert(100%);
+                        }
+                    }
+        
+                    &__green{
+                        background-color: $levelGreen;
+                        color: $mathRoomContainerBG;
+                    }
+        
+                    &__red{
+                        background-color: $levelOrange;
+                        color: $mathRoomContainerBG;
+                    }
+        
+                    img{
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 835px){
+        &__container{
+            width: 600px;
+        }
+    }
+
+    @media screen and (max-width: 710px){
+        &__container{
+            width: 550px;
+        }
+    }
+
+    @media screen and (max-width: 620px){
+        &__container{
+            width: 450px;
+
+            &__header{
+                button{
+                    width: 120px;
+                    height: 45px;
+                }
+    
+                &__title{
+                    padding: 10px 30px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 500px){
+        &__container{
+            width: 350px;
+
+            &__header{
+                button{
+                    width: 120px;
+                    height: 45px;
+                }
+    
+                &__title{
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 400px){
+        padding: 0 10px;
+
+        &__container{
+            width: 100%;
+
+            &__header{
+                button{
+                    width: 120px;
+                    height: 45px;
+                }
+    
+                &__title{
+                    display: none;
+                }
             }
         }
     }
