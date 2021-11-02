@@ -29,6 +29,7 @@ function LoginContainer() {
 
     return (
         <form className="auth__container">
+            <h1>Log in</h1>
             <div className="auth__container__form">
                 <div className="auth__container__form__field">
                     <label htmlFor="login_email">email</label>
@@ -57,7 +58,7 @@ function LoginContainer() {
                 <div className="auth__container__form__link">
                     <p>Don't have an account? <Link href="/auth/register">Register</Link></p>
                 </div>
-                <button disabled={clicked} onClick={(e) => loginUser(e, email, password, dispatch, router, clicked, setClicked)}>Login</button>
+                <button disabled={clicked} onClick={(e) => loginUser(e, email, password, dispatch, router, clicked, setClicked)}>Log in</button>
             </div>
         </form>
     )
