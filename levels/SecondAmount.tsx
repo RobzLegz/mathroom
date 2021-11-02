@@ -8,9 +8,9 @@ import { nextLevel } from '../requests/levels/requests';
 const DayAmount: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(1);
+    const [selectedAge, setSelectedAge] = useState<number>(5);
     const [minutes] = useState<number>(Math.floor(Math.random() * 4) + 1);
-    const [seconds] = useState<number>(Math.floor(Math.random() * 50) + 10);
+    const [seconds] = useState<number>(Math.floor(Math.random() * 50) + 9);
     const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
@@ -22,7 +22,7 @@ const DayAmount: React.FC = () => {
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedAge !== (minutes * 60) + seconds){
+        if(selectedAge !== ((minutes * 60) + seconds)){
             return dispatch(setNotification({type: "error", message: "You missed the train!"}));
         }
 
@@ -66,8 +66,8 @@ const DayAmount: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="60"
-                                max="300"
+                                min="5"
+                                max="365"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>

@@ -8,7 +8,7 @@ import { nextLevel } from '../requests/levels/requests';
 const TimeAccelerationDistance: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(5);
+    const [selectedAge, setSelectedAge] = useState<number>(0);
     const [startingSpeed] = useState<number>(Math.floor((Math.random() * 12) + 6));
     const [acceleration] = useState<number>(Math.floor((Math.random() * 4) + 2));
     const [time] = useState<number>(Math.floor((Math.random() * 7) + 2));
@@ -21,7 +21,6 @@ const TimeAccelerationDistance: React.FC = () => {
 
     const {level} = router.query;
 
-    console.log(time)
     const completeLevel = (e: any) => {
         e.preventDefault();
 

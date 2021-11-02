@@ -66,8 +66,8 @@ const RoadCalculation: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="10"
-                                max="150"
+                                min="5"
+                                max="270"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>

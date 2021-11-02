@@ -8,7 +8,7 @@ import { nextLevel } from '../requests/levels/requests';
 const TimeCalculation: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(5);
+    const [selectedAge, setSelectedAge] = useState<number>(0);
     const [speed] = useState<number>(Math.floor((Math.random() * 60) + 40));
     const [time] = useState<number>(Math.floor((Math.random() * 6) + 3));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
@@ -45,7 +45,7 @@ const TimeCalculation: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>time is a path divided by speed</p>
+                    <p>Time is equal to road length divided by speed</p>
                 </div>
             )}
             
@@ -66,7 +66,7 @@ const TimeCalculation: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="1"
+                                min="0"
                                 max="10"
                             />
                         )}
