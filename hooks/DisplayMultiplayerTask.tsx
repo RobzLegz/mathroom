@@ -25,14 +25,11 @@ const DisplayMultiplayerTask: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
     const roomInfo = useSelector(selectRooms);
     
-    const [roomUser, setRoomUser] = useState<RoomUser | null>(null);
     const [activeTask, setActiveTask] = useState<null | Task>(null);
 
     useEffect(() => {
         if(userInfo.info && roomInfo.roomUsers && roomInfo.roomUsers.some((user: RoomUser) => user.userId === userInfo.info._id)){
             let user = roomInfo.roomUsers.find((user: RoomUser) => user.userId === userInfo.info._id);
-            console.log(user)
-            setRoomUser(user);
             setActiveTask(tasks[user.level])
         }
     }, [userInfo.info, roomInfo.roomUsers, activeTask]);

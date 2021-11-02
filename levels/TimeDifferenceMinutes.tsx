@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
+import { completeSocketLevel } from '../socket/options';
 
 interface Props{
     needHelp: boolean;
@@ -27,6 +28,13 @@ const TimeDifferenceMinutes: React.FC<Props> = ({needHelp, setNeedHelp, multipla
 
     const completeLevel = (e: any) => {
         e.preventDefault();
+
+        if(multiplayer){
+            if(selectedAge !== correctAnswer){
+                return completeSocketLevel(false);
+            }
+            return completeSocketLevel(true);
+        }
 
         if(selectedAge !== correctAnswer){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));

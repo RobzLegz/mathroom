@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
+import { completeSocketLevel } from '../socket/options';
 
 interface Props{
     needHelp: boolean;
@@ -52,6 +53,13 @@ const AverageSpeed: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => 
     const completeLevel = (e: any) => {
         e.preventDefault();
         setChangeTask(true);
+
+        if(multiplayer){
+            if(selectedAge !== ((startingSpeed + acceleratedSpeed) / 2)){
+                return completeSocketLevel(false);
+            }
+            return completeSocketLevel(true);
+        }
 
         if(selectedAge !== ((startingSpeed + acceleratedSpeed) / 2)){
             setChangeTask(true);
