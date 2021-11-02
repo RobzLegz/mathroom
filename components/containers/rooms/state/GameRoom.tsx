@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { selectRooms } from '../../../../redux/slices/roomSlice';
 import { selectUser } from '../../../../redux/slices/userSlice';
+import LeaderboardSmall from '../../leaderboard/LeaderboardSmall';
 import MultiplayerActiveLevel from '../../levels/MultiplayerActiveLevel';
 
 interface RoomUser{
@@ -29,6 +30,7 @@ function GameRoom() {
 
     return (
         <div className="level">
+            <LeaderboardSmall />
             <MultiplayerActiveLevel />
         </div>
     )
