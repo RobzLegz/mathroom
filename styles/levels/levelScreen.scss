@@ -58,7 +58,13 @@
             overflow-x: hidden;
             margin-top: 40px;
             border-radius: 10px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
             background-color: $mathRoomContainerBG;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
 
             &__container{
                 width: 100%;
@@ -67,7 +73,7 @@
                 justify-content: space-between;
                 column-gap: 30px;
                 row-gap: 20px;
-                padding: 10px 23px 10px 10px;
+                padding: 10px 30px 10px 10px;
                 grid-template-columns: repeat(auto-fill, 40px);
 
                 &__level{
