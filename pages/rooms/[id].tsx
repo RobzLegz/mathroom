@@ -73,7 +73,7 @@ function room() {
                 });
             }
         }
-    }, [id, userInfo.info, socketInfo.connected]);
+    }, [id, userInfo.info, socketInfo.connected, getSocket()]);
 
     return (
         <div className="gameRoom">

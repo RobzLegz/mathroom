@@ -21,7 +21,7 @@ interface User{
     role: string;
     avatar: string;
     level: number;
-    _id: string;
+    userId: string;
 }
 
 interface Message{
