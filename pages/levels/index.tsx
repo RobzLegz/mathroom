@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/slices/userSlice";
 import { checkForLogin } from "../../requests/auth/requests";
 import { useRouter } from "next/dist/client/router";
+import GameBackground from "../../components/background/GameBackground";
 
 function index() {
     const userInfo = useSelector(selectUser);
@@ -32,6 +33,8 @@ function index() {
             <Notification />
 
             <LevelContainer />
+
+            <GameBackground color={"purple"} />
         </div>
     )
 }
