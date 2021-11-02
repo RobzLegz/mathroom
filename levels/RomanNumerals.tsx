@@ -5,6 +5,10 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
+interface Props{
+    needHelp: boolean;
+}
+
 const options = [
     {
         image: "/jpg/levels/clock1.jpg",
@@ -33,13 +37,12 @@ const options = [
     },
 ]
 
-const RomanNumerals: React.FC = () => {
+const RomanNumerals: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedHours, setSelectedHours] = useState<number>(0);
     const [selectedMinutes, setSelectedMinutes] = useState<number>(0);
     const [selectedOption] = useState(options[Math.floor(Math.random() * options.length)]);
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -79,7 +82,7 @@ const RomanNumerals: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>What time it says on the clock?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>What time it says on the clock?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

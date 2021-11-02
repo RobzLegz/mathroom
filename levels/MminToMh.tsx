@@ -5,12 +5,15 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const TimeCalculation: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+}
+
+const TimeCalculation: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(150);
     const [speed] = useState<number>(Math.floor((Math.random() * 9) + 3));
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -49,7 +52,7 @@ const TimeCalculation: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Express the given unit {speed} m/min per m/h.<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>Express the given unit {speed} m/min per m/h.</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

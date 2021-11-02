@@ -5,13 +5,16 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const TimeCalculation: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+}
+
+const TimeCalculation: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(0);
     const [speed] = useState<number>(Math.floor((Math.random() * 60) + 40));
     const [time] = useState<number>(Math.floor((Math.random() * 6) + 3));
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -50,7 +53,7 @@ const TimeCalculation: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>A car was driving at a constant speed of {speed} km/h. How long it would take the car to drive {speed * time} kilometers. (in hours)<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>A car was driving at a constant speed of {speed} km/h. How long it would take the car to drive {speed * time} kilometers. (in hours)</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

@@ -5,13 +5,16 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const DayAmount: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+}
+
+const DayAmount: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(0);
     const [weeks] = useState<number>(Math.floor((Math.random() * 5) + 1));
     const [days] = useState<number>(Math.floor((Math.random() * 5) + 1));
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -50,7 +53,7 @@ const DayAmount: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Sally's pay day is in {weeks} weeks and {days} days. After how many days Sally will recieve her salary?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>Sally's pay day is in {weeks} weeks and {days} days. After how many days Sally will recieve her salary?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

@@ -5,6 +5,10 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
+interface Props{
+    needHelp: boolean;
+}
+
 const options = [
     {
         rises: "08.00",
@@ -48,13 +52,12 @@ const options = [
     }
 ]
 
-const TimeDifference: React.FC = () => {
+const TimeDifference: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedHours, setSelectedHours] = useState<number>(0);
     const [selectedMinutes, setSelectedMinutes] = useState<number>(0);
     const [selectedOption] = useState(options[Math.floor(Math.random() * options.length)]);
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -92,7 +95,7 @@ const TimeDifference: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>The sun rises at {selectedOption.rises} and sets at {selectedOption.sets}. What is the length of the day?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>The sun rises at {selectedOption.rises} and sets at {selectedOption.sets}. What is the length of the day?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

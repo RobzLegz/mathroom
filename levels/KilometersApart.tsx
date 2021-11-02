@@ -5,14 +5,17 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const KilometersApart: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+}
+
+const KilometersApart: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(1);
     const [speed1] = useState<number>(Math.floor((Math.random() * 10) + 2));
     const [speed2] = useState<number>(Math.floor((Math.random() * 10) + 2));
     const [time] = useState<number>(Math.floor((Math.random() * 4) + 2));
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -51,7 +54,7 @@ const KilometersApart: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Two skaters go from the skate park in opposite directions at the same time at speeds of {speed1} km/h and {speed2} km/h respectively. How far apart from each other will they be in {time} hours?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>Two skaters go from the skate park in opposite directions at the same time at speeds of {speed1} km/h and {speed2} km/h respectively. How far apart from each other will they be in {time} hours?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

@@ -5,14 +5,17 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const TimeDifferenceMinutes: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+}
+
+const TimeDifferenceMinutes: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(10);
     const [totalTimeSpent] = useState<number>(Math.floor((Math.random() * 200) + 100));
     const [difference] = useState<number>(Math.floor((Math.random() * 59) + 20));
     const [correctAnswer] = useState<number>(totalTimeSpent - difference);
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -52,7 +55,6 @@ const TimeDifferenceMinutes: React.FC = () => {
             
             <div className="level__container__task">
                 <strong>Two programmers worked on a website for {totalTimeSpent} minutes together. How much time did the other programmer spend if the first spent {difference} minutes?</strong>
-                <img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} />
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

@@ -5,6 +5,10 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
+interface Props{
+    needHelp: boolean;
+}
+
 const options = [
     {
         leaves: "2:00",
@@ -33,13 +37,12 @@ const options = [
     }
 ]
 
-const TimeSum: React.FC = () => {
+const TimeSum: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedHours, setSelectedHours] = useState<number>(0);
     const [selectedMinutes, setSelectedMinutes] = useState<number>(0);
     const [selectedOption] = useState(options[Math.floor(Math.random() * options.length)]);
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -77,7 +80,7 @@ const TimeSum: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>What time will the train arrive at the terminal if it leaves at {selectedOption.leaves} and spends {selectedOption.spends} on the way?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>What time will the train arrive at the terminal if it leaves at {selectedOption.leaves} and spends {selectedOption.spends} on the way?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

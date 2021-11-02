@@ -5,7 +5,11 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const UniformlySlowMotion: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+}
+
+const UniformlySlowMotion: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(10);
@@ -13,7 +17,6 @@ const UniformlySlowMotion: React.FC = () => {
     const [acceleration] = useState<number>(Math.floor((Math.random() * 5) + 2));
     const [time] = useState<number>(Math.floor((Math.random() * 7) + 2));
     const [finalSpeed] = useState<number>(startingSpeed + acceleration * time);
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -52,7 +55,7 @@ const UniformlySlowMotion: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>A car is driving at a speed of {startingSpeed} km/h and it accelerates for {time} seconds with the acceleration of {acceleration} km/sec. What is the final speed of the car?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>A car is driving at a speed of {startingSpeed} km/h and it accelerates for {time} seconds with the acceleration of {acceleration} km/sec. What is the final speed of the car?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

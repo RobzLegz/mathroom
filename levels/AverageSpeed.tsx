@@ -5,14 +5,17 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const AverageSpeed: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+}
+
+const AverageSpeed: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(10);
     const [startingSpeed, setStartingSpeed] = useState<number>(0);
     const [acceleratedSpeed, setAcceleratedSpeed] = useState<number>(startingSpeed + Math.floor((Math.random() * 40) + 20));
     const [activeTransport, setActiveTransport] = useState<string>("");
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
     const [changeTask, setChangeTask] = useState<boolean>(true);
 
@@ -77,7 +80,7 @@ const AverageSpeed: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>A {activeTransport} traveled at a speed of {startingSpeed} km/h, after some time, it accelerated to {acceleratedSpeed} km/h. What was the average speed of the {activeTransport}?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>A {activeTransport} traveled at a speed of {startingSpeed} km/h, after some time, it accelerated to {acceleratedSpeed} km/h. What was the average speed of the {activeTransport}?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

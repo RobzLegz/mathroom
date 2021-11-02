@@ -5,12 +5,15 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const TypeAge: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+}
+
+const TypeAge: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(5);
     const [correctAnswer] = useState<number>(Math.floor((Math.random() * 64) + 7));
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -50,7 +53,6 @@ const TypeAge: React.FC = () => {
             
             <div className="level__container__task">
                 <strong>How old are You now if You were born in {new Date().getFullYear() - correctAnswer}?</strong>
-                <img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} />
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

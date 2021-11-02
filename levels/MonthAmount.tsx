@@ -5,14 +5,17 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const MonthAmount: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+}
+
+const MonthAmount: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(1);
     const [years] = useState<number>(Math.floor((Math.random() * 5) + 1));
     const [months] = useState<number>(Math.floor((Math.random() * 10) + 1));
     const [age] = useState<number>(Math.floor((Math.random() * 19) + 7));
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -51,7 +54,7 @@ const MonthAmount: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Peter's {age} year birthday is in {years} years and {months} months. After how many months Peter is going to be {age} years old?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>Peter's {age} year birthday is in {years} years and {months} months. After how many months Peter is going to be {age} years old?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

@@ -5,13 +5,16 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const DayAmount: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+}
+
+const DayAmount: React.FC<Props> = ({needHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(5);
     const [minutes] = useState<number>(Math.floor(Math.random() * 4) + 1);
     const [seconds] = useState<number>(Math.floor(Math.random() * 50) + 9);
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -50,7 +53,7 @@ const DayAmount: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Train leaves in {minutes} minutes and {seconds} seconds. How many seconds are left to get on the train?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>Train leaves in {minutes} minutes and {seconds} seconds. How many seconds are left to get on the train?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
