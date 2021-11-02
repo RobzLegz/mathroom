@@ -10,7 +10,7 @@ const DayAmount: React.FC = () => {
 
     const [selectedAge, setSelectedAge] = useState<number>(1);
     const [weeks] = useState<number>(Math.floor((Math.random() * 5) + 1));
-    const [days] = useState<number>(Math.floor((Math.random() * 6) + 1));
+    const [days] = useState<number>(Math.floor((Math.random() * 5) + 1));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
@@ -67,7 +67,7 @@ const DayAmount: React.FC = () => {
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
                                 min="0"
-                                max="10"
+                                max="50"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
