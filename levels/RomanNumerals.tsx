@@ -8,6 +8,7 @@ import { nextLevel } from '../requests/levels/requests';
 interface Props{
     needHelp: boolean;
     setNeedHelp: any;
+    multiplayer: boolean;
 }
 
 const options = [
@@ -38,7 +39,7 @@ const options = [
     },
 ]
 
-const RomanNumerals: React.FC<Props> = ({needHelp, setNeedHelp}) => {
+const RomanNumerals: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedHours, setSelectedHours] = useState<number>(0);

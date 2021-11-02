@@ -28,7 +28,7 @@ function ActiveLevel() {
                 <button className="button" onClick={() => setNeedHelp(!needHelp)}>help?</button>
             </header>
 
-            <DisplayLevelFromType needHelp={needHelp} setNeedHelp={setNeedHelp} />
+            <DisplayLevelFromType needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={false} />
         </div>
     )
 }

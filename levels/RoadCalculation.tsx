@@ -8,9 +8,10 @@ import { nextLevel } from '../requests/levels/requests';
 interface Props{
     needHelp: boolean;
     setNeedHelp: any;
+    multiplayer: boolean;
 }
 
-const RoadCalculation: React.FC<Props> = ({needHelp, setNeedHelp}) => {
+const RoadCalculation: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(5);
