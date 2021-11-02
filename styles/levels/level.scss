@@ -6,17 +6,55 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $mathRoomBG;
+    font-family: $roomFont;
+    background-color: $mathRoomDarkerPurple;
+
+    .activeLevel{
+        border-radius: 10px;
+        width: 800px;
+        height: 550px;
+        background-color: $mathRoomContainerBG;
+
+        &__header{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            justify-content: space-between;
+
+            .button{
+                width: 140px;
+                height: 40px;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-size: $buttonText;
+                font-family: $roomFont;
+                color: $mathRoomContainerBG;
+                background-color: $mathRoomButton;
+
+                &:hover{
+                    background-color: $mathRoomButtonHover;
+                }
+            }
+
+            h2{
+                padding: 10px 30px;
+                border-radius: 10px;
+                color: $mathRoomContainerBG;
+                background-color: $mathRoomGrey;
+            }
+        }
+    }
 
     &__container{
-        width: 800px;
-        height: 500px;
-        border-radius: 10px;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: flex-start;
         flex-direction: column;
-        background-color: $mathRoomContainerBG;
 
         &__tip{
             width: 100%;
