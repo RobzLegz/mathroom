@@ -1,5 +1,5 @@
 import { useRouter } from 'next/dist/client/router';
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotifications, setNotification } from '../../../redux/slices/notificationSlice';
 import { selectUser } from '../../../redux/slices/userSlice';
@@ -12,8 +12,6 @@ function MenuContainer() {
     const dispatch = useDispatch();
     const router = useRouter();
 
-    const [showGamemodes, setShowGamemodes] = useState(false);
- 
     if(notificationInfo.type || notificationInfo.message){
         return null;
     }
@@ -23,16 +21,25 @@ function MenuContainer() {
             <h1>MATHROOM</h1>
 
             <div className="menu__container__options">
-                {showGamemodes ? (
-                    <>
-                        <button className="button button__gamemode" onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}router.push("/levels")}}>Singleplayer</button>
-                        <button className="button button__gamemode" onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}router.push("/rooms")}}>Multiplayer</button>
-                    </>
+                {!userInfo.loggedIn || !userInfo.token ? (
+                    <div className="menu__container__options__two">
+                        <button onClick={() => router.push("/auth/login")}>Login</button>
+                        <button onClick={() => router.push("/auth/register")}>Register</button>
+                    </div>
                 ) : (
-                    <button className="button button__play" onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}setShowGamemodes(true)}}>Play</button>
+                    null
                 )}
+                <button disabled={!userInfo.loggedIn || !userInfo.token} className={`button button__${!userInfo.loggedIn || !userInfo.token ? "disabled" : "enabled"}`} onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}router.push("/levels")}}>Singleplayer</button>
+                <button disabled={!userInfo.loggedIn || !userInfo.token} className={`button button__${!userInfo.loggedIn || !userInfo.token ? "disabled" : "enabled"}`} onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}router.push("/rooms")}}>Multiplayer</button>
                 <button className="button" onClick={() => router.push("/instructions")}>Instructions</button>
-                {userInfo.loggedIn && userInfo.token && userInfo.info ? (null) : <button className="button" onClick={() => router.push("/auth/login")}>Authorize</button>}
+                {userInfo.loggedIn || userInfo.token ? (
+                    <div className="menu__container__options__two">
+                        <button>Logout</button>
+                        <button>Profile</button>
+                    </div>
+                ) : (
+                    null
+                )}
             </div>
 
             <div className="menu__container__decorations">

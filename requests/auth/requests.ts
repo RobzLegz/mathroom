@@ -83,6 +83,8 @@ const loginUser = (e: any, email: string, password: string, dispatch: any, route
 }
 
 const checkForLogin = (dispatch: any, router: any) => {
+    dispatch(setNotification({type: "loading", message: "loading"}));
+
     const first_login = window.localStorage.getItem("firstLogin");
     const rf_token = window.localStorage.getItem("refreshtoken");
 
@@ -99,6 +101,7 @@ const checkForLogin = (dispatch: any, router: any) => {
                     dispatch(setToken(res.data.access_token));
                     dispatch(setUserInfo(res.data.user));
                     dispatch(login());
+                    dispatch(clearNotification());
                 }).catch((err) => {
                     const message: string = err.response.data.err;
                     dispatch(setNotification({type: "error", message: message}));
@@ -108,9 +111,11 @@ const checkForLogin = (dispatch: any, router: any) => {
                 });
         }else{
             router.push("/auth/login");
+            dispatch(clearNotification());
         }
     }else{
         router.push("/auth/login");
+        dispatch(clearNotification());
     }
 }
 
