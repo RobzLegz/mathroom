@@ -51,7 +51,19 @@ const AccelerationCalculation: React.FC<Props> = ({needHelp, setNeedHelp}) => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>Formula x = (Vmin + Vmax): 2 = Formula x = (Vmin + Vmax): 2 = Vaverage, so to get result(x) you have to calculate (x + Vfinal):2 = Vaverage</p>
+                    <div className="level__container__tip__inner">
+                        <div className="level__container__tip__inner__close" onClick={() => setNeedHelp(false)}>
+                            <div className="line1"></div>
+                            <div className="line2"></div>
+                        </div>
+                        <div className="level__container__tip__inner__text">
+                        <p>Formula x = (Vmin + Vmax): 2 = Formula x = (Vmin + Vmax): 2 = Vaverage, so to get result(x) you have to calculate (x + Vfinal):2 = Vaverage</p>
+
+                        </div>
+                        <div className="buttonContainer">
+                            <button onClick={() => setNeedHelp(false)}>Okay</button>
+                        </div>
+                    </div>
                 </div>
             )}
             
