@@ -29,7 +29,7 @@ const createRoom = async (req: any, res: any) => {
     try{
         const {roomName, totalStages, maxPlayers, isPrivate, tasks} = req.body;
 
-        if(!roomName || !maxPlayers && maxPlayers !== 0){
+        if(!roomName || !maxPlayers && maxPlayers !== 0 || tasks.length < totalStages){
             return res.status(400).json({msg: "Please fill all fields!"});
         }
 
@@ -46,11 +46,11 @@ const createRoom = async (req: any, res: any) => {
         }
         
         const newRoom = new Rooms({
-            roomName,
-            totalStages,
-            maxPlayers,
-            isPrivate,
-            tasks,
+            roomName: roomName,
+            totalStages: totalStages,
+            maxPlayers: maxPlayers,
+            isPrivate: isPrivate,
+            tasks: tasks,
             admin: admin.id,
         });
 
