@@ -11,6 +11,10 @@ interface User{
     _id: string;
 }
 
+interface Task{
+    type: string;
+}
+
 interface Room{
     roomName: string;
     totalStages: number;
@@ -18,6 +22,7 @@ interface Room{
     isPrivate: boolean;
     hasStarted: boolean;
     admin: string;
+    tasks: Task[];
     _id: string;
 }
 
@@ -27,6 +32,8 @@ interface Message{
     message: string;
     userId: string;
 }
+
+
 
 const connectToSocket = (userInfo: User | null, dispatch: any) => {
     const socket = getSocket();
@@ -41,7 +48,7 @@ const connectToSocket = (userInfo: User | null, dispatch: any) => {
     });
 }
 
-const createRoom = (roomName: string, totalStages: number, maxPlayers: number, isPrivate: boolean, userInfo: User | null, id: string, dispatch: any, router: any) => {
+const createRoom = (roomName: string, totalStages: number, maxPlayers: number, isPrivate: boolean, tasks: Task[], userInfo: User | null, id: string, dispatch: any, router: any) => {
     if(userInfo){
         const socket = getSocket();
 
@@ -54,6 +61,7 @@ const createRoom = (roomName: string, totalStages: number, maxPlayers: number, i
             totalStages: totalStages,
             maxPlayers: maxPlayers,
             isPrivate: isPrivate,
+            tasks: tasks,
             hasStarted: false,
             admin: userInfo._id,
             _id: id,

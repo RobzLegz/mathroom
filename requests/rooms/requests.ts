@@ -1,5 +1,5 @@
 import axios from "axios";
-import { clearNotification, setNotification } from "../../redux/slices/notificationSlice";
+import { setNotification } from "../../redux/slices/notificationSlice";
 import { setActiveRoom, setRooms } from "../../redux/slices/roomSlice";
 import { getSocket } from "../../redux/slices/socketSlice";
 import { createRoom, exitSocketRoom } from "../../socket/options";
@@ -17,6 +17,10 @@ interface Info{
 interface User{
     token: string;
     info: Info;
+}
+
+interface Task{
+    type: string;
 }
 
 const getRooms = (dispatch: any) => {
@@ -64,12 +68,12 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
         return dispatch(setNotification({type: "error", message: "Please select the maximum number of players who will be able to join!"}));
     }
 
-    let sendTasks = [];
+    let sendTasks: Task[] = [];
     let pushedtasks: number[] = [];
 
     let randomTask = Math.floor(Math.random() * (tasks.length - 1));
 
-    while(sendTasks.length < totalStages){
+    while(sendTasks.length < totalStages && sendTasks.length < tasks.length){
         while(pushedtasks.includes(randomTask)){
             randomTask = Math.floor(Math.random() * (tasks.length - 1));
         }
@@ -78,38 +82,37 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
         pushedtasks.push(randomTask);
     }
 
-    console.log(sendTasks)
+    const headers = {
+        headers: {
+            Authorization: userInfo.token,
+        }
+    }
 
-    // const headers = {
-    //     headers: {
-    //         Authorization: userInfo.token,
-    //     }
-    // }
+    const data = {
+        roomName: roomName,
+        totalStages: totalStages,
+        maxPlayers: maxPlayers,
+        isPrivate: isPrivate,
+        tasks: sendTasks
+    }
 
-    // const data = {
-    //     roomName: roomName,
-    //     totalStages: totalStages,
-    //     maxPlayers: maxPlayers,
-    //     isPrivate: isPrivate,
-    // }
+    axios.post("/api/rooms", data, headers)
+        .then((res: any) => {
+            const roomId: string = res.data.roomId;
 
-    // axios.post("/api/rooms", data, headers)
-    //     .then((res: any) => {
-    //         const roomId: string = res.data.roomId;
+            if(roomId){
+                createRoom(roomName, totalStages, maxPlayers, isPrivate, sendTasks, userInfo.info, roomId, dispatch, router);
+            }
+        }).catch((err) => {
+            if(err && err.response && err.response.data){
+                const message: string = err.response.data.err;
+                if(message){
+                    return dispatch(setNotification({type: "error", message: message}));
+                }
 
-    //         if(roomId){
-    //             createRoom(roomName, totalStages, maxPlayers, isPrivate, userInfo.info, roomId, dispatch, router);
-    //         }
-    //     }).catch((err) => {
-    //         if(err && err.response && err.response.data){
-    //             const message: string = err.response.data.err;
-    //             if(message){
-    //                 return dispatch(setNotification({type: "error", message: message}));
-    //             }
-
-    //             dispatch(setNotification({type: "error", message: "Something went wrong!"}));
-    //         }
-    //     });
+                dispatch(setNotification({type: "error", message: "Something went wrong!"}));
+            }
+        });
 }
 
 const exitRoom = (userInfo: Info, dispatch: any, router: any) => {
