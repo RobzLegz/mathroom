@@ -13,7 +13,7 @@
     .activeLevel{
         border-radius: 10px;
         width: 800px;
-        height: 500px;
+        height: 550px;
         position: relative;
         background-color: $mathRoomContainerBG;
 
@@ -218,6 +218,113 @@
                 img{
                     width: 100%;
                 }
+            }
+        }
+    }
+
+    @media screen and (max-width: 875px){
+        .activeLevel{
+            width: 650px;
+        }
+    }
+
+    @media screen and (max-width: 700px){
+        .activeLevel{
+            width: 600px;
+        }
+    }
+
+    @media screen and (max-width: 650px){
+        .activeLevel{
+            width: 500px;
+            height: auto;
+
+            &__header{
+                padding: 10px;
+
+                h2{
+                    display: none;
+                }
+            }
+        }
+
+        &__container{
+            &__task{
+                font-size: 18px;
+                padding: 5px 10px;
+            }
+
+            &__options{
+                flex-direction: column-reverse;
+
+                &__tools{
+                    width: 100%;
+
+                    &__instruction{
+                        width: 100%;
+                    }
+                }
+
+                &__ilustration{
+                    width: 300px;
+                    max-height: 200px;
+
+                    img{
+                        max-height: 200px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 550px){
+        .activeLevel{
+            width: 400px;
+
+            &__header{
+                .button{
+                    width: 110px;
+                }
+            }
+        }
+
+        &__container{
+            &__task{
+                font-size: 16px;
+            }
+
+            &__options{
+                width: 100%;
+                padding: 10px;
+
+                &__ilustration{
+                    width: 100%;
+                    padding: 0;
+
+                    img{
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 450px){
+        .activeLevel{
+            overflow-y: scroll;
+            width: 100%;
+            height: 100%;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            border-radius: 0;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            &__header{
+                padding: 10px;
             }
         }
     }
