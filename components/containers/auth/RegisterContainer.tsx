@@ -32,6 +32,7 @@ function RegisterContainer() {
 
     return (
         <form className="auth__container">
+            <h1>Register</h1>
             <div className="auth__container__form">
                 <div className="auth__container__form__field">
                     <label htmlFor="register_username">username</label>
