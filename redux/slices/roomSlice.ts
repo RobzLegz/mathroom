@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+interface Task{
+    type: string;
+}
+
 interface Room{
     roomName: string;
     totalStages: number;
@@ -7,6 +11,7 @@ interface Room{
     isPrivate: boolean;
     hasStarted: boolean;
     admin: string;
+    tasks: Task[];
     _id: string;
 }
 
@@ -16,7 +21,7 @@ interface User{
     role: string;
     avatar: string;
     level: number;
-    _id: string;
+    userId: string;
 }
 
 interface Message{

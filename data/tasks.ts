@@ -1,6 +1,6 @@
 const tasks = [
     {type: "age"},
-    {type:"time sum"},
+    {type: "time sum"},
     {type: "time difference"},
     {type: "time difference minutes"},
     {type: "time difference minutes2"},

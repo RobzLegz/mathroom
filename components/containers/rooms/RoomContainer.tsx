@@ -118,7 +118,7 @@ const RoomContainer: React.FC = () => {
                                 className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`}
                                 onClick={() => {
                                     if(!userInfo.loggedIn || !userInfo.token){
-                                        return dispatch(setNotification({type: "error", message: "You must be logged in to join room"}))
+                                        return dispatch(setNotification({type: "error", message: "You must be logged in to join room"}));
                                     }else if(roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length < room.maxPlayers){
                                         router.push(`/rooms/${room._id}`);
                                     }}

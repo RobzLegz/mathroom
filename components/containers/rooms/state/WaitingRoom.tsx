@@ -113,7 +113,7 @@ function WaitingRoom() {
                                 </button>
                                 <button
                                     className="gameRoom__waiting__inner__buttons__purple"
-                                    onClick={() => {if(roomInfo.roomUsers.filter((user: RoomUser) => user.roomId === id).length > 0){startGame(id, userInfo.token, dispatch)}}}
+                                    onClick={() => {if(roomInfo.roomUsers.filter((user: RoomUser) => user.roomId === id).length > 0){startGame(id, userInfo.token, dispatch)}else{dispatch(setNotification({type: "error", message: "There should be at least 2 people in this room!"}))}}}
                                 >
                                     Start game
                                 </button>

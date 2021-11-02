@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
+import { completeSocketLevel } from '../socket/options';
 
 interface Props{
     needHelp: boolean;
     setNeedHelp: any;
+    multiplayer: boolean;
 }
 
-const SpeedCalculation: React.FC<Props> = ({needHelp, setNeedHelp}) => {
+const SpeedCalculation: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(20);
@@ -25,6 +27,13 @@ const SpeedCalculation: React.FC<Props> = ({needHelp, setNeedHelp}) => {
 
     const completeLevel = (e: any) => {
         e.preventDefault();
+
+        if(multiplayer){
+            if(selectedAge !== speed){
+                return completeSocketLevel(false, dispatch);
+            }
+            return completeSocketLevel(true, dispatch);
+        }
 
         if(selectedAge !== speed){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));

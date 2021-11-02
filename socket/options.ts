@@ -1,4 +1,4 @@
-import { clearNotification } from "../redux/slices/notificationSlice";
+import { clearNotification, setNotification } from "../redux/slices/notificationSlice";
 import { addRoom } from "../redux/slices/roomSlice";
 import { getSocket, setOnlineUsers, setSocket } from "../redux/slices/socketSlice";
 
@@ -11,6 +11,10 @@ interface User{
     _id: string;
 }
 
+interface Task{
+    type: string;
+}
+
 interface Room{
     roomName: string;
     totalStages: number;
@@ -18,6 +22,7 @@ interface Room{
     isPrivate: boolean;
     hasStarted: boolean;
     admin: string;
+    tasks: Task[];
     _id: string;
 }
 
@@ -27,6 +32,8 @@ interface Message{
     message: string;
     userId: string;
 }
+
+
 
 const connectToSocket = (userInfo: User | null, dispatch: any) => {
     const socket = getSocket();
@@ -41,7 +48,7 @@ const connectToSocket = (userInfo: User | null, dispatch: any) => {
     });
 }
 
-const createRoom = (roomName: string, totalStages: number, maxPlayers: number, isPrivate: boolean, userInfo: User | null, id: string, dispatch: any, router: any) => {
+const createRoom = (roomName: string, totalStages: number, maxPlayers: number, isPrivate: boolean, tasks: Task[], userInfo: User | null, id: string, dispatch: any, router: any) => {
     if(userInfo){
         const socket = getSocket();
 
@@ -54,6 +61,7 @@ const createRoom = (roomName: string, totalStages: number, maxPlayers: number, i
             totalStages: totalStages,
             maxPlayers: maxPlayers,
             isPrivate: isPrivate,
+            tasks: tasks,
             hasStarted: false,
             admin: userInfo._id,
             _id: id,
@@ -62,7 +70,6 @@ const createRoom = (roomName: string, totalStages: number, maxPlayers: number, i
         socket.emit("addRoom", data);
 
         socket.on("getRooms", (rooms: Room[]) => {
-            console.log(rooms)
             rooms.forEach((room) => {
                 dispatch(addRoom(room));
             });
@@ -117,11 +124,28 @@ const startSocketGame = (roomId: string) => {
     socket.emit("startGame", roomId);
 }
 
+const completeSocketLevel = (passed: boolean, dispatch: any) => {
+    const socket = getSocket();
+
+    if(!socket){
+        return
+    }
+
+    if(passed){
+        socket.emit("completeLevel");
+        dispatch(setNotification({type: "success", message: "Congrats, You passed this level!"}));
+    }else{
+        socket.emit("failLevel");
+        dispatch(setNotification({type: "error", message: "Wrong answer!"}));
+    }
+}
+
 export {
     connectToSocket,
     createRoom,
     sendSocketMessage,
     joinRoom,
     exitSocketRoom,
-    startSocketGame
+    startSocketGame,
+    completeSocketLevel
 };
