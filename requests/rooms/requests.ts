@@ -3,6 +3,7 @@ import { clearNotification, setNotification } from "../../redux/slices/notificat
 import { setActiveRoom, setRooms } from "../../redux/slices/roomSlice";
 import { getSocket } from "../../redux/slices/socketSlice";
 import { createRoom, exitSocketRoom } from "../../socket/options";
+import tasks from "../../data/tasks";
 
 interface Info{
     username: string;
@@ -63,36 +64,52 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
         return dispatch(setNotification({type: "error", message: "Please select the maximum number of players who will be able to join!"}));
     }
 
-    const headers = {
-        headers: {
-            Authorization: userInfo.token,
+    let sendTasks = [];
+    let pushedtasks: number[] = [];
+
+    let randomTask = Math.floor(Math.random() * (tasks.length - 1));
+
+    while(sendTasks.length < totalStages){
+        while(pushedtasks.includes(randomTask)){
+            randomTask = Math.floor(Math.random() * (tasks.length - 1));
         }
+
+        sendTasks.push(tasks[randomTask]);
+        pushedtasks.push(randomTask);
     }
 
-    const data = {
-        roomName: roomName,
-        totalStages: totalStages,
-        maxPlayers: maxPlayers,
-        isPrivate: isPrivate,
-    }
+    console.log(sendTasks)
 
-    axios.post("/api/rooms", data, headers)
-        .then((res: any) => {
-            const roomId: string = res.data.roomId;
+    // const headers = {
+    //     headers: {
+    //         Authorization: userInfo.token,
+    //     }
+    // }
 
-            if(roomId){
-                createRoom(roomName, totalStages, maxPlayers, isPrivate, userInfo.info, roomId, dispatch, router);
-            }
-        }).catch((err) => {
-            if(err && err.response && err.response.data){
-                const message: string = err.response.data.err;
-                if(message){
-                    return dispatch(setNotification({type: "error", message: message}));
-                }
+    // const data = {
+    //     roomName: roomName,
+    //     totalStages: totalStages,
+    //     maxPlayers: maxPlayers,
+    //     isPrivate: isPrivate,
+    // }
 
-                dispatch(setNotification({type: "error", message: "Something went wrong!"}));
-            }
-        });
+    // axios.post("/api/rooms", data, headers)
+    //     .then((res: any) => {
+    //         const roomId: string = res.data.roomId;
+
+    //         if(roomId){
+    //             createRoom(roomName, totalStages, maxPlayers, isPrivate, userInfo.info, roomId, dispatch, router);
+    //         }
+    //     }).catch((err) => {
+    //         if(err && err.response && err.response.data){
+    //             const message: string = err.response.data.err;
+    //             if(message){
+    //                 return dispatch(setNotification({type: "error", message: message}));
+    //             }
+
+    //             dispatch(setNotification({type: "error", message: "Something went wrong!"}));
+    //         }
+    //     });
 }
 
 const exitRoom = (userInfo: Info, dispatch: any, router: any) => {
