@@ -5,6 +5,11 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
+interface Props{
+    needHelp: boolean;
+    setNeedHelp: any;
+}
+
 const options = [
     {
         leaves: "2:00",
@@ -33,13 +38,12 @@ const options = [
     }
 ]
 
-const TimeSum: React.FC = () => {
+const TimeSum: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedHours, setSelectedHours] = useState<number>(0);
     const [selectedMinutes, setSelectedMinutes] = useState<number>(0);
     const [selectedOption] = useState(options[Math.floor(Math.random() * options.length)]);
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -72,12 +76,23 @@ const TimeSum: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p>Add travel time to your departure time.</p>
+                <div className="level__container__tip__inner">
+                    <div className="level__container__tip__inner__close" onClick={() => setNeedHelp(false)}>
+                        <div className="line1"></div>
+                        <div className="line2"></div>
+                    </div>
+                    <div className="level__container__tip__inner__text">
+                        <p>Add travel time to departure time.</p>
+                    </div>
+                    <div className="buttonContainer">
+                        <button onClick={() => setNeedHelp(false)}>Okay</button>
+                    </div>
                 </div>
+            </div>
             )}
             
             <div className="level__container__task">
-                <strong>What time will the train arrive at the terminal if it leaves at {selectedOption.leaves} and spends {selectedOption.spends} on the way?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>What time will the train arrive at the terminal if it leaves at {selectedOption.leaves} and spends {selectedOption.spends} on the way?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

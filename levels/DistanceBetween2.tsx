@@ -5,14 +5,18 @@ import { setNotification } from '../redux/slices/notificationSlice';
 import { selectUser } from '../redux/slices/userSlice';
 import { nextLevel } from '../requests/levels/requests';
 
-const DistanceBetween2: React.FC = () => {
+interface Props{
+    needHelp: boolean;
+    setNeedHelp: any;
+}
+
+const DistanceBetween2: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(0);
     const [speed1] = useState<number>(Math.floor((Math.random() * 20) + 7));
     const [speed2] = useState<number>(Math.floor((Math.random() * 40) + 60));
     const [time] = useState<number>(Math.floor((Math.random() * 4) + 2));
-    const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -46,12 +50,24 @@ const DistanceBetween2: React.FC = () => {
         <form className="level__age level__container">
             {needHelp && (
                 <div className="level__container__tip">
-                    <p></p>
+                    <div className="level__container__tip__inner">
+                        <div className="level__container__tip__inner__close" onClick={() => setNeedHelp(false)}>
+                            <div className="line1"></div>
+                            <div className="line2"></div>
+                        </div>
+                        <div className="level__container__tip__inner__text">
+                            <p></p>
+                        </div>
+                        <div className="buttonContainer">
+                            <button onClick={() => setNeedHelp(false)}>Okay</button>
+                        </div>
+                    </div>
                 </div>
+                
             )}
             
             <div className="level__container__task">
-                <strong>A cyclist and a motorcyclist are driving towards each other and the distance between them is {((speed1 + speed2) * time)} km. Cyclist is driving at a speed of {speed1} km/h, but motorcyclist at a speed of {speed2} km/h. How many hours later will they meet?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>A cyclist and a motorcyclist are driving towards each other and the distance between them is {((speed1 + speed2) * time)} km. Cyclist is driving at a speed of {speed1} km/h, but motorcyclist at a speed of {speed2} km/h. How many hours later will they meet?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">

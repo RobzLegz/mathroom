@@ -28,32 +28,37 @@ interface Task{
     type: string;
 }
 
-const renderActiveTaskFromType = (type: string) => {
-    if(type === "age") return <TypeAge />;
-    else if(type === "time sum") return <TimeSum />;
-    else if(type === "time difference") return <TimeDifference />;
-    else if(type === "time difference minutes") return <TimeDifferenceMinutes />;
-    else if(type === "time difference minutes2") return <TimeDifferenceMinutesSecond />;
-    else if(type === "month amount") return <MonthAmount />;
-    else if(type === "day amount") return <DayAmount />;
-    else if(type === "second amount") return <SecondAmount />;
-    else if(type === "roman numerals") return <RomanNumerals />;
-    else if(type === "kilometers apart") return <KilometersApart />;
-    else if(type === "road calculation") return <RoadCalculation />;
-    else if(type === "road calculation2") return <RoadCalculationSecond />;
-    else if(type === "time calculation") return <TimeCalculation />;
-    else if(type === "m/min to m/h") return <MminToMh />;
-    else if(type === "speed calculation") return <SpeedCalculation />;
-    else if(type === "acceleration calculation") return <AccelerationCalculation />;
-    else if(type === "uniformly slow motion") return <UniformlySlowMotion />;
-    else if(type === "time from acceleration + distance") return <TimeAccelerationDistance />;
-    else if(type === "average speed") return <AverageSpeed />;
-    else if(type === "distance between2") return <DistanceBetween2 />
+interface Props{
+    needHelp: boolean;
+    setNeedHelp: any;
+}
+
+const renderActiveTaskFromType = (type: string, needHelp: boolean, setNeedHelp: any) => {
+    if(type === "age") return <TypeAge needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "time sum") return <TimeSum needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "time difference") return <TimeDifference needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "time difference minutes") return <TimeDifferenceMinutes needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "time difference minutes2") return <TimeDifferenceMinutesSecond needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "month amount") return <MonthAmount needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "day amount") return <DayAmount needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "second amount") return <SecondAmount needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "roman numerals") return <RomanNumerals needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "kilometers apart") return <KilometersApart needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "road calculation") return <RoadCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "road calculation2") return <RoadCalculationSecond needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "time calculation") return <TimeCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "m/min to m/h") return <MminToMh needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "speed calculation") return <SpeedCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "acceleration calculation") return <AccelerationCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "uniformly slow motion") return <UniformlySlowMotion needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "time from acceleration + distance") return <TimeAccelerationDistance needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "average speed") return <AverageSpeed needHelp={needHelp} setNeedHelp={setNeedHelp} />;
+    else if(type === "distance between2") return <DistanceBetween2 needHelp={needHelp} setNeedHelp={setNeedHelp} />;
 
     return null;
 }
 
-const DisplayLevelFromType = () => {
+const DisplayLevelFromType: React.FC<Props> = ({needHelp, setNeedHelp}) => {
     const [foundTask, setFoundTask] = useState<boolean>(false);
     const [activeTask, setActiveTask] = useState<null | Task>(null);
     const [prevLevel, setPrevLevel] = useState<null | string>(null);
@@ -87,7 +92,7 @@ const DisplayLevelFromType = () => {
         return null;
     }
 
-    return renderActiveTaskFromType(activeTask.type);
+    return renderActiveTaskFromType(activeTask.type, needHelp, setNeedHelp);
 }
 
 export default DisplayLevelFromType;
