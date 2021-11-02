@@ -59,7 +59,7 @@ function LoginContainer() {
                     <p>Don't have an account? <Link href="/auth/register">Register</Link></p>
                 </div>
                 <button disabled={clicked} onClick={(e) => loginUser(e, email, password, dispatch, router, clicked, setClicked)}>Log in</button>
-                <small>To menu by clicking login title</small>
+                <small>Go to menu by clicking login title</small>
             </div>
         </form>
     )

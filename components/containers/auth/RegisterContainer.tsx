@@ -90,7 +90,7 @@ function RegisterContainer() {
                     <p>I agree to your <Link href="/privacy-policy">privacy policy</Link></p>
                 </div>
                 <button disabled={clicked} onClick={(e) => registerUser(e, username, email, password, cfPassword, agreedToPrivacyPolicy, dispatch, router, clicked, setClicked)}>Register</button>
-                <small>To menu by clicking register title</small>
+                <small>Go to menu by clicking register title</small>
             </div>
         </form>
     )
