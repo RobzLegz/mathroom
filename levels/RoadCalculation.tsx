@@ -8,7 +8,7 @@ import { nextLevel } from '../requests/levels/requests';
 const RoadCalculation: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(10);
+    const [selectedAge, setSelectedAge] = useState<number>(5);
     const [speed] = useState<number>(Math.floor((Math.random() * 22) + 7));
     const [time] = useState<number>(Math.floor((Math.random() * 7) + 2));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
@@ -66,7 +66,7 @@ const RoadCalculation: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="10"
+                                min="5"
                                 max="270"
                             />
                         )}

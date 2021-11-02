@@ -8,7 +8,7 @@ import { nextLevel } from '../requests/levels/requests';
 const MonthAmount: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(10);
+    const [selectedAge, setSelectedAge] = useState<number>(1);
     const [years] = useState<number>(Math.floor((Math.random() * 5) + 1));
     const [months] = useState<number>(Math.floor((Math.random() * 10) + 1));
     const [age] = useState<number>(Math.floor((Math.random() * 19) + 7));
@@ -67,8 +67,8 @@ const MonthAmount: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="10"
-                                max="150"
+                                min="1"
+                                max="100"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
