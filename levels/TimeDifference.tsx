@@ -100,8 +100,8 @@ const TimeDifference: React.FC = () => {
                     <div className="inputContainer">
                         <input
                             type="range"
-                            min="8"
-                            max="13"
+                            min="0"
+                            max="23"
                             value={selectedHours}
                             onChange={(e) => setSelectedHours(Number(e.target.value))}
                         />

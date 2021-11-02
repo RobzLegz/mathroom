@@ -10,9 +10,10 @@ const MonthAmount: React.FC = () => {
 
     const [selectedAge, setSelectedAge] = useState<number>(1);
     const [years] = useState<number>(Math.floor((Math.random() * 5) + 1));
-    const [months] = useState<number>(Math.floor((Math.random() * 11) + 1));
-    const [age] = useState<number>(Math.floor((Math.random() * 19) + 14));
+    const [months] = useState<number>(Math.floor((Math.random() * 10) + 1));
+    const [age] = useState<number>(Math.floor((Math.random() * 19) + 7));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
+    const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -50,22 +51,30 @@ const MonthAmount: React.FC = () => {
             )}
             
             <div className="level__container__task">
-                <strong>Peter's {age}th birthday is in {years} years and {months} months. After how many months Peter is going to be {age} years old?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
+                <strong>Peter's {age} year birthday is in {years} years and {months} months. After how many months Peter is going to be {age} years old?<img src="/svg/question.svg" alt="question mark inside circle" onClick={() => setNeedHelp(!needHelp)} /></strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
                     <div className="inputContainer">
-                        <input
-                            type="range"
-                            value={selectedAge}
-                            onChange={(e) => setSelectedAge(Number(e.target.value))}
-                            min="1"
-                            max="80"
-                        />
-                        <strong>{selectedAge}</strong>
+                        {writing ? (
+                            <input
+                                type="number"
+                                value={selectedAge.toString()}
+                                onChange={(e) => {if(e.target.value.length > 3){return}setSelectedAge(Number(e.target.value))}}
+                            />
+                        ) : (
+                            <input
+                                type="range"
+                                value={selectedAge}
+                                onChange={(e) => setSelectedAge(Number(e.target.value))}
+                                min="1"
+                                max="100"
+                            />
+                        )}
+                        <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
                     </div>
                     <div className="level__container__options__tools__instruction">
-                        <small>Slide from left to right to change value</small>
+                        <small>Slide from left to right to change value or click the number next to it to write result</small>
                     </div>
                     <button className="level__container__options__tools__submit" onClick={(e) => completeLevel(e)}>Submit</button>
                     {userInfo.info.level > Number(level) && (

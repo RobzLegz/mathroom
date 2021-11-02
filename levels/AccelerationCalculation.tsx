@@ -8,7 +8,7 @@ import { nextLevel } from '../requests/levels/requests';
 const AccelerationCalculation: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(5);
+    const [selectedAge, setSelectedAge] = useState<number>(0);
     const [startingSpeed] = useState<number>(Math.floor((Math.random() * 22) + 7));
     const [acceleration] = useState<number>(Math.floor((Math.random() * 5) + 2));
     const [time] = useState<number>(Math.floor((Math.random() * 7) + 2));

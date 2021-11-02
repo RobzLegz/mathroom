@@ -8,7 +8,7 @@ import { nextLevel } from '../requests/levels/requests';
 const AverageSpeed: React.FC = () => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedAge, setSelectedAge] = useState<number>(60);
+    const [selectedAge, setSelectedAge] = useState<number>(10);
     const [startingSpeed, setStartingSpeed] = useState<number>(0);
     const [acceleratedSpeed, setAcceleratedSpeed] = useState<number>(startingSpeed + Math.floor((Math.random() * 40) + 20));
     const [activeTransport, setActiveTransport] = useState<string>("");
@@ -93,8 +93,8 @@ const AverageSpeed: React.FC = () => {
                                 type="range"
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
-                                min="60"
-                                max="200"
+                                min="10"
+                                max="150"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>

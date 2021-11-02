@@ -11,6 +11,7 @@ const TypeAge: React.FC = () => {
     const [selectedAge, setSelectedAge] = useState<number>(5);
     const [correctAnswer] = useState<number>(Math.floor((Math.random() * 64) + 7));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
+    const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -54,17 +55,25 @@ const TypeAge: React.FC = () => {
             <div className="level__container__options">
                 <div className="level__container__options__tools">
                     <div className="inputContainer">
-                        <input
-                            type="range"
-                            value={selectedAge}
-                            onChange={(e) => setSelectedAge(Number(e.target.value))}
-                            min="5"
-                            max="100"
-                        />
-                        <strong>{selectedAge}</strong>
+                        {writing ? (
+                            <input
+                                type="number"
+                                value={selectedAge.toString()}
+                                onChange={(e) => {if(e.target.value.length > 3){return}setSelectedAge(Number(e.target.value))}}
+                            />
+                        ) : (
+                            <input
+                                type="range"
+                                value={selectedAge}
+                                onChange={(e) => setSelectedAge(Number(e.target.value))}
+                                min="5"
+                                max="100"
+                            />
+                        )}
+                        <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
                     </div>
                     <div className="level__container__options__tools__instruction">
-                        <small>Slide from left to right to change value</small>
+                        <small>Slide from left to right to change value or click the number next to it to write result</small>
                     </div>
                     <button className="level__container__options__tools__submit" onClick={(e) => completeLevel(e)}>Submit</button>
                     {userInfo.info.level > Number(level) && (
