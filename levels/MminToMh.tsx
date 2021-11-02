@@ -66,7 +66,7 @@ const TimeCalculation: React.FC = () => {
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
                                 min="150"
-                                max="550"
+                                max="750"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
