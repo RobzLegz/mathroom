@@ -125,11 +125,26 @@ const startSocketGame = (roomId: string) => {
     socket.emit("startGame", roomId);
 }
 
+const completeLevel = (passed: boolean) => {
+    const socket = getSocket();
+
+    if(!socket){
+        return
+    }
+
+    if(passed){
+        socket.emit("completeLevel");
+    }else{
+        socket.emit("failLevel");
+    }
+}
+
 export {
     connectToSocket,
     createRoom,
     sendSocketMessage,
     joinRoom,
     exitSocketRoom,
-    startSocketGame
+    startSocketGame,
+    completeLevel
 };
