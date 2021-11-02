@@ -119,4 +119,9 @@ const checkForLogin = (dispatch: any, router: any) => {
     }
 }
 
-export {registerUser, loginUser, checkForLogin};
+const logoutuser = (dispatch: any) => {
+    window.localStorage.removeItem("firstLogin");
+    window.localStorage.removeItem("refreshtoken");
+}
+
+export {registerUser, loginUser, checkForLogin, logoutuser};
