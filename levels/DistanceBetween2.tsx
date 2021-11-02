@@ -23,7 +23,7 @@ const DistanceBetween2: React.FC = () => {
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(selectedAge !== selectedAge){
+        if(selectedAge !== time){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
