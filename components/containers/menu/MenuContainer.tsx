@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotifications, setNotification } from '../../../redux/slices/notificationSlice';
 import { selectUser } from '../../../redux/slices/userSlice';
+import { logoutuser } from '../../../requests/auth/requests';
 import GameBackground from '../../background/GameBackground';
 
 function MenuContainer() {
@@ -12,7 +13,7 @@ function MenuContainer() {
     const dispatch = useDispatch();
     const router = useRouter();
 
-    if(notificationInfo.type || notificationInfo.message){
+    if(notificationInfo.type === "loading"){
         return null;
     }
     
@@ -34,7 +35,7 @@ function MenuContainer() {
                 <button className="button" onClick={() => router.push("/instructions")}>Instructions</button>
                 {userInfo.loggedIn || userInfo.token ? (
                     <div className="menu__container__options__two">
-                        <button>Logout</button>
+                        <button onClick={() => logoutuser(dispatch)}>Logout</button>
                         <button>Profile</button>
                     </div>
                 ) : (

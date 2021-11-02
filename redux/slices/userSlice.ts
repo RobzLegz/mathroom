@@ -38,6 +38,11 @@ export const userSlice = createSlice({
                 state.info.level += 1;
             }
         },
+        logout: (state) => {
+            state.info = null;
+            state.token = "";
+            state.loggedIn = false;
+        },
     },
 });
 
@@ -45,7 +50,8 @@ export const {
     login,
     setUserInfo,
     setToken,
-    completeLevel
+    completeLevel,
+    logout
 } = userSlice.actions;
 
 export const selectUser = (state: any) => state.user;
