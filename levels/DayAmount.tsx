@@ -12,6 +12,7 @@ const DayAmount: React.FC = () => {
     const [weeks] = useState<number>(Math.floor((Math.random() * 5) + 1));
     const [days] = useState<number>(Math.floor((Math.random() * 6) + 1));
     const [needHelp, setNeedHelp] = useState<boolean>(false);
+    const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -54,14 +55,22 @@ const DayAmount: React.FC = () => {
             <div className="level__container__options">
                 <div className="level__container__options__tools">
                     <div className="inputContainer">
-                        <input
-                            type="range"
-                            value={selectedAge}
-                            onChange={(e) => setSelectedAge(Number(e.target.value))}
-                            min="1"
-                            max="50"
-                        />
-                        <strong>{selectedAge}</strong>
+                        {writing ? (
+                            <input
+                                type="number"
+                                value={selectedAge.toString()}
+                                onChange={(e) => {if(e.target.value.length > 3){return}setSelectedAge(Number(e.target.value))}}
+                            />
+                        ) : (
+                            <input
+                                type="range"
+                                value={selectedAge}
+                                onChange={(e) => setSelectedAge(Number(e.target.value))}
+                                min="0"
+                                max="10"
+                            />
+                        )}
+                        <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
                     </div>
                     <div className="level__container__options__tools__instruction">
                         <small>Slide from left to right to change value or click the number next to it to write result</small>

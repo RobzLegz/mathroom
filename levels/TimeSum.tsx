@@ -103,7 +103,7 @@ const TimeSum: React.FC = () => {
                         <strong>{selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}</strong>
                     </div>
                     <div className="level__container__options__tools__instruction">
-                        <small>Slide from left to right to change value or click the number next to it to write result</small>
+                        <small>Slide from left to right to change value</small>
                     </div>
                     <button className="level__container__options__tools__submit" onClick={(e) => completeLevel(e)}>Submit</button>
                     {userInfo.info.level > Number(level) && (
