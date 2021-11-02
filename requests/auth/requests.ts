@@ -1,5 +1,5 @@
 import valid, { validateEmail } from "../../utils/valid";
-import { login, setToken, setUserInfo } from "../../redux/slices/userSlice";
+import { login, logout, setToken, setUserInfo } from "../../redux/slices/userSlice";
 import { clearNotification, setNotification } from "../../redux/slices/notificationSlice";
 import axios from "axios";
 
@@ -119,4 +119,11 @@ const checkForLogin = (dispatch: any, router: any) => {
     }
 }
 
-export {registerUser, loginUser, checkForLogin};
+const logoutuser = (dispatch: any) => {
+    window.localStorage.removeItem("firstLogin");
+    window.localStorage.removeItem("refreshtoken");
+    dispatch(logout());
+    dispatch(setNotification({type: "success", message: "Logged out!"}))
+}
+
+export {registerUser, loginUser, checkForLogin, logoutuser};
