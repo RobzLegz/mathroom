@@ -86,7 +86,7 @@ function room() {
             <ActiveRoom />
 
             {roomInfo.activeRoom && userInfo.info && (
-                <GameBackground color={"blue"} />
+                <GameBackground color={"purple"} />
             )}
         </div>
     )
