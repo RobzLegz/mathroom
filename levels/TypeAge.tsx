@@ -81,7 +81,17 @@ const TypeAge: React.FC = () => {
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.wSFbjLZV5FropOTZA0gnWgHaE7&pid=Api" alt="sus" />
+                    <div className="level__container__options__ilustration__typeAgeContainer">
+                        {selectedAge > 65 ? (
+                            <img src="/levels/old.svg" />
+                        ) : selectedAge > 30 ? (
+                            <img src="/levels/man.svg" />
+                        ) :  selectedAge > 14 ? (
+                            <img src="/levels/teenager.svg" />
+                        ) : (
+                            <img src="/levels/kid.svg" />
+                        )}
+                    </div>
                 </div>
             </div>
         </form>
