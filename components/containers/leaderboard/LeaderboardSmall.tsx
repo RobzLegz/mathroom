@@ -29,7 +29,7 @@ const LeaderboardSmall: React.FC = () => {
     return (
         <div className="leaderboardSmall">
             {
-                leaders                    
+                leaders
                     .map((object: RoomUser, i: number) => (
                         <div className="leaderboardSmall__object" key={i}>
                             <h4>#{i + 1}</h4>
