@@ -1,18 +1,23 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { setNotification } from '../../../redux/slices/notificationSlice';
+import { selectNotifications, setNotification } from '../../../redux/slices/notificationSlice';
 import { selectUser } from '../../../redux/slices/userSlice';
 import GameBackground from '../../background/GameBackground';
 
 function MenuContainer() {
+    const notificationInfo = useSelector(selectNotifications);
     const userInfo = useSelector(selectUser);
     
     const dispatch = useDispatch();
     const router = useRouter();
 
     const [showGamemodes, setShowGamemodes] = useState(false);
-
+ 
+    if(notificationInfo.type || notificationInfo.message){
+        return null;
+    }
+    
     return (
         <div className="menu__container">
             <h1>MATHROOM</h1>

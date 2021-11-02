@@ -11,6 +11,7 @@ import { checkForLogin } from "../requests/auth/requests";
 export default function Menu() {
     const userInfo = useSelector(selectUser);
     const socketInfo = useSelector(selectSocket);
+    
     const dispatch = useDispatch();
     const router = useRouter();
 
