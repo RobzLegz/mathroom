@@ -79,12 +79,12 @@
                     border-radius: 5px;
         
                     &__purple{
-                        background-color: $mathRoomButton;
+                        background-color: $levelRed;
                         color: $mathRoomContainerBG;
                     }
         
                     &__yellow{
-                        background-color: $mathRoomYellow;
+                        background-color: $levelYellow;
         
                         img{
                             filter: invert(100%);
@@ -93,12 +93,12 @@
                     }
         
                     &__green{
-                        background-color: $mathRoomGreen;
+                        background-color: $levelGreen;
                         color: $mathRoomContainerBG;
                     }
         
                     &__red{
-                        background-color: $mathRoomRed;
+                        background-color: $levelOrange;
                         color: $mathRoomContainerBG;
                     }
         
