@@ -14,29 +14,39 @@ interface Props{
 
 const options = [
     {
-        image: "/jpg/levels/clock1.jpg",
-        correct: "00:05",
-        correct2: "12:05",
+        image: "/levels/clock1.jpg",
+        correct: "00:06",
+        correct2: "12:06",
     },
     {
-        image: "/jpg/levels/clock2.jpg",
+        image: "/levels/clock2.jpg",
         correct: "22:08",
         correct2: "10:08",
     },
     {
-        image: "/jpg/levels/clock3.jpg",
+        image: "/levels/clock3.jpg",
         correct: "15:09",
         correct2: "03:09",
     },
     {
-        image: "/jpg/levels/clock4.jpg",
+        image: "/levels/clock4.jpg",
         correct: "15:00",
         correct2: "03:00",
     },
     {
-        image: "/jpg/levels/clock5.jpg",
+        image: "/levels/clock5.jpg",
         correct: "23:45",
         correct2: "11:45",
+    },
+    {
+        image: "/levels/clock6.jpg",
+        correct: "02:50",
+        correct2: "14:50",
+    },
+    {
+        image: "/levels/clock7.jpg",
+        correct: "14:17",
+        correct2: "02:17",
     },
 ]
 
@@ -45,7 +55,7 @@ const RomanNumerals: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) =>
 
     const [selectedHours, setSelectedHours] = useState<number>(0);
     const [selectedMinutes, setSelectedMinutes] = useState<number>(0);
-    const [selectedOption] = useState(options[Math.floor(Math.random() * options.length)]);
+    const [selectedOption] = useState(options[Math.floor(Math.random() * (options.length - 1))]);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -55,16 +65,16 @@ const RomanNumerals: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) =>
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        let correct = `${selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}:${selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}` && selectedOption.correct2 !== `${selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}:${selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}`;
+        let correct = `${selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}:${selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}`;
 
         if(multiplayer){
-            if(selectedOption.correct !== correct){
+            if(selectedOption.correct !== correct && selectedOption.correct2 !== correct){
                 return completeSocketLevel(false, dispatch);
             }
             return completeSocketLevel(true, dispatch);
         }
 
-        if(selectedOption.correct !== correct){
+        if(selectedOption.correct !== correct && selectedOption.correct2 !== correct){
             return dispatch(setNotification({type: "error", message: "Incorrect answer"}));
         }
 
