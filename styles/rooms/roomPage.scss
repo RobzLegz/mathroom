@@ -127,12 +127,46 @@
                     padding: 10px 30px;
                 }
             }
+
+            &__rooms{
+                &__room{
+                    .stages{
+                        display: none;
+                    }
+
+                    button{
+                        width: 80px;
+                        height: 30px;
+                        border-radius: 5px;
+                        border: none;
+                        outline: none;
+                        font-size: 16px;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        color: $mathRoomContainerBG;
+                    }
+    
+                    .full{
+                        background-color: $mathRoomRed;
+                    }
+    
+                    .aviable{
+                        background-color: $mathRoomButton;
+    
+                        &:hover{
+                            background-color: $mathRoomButtonHover;
+                        }
+                    }
+                }
+            }
         }
     }
 
     @media screen and (max-width: 500px){
+        padding: 0 10px;
+
         &__container{
-            width: 350px;
+            width: 100%;
 
             &__header{
                 button{
@@ -148,23 +182,23 @@
     }
 
     @media screen and (max-width: 400px){
-        padding: 0 10px;
-
         &__container{
-            width: 100%;
-
-            &__header{
-                button{
-                    width: 120px;
-                    height: 45px;
-                }
-            }
-
             &__rooms{
                 &__no{
                     text-align: center;
+                    
                     p{
                         margin: 10px 0 0;
+                    }
+                }
+
+                &__room{
+                    .roomName{
+                        font-size: 20px;
+                    }
+
+                    .players{
+                        display: none;
                     }
                 }
             }
