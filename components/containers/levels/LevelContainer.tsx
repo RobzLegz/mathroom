@@ -1,12 +1,10 @@
 import { useRouter } from "next/dist/client/router";
-import React, { useState } from "react"
+import React from "react"
 import tasks from "../../../data/tasks";
 import LevelOption from "./LevelOption";
 
 function LevelContainer() {
     const router = useRouter();
-
-    const [pushedLevels] = useState<number[]>([]);
 
     return (
         <div className="levels__container">
@@ -22,8 +20,6 @@ function LevelContainer() {
                     {
                         tasks
                             .map((task, i) => {
-                            if(!pushedLevels.includes(i) && tasks.length !== (i + 1)){
-                                pushedLevels.push(i);
 
                                 let level = i + 1;
 
@@ -33,9 +29,8 @@ function LevelContainer() {
                                 }
 
                                 return <LevelOption key={i} task={pushTask} />;
-                            }
-                        return null;
-                    })}
+                            })
+                    }
                 </div>
             </div>
         </div>
