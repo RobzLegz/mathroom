@@ -94,7 +94,7 @@ const RoomContainer: React.FC = () => {
             <header className="roomPage__container__header">
                 <button className="roomPage__container__header__back" onClick={() => router.push("/menu")}>Back</button>
                 <div className="roomPage__container__header__title">
-                    <h2>Join room</h2>
+                    <h2>Online rooms</h2>
                 </div>
                 <button className="roomPage__container__header__new" onClick={() => router.push("/rooms/new")}>Create new</button>
             </header>

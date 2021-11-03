@@ -31,10 +31,6 @@
                 color: $mathRoomContainerBG;
             }
 
-            &__back{
-                background-color: $mathRoomGrey;
-            }
-
             &__title{
                 padding: 10px 50px;
                 border-radius: 10px;
@@ -42,7 +38,8 @@
                 color: $mathRoomContainerBG;
             }
 
-            &__new{
+            &__new,
+            &__back{
                 background-color: $mathRoomButton;
 
                 &:hover{
