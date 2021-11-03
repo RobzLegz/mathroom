@@ -7,7 +7,7 @@ connectDB();
 
 export default async (req: any, res: any) => {
     try{
-        const rf_tokenSecret: string | undefined = process.env.REFRESH_TOKEN_SECRET
+        const rf_tokenSecret: string | undefined = process.env.REFRESH_TOKEN_SECRET;
 
         if(!rf_tokenSecret){
             return res.status(400).json({err: "Something went wrong!"});
