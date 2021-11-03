@@ -15,7 +15,7 @@ function newRoom() {
 
             <NewRoomContainer />
 
-            <GameBackground color={"blue"} />
+            <GameBackground color={"purple"} />
         </div>
     )
 }
