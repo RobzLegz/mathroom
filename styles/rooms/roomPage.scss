@@ -8,7 +8,7 @@
     justify-content: center;
     padding: 100px 0;
     font-family: $roomFont;
-    background-color: $mathRoomBG;
+    background-color: $mathRoomDarkerPurple;
 
     &__container{
         width: 700px;
@@ -32,23 +32,11 @@
                 color: $mathRoomContainerBG;
             }
 
-            &__back{
-                background-color: $mathRoomGrey;
-            }
-
             &__title{
                 padding: 10px 50px;
                 border-radius: 10px;
                 background-color: $mathRoomGrey;
                 color: $mathRoomContainerBG;
-            }
-
-            &__new{
-                background-color: $mathRoomButton;
-
-                &:hover{
-                    background-color: $mathRoomButtonHover;
-                }
             }
         }
 

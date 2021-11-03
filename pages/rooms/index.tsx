@@ -34,7 +34,7 @@ const index: React.FC = () => {
 
             <RoomContainer />
 
-            <GameBackground color={"blue"} />
+            <GameBackground color={"purple"} />
         </div>
     )
 }
