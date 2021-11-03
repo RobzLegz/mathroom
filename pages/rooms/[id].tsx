@@ -11,6 +11,7 @@ import { joinRoom } from "../../socket/options";
 import { getSocket, selectSocket, setSocket } from "../../redux/slices/socketSlice";
 import Notification from "../../components/notifications/Notification";
 import GameBackground from "../../components/background/GameBackground";
+import { setNotification } from "../../redux/slices/notificationSlice";
 
 interface Message{
     roomID: string;
@@ -68,6 +69,7 @@ function room() {
                 });
 
                 socket.on("removeRoom", (roomId: string) => {
+                    dispatch(setNotification({type: "error", message: "Admin disbanded the room"}));
                     dispatch(removeRoom(roomId));
                     router.push("/rooms");
                 });

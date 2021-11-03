@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux';
 import { selectRooms } from '../../../redux/slices/roomSlice';
 
@@ -14,26 +14,20 @@ interface RoomUser{
 const LeaderboardSmall: React.FC = () => {
     const roomInfo = useSelector(selectRooms);
 
-    const [leaders, setLeaders] = useState<RoomUser[] | null>(null);
-
-    useEffect(() => {
-        if(roomInfo && roomInfo.roomUsers){
-            setLeaders([...roomInfo.roomUsers].sort((a: RoomUser, b: RoomUser) => {return a.points-b.points}))
-        }
-    }, [roomInfo.roomUsers, roomInfo]);
-
-    if(!leaders){
-        return null;
-    }
-
     return (
         <div className="leaderboardSmall">
             {
-                leaders
+                [...roomInfo.roomUsers].sort((a: RoomUser, b: RoomUser) => {return b.points-a.points})
                     .map((object: RoomUser, i: number) => (
-                        <div className="leaderboardSmall__object" key={i}>
-                            <h4>#{i + 1}</h4>
-                            <strong>{object.username}</strong>
+                        <div className={`leaderboardSmall__object leaderboardSmall__object__${object.level <= roomInfo.activeRoom.tasks.length ? "playing" : "done"}`} key={i}>
+                            <div className="leaderboardSmall__object__left">
+                                <h4>#{i + 1}</h4>
+                                <strong>{object.username}</strong>
+                            </div>
+                            <div className="leaderboardSmall__object__points">
+                                <h4>{object.points}</h4>
+                                <img src="/png/coin.png" alt="yellow coin with star design on it" />
+                            </div>
                         </div>
                     ))
             }
