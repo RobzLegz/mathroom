@@ -38,6 +38,16 @@ const options = [
         correct: "23:45",
         correct2: "11:45",
     },
+    {
+        image: "/levels/clock6.jpg",
+        correct: "02:50",
+        correct2: "14:50",
+    },
+    {
+        image: "/levels/clock7.jpg",
+        correct: "14:17",
+        correct2: "02:17",
+    },
 ]
 
 const RomanNumerals: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
