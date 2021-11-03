@@ -18,7 +18,7 @@ const LeaderboardSmall: React.FC = () => {
 
     useEffect(() => {
         if(roomInfo && roomInfo.roomUsers){
-            setLeaders([...roomInfo.roomUsers].sort((a: RoomUser, b: RoomUser) => {return a.points-b.points}))
+            setLeaders([...roomInfo.roomUsers].sort((a: RoomUser, b: RoomUser) => {return b.points-a.points}))
         }
     }, [roomInfo.roomUsers, roomInfo]);
 
@@ -34,6 +34,9 @@ const LeaderboardSmall: React.FC = () => {
                         <div className="leaderboardSmall__object" key={i}>
                             <h4>#{i + 1}</h4>
                             <strong>{object.username}</strong>
+                            <div className="leaderboardSmall__object__points">
+                                
+                            </div>
                         </div>
                     ))
             }

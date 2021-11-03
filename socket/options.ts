@@ -133,7 +133,7 @@ const completeSocketLevel = (passed: boolean, dispatch: any) => {
 
     if(passed){
         socket.emit("completeLevel");
-        dispatch(setNotification({type: "success", message: "Congrats, You passed this level!"}));
+        dispatch(setNotification({type: "success", message: "Congrats, You answered correctly!"}));
     }else{
         socket.emit("failLevel");
         dispatch(setNotification({type: "error", message: "Wrong answer!"}));

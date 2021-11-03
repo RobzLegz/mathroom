@@ -12,7 +12,7 @@
         align-items: center;
         justify-content: flex-start;
         padding: 50px 300px;
-        background-color: $mathRoomBG;
+        background-color: $mathRoomDarkerPurple;
 
         &__inner{
             width: 100%;
@@ -184,6 +184,31 @@
                     }
                 }
             }
+        }
+    }
+
+    &__active{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: $roomFont;
+        background-color: $mathRoomDarkerPurple;
+
+        &__disband{
+            margin: 20px 0 0 0;
+            width: 200px;
+            height: 50px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: $roomFont;
+            font-size: $buttonText;
+            color: $mathRoomContainerBG;
+            background-color: $mathRoomRed;
         }
     }
 }

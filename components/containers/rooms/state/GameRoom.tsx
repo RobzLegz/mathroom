@@ -1,7 +1,10 @@
+import { useRouter } from 'next/dist/client/router';
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectRooms } from '../../../../redux/slices/roomSlice';
 import { selectUser } from '../../../../redux/slices/userSlice';
+import { disbandRoom } from '../../../../requests/rooms/requests';
+import Leaderboard from '../../leaderboard/Leaderboard';
 import MultiplayerActiveLevel from '../../levels/MultiplayerActiveLevel';
 
 interface RoomUser{
@@ -12,6 +15,9 @@ interface RoomUser{
 }
 
 function GameRoom() {
+    const router = useRouter();
+    const dispatch = useDispatch();
+
     const userInfo = useSelector(selectUser);
     const roomInfo = useSelector(selectRooms);
 
@@ -24,7 +30,16 @@ function GameRoom() {
     }
 
     if(roomInfo.roomUsers.find((user: RoomUser) => user.userId === userInfo.info._id).level > roomInfo.activeRoom.tasks.length){
-        return null; //leaderboard will go here
+        return(
+            <div className="gameRoom__active">
+                <Leaderboard />
+                {roomInfo.activeRoom.admin === userInfo.info._id ? (
+                    <button className="gameRoom__active__disband" onClick={() => disbandRoom(roomInfo.activeRoom._id, userInfo.token, dispatch, router)}>Disband room</button>
+                ) : (
+                    null
+                )}
+            </div>
+        )
     }
 
     return (
