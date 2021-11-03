@@ -80,7 +80,7 @@ function NewRoomContainer() {
             </form>
             <div className="newRoom__container__options">
                 <button className="newRoom__container__options__back" onClick={() => router.push("/rooms")}>Back</button>
-                <button className="newRoom__container__options__create" onClick={(e) => newRoom(e, roomName, Number(totalStages), Number(maxPlayers), privateRoom, userInfo, dispatch, router)}>Create room</button>
+                <button className="newRoom__container__options__create" onClick={(e) => newRoom(e, roomName, Number(totalStages), Number(maxPlayers), privateRoom, userInfo, dispatch, router)}>Create</button>
             </div>
         </div>
     )
