@@ -67,6 +67,10 @@
     position: absolute;
     top: -60px;
     display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     background-color: $mathRoomContainerBG;
 
     &__object{
@@ -74,7 +78,7 @@
         width: 200px;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: space-between;
         padding: 0 10px;
 
         h4{
@@ -84,5 +88,36 @@
         &:hover{
             background-color: $mathRoomLightGrey;
         }
+
+        &__left{
+            display: flex;
+        }
+
+        &__points{
+            display: flex;
+            align-items: center;
+
+            h4{
+                margin: 0 5px 0 0;
+            }
+
+            img{
+                width: 20px;
+                height: 20px;
+                object-fit: cover;
+            }
+        }
+
+        &__done{
+            background-color: $levelGreen;
+
+            &:hover{
+                background-color: $levelGreen;
+            }
+        }
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
     }
 }
