@@ -97,7 +97,7 @@ function WaitingRoom() {
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                 />
-                                <button onClick={(e) => {if(message.length < 100){sendMessage(e, router.query.id, message, messageTimeout, setMessageTimeout, userInfo.info, dispatch)}else{dispatch(setNotification({type: "error", message: "You can't send long messages in waiting room chat!"}))}}}>Send</button>
+                                <button onClick={(e) => {if(message.length < 100){sendMessage(e, router.query.id, message, messageTimeout, setMessageTimeout, userInfo.info, dispatch)}else{dispatch(setNotification({type: "error", message: "You can't send long messages in waiting room chat!"}))}}}><img src="/svg/send.svg" alt="arrow pointed in right direction inside a circle" /></button>
                             </form>
                         </div>
                     </div>
@@ -109,13 +109,15 @@ function WaitingRoom() {
                                     className="gameRoom__waiting__inner__buttons__red"
                                     onClick={() => disbandRoom(roomInfo.activeRoom._id, userInfo.token, dispatch, router)}
                                 >
-                                    Disband room
+                                    <p>Disband room</p>
+                                    <img src="/svg/disband.svg" alt="a line with a circle around it" />
                                 </button>
                                 <button
                                     className="gameRoom__waiting__inner__buttons__purple"
                                     onClick={() => {if(roomInfo.roomUsers.filter((user: RoomUser) => user.roomId === id).length >= 2){startGame(id, userInfo.token, dispatch)}else{dispatch(setNotification({type: "error", message: "There should be at least 2 people in this room!"}))}}}
                                 >
-                                    Start game
+                                    <p>Start game</p>
+                                    <img src="/svg/play.svg" alt="triandgle with a circle around it" />
                                 </button>
                             </>
                         ) : (
