@@ -3,7 +3,7 @@
 .newRoom{
     width: 100%;
     height: 100vh;
-    background-color: $mathRoomDarkerPurple;
+    background-color: $mathRoomBG;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -114,8 +114,11 @@
                 transition: all 0.3s ease;
             }
 
-            &__create,
             &__back{
+                background-color: $mathRoomGrey;
+            }
+
+            &__create{
                 background-color: $mathRoomButton;
 
                 &:hover{

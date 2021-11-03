@@ -4,10 +4,11 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    padding: 100px 0;
     font-family: $roomFont;
-    background-color: $mathRoomDarkerPurple;
+    background-color: $mathRoomBG;
 
     &__container{
         width: 700px;
@@ -31,6 +32,10 @@
                 color: $mathRoomContainerBG;
             }
 
+            &__back{
+                background-color: $mathRoomGrey;
+            }
+
             &__title{
                 padding: 10px 50px;
                 border-radius: 10px;
@@ -38,8 +43,7 @@
                 color: $mathRoomContainerBG;
             }
 
-            &__new,
-            &__back{
+            &__new{
                 background-color: $mathRoomButton;
 
                 &:hover{
