@@ -94,7 +94,7 @@ const RoomContainer: React.FC = () => {
             <header className="roomPage__container__header">
                 <button className="roomPage__container__header__back" onClick={() => router.push("/menu")}>Back</button>
                 <div className="roomPage__container__header__title">
-                    <h2>Join room</h2>
+                    <h2>Rooms</h2>
                 </div>
                 <button className="roomPage__container__header__new" onClick={() => router.push("/rooms/new")}>Create new</button>
             </header>
@@ -111,9 +111,9 @@ const RoomContainer: React.FC = () => {
                     
                     return(
                         <div className="roomPage__container__rooms__room" key={i}>
-                            <h3>{room.roomName}</h3>
-                            <h3>{room.totalStages}</h3>
-                            <h3>{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
+                            <h3 className="roomName">{room.roomName}</h3>
+                            <h3 className="stages">{room.totalStages}</h3>
+                            <h3 className="players">{roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length}/{room.maxPlayers}</h3>
                             <button
                                 className={`${roomInfo.roomUsers.filter((u: User) => u.roomId === room._id).length === room.maxPlayers ? "full" : "aviable"}`}
                                 onClick={() => {
