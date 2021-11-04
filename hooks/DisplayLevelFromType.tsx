@@ -10,6 +10,7 @@ import KilometersApart from '../levels/KilometersApart';
 import MminToMh from '../levels/MminToMh';
 import MonthAmount from '../levels/MonthAmount';
 import PoolFill from '../levels/PoolFill';
+import PoolSpill from '../levels/PoolSpill';
 import RoadCalculation from '../levels/RoadCalculation';
 import RoadCalculationSecond from '../levels/RoadCalculationSecond';
 import RomanNumerals from '../levels/RomanNumerals';
@@ -58,6 +59,7 @@ const renderActiveTaskFromType = (type: string, needHelp: boolean, setNeedHelp: 
         case "average speed": return <AverageSpeed needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "distance between2": return <DistanceBetween2 needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "pool fill": return <PoolFill needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "pool spill": return <PoolSpill needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
     }
 
     return null;

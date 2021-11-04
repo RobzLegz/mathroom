@@ -3,6 +3,7 @@ const tasks = [
     {type: "time sum"},
     {type: "time difference"},
     {type: "time difference minutes"},
+    {type: "pool spill"},
     {type: "time difference minutes2"},
     {type: "month amount"},
     {type: "day amount"},
