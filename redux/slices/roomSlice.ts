@@ -45,6 +45,8 @@ const initialState: State = {
     messages: [],
 }
 
+let removedIds: string[] = [];
+
 export const roomSlice = createSlice({
     name: "room",
     initialState,
@@ -63,6 +65,17 @@ export const roomSlice = createSlice({
         },
         addRoom: (state, action) => {
             if(state.rooms){
+                if(removedIds.includes(action.payload._id)){
+                    return;
+                }
+
+                state.rooms.forEach((room) => {
+                    if(removedIds.includes(room._id)){
+                        state.rooms?.filter((r) => r._id !== room._id);
+                        state.rooms?.filter((r) => r !== room);
+                    }
+                });
+
                 if(state.rooms.some((r) => r.admin !== action.payload.admin) && state.rooms.some((r) => r._id !== action.payload._id)){
                     state.rooms.push(action.payload);
                 }else if(state.rooms.length === 0){
@@ -73,18 +86,40 @@ export const roomSlice = createSlice({
             }
         },
         removeRoom: (state, action) => {
+            if(!removedIds.includes(action.payload)){
+                removedIds.push(action.payload);
+            }
+
             if(state.rooms){
+                state.rooms.forEach((room) => {
+                    if(removedIds.includes(room._id)){
+                        state.rooms?.filter((r) => r._id !== room._id);
+                        state.rooms?.filter((r) => r !== room);
+                    }
+                });
+
                 state.rooms = state.rooms.filter((room) => room._id !== action.payload);
                 state.rooms.filter((room) => room._id !== action.payload);
             }
         },
         startGame: (state, action) => {
+            if(!removedIds.includes(action.payload)){
+                removedIds.push(action.payload);
+            }
+
             if(state.rooms){
                 let startRoom = state.rooms.find((room) => room._id === action.payload);
 
                 if(startRoom){
                     startRoom.hasStarted = true;
                 }
+
+                state.rooms.forEach((room) => {
+                    if(removedIds.includes(room._id)){
+                        state.rooms?.filter((r) => r._id !== room._id);
+                        state.rooms?.filter((r) => r !== room);
+                    }
+                });
 
                 state.rooms = state.rooms.filter((room) => room._id !== action.payload);
                 state.rooms.filter((room) => room._id !== action.payload);
