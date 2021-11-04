@@ -36,7 +36,7 @@ const options = [
     {
         rises: "08.00",
         sets: "16.00",
-        correct: "Day is 8 hours and 30 minutes long."
+        correct: "Day is 8 hours long."
     },
     {
         rises: "07.40",
@@ -150,7 +150,7 @@ const TimeDifference: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) =
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.wSFbjLZV5FropOTZA0gnWgHaE7&pid=Api" alt="sus" />
+                    <img src="/levels/sunriseset.svg" alt="two suns with arrows under or on top of sun, one sun is rising and one setting" />
                 </div>
             </div>
         </form>
