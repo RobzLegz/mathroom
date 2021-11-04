@@ -7,7 +7,7 @@ function newLevel() {
     return (
         <div className="communityPage">
             <Head>
-                <title>MathRoom | Community</title>
+                <title>MathRoom | New level</title>
             </Head>
 
             <NewLevelContainer />
