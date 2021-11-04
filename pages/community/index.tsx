@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from "next/head"
 import CommunityPageContainer from '../../components/containers/community/CommunityPageContainer';
+import GameBackground from '../../components/background/GameBackground';
 
 function index() {
     return (
@@ -10,6 +11,8 @@ function index() {
             </Head>
 
             <CommunityPageContainer page={"home"} />
+
+            <GameBackground color={"purple"} />
         </div>
     )
 }

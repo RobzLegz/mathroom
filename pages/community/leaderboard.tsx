@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from "next/head"
 import CommunityPageContainer from '../../components/containers/community/CommunityPageContainer';
+import GameBackground from '../../components/background/GameBackground';
 
 function leaderboard() {
     return (
@@ -9,7 +10,9 @@ function leaderboard() {
                 <title>MathRoom | Community</title>
             </Head>
 
-            <CommunityPageContainer page={"home"} />
+            <CommunityPageContainer page={"leaderboard"} />
+
+            <GameBackground color={"purple"} />
         </div>
     )
 }

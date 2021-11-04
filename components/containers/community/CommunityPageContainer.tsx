@@ -1,15 +1,32 @@
 import React from 'react'
+import CommunityContainerHeader from './CommunityContainerHeader';
 
 interface Props{
     page: string;
 }
 
 const CommunityPageContainer: React.FC<Props> = ({page}) => {
-    return (
-        <div>
-            
-        </div>
-    )
+
+    if(page === "home"){
+        return (
+            <div className="communityPage__container">
+                <CommunityContainerHeader page={page} />
+            </div>
+        )
+    }else if(page === "leaderboard"){
+        return (
+            <div className="communityPage__container">
+                <CommunityContainerHeader page={page} />
+            </div>
+        )
+    }else if(page === "search"){
+        return (
+            <div className="communityPage__container">
+                <CommunityContainerHeader page={page} />
+            </div>
+        )
+    }
+    return null;
 }
 
 export default CommunityPageContainer
