@@ -2,7 +2,7 @@ import React from 'react'
 import Head from "next/head"
 import CommunityPageContainer from '../../components/containers/community/CommunityPageContainer';
 
-function index() {
+function leaderboard() {
     return (
         <div className="communityPage">
             <Head>
@@ -14,4 +14,4 @@ function index() {
     )
 }
 
-export default index
+export default leaderboard

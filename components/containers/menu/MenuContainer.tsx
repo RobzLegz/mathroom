@@ -3,7 +3,6 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotifications, setNotification } from '../../../redux/slices/notificationSlice';
 import { selectUser } from '../../../redux/slices/userSlice';
-import { logoutuser } from '../../../requests/auth/requests';
 import GameBackground from '../../background/GameBackground';
 
 function MenuContainer() {
