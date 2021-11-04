@@ -17,9 +17,9 @@ export default async (req: any, res: any) => {
 
 const getLevels = async (req: any, res: any) => {
     try{
-        const rooms = await Levels.find({accepted: true});
+        const levels = await Levels.find({accepted: true});
 
-        res.json(rooms);
+        res.json(levels);
     }catch(err: any){
         return res.status(500).json({err: err.message});
     }
