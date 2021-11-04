@@ -47,6 +47,9 @@ input[type=number] {
 button{
   cursor: pointer;
   transition: all 0.3s ease;
+  border: none;
+  outline: none;
+  color: $mathRoomContainerBG;
   font-family: $roomFont;
   font-size: $buttonText;
   background-color: $mathRoomButton;
