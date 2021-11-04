@@ -28,7 +28,7 @@ const completeLevel = async (req: any, res: any) => {
 
         const nextLevel = Number(level) + 1;
 
-        await Users.findByIdAndUpdate({_id: user.id}, {level: nextLevel});
+        await Users.findByIdAndUpdate({_id: user._id}, {level: nextLevel});
 
         res.json({msg: "Level passed"});
     }catch(err: any){

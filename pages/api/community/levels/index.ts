@@ -40,7 +40,7 @@ const createLevel = async (req: any, res: any) => {
             question: question,
             instruction: instruction,
             correctValue: correctValue,
-            author: admin.id,
+            author: admin._id,
             image: image,
         });
 
