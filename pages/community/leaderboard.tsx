@@ -7,7 +7,7 @@ function leaderboard() {
     return (
         <div className="communityPage">
             <Head>
-                <title>MathRoom | Community</title>
+                <title>MathRoom | Leaderboard</title>
             </Head>
 
             <CommunityPageContainer page={"leaderboard"} />

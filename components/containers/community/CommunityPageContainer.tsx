@@ -50,9 +50,11 @@ const CommunityPageContainer: React.FC<Props> = ({page}) => {
             </div>
         )
     }else if (page === "admin"){
-        <div className="communityPage__container">
-            <CommunityContainerHeader page={page} />
-        </div>
+        return (
+            <div className="communityPage__container">
+                <CommunityContainerHeader page={page} />
+            </div>
+        )
     }
     
     return null;

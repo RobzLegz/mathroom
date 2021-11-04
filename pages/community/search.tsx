@@ -7,7 +7,7 @@ function search() {
     return (
         <div className="communityPage">
             <Head>
-                <title>MathRoom | Community</title>
+                <title>MathRoom | Search</title>
             </Head>
 
             <CommunityPageContainer page={"search"} />
