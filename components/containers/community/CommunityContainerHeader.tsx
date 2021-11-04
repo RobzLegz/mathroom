@@ -1,11 +1,15 @@
 import { useRouter } from 'next/dist/client/router';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../redux/slices/userSlice';
 
 interface Props{
     page: string;
 }
 
 const CommunityContainerHeader: React.FC<Props> = ({page}) => {
+    const userInfo = useSelector(selectUser);
+
     const router = useRouter();
 
     return (
@@ -21,6 +25,12 @@ const CommunityContainerHeader: React.FC<Props> = ({page}) => {
             <div className={`communityPage__container__header__link ${page === "search" ? "communityPage__container__header__link__active" : ""}`} onClick={() => router.push("/community/search")}>
                 <p>Search</p>
             </div>
+
+            {userInfo.info.role === "admin" && (
+                <div className={`communityPage__container__header__link ${page === "admin" ? "communityPage__container__header__link__active" : ""}`} onClick={() => router.push("/community/admin")}>
+                    <p>Admin</p>
+                </div>
+            )}
         </nav>
     )
 }

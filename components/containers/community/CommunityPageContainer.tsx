@@ -1,4 +1,8 @@
-import React from 'react'
+import { useRouter } from 'next/dist/client/router';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../../../redux/slices/userSlice';
+import { checkForLogin } from '../../../requests/auth/requests';
 import CommunityContainerHeader from './CommunityContainerHeader';
 import CommunityPageLevels from './CommunityPageLevels';
 
@@ -7,6 +11,24 @@ interface Props{
 }
 
 const CommunityPageContainer: React.FC<Props> = ({page}) => {
+    const dispatch = useDispatch();
+    const router = useRouter();
+
+    const userInfo = useSelector(selectUser);
+
+    useEffect(() => {
+        if(!userInfo.loggedIn || !userInfo.token){
+            const token = window.localStorage.getItem("refreshtoken");
+
+            if(token){
+                checkForLogin(dispatch, router);
+            }
+        }
+    }, [userInfo.loggedIn, dispatch, userInfo.token]);
+
+    if(!userInfo.info || !page){
+        return null;
+    }
 
     if(page === "home"){
         return (
@@ -27,7 +49,12 @@ const CommunityPageContainer: React.FC<Props> = ({page}) => {
                 <CommunityContainerHeader page={page} />
             </div>
         )
+    }else if (page === "admin"){
+        <div className="communityPage__container">
+            <CommunityContainerHeader page={page} />
+        </div>
     }
+    
     return null;
 }
 

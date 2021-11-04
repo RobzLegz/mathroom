@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from "next/head"
-import CommunityPageContainer from '../../../components/containers/community/CommunityPageContainer';
 import GameBackground from '../../../components/background/GameBackground';
+import NewLevelContainer from '../../../components/containers/levels/NewLevelContainer';
 
 function newLevel() {
     return (
@@ -10,7 +10,7 @@ function newLevel() {
                 <title>MathRoom | Community</title>
             </Head>
 
-            <CommunityPageContainer page={"home"} />
+            <NewLevelContainer />
 
             <GameBackground color={"purple"} />
         </div>
