@@ -36,6 +36,7 @@ interface State{
     activeRoom: Room | null;
     roomUsers: User[] | null;
     messages: Message[];
+    removedIds: string[];
 }
 
 const initialState: State = {
@@ -43,9 +44,8 @@ const initialState: State = {
     activeRoom: null,
     roomUsers: null,
     messages: [],
+    removedIds: [],
 }
-
-let removedIds: string[] = [];
 
 export const roomSlice = createSlice({
     name: "room",
@@ -65,12 +65,12 @@ export const roomSlice = createSlice({
         },
         addRoom: (state, action) => {
             if(state.rooms){
-                if(removedIds.includes(action.payload._id)){
+                if(state.removedIds.includes(action.payload._id)){
                     return;
                 }
 
                 state.rooms.forEach((room) => {
-                    if(removedIds.includes(room._id)){
+                    if(state.removedIds.includes(room._id)){
                         state.rooms?.filter((r) => r._id !== room._id);
                         state.rooms?.filter((r) => r !== room);
                     }
@@ -86,13 +86,13 @@ export const roomSlice = createSlice({
             }
         },
         removeRoom: (state, action) => {
-            if(!removedIds.includes(action.payload)){
-                removedIds.push(action.payload);
+            if(!state.removedIds.includes(action.payload)){
+                state.removedIds.push(action.payload);
             }
 
             if(state.rooms){
                 state.rooms.forEach((room) => {
-                    if(removedIds.includes(room._id)){
+                    if(state.removedIds.includes(room._id)){
                         state.rooms?.filter((r) => r._id !== room._id);
                         state.rooms?.filter((r) => r !== room);
                     }
@@ -103,8 +103,8 @@ export const roomSlice = createSlice({
             }
         },
         startGame: (state, action) => {
-            if(!removedIds.includes(action.payload)){
-                removedIds.push(action.payload);
+            if(!state.removedIds.includes(action.payload)){
+                state.removedIds.push(action.payload);
             }
 
             if(state.rooms){
@@ -115,7 +115,7 @@ export const roomSlice = createSlice({
                 }
 
                 state.rooms.forEach((room) => {
-                    if(removedIds.includes(room._id)){
+                    if(state.removedIds.includes(room._id)){
                         state.rooms?.filter((r) => r._id !== room._id);
                         state.rooms?.filter((r) => r !== room);
                     }

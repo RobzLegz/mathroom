@@ -33,7 +33,6 @@ const RoomContainer: React.FC = () => {
     const router = useRouter();
 
     const [resetRooms, setResetRooms] = useState(false);
-    const [removedRoomIds] = useState<string[]>([]);
 
     useEffect(() => {
         const socket = getSocket();
@@ -65,16 +64,10 @@ const RoomContainer: React.FC = () => {
 
                 socket.on("removeRoom", (roomId: string) => {
                     dispatch(removeRoom(roomId));
-                    if(!removedRoomIds.includes(roomId)){
-                        removedRoomIds.push(roomId);
-                    }
                 });
 
                 socket.on("startedGame", (roomId: string) => {
                     dispatch(startGame(roomId));
-                    if(!removedRoomIds.includes(roomId)){
-                        removedRoomIds.push(roomId);
-                    }
                 });
 
                 socket.on("getRoomUsers", (users: User[]) => {
@@ -87,7 +80,7 @@ const RoomContainer: React.FC = () => {
         }else if(!roomInfo.rooms){
             getRooms(dispatch);
         }
-    }, [socketInfo.connected, dispatch, roomInfo.rooms, resetRooms, getSocket(), removedRoomIds]);
+    }, [socketInfo.connected, dispatch, roomInfo.rooms, resetRooms, getSocket()]);
 
     return (
         <div className="roomPage__container">
@@ -105,10 +98,16 @@ const RoomContainer: React.FC = () => {
                         return null;
                     }
 
-                    if(removedRoomIds.length > 0 && removedRoomIds.some((ri: string) => ri === room._id)){
-                        return null;
+                    if(roomInfo.removedIds.length > 0){
+                        if(roomInfo.removedIds.includes(room._id)){
+                            return null;
+                        }
+
+                        if(roomInfo.removedIds.some((id: string) => room._id === id)){
+                            return null;
+                        }
                     }
-                    
+
                     return(
                         <div className="roomPage__container__rooms__room" key={i}>
                             <h3 className="roomName">{room.roomName}</h3>
