@@ -2,7 +2,8 @@ import { useRouter } from "next/dist/client/router";
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { setNotification } from "../../../../redux/slices/notificationSlice";
-import { selectRooms } from "../../../../redux/slices/roomSlice";
+import { selectRooms, setRoomMessages } from "../../../../redux/slices/roomSlice";
+import { getSocket } from "../../../../redux/slices/socketSlice";
 import { selectUser } from "../../../../redux/slices/userSlice";
 import { startGame } from "../../../../requests/game/requests";
 import { sendMessage } from "../../../../requests/rooms/chat/requests";
@@ -44,6 +45,7 @@ function WaitingRoom() {
 
     const [message, setMessage] = useState<string>("");
     const [messageTimeout, setMessageTimeout] = useState<number>(0);
+    const [messagesRequesteed, setMessagesRequesteed] = useState<boolean>(false);
 
     useEffect(() => {
         if(messageTimeout > 0){
@@ -55,6 +57,21 @@ function WaitingRoom() {
             setMessage("");
         }
     }, [messageTimeout, message]);
+
+    useEffect(() => {
+        if(!messagesRequesteed){
+            const socket = getSocket();
+
+            if(socket){
+                socket.emit("getMessages");
+                socket.on("sendMessages", (messages: Message[]) => {
+                    dispatch(setRoomMessages(messages));
+                });
+            }
+
+            setMessagesRequesteed(true);
+        }
+    }, [messagesRequesteed]);
 
     if(roomInfo.activeRoom && userInfo.info){
         return (
