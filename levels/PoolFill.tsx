@@ -12,55 +12,14 @@ interface Props{
     multiplayer: boolean;
 }
 
-const options = [
-    {
-        rises: "08.00",
-        sets: "17.00",
-        correct: "Day is 9 hours long."
-    },
-    {
-        rises: "06.30",
-        sets: "22.00",
-        correct: "Day is 15 hours and 30 minutes long."
-    },
-    {
-        rises: "05.30",
-        sets: "19.00",
-        correct: "Day is 13 hours and 30 minutes long."
-    },
-    {
-        rises: "05.45",
-        sets: "17.00",
-        correct: "Day is 11 hours and 15 minutes long."
-    },
-    {
-        rises: "08.00",
-        sets: "16.00",
-        correct: "Day is 8 hours long."
-    },
-    {
-        rises: "07.40",
-        sets: "18.00",
-        correct: "Day is 10 hours and 20 minutes long."
-    },
-    {
-        rises: "04.50",
-        sets: "19.20",
-        correct: "Day is 13 hours and 30 minutes long."
-    },
-    {
-        rises: "06.45",
-        sets: "17.35",
-        correct: "Day is 10 hours and 50 minutes long."
-    }
-]
-
-const TimeDifference: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
+const PoolFill: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
     const userInfo = useSelector(selectUser);
 
-    const [selectedHours, setSelectedHours] = useState<number>(0);
-    const [selectedMinutes, setSelectedMinutes] = useState<number>(0);
-    const [selectedOption] = useState(options[Math.floor(Math.random() * options.length)]);
+    const [currentSelection, setCurrentSelection] = useState<number>(0);
+    const [flowingSpeed] = useState<number>(Math.floor((Math.random() * 7) + 2));
+    const [time] = useState<number>(Math.floor((Math.random() * 30) + 10));
+    const [capacity] = useState<number>(flowingSpeed * time);
+    const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -71,14 +30,14 @@ const TimeDifference: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) =
         e.preventDefault();
 
         if(multiplayer){
-            if(selectedOption.correct !== `Day is ${selectedHours} hours${selectedMinutes > 0 ? ` and ${selectedMinutes} minutes` : ""} long.`){
+            if(currentSelection !== time){
                 return completeSocketLevel(false, dispatch);
             }
             return completeSocketLevel(true, dispatch);
         }
 
-        if(selectedOption.correct !== `Day is ${selectedHours} hours${selectedMinutes > 0 ? ` and ${selectedMinutes} minutes` : ""} long.`){
-            return dispatch(setNotification({type: "error", message: "Incorrect answer"}));
+        if(currentSelection !== time){
+            return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
         if(userInfo.info){
@@ -106,7 +65,7 @@ const TimeDifference: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) =
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>Subtract sunrise time from sunset time</p>
+                            <p></p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
@@ -116,33 +75,30 @@ const TimeDifference: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) =
             )}
             
             <div className="level__container__task">
-                <strong>The sun rises at {selectedOption.rises} and sets at {selectedOption.sets}. What is the length of the day?</strong>
+                <strong>Water flows in the pool at a rate of {flowingSpeed} liters per minute. After how many minutes will the pool be full if it has a capacity of {capacity} liters?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
-                    <strong>Day is {selectedHours} hours {selectedMinutes > 0 && `and ${selectedMinutes} minutes`} long.</strong>
                     <div className="inputContainer">
-                        <input
-                            type="range"
-                            min="0"
-                            max="23"
-                            value={selectedHours}
-                            onChange={(e) => setSelectedHours(Number(e.target.value))}
-                        />
-                        <strong>{selectedHours.toString().length === 1 ? `0${selectedHours}` : selectedHours}</strong>
-                    </div>
-                    <div className="inputContainer">
-                        <input
-                            type="range"
-                            min="0"
-                            max="59"
-                            value={selectedMinutes}
-                            onChange={(e) => setSelectedMinutes(Number(e.target.value))}
-                        />
-                        <strong>{selectedMinutes.toString().length === 1 ? `0${selectedMinutes}` : selectedMinutes}</strong>
+                        {writing ? (
+                            <input
+                                type="number"
+                                value={currentSelection.toString()}
+                                onChange={(e) => {if(e.target.value.length > 3){return}setCurrentSelection(Number(e.target.value))}}
+                            />
+                        ) : (
+                            <input
+                                type="range"
+                                value={currentSelection}
+                                onChange={(e) => setCurrentSelection(Number(e.target.value))}
+                                min="0"
+                                max="40"
+                            />
+                        )}
+                        <strong onClick={() => setWriting(!writing)}>{currentSelection}</strong>
                     </div>
                     <div className="level__container__options__tools__instruction">
-                        <small>Slide from left to right to change value</small>
+                        <small>Slide from left to right to change value or click the number next to it to write result</small>
                     </div>
                     <button className="level__container__options__tools__submit" onClick={(e) => completeLevel(e)}>Submit</button>
                     {userInfo.info.level > Number(level) && (
@@ -150,11 +106,11 @@ const TimeDifference: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) =
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="/levels/sunriseset.svg" alt="two suns with arrows under or on top of sun, one sun is rising and one setting" />
+                    <img src="/levels/pool.svg" alt="water flowing in a green pool" />
                 </div>
             </div>
         </form>
     )
 }
 
-export default TimeDifference
+export default PoolFill

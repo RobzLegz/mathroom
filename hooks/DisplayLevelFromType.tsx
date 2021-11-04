@@ -9,6 +9,7 @@ import DistanceBetween2 from '../levels/DistanceBetween2';
 import KilometersApart from '../levels/KilometersApart';
 import MminToMh from '../levels/MminToMh';
 import MonthAmount from '../levels/MonthAmount';
+import PoolFill from '../levels/PoolFill';
 import RoadCalculation from '../levels/RoadCalculation';
 import RoadCalculationSecond from '../levels/RoadCalculationSecond';
 import RomanNumerals from '../levels/RomanNumerals';
@@ -56,6 +57,7 @@ const renderActiveTaskFromType = (type: string, needHelp: boolean, setNeedHelp: 
         case "time from acceleration + distance": return <TimeAccelerationDistance needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "average speed": return <AverageSpeed needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "distance between2": return <DistanceBetween2 needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "pool fill": return <PoolFill needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
     }
 
     return null;
@@ -81,7 +83,8 @@ const DisplayLevelFromType: React.FC<Props> = ({needHelp, setNeedHelp, multiplay
             setFoundTask(false);
         }
 
-        if(tasks.length <= Number(level)){
+        if(tasks.length < Number(level)){
+            console.log(tasks.length)
             dispatch(setNotification({type: "success", message: "Congrats, You have completed all levels!"}));
             router.push("/levels");
         }else{

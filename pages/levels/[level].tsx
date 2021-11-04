@@ -7,7 +7,6 @@ import { selectUser } from "../../redux/slices/userSlice";
 import { checkForLogin } from "../../requests/auth/requests";
 import { setNotification } from "../../redux/slices/notificationSlice";
 import GameBackground from "../../components/background/GameBackground";
-import DisplayLevelFromType from "../../hooks/DisplayLevelFromType";
 import ActiveLevel from "../../components/containers/levels/ActiveLevel";
 
 function Level() {
