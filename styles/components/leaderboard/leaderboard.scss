@@ -59,6 +59,22 @@
     &::-webkit-scrollbar {
         display: none;
     }
+
+    @media screen and (max-height: 650px){
+        height: 400px;
+    }
+
+    @media screen and (max-width: 450px){
+        width: 300px;
+    }
+
+    @media screen and (max-width: 450px){
+        width: 260px;
+        
+        h2{
+            font-size: 25px;
+        }
+    }
 }
 
 .leaderboardSmall{
@@ -80,6 +96,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 10px;
+        border-right: 1px solid $mathRoomLightGrey;
 
         h4{
             margin-right: 5px;
