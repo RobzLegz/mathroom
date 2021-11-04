@@ -83,7 +83,8 @@ const DisplayLevelFromType: React.FC<Props> = ({needHelp, setNeedHelp, multiplay
             setFoundTask(false);
         }
 
-        if(tasks.length <= Number(level)){
+        if(tasks.length < Number(level)){
+            console.log(tasks.length)
             dispatch(setNotification({type: "success", message: "Congrats, You have completed all levels!"}));
             router.push("/levels");
         }else{
