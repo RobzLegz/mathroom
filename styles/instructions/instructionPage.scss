@@ -82,6 +82,72 @@
         }
     }
     
+    @media screen and (max-width: 850px){
+        &__container{
+            width: 600px;
+            padding: 20px 30px;
+        }
+    }
+
+    @media screen and (max-width: 750px){
+        &__container{
+            width: 600px;
+            padding: 20px 30px;
+        }
+    }
+
+    @media screen and (max-width: 650px){
+        &__container{
+            width: 500px;
+
+            .instructionContainer{
+                img{
+                    width: 400px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 550px){
+        padding: 0 20px;
+
+        &__container{
+            width: 100%;
+            padding: 20px 5px;
+
+            .instructionContainer{
+                padding: 0;
+                margin-bottom: 50px;
+
+                img{
+                    width: 100%;
+                    margin: 10px 0;
+                }
+
+                h3{
+                    margin: 10px 0;
+                }
+
+                ul{
+                    padding: 0 10px;
+
+                    li{
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            &__contentContainer{
+                h1{
+                    font-size: 60px;
+                }
+
+                &__body{
+                    margin-bottom: 50px;
+                }
+            }
+        }
+    }
 }
 
 ul{
