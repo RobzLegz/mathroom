@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 1
     },
+    passedLevels: {
+        type: Array,
+        default: []
+    },
 }, {
     timestamps: true
 });
