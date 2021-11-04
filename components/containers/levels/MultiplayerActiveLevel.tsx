@@ -15,7 +15,7 @@ function MultiplayerActiveLevel() {
     const [needHelp, setNeedHelp] = useState<boolean>(false);
 
     return (
-        <div className="activeLevel">
+        <div className="activeLevel activeLevelMultiplayer">
             <LeaderboardSmall />
 
             <header className="activeLevel__header">
