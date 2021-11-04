@@ -13,7 +13,7 @@ function LevelContainer() {
                 <div className="levels__container__header__title">
                     <h2>Levels</h2>
                 </div>
-                <button className="roomPage__container__header__new" onClick={() => router.push("/rooms/new")}>Create new</button>
+                <button className="roomPage__container__header__new" onClick={() => router.push("/community/levels/new")}>Create new</button>
             </header>
             <div className="levels__container__tasks">
                 <div className="levels__container__tasks__container">

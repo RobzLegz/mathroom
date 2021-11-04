@@ -3,7 +3,7 @@ import Head from "next/head"
 import CommunityPageContainer from '../../../components/containers/community/CommunityPageContainer';
 import GameBackground from '../../../components/background/GameBackground';
 
-function index() {
+function newLevel() {
     return (
         <div className="communityPage">
             <Head>
@@ -17,4 +17,4 @@ function index() {
     )
 }
 
-export default index
+export default newLevel
