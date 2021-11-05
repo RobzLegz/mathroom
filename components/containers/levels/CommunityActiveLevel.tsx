@@ -5,6 +5,7 @@ import { selectCommunity } from '../../../redux/slices/communitySlice';
 import { selectUser } from '../../../redux/slices/userSlice';
 import { acceptCommunityLevel, deleteCommunityLevel } from '../../../requests/admin/requests';
 import { checkForLogin } from '../../../requests/auth/requests';
+import { passCommunityLevel } from '../../../requests/community/levels/requests';
 
 function CommunityActiveLevel() {
     const userInfo = useSelector(selectUser);
@@ -16,6 +17,7 @@ function CommunityActiveLevel() {
     const [needHelp, setNeedHelp] = useState<boolean>(false);
     const [writing, setWriting] = useState<boolean>(false);
     const [enteredValue, setEnteredValue] = useState<number>(0);
+    const [maxInputValue, setMaxInputValue] = useState<number | null>(null);
 
     const {id} = router.query;
 
@@ -29,8 +31,20 @@ function CommunityActiveLevel() {
         }
     }, [userInfo.loggedIn, dispatch, userInfo.token]);
 
+    useEffect(() => {
+        if(!maxInputValue){
+            if(communityInfo.activeLevel){
+                setMaxInputValue(communityInfo.activeLevel.correctValue + Math.floor((Math.random() * 30) + 20));
+            }
+        }
+    }, [maxInputValue]);
+
     const completeLevel = (e: any) => {
         e.preventDefault();
+
+        if(communityInfo.activeLevel.correctValue === enteredValue){
+            passCommunityLevel(id, userInfo.token, dispatch, router)
+        }
     }
 
     if(!communityInfo.activeLevel || !userInfo.info){
@@ -80,7 +94,7 @@ function CommunityActiveLevel() {
                                 value={enteredValue}
                                 onChange={(e) => setEnteredValue(Number(e.target.value))}
                                 min="0"
-                                max={communityInfo.activeLevel.correctValue + Math.floor((Math.random() * 30) + 20)}
+                                max={Number(maxInputValue)}
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{enteredValue}</strong>

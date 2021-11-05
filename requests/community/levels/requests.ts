@@ -69,7 +69,11 @@ const createNewLevel = (difficulty: number, question: string, instruction: strin
         });
 }
 
-const passCommunityLevel = (id: string, token: string, dispatch: any) => {
+const passCommunityLevel = (id: string | string[] | undefined, token: string, dispatch: any, router: any) => {
+    if(typeof(id) !== "string"){
+        return dispatch(setNotification({type: "error", message: "OoOoOps something went worng"}));
+    }
+
     const headers = {
         headers: {
             Authorization: token
@@ -78,6 +82,7 @@ const passCommunityLevel = (id: string, token: string, dispatch: any) => {
 
     axios.post(`/api/community/levels/pass/${id}`, {}, headers)
         .then((res) => {
+            router.push("/community");
             dispatch(setNotification({type: "success", message: "Congrats, You passed this level"}));
         }).catch((err) => {
             const message: string = err.response.data.err;
