@@ -125,14 +125,6 @@
                         outline: none;
                         border: none;
                         border-radius: 5px;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                        color: $mathRoomContainerBG;
-                        background-color: $mathRoomButton;
-
-                        &:hover{
-                            background-color: $mathRoomButtonHover;
-                        }
                     }
                 }
             }
@@ -178,15 +170,6 @@
                     border: none;
                     outline: none;
                     border-radius: 5px;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                    font-size: $buttonText;
-                    color: $mathRoomLightGrey;
-                    background-color: $mathRoomButton;
-
-                    &:hover{
-                        background-color: $mathRoomButtonHover;
-                    }
                 }
 
                 &__next{
@@ -330,39 +313,5 @@
                 padding: 10px;
             }
         }
-    }
-}
-
-.inputContainer{
-    width: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    margin: 10px 0 0;
-    // border: 2px solid $mathRoomLightGrey;
-
-    strong{
-        margin: 0 10px;
-        cursor: pointer;
-    }
-
-    input[type="range"]{
-        -webkit-appearance: none;
-        border-radius: 5px;
-        flex: 1;
-        outline: none;
-        border: none;
-        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
-        background: $mathRoomLightGrey;
-    }
-
-    input[type="number"]{
-        flex: 1;
-        outline: none;
-        border: none;
-        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
-        background: $mathRoomLightGrey;
-        padding: 5px 10px;
     }
 }

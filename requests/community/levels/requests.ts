@@ -25,6 +25,26 @@ const getCommunityLevelById = (id: string, dispatch: any) => {
 const createNewLevel = (difficulty: number, question: string, instruction: string, correctValue: number, image: string, token: string, dispatch: any) => {
     dispatch(setNotification({type: "loading", message: "Creating new level"}));
 
+    if(!question){
+        return dispatch(setNotification({type: "error", message: "Please enter task question."}))
+    }
+
+    if(!correctValue){
+        return dispatch(setNotification({type: "error", message: "Please enter correct answer to Your question."}))
+    }
+
+    if(!instruction){
+        return dispatch(setNotification({type: "error", message: "Please enter helpful tips that can help solving the task."}))
+    }
+
+    let urlCheckRegex = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/i;
+
+    let urlCheck = image.match(urlCheckRegex);
+
+    if(!urlCheck){
+        return dispatch(setNotification({type: "error", message: "Please enter a valid image url"}))
+    }
+
     const headers = {
         headers: {
             Authorization: token

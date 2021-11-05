@@ -29,7 +29,7 @@ const createLevel = async (req: any, res: any) => {
     try{
         const {difficulty, question, instruction, correctValue, image} = req.body;
 
-        if(!difficulty || !question || !instruction || !correctValue || !image){
+        if(!difficulty && difficulty !== 0 || !question || !instruction || !correctValue && correctValue !== 0 || !image){
             return res.status(400).json({msg: "Please fill all fields!"});
         }
 

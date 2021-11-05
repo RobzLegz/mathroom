@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/slices/userSlice';
 import { useRouter } from 'next/dist/client/router';
 import { checkForLogin } from '../../../requests/auth/requests';
+import Notification from '../../../components/notifications/Notification';
+import { getUnreviewedLevels } from '../../../requests/admin/requests';
 
 function index() {
     const userInfo = useSelector(selectUser);
@@ -26,6 +28,8 @@ function index() {
     useEffect(() => {
         if(userInfo.info && userInfo.info.role !== "admin"){
             router.push("/community");
+        }else if(userInfo.info && userInfo.info.role === "admin" && userInfo.token){
+            getUnreviewedLevels(userInfo.token, dispatch);
         }
     }, [userInfo.info]);
 
@@ -43,6 +47,8 @@ function index() {
                 <title>MathRoom | Admin</title>
             </Head>
             
+            <Notification />
+
             <CommunityPageContainer page={"admin"} />
 
             <GameBackground color={"purple"} />

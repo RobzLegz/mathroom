@@ -1,5 +1,6 @@
 import axios from "axios";
-import { setNotification } from "../../../redux/slices/notificationSlice";
+import { setUnreviewedLevels } from "../../redux/slices/adminSlice";
+import { clearNotification, setNotification } from "../../redux/slices/notificationSlice";
 
 const acceptCommunityLevel = (id: string, token: string, dispatch: any) => {
     dispatch(setNotification({type: "loading", message: "Accepting community level."}));
@@ -63,8 +64,28 @@ const deleteCommunityLevel = (id: string, token: string, dispatch: any) => {
         });
 }
 
+const getUnreviewedLevels = (token: string, dispatch: any) => {
+    dispatch(setNotification({type: "loading", message: "Searching for levels."}));
+
+    const headers = {
+        headers: {
+            Authorization: token
+        }
+    }
+
+    axios.get("/api/community/levels/admin", headers)
+        .then((res) => {
+            dispatch(setUnreviewedLevels(res.data));
+            dispatch(clearNotification());
+        }).catch((err) => {
+            const message: string = err.response.data.err;
+            dispatch(setNotification({type: "error", message: message}));
+        });
+}
+
 export {
     acceptCommunityLevel,
     updateCommunityLevel,
-    deleteCommunityLevel
+    deleteCommunityLevel,
+    getUnreviewedLevels
 }
