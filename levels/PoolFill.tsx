@@ -65,7 +65,7 @@ const PoolFill: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p></p>
+                            <p>time is the volume divided by the filling speed</p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
