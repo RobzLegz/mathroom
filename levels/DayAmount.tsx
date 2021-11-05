@@ -64,7 +64,7 @@ const DayAmount: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>there are 7 days in one week. It remains so to multiply correctly and then add up the days.</p>
+                            <p>Vienai nedēļai ir 7 dienas, atliek tikai atbilstoši reizināt un summēt ar dienām.</p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
