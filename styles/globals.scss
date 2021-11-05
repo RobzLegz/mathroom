@@ -59,6 +59,20 @@ button{
   }
 }
 
+textarea{
+  resize: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid $mathRoomGrey;
+}
+
+input,
+button,
+textarea{
+  outline: none;
+}
+
 ::-webkit-scrollbar {
   width: 7px;
 }
