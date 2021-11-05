@@ -1,11 +1,13 @@
 import { useRouter } from 'next/dist/client/router';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAdmin } from '../../../redux/slices/adminSlice';
 import { selectCommunity } from '../../../redux/slices/communitySlice';
+import { selectUser } from '../../../redux/slices/userSlice';
+import { acceptCommunityLevel } from '../../../requests/admin/requests';
+import { checkForLogin } from '../../../requests/auth/requests';
 
 function CommunityActiveLevel() {
-    const adminInfo = useSelector(selectAdmin);
+    const userInfo = useSelector(selectUser);
     const communityInfo = useSelector(selectCommunity);
 
     const dispatch = useDispatch();
@@ -15,11 +17,23 @@ function CommunityActiveLevel() {
     const [writing, setWriting] = useState<boolean>(false);
     const [enteredValue, setEnteredValue] = useState<number>(0);
 
+    const {id} = router.query;
+
+    useEffect(() => {
+        if(!userInfo.loggedIn || !userInfo.token){
+            const token = window.localStorage.getItem("refreshtoken");
+
+            if(token){
+                checkForLogin(dispatch, router);
+            }
+        }
+    }, [userInfo.loggedIn, dispatch, userInfo.token]);
+
     const completeLevel = (e: any) => {
         e.preventDefault();
     }
 
-    if(!communityInfo.activeLevel){
+    if(!communityInfo.activeLevel || !userInfo.info){
         return null;
     }
 
@@ -38,7 +52,7 @@ function CommunityActiveLevel() {
                             <div className="line2"></div>
                         </div>
                         <div className="communityLevelPage__container__tip__inner__text">
-                            <p></p>
+                            <p>{communityInfo.activeLevel.instruction}</p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
@@ -50,7 +64,7 @@ function CommunityActiveLevel() {
             <div className="communityLevelPage__container__task">
                 <strong>{communityInfo.activeLevel.question}</strong>
             </div>
-            
+
             <div className="communityLevelPage__container__options">
                 <div className="communityLevelPage__container__options__tools">
                     <div className="inputContainer">
@@ -66,7 +80,7 @@ function CommunityActiveLevel() {
                                 value={enteredValue}
                                 onChange={(e) => setEnteredValue(Number(e.target.value))}
                                 min="0"
-                                max="40"
+                                max={communityInfo.activeLevel.correctValue + Math.floor((Math.random() * 30) + 20)}
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{enteredValue}</strong>
@@ -80,6 +94,16 @@ function CommunityActiveLevel() {
                     <img src="/levels/pool.svg" alt="water flowing in a green pool" />
                 </div>
             </div>
+
+            {userInfo.info.role === "admin" ? (
+                <div className="communityLevelPage__container__footer">
+                    <button className="accept" onClick={() => acceptCommunityLevel(id, userInfo.token, dispatch, router)}>Accept</button>
+                    <button className="update">Edit</button>
+                    <button className="reject">Delete</button>
+                </div>  
+            ) : (
+                null
+            )}
         </div>
     )
 }

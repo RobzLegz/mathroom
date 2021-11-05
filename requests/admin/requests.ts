@@ -2,8 +2,12 @@ import axios from "axios";
 import { setUnreviewedLevels } from "../../redux/slices/adminSlice";
 import { clearNotification, setNotification } from "../../redux/slices/notificationSlice";
 
-const acceptCommunityLevel = (id: string, token: string, dispatch: any) => {
+const acceptCommunityLevel = (id: string | string[] | undefined, token: string, dispatch: any, router: any) => {
     dispatch(setNotification({type: "loading", message: "Accepting community level."}));
+
+    if(typeof(id) !== "string"){
+        return dispatch(setNotification({type: "error", message: "Something went wrong!"}));
+    }
 
     const headers = {
         headers: {
@@ -13,6 +17,7 @@ const acceptCommunityLevel = (id: string, token: string, dispatch: any) => {
 
     axios.post(`/api/community/levels/${id}`, {}, headers)
         .then((res) => {
+            router.push("/community/admin")
             dispatch(setNotification({type: "success", message: "This level has been accepted"}));
         }).catch((err) => {
             const message: string = err.response.data.err;
