@@ -66,7 +66,7 @@ const AccelerationCalculation: React.FC<Props> = ({needHelp, setNeedHelp, multip
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>Insert the numbers correctly into the formula.</p>
+                            <p>Insert the numbers correctly into the formula. V is speed.</p>
 
                         </div>
                         <div className="buttonContainer">
