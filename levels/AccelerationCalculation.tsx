@@ -66,7 +66,7 @@ const AccelerationCalculation: React.FC<Props> = ({needHelp, setNeedHelp, multip
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                        <p>Formula x = (Vmin + Vmax): 2 = Formula x = (Vmin + Vmax): 2 = Vaverage, so to get result(x) you have to calculate (x + Vfinal):2 = Vaverage</p>
+                        <p>Insert the numbers correctly into the formula.</p>
 
                         </div>
                         <div className="buttonContainer">
