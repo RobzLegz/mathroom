@@ -66,7 +66,7 @@ const AccelerationCalculation: React.FC<Props> = ({needHelp, setNeedHelp, multip
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                        <p></p>
+                            <p>123</p>
 
                         </div>
                         <div className="buttonContainer">
