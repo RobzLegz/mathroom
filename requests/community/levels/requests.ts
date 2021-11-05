@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setLevels } from "../../../redux/slices/communitySlice";
+import { setActiveLevel, setLevels } from "../../../redux/slices/communitySlice";
 import { setNotification } from "../../../redux/slices/notificationSlice";
 
 const getCommunityLevels = (dispatch: any) => {
@@ -15,14 +15,14 @@ const getCommunityLevels = (dispatch: any) => {
 const getCommunityLevelById = (id: string, dispatch: any) => {
     axios.get(`/api/community/levels/${id}`)
         .then((res) => {
-            dispatch(setLevels(res.data));
+            dispatch(setActiveLevel(res.data));
         }).catch((err) => {
             const message: string = err.response.data.err;
             dispatch(setNotification({type: "error", message: message}));
         });
 }
 
-const createNewLevel = (difficulty: number, question: string, instruction: string, correctValue: number, image: string, token: string, dispatch: any) => {
+const createNewLevel = (difficulty: number, question: string, instruction: string, correctValue: number, image: string, token: string, dispatch: any, router: any) => {
     dispatch(setNotification({type: "loading", message: "Creating new level"}));
 
     if(!question){
@@ -62,6 +62,7 @@ const createNewLevel = (difficulty: number, question: string, instruction: strin
     axios.post("/api/community/levels", data, headers)
         .then((res) => {
             dispatch(setNotification({type: "success", message: "Your level will appear on community page when mods review it"}));
+            router.push("/community")
         }).catch((err) => {
             const message: string = err.response.data.err;
             dispatch(setNotification({type: "error", message: message}));

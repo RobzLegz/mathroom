@@ -49,8 +49,15 @@
     }
 
     &__body{
-        width: 100%;
         height: calc(100% - 70px);
+        width: 100%;
+        display: grid;
+        overflow-x: hidden;
+        justify-content: space-between;
+        column-gap: 30px;
+        row-gap: 20px;
+        padding: 10px;
+        grid-template-columns: repeat(auto-fill, 200px);
 
         &__message{
             width: 100%;
@@ -59,6 +66,42 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
+        }
+
+        &__taskContainer{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            &__overlay{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 1;
+                cursor: pointer;
+                background: rgba(0, 0, 0, 0.4);
+                transition: all 0.5s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img{
+                    width: 100px;
+                    height: 100px;
+                }
+
+                &:hover{
+                    opacity: 0;
+                }
+            }
         }
     }
 }

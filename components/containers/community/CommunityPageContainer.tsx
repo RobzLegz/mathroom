@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/slices/userSlice';
 import { checkForLogin } from '../../../requests/auth/requests';
+import AdminLevelContainer from './body/AdminLevelContainer';
 import CommunityContainerHeader from './CommunityContainerHeader';
 import CommunityPageLevels from './CommunityPageLevels';
 
@@ -53,7 +54,7 @@ const CommunityPageContainer: React.FC<Props> = ({page}) => {
         return (
             <div className="communityPage__container">
                 <CommunityContainerHeader page={page} />
-                
+                <AdminLevelContainer />
             </div>
         )
     }

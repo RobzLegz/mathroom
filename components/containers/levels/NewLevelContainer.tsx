@@ -133,7 +133,7 @@ function NewLevelContainer() {
 
                     <footer className="communityPage__newLevelContainer__previewFooter">
                         <button onClick={() => setPreview(false)}>Back</button>
-                        <button onClick={() => createNewLevel(difficulty, question, tip, correctAnswer, picture, userInfo.token, dispatch)}>Create</button>
+                        <button onClick={() => createNewLevel(difficulty, question, tip, correctAnswer, picture, userInfo.token, dispatch, router)}>Create</button>
                     </footer>
                 </>
             ) : (

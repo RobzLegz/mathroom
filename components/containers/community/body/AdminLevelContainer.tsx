@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { selectAdmin } from '../../../../redux/slices/adminSlice';
@@ -18,6 +19,8 @@ interface Level{
 
 function AdminLevelContainer() {
     const adminInfo = useSelector(selectAdmin);
+
+    const router = useRouter();
 
     if(!adminInfo.levels){
         return (
@@ -40,8 +43,15 @@ function AdminLevelContainer() {
 
     return (
         <div className="communityPage__container__levels__body">
-            {adminInfo.levels.map((level: Level) => {
-
+            {adminInfo.levels.map((level: Level, i: number) => {
+                return (
+                    <div className="communityPage__container__levels__body__taskContainer" key={i} onClick={() => router.push(`/community/levels/${level._id}`)}>
+                        <img src={level.image} alt={`Mathroom community task ${level.question}`} />
+                        <div className="communityPage__container__levels__body__taskContainer__overlay">
+                            <img src={level.difficulty === 0 ? "/svg/happyFace.svg" : level.difficulty === 1 ? "/svg/confusedFace.svg" : "/svg/angryFace.svg"} alt="Mathroom level difficulty symbol" />
+                        </div>
+                    </div>
+                )
             })}
         </div>
     )
