@@ -12,8 +12,6 @@
         width: 1000px;
         height: 600px;
         border-radius: 10px;
-        overflow-y: scroll;
-        overflow-x: hidden;
         background-color: $mathRoomContainerBG;
 
         &__header{
@@ -48,7 +46,7 @@
                     border-radius: 10px 0 0 0;
                 }
 
-                &:nth-child(3){
+                &:last-child{
                     border-radius: 0 10px 0 0;
                 }
             }
