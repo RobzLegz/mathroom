@@ -53,6 +53,7 @@ const CommunityPageContainer: React.FC<Props> = ({page}) => {
         return (
             <div className="communityPage__container">
                 <CommunityContainerHeader page={page} />
+                
             </div>
         )
     }
