@@ -47,6 +47,9 @@ input[type=number] {
 button{
   cursor: pointer;
   transition: all 0.3s ease;
+  border: none;
+  outline: none;
+  color: $mathRoomContainerBG;
   font-family: $roomFont;
   font-size: $buttonText;
   background-color: $mathRoomButton;
@@ -54,6 +57,20 @@ button{
   &:hover{
     background-color: $mathRoomButtonHover;
   }
+}
+
+textarea{
+  resize: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid $mathRoomGrey;
+}
+
+input,
+button,
+textarea{
+  outline: none;
 }
 
 ::-webkit-scrollbar {

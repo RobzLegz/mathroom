@@ -35,7 +35,7 @@ const createRoom = async (req: any, res: any) => {
 
         const admin = await auth(req, res);
         
-        const checkRooms = await Rooms.find({admin: admin.id});
+        const checkRooms = await Rooms.find({admin: admin._id});
         if(checkRooms.length > 0){
             return res.status(400).json({msg: "You can't create two rooms at the same time!"});
         }
