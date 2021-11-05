@@ -17,7 +17,8 @@ const acceptCommunityLevel = (id: string | string[] | undefined, token: string, 
 
     axios.post(`/api/community/levels/${id}`, {}, headers)
         .then((res) => {
-            router.push("/community/admin")
+            router.push("/community/admin");
+            dispatch(setUnreviewedLevels(null));
             dispatch(setNotification({type: "success", message: "This level has been accepted"}));
         }).catch((err) => {
             const message: string = err.response.data.err;
@@ -51,8 +52,12 @@ const updateCommunityLevel = (id: string, difficulty: number, question: string, 
         });
 }
 
-const deleteCommunityLevel = (id: string, token: string, dispatch: any) => {
+const deleteCommunityLevel = (id: string | string[] | undefined, token: string, dispatch: any, router: any) => {
     dispatch(setNotification({type: "loading", message: "Deleting community level."}));
+
+    if(typeof(id) !== "string"){
+        return dispatch(setNotification({type: "error", message: "Something went wrong!"}));
+    }
 
     const headers = {
         headers: {
@@ -62,6 +67,8 @@ const deleteCommunityLevel = (id: string, token: string, dispatch: any) => {
 
     axios.delete(`/api/community/levels/${id}`, headers)
         .then((res) => {
+            router.push("/community/admin");
+            dispatch(setUnreviewedLevels(null));
             dispatch(setNotification({type: "success", message: "This level has been deleted"}));
         }).catch((err) => {
             const message: string = err.response.data.err;

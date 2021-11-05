@@ -8,9 +8,11 @@ import { useRouter } from 'next/dist/client/router';
 import { checkForLogin } from '../../../requests/auth/requests';
 import Notification from '../../../components/notifications/Notification';
 import { getUnreviewedLevels } from '../../../requests/admin/requests';
+import { selectAdmin } from '../../../redux/slices/adminSlice';
 
 function index() {
     const userInfo = useSelector(selectUser);
+    const adminInfo = useSelector(selectAdmin);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -28,7 +30,7 @@ function index() {
     useEffect(() => {
         if(userInfo.info && userInfo.info.role !== "admin"){
             router.push("/community");
-        }else if(userInfo.info && userInfo.info.role === "admin" && userInfo.token){
+        }else if(userInfo.info && userInfo.info.role === "admin" && userInfo.token && !adminInfo.levels){
             getUnreviewedLevels(userInfo.token, dispatch);
         }
     }, [userInfo.info]);

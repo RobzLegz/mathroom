@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCommunity } from '../../../redux/slices/communitySlice';
 import { selectUser } from '../../../redux/slices/userSlice';
-import { acceptCommunityLevel } from '../../../requests/admin/requests';
+import { acceptCommunityLevel, deleteCommunityLevel } from '../../../requests/admin/requests';
 import { checkForLogin } from '../../../requests/auth/requests';
 
 function CommunityActiveLevel() {
@@ -99,7 +99,7 @@ function CommunityActiveLevel() {
                 <div className="communityLevelPage__container__footer">
                     <button className="accept" onClick={() => acceptCommunityLevel(id, userInfo.token, dispatch, router)}>Accept</button>
                     <button className="update">Edit</button>
-                    <button className="reject">Delete</button>
+                    <button className="reject" onClick={() => deleteCommunityLevel(id, userInfo.token, dispatch, router)}>Delete</button>
                 </div>  
             ) : (
                 null
