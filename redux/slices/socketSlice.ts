@@ -33,7 +33,7 @@ export const socketSlice = createSlice({
                 socket = io(socketURL);
                 state.connected = true;
             }else if(action.payload){
-                socket = io("http://localhost:5000");
+                socket = io("https://mathroom-socket.herokuapp.com");
                 state.connected = true;
             }
         },
