@@ -74,7 +74,7 @@ const RoadCalculationSecond: React.FC<Props> = ({needHelp, setNeedHelp, multipla
             )}
             
             <div className="level__container__task">
-                <strong>Currently, a car is driving at a constant speed of {speed} km/h. How far would the car get driving at this speed in {time} hours?</strong>
+                <strong>A car is driving at a constant speed of {speed} km/h. How far would the car get driving at this speed in {time} hours?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
@@ -105,7 +105,7 @@ const RoadCalculationSecond: React.FC<Props> = ({needHelp, setNeedHelp, multipla
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.wSFbjLZV5FropOTZA0gnWgHaE7&pid=Api" alt="sus" />
+                    <img src="/levels/car3.png" alt="blue sports car with gray wheels" />
                 </div>
             </div>
         </form>
