@@ -74,7 +74,7 @@ const RoadCalculation: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) 
             )}
             
             <div className="level__container__task">
-                <strong>Currently, the cyclist rides at a speed of {speed} km/h. How far would a cyclist get at this speed in {time} hours?</strong>
+                <strong>Currently, a cyclist is riding at a speed of {speed} km/h. How far would a cyclist get at this speed in {time} hours?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
@@ -105,7 +105,7 @@ const RoadCalculation: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) 
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.wSFbjLZV5FropOTZA0gnWgHaE7&pid=Api" alt="sus" />
+                    <img src="/levels/cyclist.png" alt="cyclist driving on a green bike" />
                 </div>
             </div>
         </form>

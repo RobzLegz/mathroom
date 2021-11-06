@@ -16,8 +16,8 @@ const RoadCalculationSecond: React.FC<Props> = ({needHelp, setNeedHelp, multipla
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(5);
-    const [speed] = useState<number>(Math.floor((Math.random() * 60) + 40));
-    const [time] = useState<number>(Math.floor((Math.random() * 8) + 3));
+    const [speed] = useState<number>(Math.floor((Math.random() * 50) + 40));
+    const [time] = useState<number>(Math.floor((Math.random() * 3) + 2));
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -74,7 +74,7 @@ const RoadCalculationSecond: React.FC<Props> = ({needHelp, setNeedHelp, multipla
             )}
             
             <div className="level__container__task">
-                <strong>Currently, a car is driving at a constant speed of {speed} km/h. How far would the car get driving at this speed in {time} hours?</strong>
+                <strong>A car is driving at a constant speed of {speed} km/h. How far would the car get driving at this speed in {time} hours?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
@@ -91,7 +91,7 @@ const RoadCalculationSecond: React.FC<Props> = ({needHelp, setNeedHelp, multipla
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
                                 min="100"
-                                max="480"
+                                max="460"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>
@@ -105,7 +105,7 @@ const RoadCalculationSecond: React.FC<Props> = ({needHelp, setNeedHelp, multipla
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.wSFbjLZV5FropOTZA0gnWgHaE7&pid=Api" alt="sus" />
+                    <img src="/levels/car3.png" alt="blue sports car with gray wheels" />
                 </div>
             </div>
         </form>
