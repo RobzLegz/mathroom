@@ -107,7 +107,7 @@ const TimeAccelerationDistance: React.FC<Props> = ({needHelp, setNeedHelp, multi
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.wSFbjLZV5FropOTZA0gnWgHaE7&pid=Api" alt="sus" />
+                    <img src="/levels/car2.png" alt="yellow offroad car with dark wheels" />
                 </div>
             </div>
         </form>
