@@ -283,4 +283,26 @@
             overflow-y: scroll;
         }
     }
+
+    @media screen and (max-width: 390px){
+        &__body{
+            &__top{
+                padding: 10px;
+            }
+
+            &__bottom{
+                &__left{
+                    padding: 0 10px;
+                }
+
+                &__right{
+
+                }
+            }
+        }
+
+        &__footer{
+            padding: 0 10px;
+        }
+    }
 }
