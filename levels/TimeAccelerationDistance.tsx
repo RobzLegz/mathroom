@@ -66,7 +66,7 @@ const TimeAccelerationDistance: React.FC<Props> = ({needHelp, setNeedHelp, multi
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p></p>
+                            <p>Vo - starting speed of movement; a - acceleration of movement / s2; s - distance; t - movement time, s; Put the numbers in the formula accordingly.</p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
