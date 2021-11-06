@@ -6,6 +6,7 @@ interface User{
     role: string;
     avatar: string;
     level: number;
+    passedLevels: string[];
 }
 
 interface State{
@@ -38,6 +39,11 @@ export const userSlice = createSlice({
                 state.info.level += 1;
             }
         },
+        passCommunityLevelRedux: (state, action) => {
+            if(state.info){
+                state.info.passedLevels.push(action.payload);
+            }
+        },
         logout: (state) => {
             state.info = null;
             state.token = "";
@@ -51,6 +57,7 @@ export const {
     setUserInfo,
     setToken,
     completeLevel,
+    passCommunityLevelRedux,
     logout
 } = userSlice.actions;
 

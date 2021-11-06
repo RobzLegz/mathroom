@@ -3,7 +3,6 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotifications, setNotification } from '../../../redux/slices/notificationSlice';
 import { selectUser } from '../../../redux/slices/userSlice';
-import { logoutuser } from '../../../requests/auth/requests';
 import GameBackground from '../../background/GameBackground';
 
 function MenuContainer() {
@@ -32,14 +31,15 @@ function MenuContainer() {
                 )}
                 <button disabled={!userInfo.loggedIn || !userInfo.token} className={`button button__${!userInfo.loggedIn || !userInfo.token ? "disabled" : "enabled"}`} onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}router.push("/levels")}}>Singleplayer</button>
                 <button disabled={!userInfo.loggedIn || !userInfo.token} className={`button button__${!userInfo.loggedIn || !userInfo.token ? "disabled" : "enabled"}`} onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}router.push("/rooms")}}>Multiplayer</button>
-                <button className="button" onClick={() => router.push("/instructions")}>Instructions</button>
+                <button disabled={!userInfo.loggedIn || !userInfo.token} className={`button button__${!userInfo.loggedIn || !userInfo.token ? "disabled" : "enabled"}`} onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}router.push("/community")}}>Community</button>
+                
                 {userInfo.loggedIn || userInfo.token ? (
                     <div className="menu__container__options__two">
-                        <button onClick={() => logoutuser(dispatch)}>Logout</button>
+                        <button onClick={() => router.push("/instructions")}>Instructions</button>
                         <button>Profile</button>
                     </div>
                 ) : (
-                    null
+                    <button className="button" onClick={() => router.push("/instructions")}>Instructions</button>
                 )}
             </div>
 

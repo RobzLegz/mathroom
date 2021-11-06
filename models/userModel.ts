@@ -5,6 +5,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    name: {
+        type: String,
+        default: ""
+    },
     email: {
         type: String,
         required: true,
@@ -25,6 +29,10 @@ const userSchema = new mongoose.Schema({
     level: {
         type: Number,
         default: 1
+    },
+    passedLevels: {
+        type: Array,
+        default: []
     },
 }, {
     timestamps: true
