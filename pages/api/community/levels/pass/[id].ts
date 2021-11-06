@@ -28,13 +28,8 @@ const completeLevel = async (req: any, res: any) => {
             return res.status(400).json({err: "Sorry, this level doesn't exist!"});
         }
 
-        console.log(foundLevel)
-
         let sendLevels = user.passedLevels;
         sendLevels.push(foundLevel._id);
-
-        console.log(sendLevels)
-        console.log(foundLevel._id)
 
         await Users.findByIdAndUpdate({_id: user._id}, {passedLevels: sendLevels});
 
