@@ -46,17 +46,26 @@ function LevelContainerBody() {
     return (
         <div className="communityPage__container__levels__body">
             {communityInfo.levels.map((level: Level, i: number) => {
-                if(!userInfo.info.passedLevels.includes(level._id) || communityInfo.showCompletedLevels){
-                    return (
-                        <div className="communityPage__container__levels__body__taskContainer" key={i} onClick={() => router.push(`/community/levels/${level._id}`)}>
-                            <img src={level.image} alt={`Mathroom community task ${level.question}`} />
-                            <div className="communityPage__container__levels__body__taskContainer__overlay">
-                                <img src={level.difficulty === 0 ? "/svg/happyFace.svg" : level.difficulty === 1 ? "/svg/confusedFace.svg" : "/svg/angryFace.svg"} alt="Mathroom level difficulty symbol" />
-                            </div>
-                        </div>
-                    )
+                if(communityInfo.difficulty && communityInfo.difficulty !== level.difficulty){
+                    return null;
                 }
-                return null;
+
+                if(!communityInfo.showCompletedLevels && userInfo.info.passedLevels.includes(level._id)){
+                    return null;
+                }
+
+                if(communityInfo.difficulty === 0 && level.difficulty !== 0){
+                    return null;
+                }
+
+                return (
+                    <div className="communityPage__container__levels__body__taskContainer" key={i} onClick={() => router.push(`/community/levels/${level._id}`)}>
+                        <img src={level.image} alt={`Mathroom community task ${level.question}`} />
+                        <div className="communityPage__container__levels__body__taskContainer__overlay">
+                            <img src={level.difficulty === 0 ? "/svg/happyFace.svg" : level.difficulty === 1 ? "/svg/confusedFace.svg" : "/svg/angryFace.svg"} alt="Mathroom level difficulty symbol" />
+                        </div>
+                    </div>
+                )
             })}
         </div>
     )

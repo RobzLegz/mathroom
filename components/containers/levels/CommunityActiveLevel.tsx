@@ -107,13 +107,15 @@ function CommunityActiveLevel() {
                     <button className="communityLevelPage__container__options__tools__submit" onClick={(e) => completeLevel(e)}>Submit</button>
                 </div>
                 <div className="communityLevelPage__container__options__ilustration">
-                    <img src="/levels/pool.svg" alt="water flowing in a green pool" />
+                    <img src={communityInfo.activeLevel.image} alt="water flowing in a green pool" />
                 </div>
             </div>
 
             {userInfo.info.role === "admin" ? (
                 <div className="communityLevelPage__container__footer">
-                    <button className="accept" onClick={() => acceptCommunityLevel(id, userInfo.token, dispatch, router)}>Accept</button>
+                    {!communityInfo.activeLevel.accepted && (
+                        <button className="accept" onClick={() => acceptCommunityLevel(id, userInfo.token, dispatch, router)}>Accept</button>
+                    )}
                     <button className="update">Edit</button>
                     <button className="reject" onClick={() => deleteCommunityLevel(id, userInfo.token, dispatch, router)}>Delete</button>
                 </div>  

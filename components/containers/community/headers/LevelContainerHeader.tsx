@@ -1,7 +1,7 @@
 import { useRouter } from 'next/dist/client/router';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { completedLevelsSwitch, selectCommunity } from '../../../../redux/slices/communitySlice';
+import { completedLevelsSwitch, selectCommunity, setDifficulty } from '../../../../redux/slices/communitySlice';
 
 function LevelContainerHeader() {
     const communityInfo = useSelector(selectCommunity);
@@ -18,10 +18,11 @@ function LevelContainerHeader() {
             <div className="communityPage__container__levels__header__chooseDifficulty">
                 <p>Choose difficulty</p>
                 <div className="communityPage__container__levels__header__chooseDifficulty__options">
-                    <button>easy</button>
-                    <button>medium</button>
-                    <button>hard</button>
+                    <button onClick={() => dispatch(setDifficulty(0))}>easy</button>
+                    <button onClick={() => dispatch(setDifficulty(1))}>medium</button>
+                    <button onClick={() => dispatch(setDifficulty(2))}>hard</button>
                 </div>
+                <button onClick={() => dispatch(setDifficulty(null))}>all</button>
             </div>
             <button className="communityPage__container__levels__header__createNew" onClick={() => router.push("/community/levels/new")}>Create new</button>
         </header>

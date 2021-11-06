@@ -6,6 +6,7 @@ import { getCommunityLevelById } from '../../../requests/community/levels/reques
 import CommunityActiveLevel from '../../../components/containers/levels/CommunityActiveLevel';
 import Notification from '../../../components/notifications/Notification';
 import GameBackground from '../../../components/background/GameBackground';
+import { resetActiveLevel } from '../../../redux/slices/communitySlice';
 
 function activeCommunityLevel() {
     const router = useRouter();
@@ -14,6 +15,7 @@ function activeCommunityLevel() {
     const {id} = router.query;
 
     useEffect(() => {
+        dispatch(resetActiveLevel());
         if(typeof(id) === "string"){
             getCommunityLevelById(id, dispatch);
         }
