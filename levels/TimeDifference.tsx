@@ -106,7 +106,7 @@ const TimeDifference: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) =
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>Subtract sunrise time from sunset time.The First checkbox is for hours, the second is for minutes.</p>
+                            <p>Subtract sunrise time from sunset time. The First checkbox is for hours, the second is for minutes.</p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
