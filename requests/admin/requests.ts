@@ -36,10 +36,10 @@ const updateCommunityLevel = (id: string, difficulty: number, question: string, 
     }
 
     const data = {
-        difficulty, 
-        question, 
-        instruction, 
-        correctValue, 
+        difficulty,
+        question,
+        instruction,
+        correctValue,
         image
     }
 

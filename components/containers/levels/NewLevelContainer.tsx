@@ -144,7 +144,7 @@ function NewLevelContainer() {
 
                     <div className="communityPage__newLevelContainer__body">
                         <div className="communityPage__newLevelContainer__body__top">
-                            <textarea 
+                            <textarea
                                 placeholder="Enter task question"
                                 value={question}
                                 onChange={(e) => setQuestion(e.target.value)}
@@ -155,7 +155,7 @@ function NewLevelContainer() {
                             <div className="communityPage__newLevelContainer__body__bottom__left">
                                 <div className="inpContainer">
                                     <label htmlFor="tip">Help others answer Your question</label>
-                                    <textarea 
+                                    <textarea
                                         placeholder="Tip"
                                         name="tip"
                                         id="tip"
@@ -165,8 +165,8 @@ function NewLevelContainer() {
                                 </div>
                                 <div className="inpContainer">
                                     <label htmlFor="correct_answer">Correct answer (number)</label>
-                                    <input 
-                                        type="number" 
+                                    <input
+                                        type="number"
                                         value={correctAnswer.toString()}
                                         onChange={(e) => {if(e.target.value.length > 3){return}setCorrectAnswer(Number(e.target.value))}}
                                         name="correct_answer"
@@ -189,11 +189,11 @@ function NewLevelContainer() {
                                 {changingImage ? (
                                     <div className="inpContainer">
                                         <label htmlFor="image_url">Enter task ilustration URL</label>
-                                        <input 
+                                        <input
                                             name="image_url"
                                             id="image_url"
-                                            type="url" 
-                                            placeholder="Enter image URL" 
+                                            type="url"
+                                            placeholder="Enter image URL"
                                             value={picture}
                                             onChange={(e) => setPicture(e.target.value)}
                                         />

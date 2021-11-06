@@ -54,9 +54,9 @@ const createNewLevel = (difficulty: number, question: string, instruction: strin
 
     const data = {
         difficulty: difficulty,
-        question: question, 
-        instruction: instruction, 
-        correctValue: correctValue, 
+        question: question,
+        instruction: instruction,
+        correctValue: correctValue,
         image: image
     }
 
@@ -93,8 +93,8 @@ const passCommunityLevel = (id: string | string[] | undefined, token: string, di
 }
 
 export {
-    createNewLevel, 
-    getCommunityLevels, 
-    getCommunityLevelById, 
+    createNewLevel,
+    getCommunityLevels,
+    getCommunityLevelById,
     passCommunityLevel
 };

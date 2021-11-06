@@ -118,7 +118,7 @@ function CommunityActiveLevel() {
                     )}
                     <button className="update">Edit</button>
                     <button className="reject" onClick={() => deleteCommunityLevel(id, userInfo.token, dispatch, router)}>Delete</button>
-                </div>  
+                </div>
             ) : (
                 null
             )}
