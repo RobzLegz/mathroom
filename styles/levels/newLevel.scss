@@ -347,4 +347,46 @@
             }
         }
     }
+
+    @media screen and (max-width: 850px){
+        width: 600px;
+
+        &__body{
+            &__bottom{
+                &__right{
+                    &__picture{
+                        height: 200px;
+                        width: 200px;
+                    }
+
+                    .inpContainer{
+                        width: 200px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 650px){
+        width: 450px;
+        height: auto;
+
+        &__body{
+            &__bottom{
+                flex-direction: column;
+                align-items: center;
+
+                &__right{
+                    &__picture{
+                        height: 200px;
+                        width: 200px;
+                    }
+
+                    .inpContainer{
+                        width: 200px;
+                    }
+                }
+            }
+        }
+    }
 }
