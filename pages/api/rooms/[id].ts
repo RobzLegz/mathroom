@@ -44,7 +44,7 @@ const startGame = async (req: any, res: any) => {
             return res.status(400).json({err: "Sorry, this room doesn't exist!"});
         }
 
-        if(testRoom.admin !== admin._id){
+        if(testRoom.admin.toString() !== admin._id.toString()){
             return res.status(400).json({err: "You can't start the game because You aren't the host!"});
         }
 
