@@ -1,17 +1,15 @@
 @import "../variables.scss";
 
-.level{
+.communityLevelPage{
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     flex-direction: column;
-    font-family: $roomFont;
     background-color: $mathRoomDarkerPurple;
 
-    .activeLevel{
+    &__container{
         border-radius: 10px;
         width: 800px;
         height: 550px;
@@ -21,44 +19,23 @@
         &__header{
             width: 100%;
             display: flex;
+            padding: 0 20px;
+            height: 80px;
             align-items: center;
-            padding: 20px;
             justify-content: space-between;
 
-            .button{
-                width: 140px;
-                height: 40px;
-                border-radius: 5px;
-                border: none;
-                outline: none;
+            button{
+                width: 150px;
+                height: 50px;
                 cursor: pointer;
                 transition: all 0.3s ease;
-                font-size: $buttonText;
-                font-family: $roomFont;
-                color: $mathRoomContainerBG;
-                background-color: $mathRoomButton;
-
-                &:hover{
-                    background-color: $mathRoomButtonHover;
-                }
-            }
-
-            h2{
-                padding: 10px 30px;
+                outline: none;
+                border: none;
                 border-radius: 10px;
+                font-size: 18px;
                 color: $mathRoomContainerBG;
-                background-color: $mathRoomGrey;
             }
         }
-    }
-
-    &__container{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        flex-direction: column;
 
         &__tip{
             top: 0;
@@ -66,7 +43,7 @@
             z-index: 3;
             width: 100%;
             height: 100%;
-            position: absolute;
+            position: fixed;
             border-radius: 10px 10px 0 0;
             padding: 20px;
             text-align: center;
@@ -201,116 +178,128 @@
 
                 img{
                     width: 100%;
-                    max-height: 300px;
+                    max-height: 250px;
                     object-fit: contain;
                 }
             }
         }
-    }
 
-    @media screen and (max-width: 875px){
-        .activeLevel{
-            width: 650px;
+        &__footer{
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            padding: 0 20px;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+
+            .accept,
+            .update,
+            .reject{
+                border-radius: 5px;
+                width: 150px;
+                height: 50px;
+            }
+            
+            .accept{
+                background-color: $levelGreen;
+
+                &:hover{
+                    background-color: $levelGreen;
+                }
+            }
+
+            .update{
+                background-color: $levelOrange;
+
+                &:hover{
+                    background-color: $levelOrange;
+                }
+            }
+
+            .reject{
+                background-color: $levelRed;
+
+                &:hover{
+                    background-color: $levelRed;
+                }
+            }
         }
     }
 
-    @media screen and (max-width: 700px){
-        .activeLevel{
+    @media screen and (max-height: 650px) {
+        &__container{
+            height: 500px;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        &__container{
+            width: 700px;
+        }
+    }
+
+    @media screen and (max-width: 750px) {
+        &__container{
             width: 600px;
         }
     }
 
-    @media screen and (max-width: 650px){
-        .activeLevel{
-            width: 500px;
-            height: auto;
+    @media screen and (max-width: 650px) {
+        &__container{
+            width: 550px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        &__container{
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            overflow-y: scroll;
+        }
+    }
+
+    @media screen and (max-width: 550px) {
+        &__container{
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            overflow-y: scroll;
 
             &__header{
-                padding: 10px;
+                padding: 0 10px;
 
-                h2{
-                    display: none;
+                button{
+                    width: 120px;
                 }
-            }
-        }
-
-        &__container{
-            &__task{
-                font-size: 18px;
-                padding: 5px 10px;
             }
 
             &__options{
-                flex-direction: column-reverse;
+                flex-direction: column;
 
                 &__tools{
                     width: 100%;
-
-                    &__instruction{
-                        width: 100%;
-                    }
                 }
-
-                &__ilustration{
-                    width: 300px;
-                    max-height: 200px;
-
-                    img{
-                        max-height: 200px;
-                    }
-                }
-            }
-        }
-    }
-
-    @media screen and (max-width: 550px){
-        .activeLevel{
-            width: 400px;
-
-            &__header{
-                .button{
-                    width: 110px;
-                }
-            }
-        }
-
-        &__container{
-            &__task{
-                font-size: 16px;
-            }
-
-            &__options{
-                width: 100%;
-                padding: 10px;
 
                 &__ilustration{
                     width: 100%;
-                    padding: 0;
-
-                    img{
-                        width: 100%;
-                        object-fit: contain;
-                    }
                 }
             }
-        }
-    }
 
-    @media screen and (max-width: 450px){
-        .activeLevel{
-            overflow-y: scroll;
-            width: 100%;
-            height: 100%;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            border-radius: 0;
+            &__footer{
+                position: relative;
+                padding: 0 10px;
 
-            &::-webkit-scrollbar {
-                display: none;
-            }
-
-            &__header{
-                padding: 10px;
+                .accept,
+                .update,
+                .reject{
+                    border-radius: 5px;
+                    width: 100px;
+                    height: 40px;
+                }
             }
         }
     }
