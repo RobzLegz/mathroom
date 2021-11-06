@@ -65,7 +65,7 @@ const TimeDifferenceMinutes: React.FC<Props> = ({needHelp, setNeedHelp, multipla
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>To get other programmers time, subtract the first programmers time spent from total time spent.</p>
+                            <p>To get other programmers time, subtract the first programmers time spent from total time spent. f</p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
