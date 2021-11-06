@@ -104,7 +104,7 @@ const TimeDifferenceMinutesSecond: React.FC<Props> = ({needHelp, setNeedHelp, mu
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.wSFbjLZV5FropOTZA0gnWgHaE7&pid=Api" alt="sus" />
+                    <img src="/levels/cash.png" alt="dollar and three coins on top of it" />
                 </div>
             </div>
         </form>
