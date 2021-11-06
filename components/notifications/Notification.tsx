@@ -46,13 +46,6 @@ function Notification() {
                     <div className="notification__left__identifier__loading"></div>
                     <p>{notificationInfo.message}</p>
                 </div>
-                
-                <div className="notification__right">
-                    <div className="notification__right__close" onClick={() => dispatch(clearNotification())}>
-                        <div className="line1"></div>
-                        <div className="line2"></div>
-                    </div>
-                </div>
             </div>
         )
     }
