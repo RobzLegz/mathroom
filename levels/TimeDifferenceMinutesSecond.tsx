@@ -63,7 +63,7 @@ const TimeDifferenceMinutesSecond: React.FC<Props> = ({needHelp, setNeedHelp, mu
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>Start by dividing minutes by 60 to get the hours, then multiply by the hourly rate.</p>
+                            <p>Start by dividing minutes by 60 to get the hours, then multiply by the hourly rate. </p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
