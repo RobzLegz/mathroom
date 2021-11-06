@@ -75,6 +75,7 @@ const TypeAge: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
             <div className="level__container__task">
                 <strong>How old are You now if You were born in {new Date().getFullYear() - correctAnswer}?</strong>
             </div>
+            
             <div className="level__container__options">
                 <div className="level__container__options__tools">
                     <div className="inputContainer">

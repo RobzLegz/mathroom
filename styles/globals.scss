@@ -47,6 +47,9 @@ input[type=number] {
 button{
   cursor: pointer;
   transition: all 0.3s ease;
+  border: none;
+  outline: none;
+  color: $mathRoomContainerBG;
   font-family: $roomFont;
   font-size: $buttonText;
   background-color: $mathRoomButton;
@@ -54,6 +57,20 @@ button{
   &:hover{
     background-color: $mathRoomButtonHover;
   }
+}
+
+textarea{
+  resize: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid $mathRoomGrey;
+}
+
+input,
+button,
+textarea{
+  outline: none;
 }
 
 ::-webkit-scrollbar {
@@ -71,4 +88,37 @@ button{
 
 ::-webkit-scrollbar-thumb:hover {
   background: #807e7e;
+}
+
+.inputContainer{
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px 0 0;
+
+  strong{
+    margin: 0 10px;
+    cursor: pointer;
+  }
+
+  input[type="range"]{
+    -webkit-appearance: none;
+    border-radius: 5px;
+    flex: 1;
+    outline: none;
+    border: none;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+    background: $mathRoomLightGrey;
+  }
+
+  input[type="number"]{
+    flex: 1;
+    outline: none;
+    border: none;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+    background: $mathRoomLightGrey;
+    padding: 5px 10px;
+  }
 }
