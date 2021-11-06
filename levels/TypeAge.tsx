@@ -63,7 +63,7 @@ const TypeAge: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>From the current year ({new Date().getFullYear()}) subtract the time of birth.</p>
+                            <p>From the current year ({new Date().getFullYear()}) subtract the time of birth. </p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
