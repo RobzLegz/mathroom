@@ -65,7 +65,7 @@ const MonthAmount: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>One year is 12 months, multiply by years and then add months.</p>
+                            <p>One year is 12 months. Multiply years by 12 and then add months.</p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
