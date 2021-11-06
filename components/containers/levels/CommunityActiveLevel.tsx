@@ -2,6 +2,7 @@ import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCommunity } from '../../../redux/slices/communitySlice';
+import { setNotification } from '../../../redux/slices/notificationSlice';
 import { selectUser } from '../../../redux/slices/userSlice';
 import { acceptCommunityLevel, deleteCommunityLevel } from '../../../requests/admin/requests';
 import { checkForLogin } from '../../../requests/auth/requests';
@@ -32,19 +33,20 @@ function CommunityActiveLevel() {
     }, [userInfo.loggedIn, dispatch, userInfo.token]);
 
     useEffect(() => {
-        if(!maxInputValue){
+        if(!maxInputValue && communityInfo.activeLevel){
             if(communityInfo.activeLevel){
                 setMaxInputValue(communityInfo.activeLevel.correctValue + Math.floor((Math.random() * 30) + 20));
             }
         }
-    }, [maxInputValue]);
+    }, [maxInputValue, communityInfo.activeLevel]);
 
     const completeLevel = (e: any) => {
         e.preventDefault();
 
-        if(communityInfo.activeLevel.correctValue === enteredValue){
-            passCommunityLevel(id, userInfo.token, dispatch, router)
+        if(communityInfo.activeLevel.correctValue !== enteredValue){
+            return dispatch(setNotification({type: "error", message: "Sorry, wrong answer"}))
         }
+        passCommunityLevel(id, userInfo.token, dispatch, router)
     }
 
     if(!communityInfo.activeLevel || !userInfo.info){
@@ -82,7 +84,7 @@ function CommunityActiveLevel() {
             <div className="communityLevelPage__container__options">
                 <div className="communityLevelPage__container__options__tools">
                     <div className="inputContainer">
-                        {writing ? (
+                        {writing && maxInputValue ? (
                             <input
                                 type="number"
                                 value={enteredValue.toString()}

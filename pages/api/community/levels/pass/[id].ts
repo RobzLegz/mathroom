@@ -1,6 +1,7 @@
 import connectDB from "../../../../../utils/connectDB";
 import auth from "../../../../../middleware/auth";
 import Users from "../../../../../models/userModel";
+import Levels from "../../../../../models/levelModel";
 
 connectDB();
 
@@ -14,11 +15,28 @@ export default async (req: any, res: any) => {
 
 const completeLevel = async (req: any, res: any) => {
     try{
-        const {level} = req.query;
+        const {id} = req.query;
+
+        if(typeof(id) !== "string"){
+            return res.status(400).json({err: "Something went wrong!"});
+        }
 
         const user = await auth(req, res);
 
-        await Users.findByIdAndUpdate({_id: user._id}, {passedLevels: user.passedLevels.push(level)});
+        const foundLevel = await Levels.findById({_id: id});
+        if(!foundLevel){
+            return res.status(400).json({err: "Sorry, this level doesn't exist!"});
+        }
+
+        console.log(foundLevel)
+
+        let sendLevels = user.passedLevels;
+        sendLevels.push(foundLevel._id);
+
+        console.log(sendLevels)
+        console.log(foundLevel._id)
+
+        await Users.findByIdAndUpdate({_id: user._id}, {passedLevels: sendLevels});
 
         res.json({msg: "Level passed"});
     }catch(err: any){

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { setActiveLevel, setLevels } from "../../../redux/slices/communitySlice";
 import { setNotification } from "../../../redux/slices/notificationSlice";
+import { passCommunityLevelRedux } from "../../../redux/slices/userSlice";
 
 const getCommunityLevels = (dispatch: any) => {
     axios.get("/api/community/levels")
@@ -83,6 +84,7 @@ const passCommunityLevel = (id: string | string[] | undefined, token: string, di
     axios.post(`/api/community/levels/pass/${id}`, {}, headers)
         .then((res) => {
             router.push("/community");
+            dispatch(passCommunityLevelRedux(id));
             dispatch(setNotification({type: "success", message: "Congrats, You passed this level"}));
         }).catch((err) => {
             const message: string = err.response.data.err;
