@@ -64,7 +64,7 @@ const DayAmount: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>one min is sixty seconds, multiply the min correctly and then count with seconds.</p>
+                            <p>One min is sixty seconds, multiply the min correctly and then count with seconds.</p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
