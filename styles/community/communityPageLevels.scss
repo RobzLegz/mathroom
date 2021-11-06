@@ -56,15 +56,17 @@
     }
 
     &__body{
+        min-height: 300px;
         height: auto;
         width: 100%;
         display: grid;
         overflow-x: hidden;
-        column-gap: 30px;
         row-gap: 20px;
         padding: 10px;
         position: relative;
-        grid-template-columns: repeat(auto-fill, 200px);
+        column-gap: 20px;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fit, 200px);
 
         &__message{
             width: 100%;
@@ -117,7 +119,7 @@
         &__body{
             column-gap: 10px;
             row-gap: 10px;
-            grid-template-columns: repeat(auto-fill, 150px);
+            grid-template-columns: repeat(auto-fit, 150px);
 
             &__taskContainer{
                 height: 150px;
@@ -166,7 +168,7 @@
         &__body{
             column-gap: 10px;
             row-gap: 10px;
-            grid-template-columns: repeat(auto-fill, 150px);
+            grid-template-columns: repeat(auto-fit, 150px);
 
             &__taskContainer{
                 height: 150px;
