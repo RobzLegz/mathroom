@@ -91,7 +91,7 @@ const TimeSum: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                         <div className="line2"></div>
                     </div>
                     <div className="level__container__tip__inner__text">
-                        <p>Add travel time to departure time. The first checkbox is for hours, the second is for minutes.</p>
+                        <p>Add travel time to departure time. The first input is for hours, the second is for minutes.</p>
                     </div>
                     <div className="buttonContainer">
                         <button onClick={() => setNeedHelp(false)}>Okay</button>
