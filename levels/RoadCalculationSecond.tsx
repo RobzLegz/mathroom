@@ -16,8 +16,8 @@ const RoadCalculationSecond: React.FC<Props> = ({needHelp, setNeedHelp, multipla
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(5);
-    const [speed] = useState<number>(Math.floor((Math.random() * 60) + 40));
-    const [time] = useState<number>(Math.floor((Math.random() * 8) + 3));
+    const [speed] = useState<number>(Math.floor((Math.random() * 50) + 40));
+    const [time] = useState<number>(Math.floor((Math.random() * 3) + 2));
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -91,7 +91,7 @@ const RoadCalculationSecond: React.FC<Props> = ({needHelp, setNeedHelp, multipla
                                 value={selectedAge}
                                 onChange={(e) => setSelectedAge(Number(e.target.value))}
                                 min="100"
-                                max="480"
+                                max="460"
                             />
                         )}
                         <strong onClick={() => setWriting(!writing)}>{selectedAge}</strong>

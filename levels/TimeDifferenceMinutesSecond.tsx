@@ -16,7 +16,9 @@ const TimeDifferenceMinutesSecond: React.FC<Props> = ({needHelp, setNeedHelp, mu
     const userInfo = useSelector(selectUser);
 
     const [selectedAge, setSelectedAge] = useState<number>(0);
-    const [totalTimeSpent] = useState<number>(Math.floor((Math.random() * 600) + 30));
+    const [hoursSpent] = useState<number>(Math.floor((Math.random() * 6) + 3));
+    const [payment] = useState<number>(Math.floor((Math.random() * 13) + 7));
+    const [correctValue] = useState<number>(hoursSpent * payment);
     const [writing, setWriting] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -28,13 +30,13 @@ const TimeDifferenceMinutesSecond: React.FC<Props> = ({needHelp, setNeedHelp, mu
         e.preventDefault();
 
         if(multiplayer){
-            if(selectedAge !== (Math.floor(totalTimeSpent / 60) * 16)){
+            if(selectedAge !== correctValue){
                 return completeSocketLevel(false, dispatch);
             }
             return completeSocketLevel(true, dispatch);
         }
 
-        if(selectedAge !== (Math.floor(totalTimeSpent / 60) * 16)){
+        if(selectedAge !== correctValue){
             return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
         }
 
@@ -73,7 +75,7 @@ const TimeDifferenceMinutesSecond: React.FC<Props> = ({needHelp, setNeedHelp, mu
             )}
             
             <div className="level__container__task">
-                <strong>The hourly rate is 16$/hour. If You spend {totalTimeSpent} minutes working, how much You earn?</strong>
+                <strong>The hourly rate is {payment}$/hour. If You spend {hoursSpent * 60} minutes working, how much You earn?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
