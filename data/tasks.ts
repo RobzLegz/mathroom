@@ -15,11 +15,11 @@ const tasks = [
     {type: "time calculation"},
     {type: "speed calculation"},
     {type: "road calculation2"},
+    {type: "distance between2"},
     {type: "m/min to m/h"},
-    {type: "acceleration calculation"},
     {type: "average speed"},
     {type: "uniformly slow motion"},
-    {type: "distance between2"},
+    {type: "acceleration calculation"},
     {type: "time from acceleration + distance"},
 ];
 
