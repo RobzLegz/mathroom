@@ -36,7 +36,7 @@ function MenuContainer() {
                 {userInfo.loggedIn || userInfo.token ? (
                     <div className="menu__container__options__two">
                         <button onClick={() => router.push("/instructions")}>Instructions</button>
-                        <button>Profile</button>
+                        <button onClick={() => router.push(`/community/user/${userInfo.info.username}`)}>Profile</button>
                     </div>
                 ) : (
                     <button className="button" onClick={() => router.push("/instructions")}>Instructions</button>
