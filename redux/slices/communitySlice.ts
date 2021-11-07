@@ -33,6 +33,7 @@ interface State{
     difficulty: null | number;
     users: null | User[];
     activeProfile: null | User;
+    searchQuery: string;
 }
 
 const initialState: State = {
@@ -42,6 +43,7 @@ const initialState: State = {
     difficulty: null,
     users: null,
     activeProfile : null,
+    searchQuery: "",
 }
 
 export const communitySlice = createSlice({
@@ -69,6 +71,9 @@ export const communitySlice = createSlice({
         setActiveProfile: (state, action) => {
             state.activeProfile = action.payload;
         },
+        setSearchQuery: (state, action) => {
+            state.searchQuery = action.payload;
+        },
     },
 });
 
@@ -79,6 +84,7 @@ export const {
     resetActiveLevel,
     setDifficulty,
     setActiveProfile,
+    setSearchQuery,
     setUsers
 } = communitySlice.actions;
 

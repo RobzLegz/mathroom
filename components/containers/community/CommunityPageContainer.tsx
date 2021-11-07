@@ -5,9 +5,9 @@ import { selectUser } from '../../../redux/slices/userSlice';
 import { checkForLogin } from '../../../requests/auth/requests';
 import AdminLevelContainer from './body/AdminLevelContainer';
 import LeaderboardContainer from './body/LeaderboardContainer';
-import SearchContainer from './body/SearchContainer';
 import CommunityContainerHeader from './CommunityContainerHeader';
 import CommunityPageLevels from './CommunityPageLevels';
+import CommunityPageSearch from './CommunityPageSearch';
 
 interface Props{
     page: string;
@@ -51,7 +51,7 @@ const CommunityPageContainer: React.FC<Props> = ({page}) => {
         return (
             <div className="communityPage__container">
                 <CommunityContainerHeader page={page} />
-                <SearchContainer />
+                <CommunityPageSearch />
             </div>
         )
     }else if (page === "admin"){
