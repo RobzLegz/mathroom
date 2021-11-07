@@ -65,7 +65,7 @@ const KilometersApart: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) 
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>Multiply the time by the speed and then count the distance of both, as both move in opposite directions. Multiply time by the sum of both skater speeds.</p>
+                            <p>Multiply the time by the speed and then count the distance of both, as both move in opposite directions.</p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
