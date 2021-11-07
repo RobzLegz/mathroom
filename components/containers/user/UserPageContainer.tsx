@@ -51,7 +51,7 @@ function UserPageContainer() {
             <div className="profilePage__container__top">
                 <h2>{communityInfo.activeProfile.username}</h2>
                 <h3>Points: {communityInfo.activeProfile.level + communityInfo.activeProfile.passedLevels.length}</h3>
-            </div>  
+            </div>
             {communityInfo.activeProfile.userLevels.length > 0 && (
                 <div className="profilePage__container__bottom">
                     <h3>Levels created by {communityInfo.activeProfile.username}:</h3>
