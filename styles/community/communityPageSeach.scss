@@ -62,6 +62,85 @@
                 height: 30px;
                 border-radius: 5px;
                 font-family: $roomFont;
+
+                .small{
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 550px) {
+        padding: 20px;
+
+        &__header{
+            width: 100%;
+        }
+
+        &__body{
+            width: 100%;
+            height: auto;
+            overflow-y: auto;
+
+            &__userContainer{
+                h3{
+                    font-size: 20px;
+                }
+    
+                button{
+                    width: 80px;
+    
+                    .small{
+                        display: block;
+                    }
+
+                    .big{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        &__header{
+            width: 100%;
+
+            input{
+                width: 200px;
+            }
+
+            button{
+                font-size: 16px;
+                width: 80px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 330px) {
+        &__header{
+            width: 100%;
+
+            input{
+                width: 100%;
+            }
+
+            button{
+                display: none;
+            }
+        }
+
+        &__body{
+            &__userContainer{
+                padding: 10px;
+
+                h3{
+                    font-size: 18px;
+                }
+    
+                button{
+                    width: 70px;
+                }
             }
         }
     }
