@@ -12,6 +12,9 @@ export default async (req: any, res: any) => {
         case "PUT":
             await updateUserInfo(req, res);
             break;
+        case "DELETE":
+            await deleteProfile(req, res);
+            break;
     }
 }
 
@@ -31,13 +34,26 @@ const updateUserInfo = async (req: any, res: any) => {
 
         const user = await auth(req, res);
 
-        await Users.findByIdAndUpdate({id: user._id}, {
+        await Users.findByIdAndUpdate({id: user._id.toString()}, {
             name: name, 
             username: username, 
             email: email
         });
 
         res.json("Update successful");
+    }catch(err: any){
+        return res.status(500).json({err: err.message});
+    }
+}
+
+
+const deleteProfile = async (req: any, res: any) => {
+    try{
+        const user = await auth(req, res);
+
+        await Users.findByIdAndDelete({id: user._id.toString()})
+
+        res.json("Delete successful");
     }catch(err: any){
         return res.status(500).json({err: err.message});
     }
