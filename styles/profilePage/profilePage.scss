@@ -69,6 +69,7 @@
                 column-gap: 20px;
 
                 &__level{
+                    position: relative;
                     width: 100%;
                     height: 150px;
                     cursor: pointer;
@@ -77,6 +78,29 @@
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
+                    }
+
+                    &__overlay{
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: rgba(0, 0, 0, 0.6);
+                        transition: all 0.5s ease;
+                        opacity: 1;
+
+                        img{
+                            width: 70px;
+                            height: 70px;
+                        }
+
+                        &:hover{
+                            opacity: 0;
+                        }
                     }
                 }
             }
