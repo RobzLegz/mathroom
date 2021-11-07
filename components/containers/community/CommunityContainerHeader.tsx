@@ -14,6 +14,10 @@ const CommunityContainerHeader: React.FC<Props> = ({page}) => {
 
     return (
         <nav className="communityPage__container__header">
+            <div className="communityPage__container__header__link" onClick={() => router.push("/menu")}>
+                <p>Menu</p>
+            </div>
+
             <div className={`communityPage__container__header__link ${page === "home" ? "communityPage__container__header__link__active" : ""}`} onClick={() => router.push("/community")}>
                 <p>Levels</p>
             </div>
