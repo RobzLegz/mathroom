@@ -63,7 +63,7 @@ const TimeCalculation: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) 
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>Multiply hour amount by sixty, because one hour is 60 minutes.</p>
+                            <p>Multiply speed by sixty, because one hour is 60 minutes.</p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
