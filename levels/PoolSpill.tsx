@@ -106,7 +106,7 @@ const PoolSpill: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="/levels/pool.svg" alt="water flowing in a green pool" />
+                    <img src="/levels/poolHole.svg" alt="water flowing out of a blue pool" />
                 </div>
             </div>
         </form>

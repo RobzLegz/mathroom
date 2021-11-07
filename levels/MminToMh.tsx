@@ -73,7 +73,7 @@ const TimeCalculation: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) 
             )}
             
             <div className="level__container__task">
-                <strong>Express the given unit {speed} m/min per m/h.</strong>
+                <strong>A metro is driving at a speed of {speed} m/min. How fast is it going in km/h?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
@@ -104,7 +104,7 @@ const TimeCalculation: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) 
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.wSFbjLZV5FropOTZA0gnWgHaE7&pid=Api" alt="sus" />
+                    <img src="/levels/metro.png" alt="yellow metro with blue windows" />
                 </div>
             </div>
         </form>

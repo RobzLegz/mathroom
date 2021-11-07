@@ -105,7 +105,7 @@ const DayAmount: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.wSFbjLZV5FropOTZA0gnWgHaE7&pid=Api" alt="sus" />
+                    <img src="/levels/train.svg" alt="gray train driving on a railroad" />
                 </div>
             </div>
         </form>

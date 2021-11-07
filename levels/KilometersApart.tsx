@@ -75,7 +75,7 @@ const KilometersApart: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) 
             )}
             
             <div className="level__container__task">
-                <strong>Two skaters go from the skate park in opposite directions at the same time at speeds of {speed1} km/h and {speed2} km/h respectively. How far apart from each other will they be in {time} hours?</strong>
+                <strong>Two skaters go from the skate park in opposite directions at the same time at speeds of {speed1} km/h and {speed2} km/h. How far apart from each other will they be in {time} hours?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
@@ -106,7 +106,7 @@ const KilometersApart: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) 
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.wSFbjLZV5FropOTZA0gnWgHaE7&pid=Api" alt="sus" />
+                    <img src="/levels/skaters.png" alt="two boys on skateboards going opposite dirrections from each other" />
                 </div>
             </div>
         </form>
