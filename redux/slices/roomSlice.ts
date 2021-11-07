@@ -69,6 +69,12 @@ export const roomSlice = createSlice({
                     return;
                 }
 
+                state.removedIds.forEach((id) => {
+                    if(action.payload === id){
+                        return;
+                    }
+                });
+
                 state.rooms.forEach((room) => {
                     if(state.removedIds.includes(room._id)){
                         state.rooms?.filter((r) => r._id !== room._id);
