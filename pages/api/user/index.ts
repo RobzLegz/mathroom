@@ -35,8 +35,8 @@ const updateUserInfo = async (req: any, res: any) => {
         const user = await auth(req, res);
 
         await Users.findByIdAndUpdate({id: user._id.toString()}, {
-            name: name, 
-            username: username, 
+            name: name,
+            username: username,
             email: email
         });
 
