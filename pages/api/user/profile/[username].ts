@@ -1,7 +1,6 @@
 import connectDB from "../../../../utils/connectDB";
 import Users from "../../../../models/userModel";
 import Levels from "../../../../models/levelModel";
-import auth from "../../../../middleware/auth";
 
 connectDB();
 
