@@ -57,7 +57,7 @@ function SearchContainerBody() {
                     return(
                         <div className="communityPage__container__search__body__userContainer" key={i}>
                             <h3>{user.username}</h3>
-                            <button onClick={() => router.push(`/community/users/${user.username}`)}>View profile</button>
+                            <button onClick={() => router.push(`/community/user/${user.username}`)}>View profile</button>
                         </div>
                     )
                 })

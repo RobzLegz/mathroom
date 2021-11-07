@@ -13,6 +13,7 @@ function SearchContainerHeader() {
                 type="text" 
                 name="search_query" 
                 id="search_query" 
+                placeholder="search"
                 value={communityInfo.searchQuery}
                 onChange={(e) => dispatch(setSearchQuery(String(e.target.value)))}
             />      
