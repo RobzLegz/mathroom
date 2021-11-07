@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/slices/userSlice';
 import { checkForLogin } from '../../../requests/auth/requests';
 import AdminLevelContainer from './body/AdminLevelContainer';
+import LeaderboardContainer from './body/LeaderboardContainer';
+import SearchContainer from './body/SearchContainer';
 import CommunityContainerHeader from './CommunityContainerHeader';
 import CommunityPageLevels from './CommunityPageLevels';
 
@@ -42,12 +44,14 @@ const CommunityPageContainer: React.FC<Props> = ({page}) => {
         return (
             <div className="communityPage__container">
                 <CommunityContainerHeader page={page} />
+                <LeaderboardContainer />
             </div>
         )
     }else if(page === "search"){
         return (
             <div className="communityPage__container">
                 <CommunityContainerHeader page={page} />
+                <SearchContainer />
             </div>
         )
     }else if (page === "admin"){
