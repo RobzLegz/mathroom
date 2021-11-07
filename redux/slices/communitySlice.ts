@@ -14,11 +14,26 @@ interface Level{
     __v: number;
 }
 
+interface User{
+    username: string;
+    email: string;
+    name: string;
+    role: string;
+    avatar: string;
+    level: number;
+    _id: string;
+    completedLevels: string[];
+    userLevels: Level[] | null | undefined;
+}
+
 interface State{
     levels: null | Level[];
     activeLevel: null | Level;
     showCompletedLevels: boolean;
     difficulty: null | number;
+    users: null | User[];
+    activeProfile: null | User;
+    searchQuery: string;
 }
 
 const initialState: State = {
@@ -26,6 +41,9 @@ const initialState: State = {
     activeLevel: null,
     showCompletedLevels: false,
     difficulty: null,
+    users: null,
+    activeProfile : null,
+    searchQuery: "",
 }
 
 export const communitySlice = createSlice({
@@ -47,6 +65,15 @@ export const communitySlice = createSlice({
         setDifficulty: (state, action) => {
             state.difficulty = action.payload;
         },
+        setUsers: (state, action) => {
+            state.users = action.payload;
+        },
+        setActiveProfile: (state, action) => {
+            state.activeProfile = action.payload;
+        },
+        setSearchQuery: (state, action) => {
+            state.searchQuery = action.payload;
+        },
     },
 });
 
@@ -55,7 +82,10 @@ export const {
     setActiveLevel,
     completedLevelsSwitch,
     resetActiveLevel,
-    setDifficulty
+    setDifficulty,
+    setActiveProfile,
+    setSearchQuery,
+    setUsers
 } = communitySlice.actions;
 
 export const selectCommunity = (state: any) => state.community;

@@ -77,10 +77,12 @@ const RoomContainer: React.FC = () => {
         }else if(!resetRooms){
             dispatch(setRooms(null));
             setResetRooms(true);
-        }else if(!roomInfo.rooms){
-            getRooms(dispatch);
         }
     }, [socketInfo.connected, dispatch, roomInfo.rooms, resetRooms, getSocket()]);
+
+    useEffect(() => {
+        getRooms(dispatch);
+    }, []);
 
     return (
         <div className="roomPage__container">
@@ -106,6 +108,12 @@ const RoomContainer: React.FC = () => {
                         if(roomInfo.removedIds.some((id: string) => room._id === id)){
                             return null;
                         }
+
+                        roomInfo.removedIds.forEach((id: string) => {
+                            if(room._id === id){
+                                return null;
+                            }
+                        })
                     }
 
                     return(

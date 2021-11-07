@@ -1,0 +1,147 @@
+@import "../variables.scss";
+
+.communityPage__container__search{
+    width: 100%;
+    height: 540px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0;
+    font-family: $roomFont;
+
+    &__header{
+        width: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 0 15px 0;
+
+        input{
+            flex: 1;
+            height: 40px;
+            padding: 0 10px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            color: $mathRoomGrey;
+            background-color: $mathRoomLightGrey;
+        }
+
+        button{
+            width: 120px;
+            height: 40px;
+            border-radius: 5px;
+            margin: 0 0 0 10px;
+            font-family: $roomFont;
+        }
+    }
+
+    &__body{
+        width: 500px;
+        max-height: 300px;
+        overflow-y: scroll;
+
+        &__userContainer{
+            width: 100%;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: $mathRoomLightGrey;
+
+            h3{
+                font-size: 22px;
+                color: $mathRoomGrey;
+            }
+
+            button{
+                width: 150px;
+                height: 30px;
+                border-radius: 5px;
+                font-family: $roomFont;
+
+                .small{
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 550px) {
+        padding: 20px;
+
+        &__header{
+            width: 100%;
+        }
+
+        &__body{
+            width: 100%;
+            height: auto;
+            overflow-y: auto;
+
+            &__userContainer{
+                h3{
+                    font-size: 20px;
+                }
+    
+                button{
+                    width: 80px;
+    
+                    .small{
+                        display: block;
+                    }
+
+                    .big{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        &__header{
+            width: 100%;
+
+            input{
+                width: 200px;
+            }
+
+            button{
+                font-size: 16px;
+                width: 80px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 330px) {
+        &__header{
+            width: 100%;
+
+            input{
+                width: 100%;
+            }
+
+            button{
+                display: none;
+            }
+        }
+
+        &__body{
+            &__userContainer{
+                padding: 10px;
+
+                h3{
+                    font-size: 18px;
+                }
+    
+                button{
+                    width: 70px;
+                }
+            }
+        }
+    }
+}
