@@ -2,10 +2,14 @@ import axios from "axios";
 import { setActiveProfile, setUsers } from "../../redux/slices/communitySlice";
 import { clearNotification, setNotification } from "../../redux/slices/notificationSlice";
 
-const getUserInfoByUsername = (usernmae: string, dispatch: any) => {
+const getUserInfoByUsername = (username: string | string[] | undefined, dispatch: any) => {
     dispatch(setNotification({type: "loading", message: "Loading"}));
 
-    axios.get(`/api/user/profile/${usernmae}`)
+    if(typeof(username) !== "string"){
+        return dispatch(setNotification({type: "error", message: "Something went wrong"}));
+    }
+
+    axios.get(`/api/user/profile/${username}`)
         .then((res) => {
             dispatch(setActiveProfile(res.data));
             dispatch(clearNotification());
