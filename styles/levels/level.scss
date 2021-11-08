@@ -320,5 +320,18 @@
                 padding: 10px;
             }
         }
+
+        &__container{
+            &__tip{
+                padding: 20px 10px;
+                &__inner{
+                    padding: 20px 10px;
+
+                    img{
+                        width: 150px;
+                    }
+                }
+            }
+        }
     }
 }
