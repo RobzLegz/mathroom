@@ -34,6 +34,7 @@ interface State{
     users: null | User[];
     activeProfile: null | User;
     searchQuery: string;
+    leaderboardUsers: null | User[];
 }
 
 const initialState: State = {
@@ -44,6 +45,7 @@ const initialState: State = {
     users: null,
     activeProfile : null,
     searchQuery: "",
+    leaderboardUsers: null
 }
 
 export const communitySlice = createSlice({
@@ -74,6 +76,13 @@ export const communitySlice = createSlice({
         setSearchQuery: (state, action) => {
             state.searchQuery = action.payload;
         },
+        pushLeaderboardUser: (state, action) => {
+            if(state.leaderboardUsers && state.leaderboardUsers.length > 0){
+                state.leaderboardUsers.push(action.payload);
+            }else if(!state.leaderboardUsers){
+                state.leaderboardUsers = [action.payload];
+            }
+        },
     },
 });
 
@@ -84,6 +93,7 @@ export const {
     resetActiveLevel,
     setDifficulty,
     setActiveProfile,
+    pushLeaderboardUser,
     setSearchQuery,
     setUsers
 } = communitySlice.actions;
