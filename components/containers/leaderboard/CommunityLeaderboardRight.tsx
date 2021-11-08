@@ -2,6 +2,7 @@ import { useRouter } from 'next/dist/client/router';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { pushLeaderboardUser, selectCommunity } from '../../../redux/slices/communitySlice';
+import { selectUser } from '../../../redux/slices/userSlice';
 
 interface User{
     username: string;
@@ -20,6 +21,7 @@ interface LeaderboardUser{
 }
 
 function CommunityLeaderboardRight() {
+    const userInfo = useSelector(selectUser);
     const communityInfo = useSelector(selectCommunity);
 
     const router = useRouter();
@@ -51,7 +53,7 @@ function CommunityLeaderboardRight() {
                     .sort((a: LeaderboardUser, b: LeaderboardUser) => (b.points - a.points))
                     .map((user: LeaderboardUser, i: number) => {
                         return (
-                            <div className="communityPage__container__leaderboard__right__user" key={i} onClick={() => router.push(`/community/user/${user.username}`)}>
+                            <div className={`communityPage__container__leaderboard__right__user ${user.username === userInfo.info.username ? "communityPage__container__leaderboard__right__user__my" : ""}`} key={i} onClick={() => router.push(`/community/user/${user.username}`)}>
                                 <h2>{user.username}</h2>
                                 <div className="communityPage__container__leaderboard__right__user__points">
                                     <h3>{user.points}</h3>

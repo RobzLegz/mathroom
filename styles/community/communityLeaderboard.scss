@@ -56,6 +56,11 @@
                     width: 30px;
                 }
             }
+
+            &__my{
+                color: $mathRoomContainerBG;
+                background-color: $mathRoomBlueStripe;
+            }
         }
     }
 }
