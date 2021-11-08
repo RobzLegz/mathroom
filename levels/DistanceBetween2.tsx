@@ -65,7 +65,8 @@ const DistanceBetween2: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer})
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p></p>
+                            <img src="/levels/instructions/DistanceBetween2.svg" alt="formula for calculating time" />
+                            <p>Insert the numbers correctly into the formula.</p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
