@@ -30,7 +30,7 @@ function CommunityLeaderboardLeft() {
     return (
         <div className="communityPage__container__leaderboard__left">
             <h2>{userInfo.info.username}</h2>
-            <h3>place: {userInLeaderboard}</h3>
+            <h3>Place: {userInLeaderboard}</h3>
             <h3>Points: {userInfo.info.level + userInfo.info.passedLevels.length}</h3>
         </div>
     )

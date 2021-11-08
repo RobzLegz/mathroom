@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { pushLeaderboardUser, selectCommunity } from '../../../redux/slices/communitySlice';
@@ -21,6 +22,7 @@ interface LeaderboardUser{
 function CommunityLeaderboardRight() {
     const communityInfo = useSelector(selectCommunity);
 
+    const router = useRouter();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -49,10 +51,11 @@ function CommunityLeaderboardRight() {
                     .sort((a: LeaderboardUser, b: LeaderboardUser) => (b.points - a.points))
                     .map((user: LeaderboardUser, i: number) => {
                         return (
-                            <div className="communityPage__container__leaderboard__right__user" key={i}>
+                            <div className="communityPage__container__leaderboard__right__user" key={i} onClick={() => router.push(`/community/user/${user.username}`)}>
                                 <h2>{user.username}</h2>
                                 <div className="communityPage__container__leaderboard__right__user__points">
                                     <h3>{user.points}</h3>
+                                    <img src="/png/coin.png" alt="coin with a star in the middle" />
                                 </div>
                             </div>
                         )
