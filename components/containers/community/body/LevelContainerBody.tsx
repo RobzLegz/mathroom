@@ -59,7 +59,7 @@ function LevelContainerBody() {
                 }
 
                 return (
-                    <div className="communityPage__container__levels__body__taskContainer" key={i} onClick={() => router.push(`/community/levels/${level._id}`)}>
+                    <div className={`communityPage__container__levels__body__taskContainer ${userInfo.info.passedLevels.includes(level._id) ? "communityPage__container__levels__body__taskContainer__passed" : ""}`} key={i} onClick={() => router.push(`/community/levels/${level._id}`)}>
                         <img src={level.image} alt={`Mathroom community task ${level.question}`} />
                         <div className="communityPage__container__levels__body__taskContainer__overlay">
                             <img src={level.difficulty === 0 ? "/svg/happyFace.svg" : level.difficulty === 1 ? "/svg/confusedFace.svg" : "/svg/angryFace.svg"} alt="Mathroom level difficulty symbol" />
