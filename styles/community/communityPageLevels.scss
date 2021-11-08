@@ -112,6 +112,10 @@
                     opacity: 0;
                 }
             }
+
+            &__passed{
+                border: 5px solid $levelGreen;
+            }
         }
     }
 
