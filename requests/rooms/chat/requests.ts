@@ -1,3 +1,4 @@
+import censure from "../../../middleware/censure";
 import { setNotification } from "../../../redux/slices/notificationSlice";
 import { sendSocketMessage } from "../../../socket/options";
 
@@ -22,6 +23,10 @@ const sendMessage = (e: any, roomId: string | string[] | undefined, message: str
 
     if(typeof(roomId) !== "string"){
         return
+    }
+
+    if(!censure(message)){
+        return dispatch(setNotification({type: "error", message: "This message is not allowed"}));
     }
 
     if(!userInfo.username){

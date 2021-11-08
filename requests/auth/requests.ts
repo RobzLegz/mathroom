@@ -2,6 +2,7 @@ import valid, { validateEmail } from "../../utils/valid";
 import { login, logout, setToken, setUserInfo } from "../../redux/slices/userSlice";
 import { clearNotification, setNotification } from "../../redux/slices/notificationSlice";
 import axios from "axios";
+import censure from "../../middleware/censure";
 
 const registerUser = (e: any, username: string, email: string, password: string, cfPassword: string, agreedToPrivacyPolicy: boolean, dispatch: any, router: any, clicked: boolean, setClicked: any) => {
     e.preventDefault();
@@ -13,6 +14,10 @@ const registerUser = (e: any, username: string, email: string, password: string,
     setClicked(true);
 
     dispatch(setNotification({type: "loading", message: "loading"}));
+
+    if(!censure(username)){
+        return dispatch(setNotification({type: "error", message: "This username is not allowed"}));
+    }
     
     const errMsg = valid(username, email, password, cfPassword);
     if(errMsg){
