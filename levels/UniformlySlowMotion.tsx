@@ -66,6 +66,7 @@ const UniformlySlowMotion: React.FC<Props> = ({needHelp, setNeedHelp, multiplaye
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
+                            <img src="/levels/instructions/UniformallySlowMotion.svg" alt="formula for calculating the final speed of a car" />
                             <p>Put the numbers in the formula correctly.</p>
                         </div>
                         <div className="buttonContainer">

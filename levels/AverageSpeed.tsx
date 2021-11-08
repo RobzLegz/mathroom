@@ -91,6 +91,7 @@ const AverageSpeed: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => 
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
+                            <img src="/levels/instructions/AverageSpeed.svg" alt="formula for calculating the average speed" />
                             <p>Insert the numbers correctly into the formula.</p>
                         </div>
                         <div className="buttonContainer">

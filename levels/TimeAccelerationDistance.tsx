@@ -66,6 +66,7 @@ const TimeAccelerationDistance: React.FC<Props> = ({needHelp, setNeedHelp, multi
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
+                            <img src="/levels/instructions/TimeAccelerationDistance.svg" alt="formula for calculating the time" />
                             <p>Put the numbers in the formula accordingly.</p>
                         </div>
                         <div className="buttonContainer">

@@ -65,6 +65,7 @@ const PoolFill: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
+                            <img src="/levels/instructions/PoolFill.svg" alt="formula for calculating the time it takes to fill the pool" />
                             <p>Insert the numbers correctly into the formula.</p>
                         </div>
                         <div className="buttonContainer">
