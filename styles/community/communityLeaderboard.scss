@@ -20,7 +20,7 @@
 
         h2{
             margin-bottom: 20px;
-            padding: 0 0 10px 0;
+            padding: 0 0 10px;
             border-bottom: 3px solid $mathRoomGrey;
         }
     }
@@ -33,7 +33,7 @@
         align-items: center;
         justify-content: flex-start;
         overflow-y: scroll;
-        padding: 20px 20px;
+        padding: 20px;
 
         &__user{
             width: 100%;
