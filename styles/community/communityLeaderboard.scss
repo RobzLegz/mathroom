@@ -1,0 +1,103 @@
+@import "../variables.scss";
+
+.communityPage__container__leaderboard{
+    width: 100%;
+    height: 540px;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    font-family: $roomFont;
+
+    &__left{
+        width: 200px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        padding: 20px 0;
+        color: $mathRoomGrey;
+        background-color: $mathRoomLightGrey;
+
+        h2{
+            margin-bottom: 20px;
+            padding: 0 0 10px 0;
+            border-bottom: 3px solid $mathRoomGrey;
+        }
+    }
+
+    &__right{
+        flex: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        overflow-y: scroll;
+        padding: 20px 20px;
+
+        &__user{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            background-color: $mathRoomLightGrey;
+
+            &__left{
+                display: flex;
+                
+                h2{
+                    margin: 0 10px 0 0;
+                }
+            }
+
+            &__points{
+                display: flex;
+                align-items: center;
+                
+                h3{
+                    margin-right: 5px;
+                }
+
+                img{
+                    width: 30px;
+                }
+            }
+
+            &__my{
+                color: $mathRoomContainerBG;
+                background-color: $mathRoomBlueStripe;
+            }
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        &__left{
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        &__right{
+            padding: 10px;
+
+            &__user{
+                h2{
+                    font-size: 25px;
+                }
+    
+                &__points{
+                    h3{
+                        font-size: 20px;
+                    }
+
+                    img{
+                        width: 25px;
+                    }
+                }
+            }
+        }
+    }
+}
