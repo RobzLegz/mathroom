@@ -1,0 +1,74 @@
+@import "../variables.scss";
+
+.privacyPolicy{
+    width: 100%;
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $mathRoomDarkerPurple;
+
+    &__container{
+        width: 700px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: $mathRoomContainerBG;
+
+        h1{
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+
+        &__button{
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+
+            button{
+                width: 150px;
+                height: 40px;
+                border-radius: 5px;
+                margin: 10px 0;
+            }
+        }
+
+        h3{
+            margin: 20px 0 10px 0;
+        }
+
+        p{
+            margin: 10px 0;
+            text-align: start;
+        }
+
+        ul{
+            list-style: circle !important;
+            padding: 0 20px;
+
+            li{
+                list-style: circle !important;
+            }
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        padding: 50px 20px;
+
+        &__container{
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        padding: 0;
+
+        &__container{
+            border-radius: 0;
+            padding: 10px;
+
+            &__button{
+                justify-content: center;
+            }
+        }
+    }
+}
