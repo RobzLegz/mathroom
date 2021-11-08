@@ -54,7 +54,10 @@ function CommunityLeaderboardRight() {
                     .map((user: LeaderboardUser, i: number) => {
                         return (
                             <div className={`communityPage__container__leaderboard__right__user ${user.username === userInfo.info.username ? "communityPage__container__leaderboard__right__user__my" : ""}`} key={i} onClick={() => router.push(`/community/user/${user.username}`)}>
-                                <h2>{user.username}</h2>
+                                <div className="communityPage__container__leaderboard__right__user__left">
+                                    <h2>{i + 1}</h2>
+                                    <h2>{user.username}</h2>
+                                </div>
                                 <div className="communityPage__container__leaderboard__right__user__points">
                                     <h3>{user.points}</h3>
                                     <img src="/png/coin.png" alt="coin with a star in the middle" />
