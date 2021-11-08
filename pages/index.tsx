@@ -6,9 +6,9 @@ import Notification from "../components/notifications/Notification";
 export default function Home() {
   const router = useRouter();
 
-  // useEffect(() => {
-  //   router.push("/menu");
-  // }, []);
+  useEffect(() => {
+    router.push("/menu");
+  }, []);
 
   return (
     <div>
