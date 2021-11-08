@@ -84,6 +84,7 @@
                 justify-content: space-between;
                 flex-direction: column;
                 position: relative;
+                overflow-y: scroll;
                 background: $mathRoomContainerBG;
 
                 &__close{
@@ -109,6 +110,11 @@
                     }
                 }
 
+                img{
+                    width: 200px;
+                    margin-bottom: 10px;
+                }
+
                 &__text{
                     width: 100%;
                 }
@@ -117,6 +123,7 @@
                     width: 100%;
                     display: flex;
                     align-items: center;
+                    margin: 10px 0;
                     justify-content: center;
 
                     button{
