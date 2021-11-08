@@ -47,6 +47,7 @@
 
             &__points{
                 display: flex;
+                align-items: center;
                 
                 h3{
                     margin-right: 5px;
@@ -60,6 +61,34 @@
             &__my{
                 color: $mathRoomContainerBG;
                 background-color: $mathRoomBlueStripe;
+            }
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        &__left{
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        &__right{
+            padding: 10px;
+
+            &__user{
+                h2{
+                    font-size: 25px;
+                }
+    
+                &__points{
+                    h3{
+                        font-size: 20px;
+                    }
+
+                    img{
+                        width: 25px;
+                    }
+                }
             }
         }
     }
