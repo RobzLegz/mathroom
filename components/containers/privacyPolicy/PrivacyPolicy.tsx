@@ -8,7 +8,9 @@ function PrivacyPolicy() {
         <div className="privacyPolicy__container">
             <h1>Privacy Policy</h1>
 
-            <button onClick={() => router.back()}>Back</button>
+            <div className="privacyPolicy__container__button">
+                <button onClick={() => router.back()}>Back</button>
+            </div>
 
             <p>Last Updated: 08.11.2021</p>
             <p>This Privacy Policy (“Policy”) explains the information collection, use, and sharing practices of mathroom.</p>

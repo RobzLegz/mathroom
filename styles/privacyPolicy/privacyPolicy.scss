@@ -19,11 +19,17 @@
             text-align: center;
         }
 
-        button{
-            width: 150px;
-            height: 40px;
-            border-radius: 5px;
-            margin: 10px 0;
+        &__button{
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+
+            button{
+                width: 150px;
+                height: 40px;
+                border-radius: 5px;
+                margin: 10px 0;
+            }
         }
 
         h3{
@@ -41,6 +47,27 @@
 
             li{
                 list-style: circle !important;
+            }
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        padding: 50px 20px;
+
+        &__container{
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        padding: 0;
+
+        &__container{
+            border-radius: 0;
+            padding: 10px;
+
+            &__button{
+                justify-content: center;
             }
         }
     }
