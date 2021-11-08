@@ -4,6 +4,7 @@ import { setActiveRoom, setRooms } from "../../redux/slices/roomSlice";
 import { getSocket } from "../../redux/slices/socketSlice";
 import { createRoom, exitSocketRoom } from "../../socket/options";
 import tasks from "../../data/tasks";
+import censure from "../../middleware/censure";
 
 interface Info{
     username: string;
@@ -47,6 +48,10 @@ const getRoomInfo = (id: string, dispatch: any, router: any) => {
 const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any, isPrivate: boolean, userInfo: User, dispatch: any, router: any) => {
     e.preventDefault();
     dispatch(setNotification({type: "loading", message: "Creating new room!"}));
+
+    if(!censure(roomName)){
+        return dispatch(setNotification({type: "error", message: "This room name is not allowed"}));
+    }
 
     if(!userInfo.token){
         return dispatch(setNotification({type: "error", message: "You must be logged in to create a room!"}));
