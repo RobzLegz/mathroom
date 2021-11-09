@@ -13,12 +13,14 @@ interface State{
     loggedIn: boolean;
     token: string;
     info: null | User;
+    pageLoaded: boolean;
 }
 
 const initialState: State = {
     loggedIn: false,
     token: "",
     info: null,
+    pageLoaded: false,
 }
 
 export const userSlice = createSlice({
@@ -49,6 +51,9 @@ export const userSlice = createSlice({
             state.token = "";
             state.loggedIn = false;
         },
+        load: (state) => {
+            state.pageLoaded = true;
+        },
     },
 });
 
@@ -58,7 +63,8 @@ export const {
     setToken,
     completeLevel,
     passCommunityLevelRedux,
-    logout
+    logout,
+    load
 } = userSlice.actions;
 
 export const selectUser = (state: any) => state.user;
