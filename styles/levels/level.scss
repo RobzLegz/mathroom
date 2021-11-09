@@ -164,6 +164,48 @@
                 flex-direction: column;
                 padding: 20px;
 
+                .clickerContainer{
+                    width: 200px;
+                    height: 200px;
+                    position: relative;
+                    margin-top: -50px;
+                    cursor: pointer;
+
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    &__overlay{
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        pointer-events: none;
+                        
+                        strong{
+                            color: $mathRoomContainerBG;
+                            font-size: 40px;
+                        }
+                    }
+                }
+
+                .resetValue{
+                    width: 100px;
+                    height: 40px;
+                    margin: 10px 0 -40px 0;
+                    transition: all 0.3s ease;
+                    background-color: $mathRoomRed;
+
+                    &:hover{
+                        background-color: $levelRed;
+                    }
+                }
+
                 &__instruction{
                     margin-top: 5px;
                     text-align: center;
