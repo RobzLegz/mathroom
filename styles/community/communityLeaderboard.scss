@@ -15,6 +15,7 @@
         justify-content: flex-start;
         flex-direction: column;
         padding: 20px 0;
+        border-radius: 0 0 0 10px;
         color: $mathRoomGrey;
         background-color: $mathRoomLightGrey;
 
@@ -71,6 +72,18 @@
                 background-color: $mathRoomBlueStripe;
             }
         }
+    }
+
+    @media screen and (max-height: 685px) {
+        height: 440px;
+    }
+
+    @media screen and (max-height: 550px) {
+        height: 390px;
+    }
+
+    @media screen and (max-height: 480px) {
+        height: 340px;
     }
 
     @media screen and (max-width: 650px) {
