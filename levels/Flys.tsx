@@ -12,13 +12,13 @@ interface Props{
     multiplayer: boolean;
 }
 
-const Cookies: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
+const Flys: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedValue, setSelectedValue] = useState<number>(0);
     const [time] = useState<number>(Math.floor((Math.random() * 4) + 2));
-    const [cookies] = useState<number>(Math.floor((Math.random() * 3) + 3));
-    const [correctValue] = useState<number>(time * cookies);
+    const [flys] = useState<number>(Math.floor((Math.random() * 4) + 3));
+    const [correctValue] = useState<number>(time * flys);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -64,7 +64,7 @@ const Cookies: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>Multiply batches of cookies cooked in one hour by total amount of time spent cooking.</p>
+                            <p>Multiply batches of flys cooked in one hour by total amount of time spent cooking.</p>
                             <strong>To change value, click on cookie, but to reset it, click on reset button.</strong>
                         </div>
                         <div className="buttonContainer">
@@ -75,12 +75,12 @@ const Cookies: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
             )}
             
             <div className="level__container__task">
-                <strong>Grandma can cook {cookies} cookies in 1 hour. How many cookies can be cooked in {time} hours?</strong>
+                <strong>Frog can eat {flys} flys in 1 hour. How many flys can frog eat in {time} hours?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
                     <div className="clickerContainer" onClick={() => setSelectedValue(selectedValue + 1)}>
-                        <img src="https://image.flaticon.com/icons/png/512/614/614131.png" alt="cookie" />
+                        <img src="https://img00.deviantart.net/ec34/i/2013/087/8/d/fly_icon_by_slamiticon-d5zeqwe.png" alt="fly" />
                         <div className="clickerContainer__overlay">
                             <strong>{selectedValue}</strong>
                         </div>
@@ -92,11 +92,11 @@ const Cookies: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://i.pinimg.com/originals/61/72/9a/61729a5e040ba3605537bb1441ba7015.jpg" alt="grandma cooking cookies" />
+                    <img src="https://cdn2.iconfinder.com/data/icons/animals-nature-2/50/1F438-frog-512.png" alt="green happy frog" />
                 </div>
             </div>
         </form>
     )
 }
 
-export default Cookies
+export default Flys

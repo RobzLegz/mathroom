@@ -4,9 +4,11 @@ import { useDispatch } from 'react-redux';
 import tasks from '../data/tasks';
 import AccelerationCalculation from '../levels/AccelerationCalculation';
 import AverageSpeed from '../levels/AverageSpeed';
+import CookieHeist from '../levels/CookieHeist';
 import Cookies from '../levels/Cookies';
 import DayAmount from '../levels/DayAmount';
 import DistanceBetween2 from '../levels/DistanceBetween2';
+import Flys from '../levels/Flys';
 import KilometersApart from '../levels/KilometersApart';
 import MminToMh from '../levels/MminToMh';
 import MonthAmount from '../levels/MonthAmount';
@@ -62,6 +64,8 @@ const renderActiveTaskFromType = (type: string, needHelp: boolean, setNeedHelp: 
         case "pool fill": return <PoolFill needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "pool spill": return <PoolSpill needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "cookies": return <Cookies needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "flys": return <Flys needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />
+        case "cookie heist": return <CookieHeist needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />
     }
 
     return null;
