@@ -45,8 +45,16 @@ function CommunityActiveLevel() {
 
         if(communityInfo.activeLevel.correctValue !== enteredValue){
             return dispatch(setNotification({type: "error", message: "Sorry, wrong answer"}))
+        }else{
+
         }
-        passCommunityLevel(id, userInfo.token, dispatch, router)
+
+        if(typeof(id) === "string" && !userInfo.info.passedLevels.includes(id)){
+            passCommunityLevel(id, userInfo.token, dispatch, router)
+        }else{
+            dispatch(setNotification({type: "success", message: "Congrats, You passed this level"}));
+            router.push("/community");
+        }
     }
 
     if(!communityInfo.activeLevel || !userInfo.info){
