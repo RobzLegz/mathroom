@@ -65,4 +65,16 @@
     <th>v2.0.0</th>
     <th>Multiplayer | Community page</th>
   </tr>
+  <tr>
+    <th>v1.0.2</th>
+    <th>Multiplayer | Bug fixes</th>
+  </tr>
+  <tr>
+    <th>v1.0.1</th>
+    <th>Chatroom</th>
+  </tr>
+  <tr>
+    <th>v1.0.0</th>
+    <th>Futere plans</th>
+  </tr>
 </table>
