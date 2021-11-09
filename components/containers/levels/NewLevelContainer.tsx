@@ -50,14 +50,6 @@ function NewLevelContainer() {
             return dispatch(setNotification({type: "error", message: "To change ilustraion URL, click the picture box"}))
         }
 
-        let urlCheckRegex = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/i;
-    
-        let urlCheck = picture.match(urlCheckRegex);
-
-        if(!urlCheck){
-            return dispatch(setNotification({type: "error", message: "Please enter a valid image url"}))
-        }
-        
         setPreview(true);
     }
 
