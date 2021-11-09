@@ -55,3 +55,14 @@
   <li>Install dependencies with yarn <code>cd socket</code> + <code>yarn install</code></li>
   <li>Run socket server <code>yarn dev</code></li>
 </ul>
+<h2>Releases</h2>
+<table>
+  <tr>
+    <th>Release</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <th>v2.0.0</th>
+    <th>Multiplayer | Community page</th>
+  </tr>
+</table>
