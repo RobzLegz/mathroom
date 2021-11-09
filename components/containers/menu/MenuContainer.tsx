@@ -22,7 +22,7 @@ function MenuContainer() {
 
             setTimeout(() => {
                 dispatch(load());
-            }, 11000);
+            }, 9000);
         }
     }, [notificationInfo.type, userInfo.pageLoaded]);
 
