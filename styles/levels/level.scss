@@ -188,8 +188,15 @@
                         pointer-events: none;
                         
                         strong{
-                            color: $mathRoomContainerBG;
                             font-size: 40px;
+                        }
+
+                        .white{
+                            color: $mathRoomContainerBG;
+                        }
+
+                        .red{
+                            color: #ec4806;
                         }
                     }
                 }

@@ -82,7 +82,7 @@ const CookieHeist: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                     <div className="clickerContainer" onClick={() => setSelectedValue(selectedValue + cookies)}>
                         <img src="https://image.flaticon.com/icons/png/512/614/614131.png" alt="cookie" />
                         <div className="clickerContainer__overlay">
-                            <strong>{selectedValue}</strong>
+                            <strong className="white">{selectedValue}</strong>
                         </div>
                     </div>
                     <button className="resetValue" onClick={(e) => {e.preventDefault();setSelectedValue(0)}}>reset</button>

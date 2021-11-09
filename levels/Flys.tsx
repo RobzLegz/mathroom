@@ -64,8 +64,8 @@ const Flys: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>Multiply batches of flys cooked in one hour by total amount of time spent cooking.</p>
-                            <strong>To change value, click on cookie, but to reset it, click on reset button.</strong>
+                            <p>Multiply flys eaten in one hour by amount of time spent eating.</p>
+                            <strong>To change value, click on fly, but to reset it, click on reset button.</strong>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
@@ -82,7 +82,7 @@ const Flys: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                     <div className="clickerContainer" onClick={() => setSelectedValue(selectedValue + 1)}>
                         <img src="https://img00.deviantart.net/ec34/i/2013/087/8/d/fly_icon_by_slamiticon-d5zeqwe.png" alt="fly" />
                         <div className="clickerContainer__overlay">
-                            <strong>{selectedValue}</strong>
+                            <strong className="red">{selectedValue}</strong>
                         </div>
                     </div>
                     <button className="resetValue" onClick={(e) => {e.preventDefault();setSelectedValue(0)}}>reset</button>
