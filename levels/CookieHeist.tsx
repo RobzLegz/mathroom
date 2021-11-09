@@ -12,12 +12,12 @@ interface Props{
     multiplayer: boolean;
 }
 
-const Cookies: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
+const CookieHeist: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
     const userInfo = useSelector(selectUser);
 
     const [selectedValue, setSelectedValue] = useState<number>(0);
-    const [time] = useState<number>(Math.floor((Math.random() * 4) + 2));
-    const [cookies] = useState<number>(Math.floor((Math.random() * 3) + 3));
+    const [time] = useState<number>(Math.floor((Math.random() * 20) + 10));
+    const [cookies] = useState<number>(Math.floor((Math.random() * 4) + 3));
     const [correctValue] = useState<number>(time * cookies);
 
     const dispatch = useDispatch();
@@ -64,8 +64,8 @@ const Cookies: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>Multiply batches of cookies cooked in one hour by total amount of time spent cooking.</p>
-                            <strong>To change value, click on cookie, but to reset it, click on reset button.</strong>
+                            <p>Multiply batches of cookies teken in one second by amount of time left until security arrives.</p>
+                            <strong>To change value, click on cookie, but to reset it, click on reset button. 1 click = {cookies} cookies</strong>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
@@ -75,11 +75,11 @@ const Cookies: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
             )}
             
             <div className="level__container__task">
-                <strong>Grandma can cook {cookies} cookies in 1 hour. How many cookies can be cooked in {time} hours?</strong>
+                <strong>A burglar is robbing a bakery. He is stealing at a rate of {cookies} cookies per second. How many cookies can he get in {time} seconds before security arrives?</strong>
             </div>
             <div className="level__container__options">
                 <div className="level__container__options__tools">
-                    <div className="clickerContainer" onClick={() => setSelectedValue(selectedValue + 1)}>
+                    <div className="clickerContainer" onClick={() => setSelectedValue(selectedValue + cookies)}>
                         <img src="https://image.flaticon.com/icons/png/512/614/614131.png" alt="cookie" />
                         <div className="clickerContainer__overlay">
                             <strong className="white">{selectedValue}</strong>
@@ -92,11 +92,11 @@ const Cookies: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://i.pinimg.com/originals/61/72/9a/61729a5e040ba3605537bb1441ba7015.jpg" alt="grandma cooking cookies" />
+                    <img src="https://image.flaticon.com/icons/png/512/1331/1331380.png" alt="burglar getting cookies" />
                 </div>
             </div>
         </form>
     )
 }
 
-export default Cookies
+export default CookieHeist

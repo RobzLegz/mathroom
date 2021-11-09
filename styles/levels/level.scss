@@ -188,8 +188,15 @@
                         pointer-events: none;
                         
                         strong{
-                            color: $mathRoomContainerBG;
                             font-size: 40px;
+                        }
+
+                        .white{
+                            color: $mathRoomContainerBG;
+                        }
+
+                        .red{
+                            color: #ec4806;
                         }
                     }
                 }
@@ -257,14 +264,14 @@
         }
     }
 
-    @media screen and (max-height: 780px){
-        .activeLevel{
-            margin: 20px 0;
-            overflow-y: scroll;
-        }
-    }
-
     @media screen and (max-width: 875px){
+        @media screen and (max-height: 780px){
+            .activeLevel{
+                margin: 20px 0;
+                overflow-y: scroll;
+            }
+        }
+
         .activeLevel{
             width: 650px;
         }
