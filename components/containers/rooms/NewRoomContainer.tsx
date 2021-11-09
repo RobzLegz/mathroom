@@ -15,7 +15,7 @@ function NewRoomContainer() {
     const [roomName, setRoomName] = useState<string>("");
     const [totalStages, setTotalStages] = useState<string>("");
     const [maxPlayers, setMaxPlayers] = useState<string>("");
-    const [privateRoom, setPrivateRoom] = useState<boolean>(false);
+    // const [privateRoom, setPrivateRoom] = useState<boolean>(false);
 
     useEffect(() => {
         if(!userInfo.loggedIn || !userInfo.token){
@@ -73,14 +73,14 @@ function NewRoomContainer() {
                         <option>40</option>
                     </select>
                 </div>
-                <div className="newRoom__container__form__switcher">
+                {/* <div className="newRoom__container__form__switcher">
                     <div onClick={(e) => {e.preventDefault();setPrivateRoom(true)}} className={`newRoom__container__form__switcher__opt ${privateRoom ? "newRoom__container__form__switcher__opt__active" : ""}`}>Private</div>
                     <div onClick={(e) => {e.preventDefault();setPrivateRoom(false)}} className={`newRoom__container__form__switcher__opt ${privateRoom ? "" : "newRoom__container__form__switcher__opt__active"}`}>Public</div>
-                </div>
+                </div> */}
             </form>
             <div className="newRoom__container__options">
                 <button className="newRoom__container__options__back" onClick={() => router.push("/rooms")}>Back</button>
-                <button className="newRoom__container__options__create" onClick={(e) => newRoom(e, roomName, Number(totalStages), Number(maxPlayers), privateRoom, userInfo, dispatch, router)}>Create</button>
+                <button className="newRoom__container__options__create" onClick={(e) => newRoom(e, roomName, Number(totalStages), Number(maxPlayers), false, userInfo, dispatch, router)}>Create</button>
             </div>
         </div>
     )
