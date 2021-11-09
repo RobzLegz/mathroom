@@ -1,6 +1,8 @@
 const tasks = [
     {type: "cookies"},
+    {type: "cookie heist"},
     {type: "age"},
+    {type: "flys"},
     {type: "time sum"},
     {type: "time difference"},
     {type: "time difference minutes"},
