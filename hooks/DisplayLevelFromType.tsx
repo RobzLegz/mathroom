@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import tasks from '../data/tasks';
 import AccelerationCalculation from '../levels/AccelerationCalculation';
 import AverageSpeed from '../levels/AverageSpeed';
+import Cookies from '../levels/Cookies';
 import DayAmount from '../levels/DayAmount';
 import DistanceBetween2 from '../levels/DistanceBetween2';
 import KilometersApart from '../levels/KilometersApart';
@@ -60,6 +61,7 @@ const renderActiveTaskFromType = (type: string, needHelp: boolean, setNeedHelp: 
         case "distance between2": return <DistanceBetween2 needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "pool fill": return <PoolFill needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "pool spill": return <PoolSpill needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "cookies": return <Cookies needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
     }
 
     return null;

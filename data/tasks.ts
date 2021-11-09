@@ -1,4 +1,5 @@
 const tasks = [
+    {type: "cookies"},
     {type: "age"},
     {type: "time sum"},
     {type: "time difference"},
