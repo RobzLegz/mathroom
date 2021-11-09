@@ -78,3 +78,63 @@
     <th>Futere plans</th>
   </tr>
 </table>
+<h2>Algorythm</h2>
+<h3>To generate a task the only requirement is task type and based on that a level/task is returned</h3>
+  
+```tsx
+const renderActiveTaskFromType = (type: string, needHelp: boolean, setNeedHelp: any, multiplayer: boolean) => {
+    switch(type){
+        case "age": return <TypeAge needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "time sum": return <TimeSum needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "time difference": return <TimeDifference needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "time difference minutes": return <TimeDifferenceMinutes needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "time difference minutes2": return <TimeDifferenceMinutesSecond needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "month amount": return <MonthAmount needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "day amount": return <DayAmount needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "second amount": return <SecondAmount needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "roman numerals": return <RomanNumerals needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "kilometers apart": return <KilometersApart needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "road calculation": return <RoadCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "road calculation2": return <RoadCalculationSecond needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "time calculation": return <TimeCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "m/min to m/h": return <MminToMh needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "speed calculation": return <SpeedCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "acceleration calculation": return <AccelerationCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "uniformly slow motion": return <UniformlySlowMotion needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "time from acceleration + distance": return <TimeAccelerationDistance needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "average speed": return <AverageSpeed needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "distance between2": return <DistanceBetween2 needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "pool fill": return <PoolFill needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "pool spill": return <PoolSpill needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "cookies": return <Cookies needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "flys": return <Flys needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />
+        case "cookie heist": return <CookieHeist needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />
+    }
+
+    return null;
+}
+```
+
+<h3>Algorythm generates a random value when the task/level loads</h3>
+
+```tsx
+    const [selectedValue, setSelectedValue] = useState<number>(0);
+    const [time] = useState<number>(Math.floor((Math.random() * 4) + 2));
+    const [cookies] = useState<number>(Math.floor((Math.random() * 3) + 3));
+    const [correctValue] = useState<number>(time * cookies);
+
+    const completeLevel = (e: any) => {
+        e.preventDefault();
+
+        if(multiplayer){
+            if(selectedValue !== correctValue){
+                return completeSocketLevel(false, dispatch);
+            }
+            return completeSocketLevel(true, dispatch);
+        }
+
+        if(selectedValue !== correctValue){
+            return dispatch(setNotification({type: "error", message: "Incorrect answer!"}));
+        }
+    }
+```
