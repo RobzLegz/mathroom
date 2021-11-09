@@ -12,9 +12,9 @@ function PrivacyPolicy() {
                 <button onClick={() => router.back()}>Back</button>
             </div>
 
-            <p>Last Updated: 08.11.2021</p>
+            <p>Last Updated: 09.11.2021</p>
             <p>This Privacy Policy (“Policy”) explains the information collection, use, and sharing practices of mathroom.</p>
-            <p>Unless otherwise stated, this Policy describes and governs the information collection, use, and sharing practices of mathroom with respect to your use of our website mathroom.vercel.app/ and the services (“education”) we provide.</p>
+            <p>Unless otherwise stated, this Policy describes and governs the information collection, use, and sharing practices of mathroom with respect to your use of our website mathroom.vercel.app and the services (“education”) we provide.</p>
             <p>Before you use or submit any information through or in connection with the Services, please carefully review this Privacy Policy. By using any part of the Services, you understand that your information will be collected, used, and disclosed as outlined in this Privacy Policy.</p>
 
             <h3>Our Principles</h3>
@@ -29,7 +29,7 @@ function PrivacyPolicy() {
 
             <h3>Information We Collect</h3>
 
-            <p>The only information we collect is the user's name and email, even passwords are not stored in the database.We don't collect any cookies and don’t pass the information on to third parties.</p>
+            <p>The only information we collect is the user's name and email, passwords are hashed and the hash is stored in the database whitch means nobody (including database administrators) can see Your passwords. We don't collect any cookies and don’t pass the information on to third parties.</p>
         
             <h3>How We Use Your Information</h3>
 
