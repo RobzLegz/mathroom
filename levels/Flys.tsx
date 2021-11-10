@@ -80,7 +80,7 @@ const Flys: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
             <div className="level__container__options">
                 <div className="level__container__options__tools">
                     <div className="clickerContainer" onClick={() => setSelectedValue(selectedValue + 1)}>
-                        <img src="https://img00.deviantart.net/ec34/i/2013/087/8/d/fly_icon_by_slamiticon-d5zeqwe.png" alt="fly" />
+                        <img src="/levels/fly.png" alt="fly" />
                         <div className="clickerContainer__overlay">
                             <strong className="red">{selectedValue}</strong>
                         </div>
@@ -92,7 +92,7 @@ const Flys: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://cdn2.iconfinder.com/data/icons/animals-nature-2/50/1F438-frog-512.png" alt="green happy frog" />
+                    <img src="/levels/frog.png" alt="green happy frog" />
                 </div>
             </div>
         </form>

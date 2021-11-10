@@ -80,7 +80,7 @@ const Cookies: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
             <div className="level__container__options">
                 <div className="level__container__options__tools">
                     <div className="clickerContainer" onClick={() => setSelectedValue(selectedValue + 1)}>
-                        <img src="https://image.flaticon.com/icons/png/512/614/614131.png" alt="cookie" />
+                        <img src="/levels/cookie.png" alt="cookie" />
                         <div className="clickerContainer__overlay">
                             <strong className="white">{selectedValue}</strong>
                         </div>
@@ -92,7 +92,7 @@ const Cookies: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://i.pinimg.com/originals/61/72/9a/61729a5e040ba3605537bb1441ba7015.jpg" alt="grandma cooking cookies" />
+                    <img src="/levels/grandmaWithCookies.svg" alt="grandma cooking cookies" />
                 </div>
             </div>
         </form>
