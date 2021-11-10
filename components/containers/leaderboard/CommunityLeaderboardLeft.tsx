@@ -12,14 +12,22 @@ function CommunityLeaderboardLeft() {
     const userInfo = useSelector(selectUser);
     const communityInfo = useSelector(selectCommunity);
 
-    const [userInLeaderboard, setUserInLeaderboard] = useState(null);
+    const [userInLeaderboard, setUserInLeaderboard] = useState<number | null>(null);
 
     useEffect(() => {
         if(userInfo.info && communityInfo.users && communityInfo.leaderboardUsers){
             let foundUser = communityInfo.leaderboardUsers.find((user: LeaderboardUser) => user.username === userInfo.info.username);
-            let userIndex = communityInfo.leaderboardUsers.indexOf(foundUser)
+            let sortedUsers = null;
 
-            setUserInLeaderboard(userIndex + 1)
+            if(foundUser){
+                sortedUsers = [...communityInfo.leaderboardUsers].sort((a: LeaderboardUser, b: LeaderboardUser) => (b.points - a.points));
+            }
+
+            if(sortedUsers){
+                let userIndex = sortedUsers.indexOf(foundUser)
+
+                setUserInLeaderboard(userIndex + 1)
+            }
         }
     }, [userInfo.info, communityInfo.users, communityInfo.leaderboardUsers]);
 
