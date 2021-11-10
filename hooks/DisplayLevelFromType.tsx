@@ -10,7 +10,6 @@ import DayAmount from '../levels/DayAmount';
 import DistanceBetween2 from '../levels/DistanceBetween2';
 import Flys from '../levels/Flys';
 import KilometersApart from '../levels/KilometersApart';
-import MminToMh from '../levels/MminToMh';
 import MonthAmount from '../levels/MonthAmount';
 import PoolFill from '../levels/PoolFill';
 import PoolSpill from '../levels/PoolSpill';
@@ -54,7 +53,6 @@ const renderActiveTaskFromType = (type: string, needHelp: boolean, setNeedHelp: 
         case "road calculation": return <RoadCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "road calculation2": return <RoadCalculationSecond needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "time calculation": return <TimeCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
-        case "m/min to m/h": return <MminToMh needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "speed calculation": return <SpeedCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "acceleration calculation": return <AccelerationCalculation needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "uniformly slow motion": return <UniformlySlowMotion needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
