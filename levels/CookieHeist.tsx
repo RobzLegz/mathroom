@@ -80,7 +80,7 @@ const CookieHeist: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
             <div className="level__container__options">
                 <div className="level__container__options__tools">
                     <div className="clickerContainer" onClick={() => setSelectedValue(selectedValue + cookies)}>
-                        <img src="https://image.flaticon.com/icons/png/512/614/614131.png" alt="cookie" />
+                        <img src="/levels/cookie.png" alt="cookie" />
                         <div className="clickerContainer__overlay">
                             <strong className="white">{selectedValue}</strong>
                         </div>
@@ -92,7 +92,7 @@ const CookieHeist: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) => {
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="https://image.flaticon.com/icons/png/512/1331/1331380.png" alt="burglar getting cookies" />
+                    <img src="/levels/burglar.svg" alt="burglar getting cookies" />
                 </div>
             </div>
         </form>

@@ -9,20 +9,27 @@ function MenuContainer() {
     const notificationInfo = useSelector(selectNotifications);
     const userInfo = useSelector(selectUser);
 
-    const [loaded, setLoaded] = useState(false);
+    const [loaded, setLoaded] = useState(true);
     
     const dispatch = useDispatch();
     const router = useRouter();
 
     useEffect(() => {
-        if(notificationInfo.type !== "loading" && !userInfo.pageLoaded){
-            setTimeout(() => {
-                setLoaded(true);
-            }, 4000);
-
-            setTimeout(() => {
-                dispatch(load());
-            }, 9000);
+        if(!window.localStorage.getItem("animationLoaded") && window.localStorage.getItem("animationLoaded") !== "true"){
+            setLoaded(false);
+            if(notificationInfo.type !== "loading" && !userInfo.pageLoaded){
+                setTimeout(() => {
+                    setLoaded(true);
+                }, 4000);
+    
+                setTimeout(() => {
+                    dispatch(load());
+                }, 9000);
+            }
+            window.localStorage.setItem("animationLoaded", "true")
+        }else{
+            dispatch(load());
+            setLoaded(true);
         }
     }, [notificationInfo.type, userInfo.pageLoaded]);
 
