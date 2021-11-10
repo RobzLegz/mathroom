@@ -5,6 +5,7 @@ function InstructionContainer() {
     const authorizationRef = useRef<null | HTMLDivElement>(null);
     const singlePlayerRef = useRef<null | HTMLDivElement>(null);
     const multiplayerRef = useRef<null | HTMLDivElement>(null);
+    const communityRef = useRef<null | HTMLDivElement>(null);
 
     const router = useRouter();
 
@@ -20,19 +21,20 @@ function InstructionContainer() {
                     <li onClick={() => authorizationRef.current?.scrollIntoView({behavior: "smooth"})}>Authorization</li>
                     <li onClick={() => singlePlayerRef.current?.scrollIntoView({behavior: "smooth"})}>Single player</li>
                     <li onClick={() => multiplayerRef.current?.scrollIntoView({behavior: "smooth"})}>Multiplayer</li>
+                    <li onClick={() => communityRef.current?.scrollIntoView({behavior: "smooth"})}>Community</li>
                 </ul>
             </div>
 
             <div className="instructionContainer" ref={authorizationRef}>
                 <h3>Authorization</h3>
-                <img src="/instructions/1.png" alt="" />
+                <img src="/instructions/1.png" alt="mathroom user manual description" />
                 <ul>
                     <li>1. Clicking this button will redirect You to login page.</li>
                     <li>2. Clicking this button will redirect You to register page.</li>
                     <li>3. This button redirects You to this page.</li>
                 </ul>
                 <h3>Register</h3>
-                <img src="/instructions/2.png" alt="" />
+                <img src="/instructions/2.png" alt="mathroom user manual description" />
                 <ul>
                     <li>4. Enter Your username.</li>
                     <li>5. Enter Your email.</li>
@@ -43,9 +45,9 @@ function InstructionContainer() {
                 </ul>
             </div>
 
-            <div className="instructionContainer" ref={singlePlayerRef}>
-                <h3>Register</h3>
-                <img src="/instructions/3.png" alt="" />
+            <div className="instructionContainer">
+                <h3>Login</h3>
+                <img src="/instructions/3.png" alt="mathroom user manual description" />
                 <ul>
                     <li>10. Enter your account email.</li>
                     <li>11. Enter your account password.</li>
@@ -54,9 +56,9 @@ function InstructionContainer() {
                 </ul>
             </div>
              
-            <div className="instructionContainer" ref={singlePlayerRef}>
+            <div className="instructionContainer">
                 <h3>Main menu</h3>
-                <img src="/instructions/4.png" alt="" />
+                <img src="/instructions/4.png" alt="mathroom user manual description" />
               
                 <ul>
                     <li>14. If you want to play singleplayer, click this button.</li>
@@ -69,7 +71,7 @@ function InstructionContainer() {
 
             <div className="instructionContainer" ref={singlePlayerRef}>
                 <h3>Single player</h3>
-                <img src="/instructions/5.png" alt="" />
+                <img src="/instructions/5.png" alt="mathroom user manual description" />
                 <ul>
                     <li>19. If you want to go back to the home page.</li>
                     <li>20. If you want to create a new exercise that will appear in the community.</li>
@@ -77,9 +79,9 @@ function InstructionContainer() {
                 </ul>
             </div>
 
-            <div className="instructionContainer" ref={singlePlayerRef}>
+            <div className="instructionContainer">
                 <h3>Single player</h3>
-                <img src="/instructions/6.png" alt="" />
+                <img src="/instructions/6.png" alt="mathroom user manual description" />
                 <ul>
                     <li>22. If you want to exit, click this button.</li>
                     <li>23. If you need a hint to solve this level, click this button.</li>
@@ -89,17 +91,17 @@ function InstructionContainer() {
                 </ul>
             </div>
 
-            <div className="instructionContainer" ref={singlePlayerRef}>
+            <div className="instructionContainer">
                 <h3>Single player</h3>
-                <img src="/instructions/7.png" alt="" />
+                <img src="/instructions/7.png" alt="mathroom user manual description" />
                 <ul>
                     <li>27. If you already have done this exercise, doing it again, you can skip it if you want.</li>
                 </ul>
             </div>
 
-            <div className="instructionContainer" ref={singlePlayerRef}>
+            <div className="instructionContainer" ref={multiplayerRef}>
                 <h3>Multiplayer</h3>
-                <img src="/instructions/8.png" alt="" />
+                <img src="/instructions/8.png" alt="mathroom user manual description" />
                 <ul>
                     <li>28. To go back.</li>
                     <li>29. Create a new room that other people can join and play together.</li>
@@ -110,9 +112,9 @@ function InstructionContainer() {
                 </ul>
             </div>
 
-            <div className="instructionContainer" ref={singlePlayerRef}>
+            <div className="instructionContainer">
                 <h3>Multiplayer</h3>
-                <img src="/instructions/9.png" alt="" />
+                <img src="/instructions/9.png" alt="mathroom user manual description" />
                 <ul>
                     <li>34. Name of the room.</li>
                     <li>35. Amount of stages/tasks Your room will have.</li>
@@ -124,9 +126,9 @@ function InstructionContainer() {
                 </ul>
             </div>
 
-            <div className="instructionContainer" ref={singlePlayerRef}>
+            <div className="instructionContainer">
                 <h3>Multiplayer</h3>
-                <img src="/instructions/10.png" alt="" />
+                <img src="/instructions/10.png" alt="mathroom user manual description" />
                 <ul>
                     <li>41. Name of the room You have joined.</li>
                     <li>42. Amount of players in Your room.</li>
@@ -137,9 +139,9 @@ function InstructionContainer() {
                 </ul>
             </div>
 
-            <div className="instructionContainer" ref={singlePlayerRef}>
+            <div className="instructionContainer" ref={communityRef}>
                 <h3>Community</h3>
-                <img src="/instructions/11.png" alt="" />
+                <img src="/instructions/11.png" alt="mathroom user manual description" />
                 <ul>
                     <li>47. Levels that are now acceptable.</li>
                     <li>48. A leader board shows players and how many points they have.</li>
@@ -159,17 +161,17 @@ function InstructionContainer() {
                 </ul>
             </div>
 
-            <div className="instructionContainer" ref={singlePlayerRef}>
+            <div className="instructionContainer">
                 <h3>Community</h3>
-                <img src="/instructions/12.png" alt="" />
+                <img src="/instructions/12.png" alt="mathroom user manual description" />
                 <ul>
                     <li>59. If exercise has a green border around it, it means you already have accomplished it before.</li>
                 </ul>
             </div>
 
-            <div className="instructionContainer" ref={singlePlayerRef}>
+            <div className="instructionContainer">
                 <h3>Community</h3>
-                <img src="/instructions/14.png" alt="" />
+                <img src="/instructions/14.png" alt="mathroom user manual description" />
                 <ul>
                     <li>62. Your place in the rating.</li>
                     <li>63. Number of your points.</li>
@@ -177,9 +179,9 @@ function InstructionContainer() {
                 </ul>
             </div>
 
-            <div className="instructionContainer" ref={singlePlayerRef}>
+            <div className="instructionContainer">
                 <h3>Community</h3>
-                <img src="/instructions/15.png" alt="" />
+                <img src="/instructions/15.png" alt="mathroom user manual description" />
                 <ul>
                     <li>65. This is the place where you can type the name of the user you want to find.</li>
                     <li>66. Button to start search.</li>
@@ -188,9 +190,9 @@ function InstructionContainer() {
                 </ul>
             </div>
 
-            <div className="instructionContainer" ref={singlePlayerRef}>
+            <div className="instructionContainer">
                 <h3>Community</h3>
-                <img src="/instructions/13.png" alt="" />
+                <img src="/instructions/13.png" alt="mathroom user manual description" />
                 <ul>
                     <li>69. If you want to exit.</li>
                     <li>70. Players name.</li>
