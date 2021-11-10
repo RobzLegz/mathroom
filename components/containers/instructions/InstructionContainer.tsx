@@ -17,7 +17,7 @@ function InstructionContainer() {
                     <h2>Instruction</h2>
                 </header>
                 <ul className="instructionPage__container__contentContainer__body">
-                    <li onClick={() => router.push("/menu")}><h3>Main menu</h3></li> 
+                    <li onClick={() => router.push("/menu")}><h3>Main menu</h3></li>
                     <li onClick={() => authorizationRef.current?.scrollIntoView({behavior: "smooth"})}>Authorization</li>
                     <li onClick={() => singlePlayerRef.current?.scrollIntoView({behavior: "smooth"})}>Single player</li>
                     <li onClick={() => multiplayerRef.current?.scrollIntoView({behavior: "smooth"})}>Multiplayer</li>
