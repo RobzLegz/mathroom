@@ -138,3 +138,13 @@ const renderActiveTaskFromType = (type: string, needHelp: boolean, setNeedHelp: 
         }
     }
 ```
+
+<h2>Screenshots</h2>
+
+<img src="readme/menu.png" />
+<img src="readme/levels.png" />
+<img src="readme/level.png" />
+<img src="readme/room.png" />
+<img src="readme/smallLeaderboard.png" />
+<img src="readme/community.png" />
+<img src="readme/leaderboard.png" />
