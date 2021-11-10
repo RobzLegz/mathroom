@@ -11,6 +11,7 @@
     display: flex;
     justify-content: space-between;
     padding-right: 20px;
+    animation: loadNotif 0.5s ease;
     font-family: $roomFont;
     background-color: $mathRoomContainerBG;
 
@@ -51,9 +52,11 @@
 
     &__right{
         height: 100%;
-        padding: 20px 10px 0 20px;
+        padding: 20px 10px 0 5px;
 
         &__close{
+            width: 20px;
+            height: 20px;
             position: relative;
             cursor: pointer;
     
@@ -78,5 +81,14 @@
 
     @media screen and (max-width: 700px){
         width: 100%;
+    }
+}
+
+@keyframes loadNotif{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
     }
 }

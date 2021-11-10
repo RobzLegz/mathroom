@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { clearNotification, selectNotifications } from "../../redux/slices/notificationSlice";
 
@@ -6,6 +6,14 @@ function Notification() {
     const notificationInfo = useSelector(selectNotifications);
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if(notificationInfo.message){
+            setTimeout(() => {
+                dispatch(clearNotification());
+            }, 10000);
+        }
+    }, [notificationInfo.message]);
 
     if(notificationInfo.type === "error"){
         return (
