@@ -19,7 +19,6 @@ const tasks = [
     {type: "speed calculation"},
     {type: "road calculation2"},
     {type: "distance between2"},
-    {type: "m/min to m/h"},
     {type: "average speed"},
     {type: "uniformly slow motion"},
     {type: "acceleration calculation"},
