@@ -52,10 +52,6 @@ function PrivacyPolicy() {
             <h3>Changes to this Privacy Policy</h3>
 
             <p>We will continue to evaluate this Privacy Policy as we update and expand our Services, and we may make changes to the Privacy Policy accordingly. We will post any changes here and revise the date last updated above. We encourage you to check this page periodically for updates to stay informed on how we collect, use and share your information. If we make material changes to this Privacy Policy, we will provide you with notice.</p>
-        
-            <h3>Questions About this Privacy Policy</h3>
-
-            <p>If you have any questions about this Privacy Policy or our privacy practices, you can contact us at: robzlegz@gmail.com</p>
         </div>
     )
 }
