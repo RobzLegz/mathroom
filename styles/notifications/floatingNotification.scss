@@ -1,0 +1,42 @@
+@import "../variables.scss";
+
+.floatingNotification{
+    width: 80%;
+    max-width: 500px;
+    height: 300px;
+    position: fixed;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    animation: popup 3s ease;
+    background-color: $mathRoomContainerBG;
+
+    &__green{
+        border: 5px solid $levelGreen;
+    }
+
+    &__red{
+        border: 5px solid $levelRed;
+    }
+
+    img{
+        width: 200px;
+    }
+}
+
+@keyframes popup{
+    0%{
+        opacity: 0;
+        top: 90%;
+    }
+    50%{
+        opacity: 1;
+        top: 40%;
+    }
+    100%{
+        opacity: 0;
+        top: -20%;
+    }
+}
