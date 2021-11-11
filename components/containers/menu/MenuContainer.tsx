@@ -55,13 +55,15 @@ function MenuContainer() {
                 <button disabled={!userInfo.loggedIn || !userInfo.token} className={`button button__${!userInfo.loggedIn || !userInfo.token ? "disabled" : "enabled"}`} onClick={() => {if(!userInfo.loggedIn || !userInfo.token){return dispatch(setNotification({type: "error", message: "You must be logged in to play games!"}))}router.push("/community")}}>Community</button>
                 
                 {userInfo.loggedIn || userInfo.token ? (
-                    <div className="menu__container__options__two">
-                        <button onClick={() => router.push("/instructions")}>Instructions</button>
-                        <button onClick={() => router.push(`/community/user/${userInfo.info.username}`)}>Profile</button>
-                    </div>
+                    <button className="button" onClick={() => router.push(`/community/user/${userInfo.info.username}`)}>Profile</button>
                 ) : (
-                    <button className="button" onClick={() => router.push("/instructions")}>Instructions</button>
+                    null
                 )}
+                    
+                <div className="menu__container__options__two">
+                    <button onClick={() => router.push("/instructions")}>Instructions</button>
+                    <button onClick={() => router.push(`/community/user/${userInfo.info.username}`)}>Credits</button>
+                </div>
             </div>
 
             <div className="menu__container__decorations">
