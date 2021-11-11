@@ -10,6 +10,11 @@
   <img src="https://www.codefactor.io/repository/github/robzlegz/mathroom/badge?s=65345c4c7d8a505daf62b78d23b534e535d39010" />
 </p>
 <br />
+<h2>Trailer</h2>
+<p>Scan the QR code or <a href="http://www.youtube.com/watch?v=GiuGMRkt9ak">click here</a> to watch trailer</p>
+<a href="http://www.youtube.com/watch?v=GiuGMRkt9ak">
+  <img src="readme/mathroom-trailer-qr.png" />
+</a>
 <h2>Contributors:</h2>
 <ul>
   <li><a href="https://github.com/RobzLegz">@RobzLegz</a> - Full stack developer, project manager</li>
