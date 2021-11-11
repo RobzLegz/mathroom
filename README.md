@@ -14,7 +14,7 @@
 <ul>
   <li><a href="https://github.com/RobzLegz">@RobzLegz</a> - Full stack developer, project manager</li>
   <li><a href="https://github.com/Neetrah">@Neetrah</a> - Designer</li>
-  <li><a href="https://github.com/Sanvirus">@Sanvirus</a> - Tasks, game logic</li>
+  <li><a href="https://github.com/Sanvirus">@Sanvirus</a> - Tasks, privacy policy, game logic</li>
 </ul>
 <h2>Tech stack:</h2>
 <table>
