@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { clearNotification, selectNotifications } from "../../redux/slices/notificationSlice";
 
@@ -7,7 +7,23 @@ function Notification() {
 
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        if(notificationInfo.message === "Incorrect answer!" || notificationInfo.message === "Congrats, You answered correctly!"){
+            setTimeout(() => {
+                dispatch(clearNotification());
+            }, 3000);
+        }
+    }, [notificationInfo.message]);
+
     if(notificationInfo.type === "error"){
+        if(notificationInfo.message === "Incorrect answer!"){
+            return (
+                <div className="floatingNotification floatingNotification__red">
+                    <img src="/svg/cross.svg" alt="white cross inside a red circle" />
+                </div>
+            )
+        }
+
         return (
             <div className="notification">
                 <div className="notification__left">
@@ -24,6 +40,14 @@ function Notification() {
             </div>
         )
     }else if(notificationInfo.type === "success"){
+        if(notificationInfo.message === "Congrats, You answered correctly!"){
+            return (
+                <div className="floatingNotification floatingNotification__green">
+                    <img src="/svg/correct.svg" alt="white cross inside a red circle" />
+                </div>
+            )
+        }
+
         return (
             <div className="notification">
                 <div className="notification__left">
