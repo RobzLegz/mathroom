@@ -14,39 +14,44 @@ interface Props{
 
 const options = [
     {
-        image: "/levels/clock1.jpg",
+        image: "/levels/clock1.svg",
         correct: "00:06",
         correct2: "12:06",
     },
     {
-        image: "/levels/clock2.jpg",
+        image: "/levels/clock2.svg",
         correct: "22:08",
         correct2: "10:08",
     },
     {
-        image: "/levels/clock3.jpg",
+        image: "/levels/clock3.svg",
         correct: "15:09",
         correct2: "03:09",
     },
     {
-        image: "/levels/clock4.jpg",
+        image: "/levels/clock4.svg",
         correct: "15:00",
         correct2: "03:00",
     },
     {
-        image: "/levels/clock5.jpg",
+        image: "/levels/clock5.svg",
         correct: "23:45",
         correct2: "11:45",
     },
     {
-        image: "/levels/clock6.jpg",
+        image: "/levels/clock6.svg",
         correct: "02:50",
         correct2: "14:50",
     },
     {
-        image: "/levels/clock7.jpg",
+        image: "/levels/clock7.svg",
         correct: "14:17",
         correct2: "02:17",
+    },
+    {
+        image: "/levels/clock8.svg",
+        correct: "07:25",
+        correct2: "19:25",
     },
 ]
 
