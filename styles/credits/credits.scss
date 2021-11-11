@@ -1,0 +1,59 @@
+@import "../variables.scss";
+
+.credits{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $roomFont;
+    background-color: $mathRoomDarkerPurple;
+
+    &__container{
+        overflow-y: scroll;
+        width: 700px;
+        height: 700px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+
+        h1{
+            font-size: 70px;
+            color: $mathRoomContainerBG;
+        }
+
+        button{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 150px;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+        &__credit{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 10px 0;
+            padding: 5px 10px;
+            
+            img{
+                width: 50px;
+            }
+
+            h4{
+                margin-left: 20px;
+                font-size: 20px;
+                color: $mathRoomContainerBG;
+
+                span, 
+                a{
+                    color: $mathRoomLinkBlue;
+                }
+            }
+        }
+    }
+}

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import React from 'react'
 
 const credits = [
@@ -27,10 +28,6 @@ const credits = [
     },
     {
         image: "/png/coin.png",
-        author: "Freepik"
-    },
-    {
-        image: "/levels/pay.png",
         author: "Freepik"
     },
     {
@@ -88,14 +85,19 @@ const credits = [
 ];
 
 function CreditContainer() {
+    const router = useRouter();
+
     return (
         <div className="credits__container">
+            <h1>Credits</h1>
+            <button onClick={() => router.push("/menu")}>Back</button>
+
             {
                 credits.map((credit, i: number) => {
                     return(
                         <div className="credits__container__credit" key={i}>
                             <img src={credit.image} alt={`Icon made by ${credit.author} from flaticon`} />
-                            <h4>Icon made by {credit.author} from <a href="https://flaticon.com">www.flaticon.com</a></h4>
+                            <h4>Icon made by <span>{credit.author}</span> from <a href="https://flaticon.com">www.flaticon.com</a></h4>
                         </div>
                     )
                 })
