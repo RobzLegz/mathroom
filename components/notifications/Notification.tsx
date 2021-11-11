@@ -11,7 +11,7 @@ function Notification() {
         if(notificationInfo.message === "Incorrect answer!" || notificationInfo.message === "Congrats, You answered correctly!"){
             setTimeout(() => {
                 dispatch(clearNotification());
-            }, 3000);
+            }, 2900);
         }
     }, [notificationInfo.message]);
 
