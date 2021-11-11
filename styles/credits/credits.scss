@@ -56,4 +56,32 @@
             }
         }
     }
+
+    @media screen and (max-width: 800px) {
+        &__container{
+            width: 600px;
+
+            button{
+                position: relative;
+                margin: 10px 0;
+                padding: 10px 10px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        &__container{
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        &__container{
+            &__credit{
+                h4{
+                    font-size: 16px;
+                }
+            }
+        }
+    }
 }
