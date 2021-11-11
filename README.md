@@ -67,6 +67,10 @@
     <th>Description</th>
   </tr>
   <tr>
+    <th>v2.0.1</th>
+    <th>Credits | Bug fixes | Privacy policy</th>
+  </tr>
+  <tr>
     <th>v2.0.0</th>
     <th>Multiplayer | Community page</th>
   </tr>
