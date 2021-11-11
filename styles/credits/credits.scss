@@ -57,6 +57,18 @@
         }
     }
 
+    @media screen and (max-height: 800px) {
+        &__container{
+            height: 600px;
+        }
+    }
+
+    @media screen and (max-height: 650px) {
+        &__container{
+            height: 100%;
+        }
+    }
+
     @media screen and (max-width: 800px) {
         &__container{
             width: 600px;
@@ -72,6 +84,7 @@
     @media screen and (max-width: 650px) {
         &__container{
             width: 100%;
+            height: 100%;
         }
     }
 
