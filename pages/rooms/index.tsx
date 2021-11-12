@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import Head from "next/head"
 import RoomContainer from "../../components/containers/rooms/RoomContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../../redux/slices/userSlice";
+import { selectUser, setPrevURL } from "../../redux/slices/userSlice";
 import { checkForLogin } from "../../requests/auth/requests";
 import { useRouter } from "next/dist/client/router";
 import Notification from "../../components/notifications/Notification";
@@ -22,6 +22,8 @@ const index: React.FC = () => {
             checkForLogin(dispatch, router);
           }
         }
+
+        dispatch(setPrevURL(router.pathname));
     }, [userInfo.loggedIn, dispatch, userInfo.token, router]);
 
     return (

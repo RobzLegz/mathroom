@@ -14,6 +14,7 @@ interface State{
     token: string;
     info: null | User;
     pageLoaded: boolean;
+    prevURL: null | string;
 }
 
 const initialState: State = {
@@ -21,6 +22,7 @@ const initialState: State = {
     token: "",
     info: null,
     pageLoaded: false,
+    prevURL: null
 }
 
 export const userSlice = createSlice({
@@ -54,6 +56,9 @@ export const userSlice = createSlice({
         load: (state) => {
             state.pageLoaded = true;
         },
+        setPrevURL: (state, action) => {
+            state.prevURL = action.payload;
+        },
     },
 });
 
@@ -64,7 +69,8 @@ export const {
     completeLevel,
     passCommunityLevelRedux,
     logout,
-    load
+    load,
+    setPrevURL
 } = userSlice.actions;
 
 export const selectUser = (state: any) => state.user;

@@ -3,7 +3,7 @@ import Head from "next/head"
 import GameBackground from '../../../components/background/GameBackground';
 import CommunityPageContainer from '../../../components/containers/community/CommunityPageContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../../redux/slices/userSlice';
+import { selectUser, setPrevURL } from '../../../redux/slices/userSlice';
 import { useRouter } from 'next/dist/client/router';
 import { checkForLogin } from '../../../requests/auth/requests';
 import Notification from '../../../components/notifications/Notification';
@@ -28,12 +28,16 @@ function index() {
     }, [userInfo.loggedIn, dispatch, userInfo.token]);
 
     useEffect(() => {
+        if(router.pathname !== "/menu"){
+            dispatch(setPrevURL(router.pathname));
+        }
+
         if(userInfo.info && userInfo.info.role !== "admin"){
             router.push("/community");
         }else if(userInfo.info && userInfo.info.role === "admin" && userInfo.token && !adminInfo.levels){
             getUnreviewedLevels(userInfo.token, dispatch);
         }
-    }, [userInfo.info]);
+    }, [userInfo.info, router]);
 
     if(!userInfo.info){
         return null;
