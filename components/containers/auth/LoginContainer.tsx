@@ -32,9 +32,9 @@ function LoginContainer() {
             <h1 onClick={() => router.push("/menu")}>Log in</h1>
             <div className="auth__container__form">
                 <div className="auth__container__form__field">
-                    <label htmlFor="login_email">email</label>
+                    <label htmlFor="login_email">Email</label>
                     <input
-                        type="email"
+                        type="Email"
                         name="login_email"
                         id="login_email"
                         placeholder="email"
@@ -44,9 +44,9 @@ function LoginContainer() {
                     />
                 </div>
                 <div className="auth__container__form__field">
-                    <label htmlFor="login_password">password</label>
+                    <label htmlFor="login_password">Password</label>
                     <input
-                        type="password"
+                        type="Password"
                         name="login_password"
                         id="login_password"
                         placeholder="password"
