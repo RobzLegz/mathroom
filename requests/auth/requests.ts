@@ -93,31 +93,26 @@ const checkForLogin = (dispatch: any, router: any) => {
     const first_login = window.localStorage.getItem("firstLogin");
     const rf_token = window.localStorage.getItem("refreshtoken");
 
-    if(rf_token){
+    if(rf_token && first_login){
         const headers = {
             headers: {
                 Authorization: rf_token
             }
         }
         
-        if(first_login){
-            axios.get("/api/auth/accessToken", headers)
-                .then((res: any) => {
-                    dispatch(setToken(res.data.access_token));
-                    dispatch(setUserInfo(res.data.user));
-                    dispatch(login());
-                    dispatch(clearNotification());
-                }).catch((err) => {
-                    const message: string = err.response.data.err;
-                    dispatch(setNotification({type: "error", message: message}));
-                    window.localStorage.removeItem("firstLogin");
-                    window.localStorage.removeItem("refreshtoken");
-                    router.push("/auth/login");
-                });
-        }else{
-            router.push("/auth/login");
-            dispatch(clearNotification());
-        }
+        axios.get("/api/auth/accessToken", headers)
+            .then((res: any) => {
+                dispatch(setToken(res.data.access_token));
+                dispatch(setUserInfo(res.data.user));
+                dispatch(login());
+                dispatch(clearNotification());
+            }).catch((err) => {
+                const message: string = err.response.data.err;
+                dispatch(setNotification({type: "error", message: message}));
+                window.localStorage.removeItem("firstLogin");
+                window.localStorage.removeItem("refreshtoken");
+                router.push("/auth/login");
+            });
     }else{
         router.push("/auth/login");
         dispatch(clearNotification());
