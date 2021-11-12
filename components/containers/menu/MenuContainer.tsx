@@ -15,6 +15,11 @@ function MenuContainer() {
     const router = useRouter();
 
     useEffect(() => {
+        if(userInfo.prevURL){
+            dispatch(load());
+            return setLoaded(true);
+        }
+        
         if(notificationInfo.type !== "loading" && !userInfo.pageLoaded && !userInfo.prevURL){
             setTimeout(() => {
                 setLoaded(true);
