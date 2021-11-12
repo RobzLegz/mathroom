@@ -35,9 +35,9 @@ function RegisterContainer() {
             <h1 onClick={() => router.push("/menu")}>Register</h1>
             <div className="auth__container__form">
                 <div className="auth__container__form__field">
-                    <label htmlFor="register_username">username</label>
+                    <label htmlFor="register_username">Username</label>
                     <input
-                        type="username"
+                        type="Username"
                         name="register_username"
                         id="register_username"
                         placeholder="username"
@@ -47,9 +47,9 @@ function RegisterContainer() {
                     />
                 </div>
                 <div className="auth__container__form__field">
-                    <label htmlFor="register_email">email</label>
+                    <label htmlFor="register_email">Email</label>
                     <input
-                        type="email"
+                        type="Email"
                         name="register_email"
                         id="register_email"
                         placeholder="email"
@@ -59,9 +59,9 @@ function RegisterContainer() {
                     />
                 </div>
                 <div className="auth__container__form__field">
-                    <label htmlFor="register_password">password</label>
+                    <label htmlFor="register_password">Password</label>
                     <input
-                        type="password"
+                        type="Password"
                         name="register_password"
                         id="register_password"
                         placeholder="password"
@@ -71,9 +71,9 @@ function RegisterContainer() {
                     />
                 </div>
                 <div className="auth__container__form__field">
-                    <label htmlFor="register_cf_password">password again</label>
+                    <label htmlFor="register_cf_password">Password again</label>
                     <input
-                        type="password"
+                        type="Password"
                         name="register_cf_password"
                         id="register_cf_password"
                         placeholder="confirm password"
@@ -86,7 +86,7 @@ function RegisterContainer() {
                     <p>Already have an account? <Link href="/auth/login">Login</Link></p>
                 </div>
                 <div className="auth__container__form__privacyPolicy">
-                    <div className={`auth__container__form__privacyPolicy__checkbox ${agreedToPrivacyPolicy ? "auth__container__form__privacyPolicy__checkbox__agreed" : ""}`} onClick={() => setAgreedToPrivacyPolicy(!agreedToPrivacyPolicy)}>{agreedToPrivacyPolicy && (<img src="/png/white-check-mark.png" alt="white check mark" />)}</div>
+                    <div className={`auth__container__form__privacyPolicy__checkbox ${agreedToPrivacyPolicy ? "auth__container__form__privacyPolicy__checkbox__agreed" : ""}`} onClick={() => {setAgreedToPrivacyPolicy(!agreedToPrivacyPolicy);setClicked(false)}}>{agreedToPrivacyPolicy && (<img src="/png/white-check-mark.png" alt="white check mark" />)}</div>
                     <p>I agree to your <Link href="/privacy-policy">privacy policy</Link></p>
                 </div>
                 <button disabled={clicked} onClick={(e) => registerUser(e, username, email, password, cfPassword, agreedToPrivacyPolicy, dispatch, router, clicked, setClicked)}>Register</button>
