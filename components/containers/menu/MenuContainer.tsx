@@ -60,7 +60,7 @@ function MenuContainer() {
                     
                 <div className="menu__container__options__two">
                     <button onClick={() => router.push("/instructions")}>Instructions</button>
-                    <button onClick={() => router.push(`/community/user/${userInfo.info.username}`)}>Credits</button>
+                    <button onClick={() => router.push("/credits")}>Credits</button>
                 </div>
             </div>
 
