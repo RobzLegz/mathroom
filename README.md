@@ -1,6 +1,6 @@
 <a href="https://mathroom.vercel.app">
   <p align="center">
-    <img src="/public/svg/logo.svg" />
+    <a href="https://mathroom.vercel.app"><img src="/public/svg/logo.svg" /></a>
   </p>
 </a>
 <p align="center">
