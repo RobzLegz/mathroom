@@ -5,6 +5,7 @@ import tasks from '../data/tasks';
 import AccelerationCalculation from '../levels/AccelerationCalculation';
 import AverageSpeed from '../levels/AverageSpeed';
 import BatteryCharging from '../levels/BatteryCharging';
+import BatteryPercentage from '../levels/BatteryPercentage';
 import CookieHeist from '../levels/CookieHeist';
 import Cookies from '../levels/Cookies';
 import DayAmount from '../levels/DayAmount';
@@ -46,6 +47,7 @@ const renderActiveTaskFromType = (type: string, needHelp: boolean, setNeedHelp: 
         case "battery charging": return <BatteryCharging needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "time difference": return <TimeDifference needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "time difference minutes": return <TimeDifferenceMinutes needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
+        case "battery percecntage": return <BatteryPercentage needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />
         case "time difference minutes2": return <TimeDifferenceMinutesSecond needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "month amount": return <MonthAmount needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
         case "day amount": return <DayAmount needHelp={needHelp} setNeedHelp={setNeedHelp} multiplayer={multiplayer} />;
