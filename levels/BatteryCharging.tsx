@@ -80,8 +80,7 @@ const BatteryCharging: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) 
                             <div className="line2"></div>
                         </div>
                         <div className="level__container__tip__inner__text">
-                            <p>Multiply batches of cookies cooked in one hour by total amount of time spent cooking.</p>
-                            <strong>To change value, click on cookie, but to reset it, click on reset button.</strong>
+                            <p>Divide 100 by charging speed to get the time.</p>
                         </div>
                         <div className="buttonContainer">
                             <button onClick={() => setNeedHelp(false)}>Okay</button>
