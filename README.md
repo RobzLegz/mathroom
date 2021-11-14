@@ -33,7 +33,7 @@
     <th>Typescript</th>
   </tr>
   <tr>
-    <th>Frontend</th>
+    <th>Framework</th>
     <th>NextJS</th>
   </tr>
   <tr>
@@ -46,7 +46,7 @@
   </tr>
   <tr>
     <th>Stylesheet</th>
-    <th>Sass/Scss</th>
+    <th>Scss</th>
   </tr>
   <tr>
     <th>PacMan</th>
