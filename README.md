@@ -72,6 +72,10 @@
     <th>Description</th>
   </tr>
   <tr>
+    <th>v2.0.3</th>
+    <th>New levels | Bug fixes</th>
+  </tr>
+  <tr>
     <th>v2.0.2</th>
     <th>Bug fixes</th>
   </tr>
