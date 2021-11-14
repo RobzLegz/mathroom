@@ -73,19 +73,24 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
         return dispatch(setNotification({type: "error", message: "Please select the maximum number of players who will be able to join!"}));
     }
 
-    let sendTasks: Task[] = [];
-    let pushedtasks: number[] = [];
+    let randomTasks: Task[] = [];
+    let randomNumbers: number[] = [];
 
-    let randomTask = Math.floor(Math.random() * (tasks.length - 1));
+    let randomTask = Math.floor(Math.random() * tasks.length);
 
-    while(sendTasks.length < totalStages && sendTasks.length < tasks.length){
-        while(pushedtasks.includes(randomTask)){
-            randomTask = Math.floor(Math.random() * (tasks.length - 1));
+    while (randomNumbers.length < totalStages){
+        while(randomNumbers.includes(randomTask)){
+            randomTask = Math.floor(Math.random() * tasks.length);
         }
 
-        sendTasks.push(tasks[randomTask]);
-        pushedtasks.push(randomTask);
+        randomNumbers.push(randomTask);
     }
+
+
+    randomNumbers.forEach((number) => {
+        randomTasks.push(tasks[number]);
+    })
+
 
     const headers = {
         headers: {
@@ -98,7 +103,7 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
         totalStages: totalStages,
         maxPlayers: maxPlayers,
         isPrivate: isPrivate,
-        tasks: sendTasks
+        tasks: randomTasks
     }
 
     axios.post("/api/rooms", data, headers)
@@ -106,7 +111,7 @@ const newRoom = (e: any, roomName: string, totalStages: number, maxPlayers: any,
             const roomId: string = res.data.roomId;
 
             if(roomId){
-                createRoom(roomName, totalStages, maxPlayers, isPrivate, sendTasks, userInfo.info, roomId, dispatch, router);
+                createRoom(roomName, totalStages, maxPlayers, isPrivate, randomTasks, userInfo.info, roomId, dispatch, router);
             }
         }).catch((err) => {
             if(err && err.response && err.response.data){
