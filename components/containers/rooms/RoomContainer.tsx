@@ -81,8 +81,10 @@ const RoomContainer: React.FC = () => {
     }, [socketInfo.connected, dispatch, roomInfo.rooms, resetRooms, getSocket()]);
 
     useEffect(() => {
-        getRooms(dispatch);
-    }, []);
+        if(!roomInfo.rooms){
+            getRooms(dispatch);
+        }
+    }, [dispatch, roomInfo.rooms]);
 
     return (
         <div className="roomPage__container">
