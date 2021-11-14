@@ -8,7 +8,7 @@ function Notification() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(notificationInfo.message === "Incorrect answer!" || notificationInfo.message === "Congrats, You answered correctly!"){
+        if(notificationInfo.message === "Incorrect answer!" || notificationInfo.message === "Congrats, You answered correctly!" || notificationInfo.message === "Wrong answer!"){
             setTimeout(() => {
                 dispatch(clearNotification());
             }, 2900);
@@ -16,7 +16,7 @@ function Notification() {
     }, [notificationInfo.message]);
 
     if(notificationInfo.type === "error"){
-        if(notificationInfo.message === "Incorrect answer!"){
+        if(notificationInfo.message === "Incorrect answer!" || notificationInfo.message === "Wrong answer!"){
             return (
                 <div className="floatingNotification floatingNotification__red">
                     <img src="/svg/cross.svg" alt="white cross inside a red circle" />
