@@ -21,6 +21,11 @@
   <li><a href="https://github.com/Neetrah">@Neetrah</a> - Designer</li>
   <li><a href="https://github.com/Sanvirus">@Sanvirus</a> - Tasks, privacy policy, game logic</li>
 </ul>
+<h2>Branches</h2>
+<ul>
+  <li>staging -> pr this branch for everything</li>
+  <li>prod -> don't touch, this is what's running in production</li>
+</ul>
 <h2>Tech stack:</h2>
 <table>
   <tr>
