@@ -121,7 +121,21 @@ const BatteryCharging: React.FC<Props> = ({needHelp, setNeedHelp, multiplayer}) 
                     )}
                 </div>
                 <div className="level__container__options__ilustration">
-                    <img src="/levels/grandmaWithCookies.svg" alt="grandma cooking cookies" />
+                    {
+                        selectedValue > 40 ? (
+                            <img src="/levels/battery5.svg" alt="battery" />
+                        ) : selectedValue > 35 ? (
+                            <img src="/levels/battery4.svg" alt="battery" />
+                        ) : selectedValue > 25 ? (
+                            <img src="/levels/battery3.svg" alt="battery" />
+                        ) : selectedValue > 20 ? (
+                            <img src="/levels/battery2.svg" alt="battery" />
+                        ) : selectedValue > 10 ? (
+                            <img src="/levels/battery1.svg" alt="battery" />
+                        ) : (
+                            <img src="/levels/battery0.svg" alt="battery" />
+                        )
+                    }
                 </div>
             </div>
         </form>
