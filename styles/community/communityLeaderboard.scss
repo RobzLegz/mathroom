@@ -78,6 +78,10 @@
         height: 440px;
     }
 
+    @media screen and (max-height: 570px){
+        height: 390px;
+    }
+
     @media screen and (max-height: 550px) {
         height: 390px;
     }
