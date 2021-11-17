@@ -119,7 +119,7 @@
                     img{
                         width: 100%;
                         height: 100%;
-                        object-fit: cover;
+                        object-fit: contain;
                     }
 
                     &__overlay{
@@ -139,27 +139,26 @@
                     }
                 }
 
-                .inpContainer{
-                    margin: 10px 0;
-                    width: 250px;
-                    display: flex;
-                    align-items: flex-start;
-                    flex-direction: column;
+                &__imageOptions{
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    overflow-y: scroll;
+                    display: grid;
+                    justify-content: center;
+                    grid-template-columns: repeat(auto-fill, 200px);
+                    background: rgba(0, 0, 0, 0.6);
+                    row-gap: 30px;
+                    column-gap: 30px;
+                    z-index: 15;
 
-                    label{
-                        margin: 0 0 5px;
-                    }
-
-                    input{
-                        height: 30px;
-                        padding: 5px;
-                        width: 100%;
-                    }
-
-                    button{
-                        margin: 10px 0;
-                        border-radius: 5px;
-                        padding: 5px 20px;
+                    img{
+                        width: 200px;
+                        height: 200px;
+                        object-fit: contain;
+                        cursor: pointer;
                     }
                 }
             }
