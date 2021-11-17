@@ -17,6 +17,7 @@ function privacyPolicy() {
         <div className="privacyPolicy">
             <Head>
                 <title>MathRoom | Privacy policy</title>
+                <link rel="icon" type="image/x-icon" href="/favicon.svg"></link>
             </Head>
 
             <PrivacyPolicy />

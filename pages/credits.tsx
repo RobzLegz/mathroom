@@ -20,6 +20,7 @@ const credits = () => {
         <div className="credits">
             <Head>
                 <title>MathRoom | Credits</title>
+                <link rel="icon" type="image/x-icon" href="/favicon.svg"></link>
             </Head>
 
             <GameBackground color={"purple"} />
