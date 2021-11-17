@@ -20,6 +20,7 @@ export default function Instructions() {
     <div className="instructionPage">
       <Head>
         <title>MathRoom | Instructions</title>
+        <link rel="icon" type="image/x-icon" href="/svg/timer.svg"></link>
       </Head>
       
       <Notification />
