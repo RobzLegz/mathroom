@@ -38,14 +38,6 @@ const createNewLevel = (difficulty: number, question: string, instruction: strin
         return dispatch(setNotification({type: "error", message: "Please enter helpful tips that can help solving the task."}))
     }
 
-    let urlCheckRegex = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/i;
-
-    let urlCheck = image.match(urlCheckRegex);
-
-    if(!urlCheck){
-        return dispatch(setNotification({type: "error", message: "Please enter a valid image url"}))
-    }
-
     const headers = {
         headers: {
             Authorization: token
