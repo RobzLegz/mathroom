@@ -37,7 +37,7 @@ export default function Menu() {
         <div className="menu">
             <Head>
                 <title>MathRoom | Menu</title>
-                <link rel="icon" type="image/x-icon" href="/svg/timer.svg"></link>
+                <link rel="icon" type="image/x-icon" href="/favicon.svg"></link>
             </Head>
 
             <Notification />

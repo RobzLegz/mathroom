@@ -14,7 +14,7 @@ export default function Home() {
     <div>
       <Head>
         <title>MathRoom</title>
-        <link rel="icon" type="image/x-icon" href="/svg/timer.svg"></link>
+        <link rel="icon" type="image/x-icon" href="/favicon.svg"></link>
       </Head>
       <Notification />
     </div>
