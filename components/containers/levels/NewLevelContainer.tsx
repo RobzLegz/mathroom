@@ -1,6 +1,7 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import customLevelImages from '../../../data/customLevelImages';
 import { setNotification } from '../../../redux/slices/notificationSlice';
 import { selectUser } from '../../../redux/slices/userSlice';
 import { checkForLogin } from '../../../requests/auth/requests';
@@ -179,17 +180,12 @@ function NewLevelContainer() {
 
                             <div className="communityPage__newLevelContainer__body__bottom__right">
                                 {changingImage ? (
-                                    <div className="inpContainer">
-                                        <label htmlFor="image_url">Enter task ilustration URL</label>
-                                        <input
-                                            name="image_url"
-                                            id="image_url"
-                                            type="url"
-                                            placeholder="Enter image URL"
-                                            value={picture}
-                                            onChange={(e) => setPicture(e.target.value)}
-                                        />
-                                        <button onClick={() => setChangingImage(false)}>OK</button>
+                                    <div className="communityPage__newLevelContainer__body__bottom__right__imageOptions">
+                                        {
+                                            customLevelImages.map((image, i) => (
+                                                <img key={i} src={image.src} alt={image.alt} onClick={() => {setChangingImage(false);setPicture(image.src)}}/>
+                                            ))
+                                        }
                                     </div>
                                 ) : (
                                     <div className="communityPage__newLevelContainer__body__bottom__right__picture">
