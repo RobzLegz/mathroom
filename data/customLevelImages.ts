@@ -256,23 +256,15 @@ const customLevelImages = [
         alt: ""
     },
     {
-        src: "/png/sandClock.svg",
+        src: "/svg/sandClock.svg",
         alt: ""
     },
     {
-        src: "/png/timer.svg",
+        src: "/svg/timer.svg",
         alt: ""
     },
     {
-        src: "/png/question.svg",
-        alt: ""
-    },
-    {
-        src: "/png/lock.svg",
-        alt: ""
-    },
-    {
-        src: "/png/pictureIcon.png",
+        src: "/svg/question.svg",
         alt: ""
     }
 ]
