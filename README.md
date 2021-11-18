@@ -72,6 +72,10 @@
     <th>Description</th>
   </tr>
   <tr>
+    <th>v2.0.5</th>
+    <th>Level customization | Bug fixes</th>
+  </tr>
+  <tr>
     <th>v2.0.4</th>
     <th>Bug fixes</th>
   </tr>
