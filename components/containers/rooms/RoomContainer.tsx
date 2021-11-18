@@ -56,6 +56,8 @@ const RoomContainer: React.FC = () => {
             if(!socketInfo.connected || !socket){
                 dispatch(setSocket(true));
             }else{
+                socket.emit("requestUsers");
+                
                 socket.on("getRooms", (rooms: Room[]) => {
                     rooms.forEach((room) => {
                         dispatch(addRoom(room));
